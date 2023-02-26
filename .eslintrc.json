@@ -1,11 +1,5 @@
 {
   "extends": "next/core-web-vitals",
-  "import/extensions": [
-    ".js",
-    ".jsx",
-    ".ts",
-    ".tsx"
-  ],
   "plugins": [
     "import",
     "unused-imports"
@@ -45,6 +39,11 @@
             "pattern": "@/components/hooks",
             "group": "internal",
             "position": "before"
+          },
+          {
+            "pattern": "@storybook/*",
+            "group": "external",
+            "position": "after"
           }
         ]
       }
