@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "lint:fix": "next lint --fix && stylelint --fix **/*.{css,scss,sass}",
     "lint:css": "stylelint **/*.{css,scss,sass}",
-    "lint:css:fix": "stylelint --fix '**/*.{css,scss,sass}'",
+    "lint:css:fix": "stylelint --fix **/*.{css,scss,sass}",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
