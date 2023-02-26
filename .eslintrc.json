@@ -6,7 +6,12 @@
     ".ts",
     ".tsx"
   ],
+  "plugins": [
+    "import",
+    "unused-imports"
+  ],
   "rules": {
+    "unused-imports/no-unused-imports": "error",
     "import/order": [
       "error",
       {
