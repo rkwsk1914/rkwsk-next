@@ -1,44 +1,28 @@
 {
   "extends": [
     "stylelint-config-standard",
-    "stylelint-config-recess-order",
     "stylelint-config-prettier"
   ],
-  "ignoreFiles": ["**/node_modules/**"],
+  "plugins": [
+    "stylelint-order",
+    "stylelint-declaration-block-no-ignored-properties"
+  ],
+  "ignoreFiles": ["**/node_modules/**", "**/src/stories/**"],
   "rules": {
-    "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
-    "indentation": 2,
-    "string-quotes": "double",
-    "no-duplicate-selectors": true,
-    "color-hex-case": "upper",
-    "color-hex-length": "short",
-    "color-named": "always-where-possible",
-    "selector-no-qualifying-type": true,
-    "selector-no-id": true,
-    "selector-no-combinator": true,
-    "selector-no-attribute": true,
-    "selector-combinator-space-after": "always",
-    "selector-attribute-quotes": "always",
-    "selector-attribute-operator-space-before": "always",
-    "selector-attribute-operator-space-after": "always",
-    "selector-attribute-brackets-space-inside": "always",
-    "declaration-block-trailing-semicolon": "always",
-    "declaration-colon-space-before": "always",
-    "declaration-colon-space-after": "always",
-    "number-leading-zero": "always",
-    "function-url-quotes": "always",
-    "function-url-data-uris": "always",
-    "font-family-name-quotes": "always-where-required",
-    "comment-whitespace-inside": "always",
-    "comment-empty-line-before": "always",
-    "rule-empty-line-before": "always-multi-line",
-    "selector-pseudo-element-colon-notation": "double",
-    "selector-pseudo-class-parentheses-space-inside": "never",
-    "media-feature-range-operator-space-before": "always",
-    "media-feature-range-operator-space-after": "always",
-    "media-feature-parentheses-space-inside": "always",
-    "media-feature-colon-space-before": "always",
-    "media-feature-colon-space-after": "always"
+    "selector-class-pattern": "^(([a-z][a-zA-Z0-9_]+)|([a-z][a-z0-9]*)(-[a-zA-Z0-9_]+)*)$",
+    "length-zero-no-unit": null,
+    "value-keyword-case": null,
+    "custom-property-empty-line-before": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "plugin/declaration-block-no-ignored-properties": true,
+		"order/order": [
+			"custom-properties",
+			"declarations"
+		],
+		"order/properties-order": [
+			"width",
+			"height"
+		]
   }
 }
