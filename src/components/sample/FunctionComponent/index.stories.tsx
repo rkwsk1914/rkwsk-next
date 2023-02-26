@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import {FunctionComponent as StoryComponent} from '.'
 
 export default {
-  title: 'Atoms/FunctionComponent',
+  title: 'Sample/FunctionComponent',
   component: StoryComponent,
 } as ComponentMeta<typeof StoryComponent>
 

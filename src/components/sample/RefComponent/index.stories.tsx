@@ -6,7 +6,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import {RefComponent as StoryComponent} from '.'
 
 export default {
-  title: 'Atoms/RefComponent',
+  title: 'Sample/RefComponent',
   component: StoryComponent,
   argTypes: {
     option: { control: 'some option' },
