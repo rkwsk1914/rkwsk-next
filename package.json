@@ -27,6 +27,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.10",
+    "@mui/styled-engine-sc": "^5.11.9",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
@@ -38,6 +39,7 @@
     "babel-loader": "^8.3.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-storybook": "^0.6.11",
-    "eslint-plugin-unused-imports": "^2.0.0"
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "styled-components": "^5.3.6"
   }
 }
