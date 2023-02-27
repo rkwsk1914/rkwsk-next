@@ -10,35 +10,59 @@
       "error",
       {
         "groups": [
-          "builtin",  // 組み込みモジュール
-          "external", // npmでインストールした外部ライブラリ
-          "internal", // 自作モジュール
-          [
-            "parent",
-            "sibling"
-          ],
+          "builtin",
+          "external",
+          "internal",
           "object",
-          "type",
-          "index"
+          "parent",
+          "sibling",
+          "index",
+          "type"
         ],
-        "newlines-between": "always", // グループ毎にで改行を入れる
+        "newlines-between": "always",
         "pathGroupsExcludedImportTypes": [
+          "react",
           "builtin"
         ],
         "alphabetize": {
-          "order": "asc", // 昇順にソート
-          "caseInsensitive": true // 小文字大文字を区別する
+          "order": "asc",
+          "caseInsensitive": true
         },
-        "pathGroups": [ // 指定した順番にソートされる
+        "pathGroups": [
           {
-            "pattern": "@/components/common",
-            "group": "internal",
+            "pattern": "react",
+            "group": "builtin",
             "position": "before"
           },
           {
-            "pattern": "@/components/hooks",
-            "group": "internal",
+            "pattern": "@/components",
+            "group": "parent",
             "position": "before"
+          },
+          {
+            "pattern": "@/hooks",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@/const",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@/stores",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@/api",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@/types",
+            "group": "type",
+            "position": "after"
           },
           {
             "pattern": "@storybook/*",
