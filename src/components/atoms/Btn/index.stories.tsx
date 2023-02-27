@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import {FunctionComponent as StoryComponent} from '.'
+import { Btn as StoryComponent } from '.'
 
 export default {
   title: 'Atoms/Button',
@@ -16,7 +16,10 @@ export default {
     },
     size: {
       control: 'select', options: ['small', 'medium', 'large']
-    }
+    },
+    disabled: {
+      control: 'boolean',
+    },
   },
 } as ComponentMeta<typeof StoryComponent>
 
@@ -29,5 +32,6 @@ Default.args = {
   children: 'Sample',
   color: 'primary',
   variant: 'contained',
-  size: 'large'
+  size: 'large',
+  disabled: false
 }

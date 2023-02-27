@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Button from '@mui/material/Button';
 
-
 type Props = {
   children?: React.ReactNode
   color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning'
@@ -11,7 +10,7 @@ type Props = {
   disabled?: boolean
 };
 
-export const FunctionComponent: React.FC<Props> = (
+export const Btn: React.FC<Props> = (
   {
     children,
     color,
