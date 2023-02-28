@@ -6,14 +6,18 @@ import { ThemeProvider } from '@mui/material/styles';
 import { darkTheme } from '@/const/DarkTheme';
 
 type Props = {
-  children?: React.ReactNode;
+  children?: React.ReactNode
+  theme?: any
 };
 
 export const Theme: React.FC<Props> = (
-  {children}
+  {
+    children,
+    theme = darkTheme
+  }
 ): JSX.Element => {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       {children}
     </ThemeProvider>

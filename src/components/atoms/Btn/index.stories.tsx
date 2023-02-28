@@ -2,6 +2,8 @@ import React from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
+import { Theme } from '@/components/layouts/Theme'
+
 import { Btn as StoryComponent } from '.'
 
 export default {
@@ -21,6 +23,13 @@ export default {
       control: 'boolean',
     },
   },
+  decorators: [
+    (Story) => (
+      <Theme>
+        <Story />
+      </Theme>
+    ),
+  ],
 } as ComponentMeta<typeof StoryComponent>
 
 const Template: ComponentStory<typeof StoryComponent> = (args?: React.ComponentProps<typeof StoryComponent>) => (
