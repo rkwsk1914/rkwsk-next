@@ -4,14 +4,10 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Theme } from '@/components/layouts/Theme'
 
-import { Btn as StoryComponent } from '.'
-
-type DarkArg = {
-  dark: boolean
-}
+import { ButtonElement as StoryComponent } from '.'
 
 export default {
-  title: 'Atoms/Button',
+  title: 'Atoms/ButtonElement',
   component: StoryComponent,
   argTypes: {
     isDark: {
@@ -41,17 +37,14 @@ export default {
   ],
 } as ComponentMeta<typeof StoryComponent>
 
-const Template: ComponentStory<typeof StoryComponent> = (args?: React.ComponentProps<typeof StoryComponent> | DarkArg) => {
-  const { isDark: _, ...storyArg} = args;
-  console.log(args)
-  return (
-    <StoryComponent {...storyArg}></StoryComponent>
-  )
-}
+const Template: ComponentStory<typeof StoryComponent> = (
+  args?: React.ComponentProps<typeof StoryComponent>
+) => (
+  <StoryComponent {...args}></StoryComponent>
+)
 
 export const Default = Template.bind({})
 Default.args = {
-  isDark: true,
   children: 'Sample',
   color: 'primary',
   variant: 'contained',

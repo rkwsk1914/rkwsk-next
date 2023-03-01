@@ -10,7 +10,7 @@ type Props = {
   disabled?: boolean
 };
 
-export const Btn: React.FC<Props> = (
+export const ButtonElement: React.FC<Props> = (
   {
     children,
     color,
