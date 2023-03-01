@@ -2,8 +2,6 @@ import React from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { Theme } from '@/components/layouts/Theme'
-
 import { ButtonElement as StoryComponent } from '.'
 
 export default {
@@ -25,16 +23,7 @@ export default {
     disabled: {
       control: 'boolean',
     },
-  },
-  decorators: [
-    (Story) => {
-      return (
-        <Theme isTest>
-          <Story />
-        </Theme>
-      )
-    },
-  ],
+  }
 } as ComponentMeta<typeof StoryComponent>
 
 const Template: ComponentStory<typeof StoryComponent> = (

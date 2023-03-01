@@ -1,3 +1,7 @@
+import React from 'react'
+
+import { Theme } from '../src/components/layouts/Theme'
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -7,3 +11,13 @@ export const parameters = {
     },
   },
 }
+
+const decoratorsTheme = (Story) => {
+  return (
+    <Theme isTest>
+      <Story />
+    </Theme>
+  )
+}
+
+export const decorators = [decoratorsTheme];
