@@ -17,7 +17,7 @@ type Props = {
 export const Theme: React.FC<Props> = (
   {
     children,
-    isDark = true,
+    isDark = false,
     isTest
   }
 ): JSX.Element => {
