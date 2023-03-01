@@ -29,13 +29,20 @@ export const SwitchElement: React.FC<Props> = (
     onChange
   }
 ): JSX.Element => {
-  return (
+  if (icon && checkedIcon) return (
     <Switch
       defaultChecked={defaultChecked}
       icon={icon}
+      onChange={onChange}
       checkedIcon={checkedIcon}
+      checked={checked}
+    />
+  )
+  return (
+    <Switch
+      defaultChecked={defaultChecked}
       checked={checked}
       onChange={onChange}
     />
-  );
+  )
 }
