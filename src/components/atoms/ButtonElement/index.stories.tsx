@@ -27,9 +27,9 @@ export default {
     },
   },
   decorators: [
-    (Story, storyComponent) => {
+    (Story) => {
       return (
-        <Theme isDark={storyComponent.args.isDark}>
+        <Theme isTest>
           <Story />
         </Theme>
       )
