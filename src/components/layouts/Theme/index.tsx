@@ -3,21 +3,21 @@ import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 
-import { darkTheme } from '@/const/DarkTheme';
+import { darkTheme, lightTheme } from '@/const/DarkTheme';
 
 type Props = {
   children?: React.ReactNode
-  theme?: any
+  isDark?: boolean
 };
 
 export const Theme: React.FC<Props> = (
   {
     children,
-    theme = darkTheme
+    isDark
   }
 ): JSX.Element => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <CssBaseline />
       {children}
     </ThemeProvider>
