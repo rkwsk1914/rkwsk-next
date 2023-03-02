@@ -9,7 +9,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import {SwitchElement as StoryComponent} from '.'
 
 export default {
-  title: 'Atoms/SwitchElement',
+  title: 'Forms/Atoms/SwitchElement',
   component: StoryComponent,
   argTypes: {
     defaultChecked: {

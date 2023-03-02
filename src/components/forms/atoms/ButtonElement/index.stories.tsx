@@ -7,7 +7,7 @@ import { MuiSizeOptions } from '@/types/MuiSize'
 import { ButtonElement as StoryComponent } from '.'
 
 export default {
-  title: 'Atoms/ButtonElement',
+  title: 'Forms/Atoms/ButtonElement',
   component: StoryComponent,
   argTypes: {
     isDark: {
