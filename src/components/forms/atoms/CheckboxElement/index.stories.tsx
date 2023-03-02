@@ -32,10 +32,7 @@ export const Default = Template.bind({})
 Default.args = {
   checked: false,
   size: "small",
-  error: false,
   disabled: false,
-  helperText: "this error",
-  id: 'default',
   label: 'default',
   onChange: action('onChange'),
   value: ""
@@ -45,10 +42,7 @@ export const Uncontrolled = Template.bind({})
 Uncontrolled.args = {
   defaultChecked: false,
   size: "small",
-  error: false,
   disabled: false,
-  helperText: "this error",
-  id: 'default',
   label: 'default',
   onChange: action('onChange'),
   value: ""
@@ -58,10 +52,7 @@ export const Bookmark = Template.bind({})
 Bookmark.args = {
   defaultChecked: false,
   size: "small",
-  error: false,
   disabled: false,
-  helperText: "this error",
-  id: 'default',
   onChange: action('onChange'),
   value: "",
   icon: <BookmarkBorderIcon />,
@@ -72,10 +63,7 @@ export const Favorites = Template.bind({})
 Favorites.args = {
   defaultChecked: false,
   size: "small",
-  error: false,
   disabled: false,
-  helperText: "this error",
-  id: 'default',
   onChange: action('onChange'),
   value: "",
   icon: <FavoriteBorder />,

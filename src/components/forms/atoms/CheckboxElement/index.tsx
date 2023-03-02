@@ -5,8 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 
 import { InputAttributeTypes } from '@/types/InputAttribute'
 
-interface BaseProps extends InputAttributeTypes {
-  value: string
+interface BaseProps extends Pick<InputAttributeTypes, 'label' | 'value' | 'name' | 'onChange'| 'disabled'> {
   size: 'small' | 'medium'
   icon?: React.ReactNode
   checkedIcon?: React.ReactNode
@@ -34,6 +33,7 @@ export const CheckboxElement: React.FC<Props> = (
     size = 'medium',
     icon,
     checkedIcon,
+    disabled,
     onChange
   }
 ): JSX.Element => {
@@ -41,6 +41,7 @@ export const CheckboxElement: React.FC<Props> = (
     <Checkbox
       value={value}
       name={name}
+      disabled={disabled}
       checked={checked}
       defaultChecked={defaultChecked}
       size={size}
@@ -56,6 +57,7 @@ export const CheckboxElement: React.FC<Props> = (
         <Checkbox
           value={value}
           name={name}
+          disabled={disabled}
           checked={checked}
           defaultChecked={defaultChecked}
           size={size}
