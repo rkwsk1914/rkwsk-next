@@ -6,7 +6,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { AutoCompleteOptions } from '@/types/AutoCompleteType'
 import { InputAttributeOptions } from '@/types/InputAttribute'
 
-import {TextInputElement as StoryComponent} from '.'
+import { TextInputElement as StoryComponent } from '.'
 
 export default {
   title: 'Forms/Atoms/TextInputElement',
