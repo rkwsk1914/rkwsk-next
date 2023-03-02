@@ -4,6 +4,7 @@ import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { AutoCompleteOptions } from '@/types/AutoCompleteType'
+import { InputAttributeOptions } from '@/types/InputAttribute'
 
 import {TextInputElement as StoryComponent} from '.'
 
@@ -23,12 +24,9 @@ export default {
     autoFocus: {
       control: 'boolean',
     },
-    disabled: {
-      control: 'boolean',
-    },
-    error: {
-      control: 'boolean',
-    },
+    disabled: InputAttributeOptions.disabled,
+    error: InputAttributeOptions.error,
+    required: InputAttributeOptions.required,
   }
 } as ComponentMeta<typeof StoryComponent>
 

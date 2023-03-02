@@ -3,21 +3,16 @@ import * as React from 'react'
 import TextField from '@mui/material/TextField'
 
 import { AutoCompleteType } from '@/types/AutoCompleteType'
+import { InputAttributeTypes } from '@/types/InputAttribute'
 
-type BaseProps = {
-  id: string
-  label: string
-  name: string
+interface BaseProps extends InputAttributeTypes {
   type: 'text' | 'tel' | 'email' | 'number' | 'password' | 'search' | 'url'
   autoComplete: AutoCompleteType
   autoFocus: boolean
   variant: 'filled' | 'outlined' | 'standard'
-  helperText: string
   placeholder?: string
   rows?: number
   size: 'small' | 'medium'
-  disabled?: boolean
-  error?: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 };
 
