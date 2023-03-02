@@ -9,7 +9,9 @@ export default {
   component: StoryComponent,
 } as ComponentMeta<typeof StoryComponent>
 
-const Template: ComponentStory<typeof StoryComponent> = (args?: React.ComponentProps<typeof StoryComponent>) => (
+const Template: ComponentStory<typeof StoryComponent> = (
+  args?: React.ComponentProps<typeof StoryComponent>
+) => (
   <StoryComponent {...args}></StoryComponent>
 )
 

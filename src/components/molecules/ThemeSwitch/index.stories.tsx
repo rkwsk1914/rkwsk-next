@@ -1,16 +1,20 @@
 import React from 'react'
 
-import { action } from "@storybook/addon-actions";
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import {RefComponent as StoryComponent} from '.'
+import {ThemeSwitch as StoryComponent} from '.'
 
 export default {
-  title: 'Sample/RefComponent',
+  title: 'Molecules/ThemeSwitch',
   component: StoryComponent,
   argTypes: {
-    option: { control: 'some option' },
-  }
+    defaultChecked: {
+      control: 'boolean',
+    },
+    checked: {
+      control: 'boolean',
+    },
+  },
 } as ComponentMeta<typeof StoryComponent>
 
 const Template: ComponentStory<typeof StoryComponent> = (
@@ -21,6 +25,6 @@ const Template: ComponentStory<typeof StoryComponent> = (
 
 export const Default = Template.bind({})
 Default.args = {
-  children: 'Sample',
-  onClick: () => action('action'),
+  defaultChecked: false,
+  onChange: () => {}
 }
