@@ -5,10 +5,10 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { InputAttributeOptions } from '@/types/InputAttribute'
 
-import { CheckboxGroup as StoryComponent } from '.'
+import { RadioGroup as StoryComponent } from '.'
 
 export default {
-  title: 'Forms/Molecules/CheckboxGroup',
+  title: 'Forms/Organisms/RadioGroup',
   component: StoryComponent,
   argTypes: {
     disabled: InputAttributeOptions.disabled,
