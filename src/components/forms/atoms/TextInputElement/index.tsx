@@ -13,7 +13,6 @@ interface BaseProps extends InputAttributeTypes {
   placeholder?: string
   rows?: number
   size: 'small' | 'medium'
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 };
 
 interface ControlledProps extends BaseProps {
