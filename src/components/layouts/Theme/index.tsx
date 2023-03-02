@@ -3,7 +3,7 @@ import { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 
-import { ThemeSwitch } from '@/components/molecules/ThemeSwitch'
+import { ThemeSwitch } from '@/components/forms/molecules/ThemeSwitch'
 import { darkTheme, lightTheme } from '@/const/DarkTheme';
 
 import styles from './style.module.scss'

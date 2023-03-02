@@ -4,7 +4,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 
-import { SwitchElement } from '@/components/atoms/SwitchElement'
+import { SwitchElement } from '@/components/forms/atoms/SwitchElement'
 
 export const ThemeSwitch: React.FC<React.ComponentProps<typeof SwitchElement>> = (
   {

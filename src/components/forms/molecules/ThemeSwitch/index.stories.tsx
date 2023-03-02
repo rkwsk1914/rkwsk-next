@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import {ThemeSwitch as StoryComponent} from '.'
 
 export default {
-  title: 'Molecules/ThemeSwitch',
+  title: 'Forms/Molecules/ThemeSwitch',
   component: StoryComponent,
   argTypes: {
     defaultChecked: {
