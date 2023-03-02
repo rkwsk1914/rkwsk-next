@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import FormControl from '@mui/material/FormControl';
-import FormGroup from '@mui/material/FormGroup';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl'
+import FormGroup from '@mui/material/FormGroup'
+import FormHelperText from '@mui/material/FormHelperText'
+import FormLabel from '@mui/material/FormLabel'
 
 import { RadioElement } from '@/components/forms/atoms/RadioElement'
 import { InputAttributeTypes } from '@/types/InputAttribute'
@@ -11,7 +11,7 @@ import { InputAttributeTypes } from '@/types/InputAttribute'
 interface Props extends InputAttributeTypes {
   focused: boolean
   data: Array<Omit<React.ComponentProps<typeof RadioElement>, "onChange" | "defaultChecked" | "name">>
-};
+}
 
 export const RadioGroup: React.FC<Props> = (
   {
@@ -53,5 +53,5 @@ export const RadioGroup: React.FC<Props> = (
       </FormGroup>
       <FormHelperText>{helperText}</FormHelperText>
     </FormControl>
-  );
+  )
 }

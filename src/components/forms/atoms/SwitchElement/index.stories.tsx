@@ -1,9 +1,9 @@
 import React from 'react'
 
-import LightModeIcon from '@mui/icons-material/LightMode';
-import NightlightIcon from '@mui/icons-material/Nightlight';
+import LightModeIcon from '@mui/icons-material/LightMode'
+import NightlightIcon from '@mui/icons-material/Nightlight'
 
-import { action } from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions"
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import {SwitchElement as StoryComponent} from '.'

@@ -3,7 +3,7 @@ import React from 'react'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 
-import { action } from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions"
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { InputAttributeOptions } from '@/types/InputAttribute'

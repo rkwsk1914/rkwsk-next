@@ -30,5 +30,5 @@ export const ButtonElement: React.FC<Props> = (
     >
       {children}
     </Button>
-  );
+  )
 }

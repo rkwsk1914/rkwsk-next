@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from 'react'
 
 import FormControlLabel from '@mui/material/FormControlLabel'
-import Radio from '@mui/material/Radio';
+import Radio from '@mui/material/Radio'
 
 import { InputAttributeTypes } from '@/types/InputAttribute'
 

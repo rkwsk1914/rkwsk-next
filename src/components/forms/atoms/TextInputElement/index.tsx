@@ -13,7 +13,7 @@ interface BaseProps extends Omit<InputAttributeTypes, 'value'> {
   placeholder?: string
   rows?: number
   size: 'small' | 'medium'
-};
+}
 
 interface ControlledProps extends BaseProps {
   value?: string
@@ -67,5 +67,5 @@ export const TextInputElement: React.FC<Props> = (
       onChange={onChange}
       fullWidth
     />
-  );
+  )
 }
