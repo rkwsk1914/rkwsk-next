@@ -7,6 +7,7 @@
     "stylelint-order",
     "stylelint-declaration-block-no-ignored-properties"
   ],
+  "customSyntax": "postcss-scss",
   "ignoreFiles": ["**/node_modules/**"],
   "rules": {
     "at-rule-no-unknown": [
