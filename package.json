@@ -38,12 +38,12 @@
     "css-loader": "^6.7.3",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-storybook": "^0.6.11",
-    "sass": "^1.58.3",
-    "sass-loader": "^13.2.0",
-    "style-loader": "^3.3.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "postcss": "^8.4.21",
     "postcss-safe-parser": "^6.0.0",
+    "sass": "^1.58.3",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
     "stylelint": "^15.2.0",
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recess-order": "^4.0.0",
@@ -51,6 +51,7 @@
     "stylelint-config-standard": "^30.0.1",
     "stylelint-declaration-block-no-ignored-properties": "^2.7.0",
     "stylelint-order": "^6.0.2",
-    "stylelint-scss": "^4.4.0"
+    "stylelint-scss": "^4.4.0",
+    "zod": "^3.20.6"
   }
 }
