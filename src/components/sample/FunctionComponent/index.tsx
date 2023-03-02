@@ -5,7 +5,11 @@ type Props = {
 };
 
 export const FunctionComponent: React.FC<Props> = (
-  {children}
+  {
+    children
+  }
 ): JSX.Element => {
-  return (<>{children}</>)
+  return (
+    <>{children}</>
+  )
 }

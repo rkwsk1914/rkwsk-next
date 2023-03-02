@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import {FunctionComponent as StoryComponent} from '.'
+import { FunctionComponent as StoryComponent } from '.'
 
 export default {
   title: 'Sample/FunctionComponent',
