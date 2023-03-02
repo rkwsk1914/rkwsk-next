@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField'
 import { AutoCompleteType } from '@/types/AutoCompleteType'
 import { InputAttributeTypes } from '@/types/InputAttribute'
 
-interface BaseProps extends InputAttributeTypes {
+interface BaseProps extends Omit<InputAttributeTypes, 'value'> {
   type: 'text' | 'tel' | 'email' | 'number' | 'password' | 'search' | 'url'
   autoComplete: AutoCompleteType
   autoFocus: boolean

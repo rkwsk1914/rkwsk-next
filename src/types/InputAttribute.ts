@@ -6,6 +6,7 @@ export type InputAttributeTypes = {
   required: boolean
   error: boolean
   helperText: string
+  value: string | number
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
