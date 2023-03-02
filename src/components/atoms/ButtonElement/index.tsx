@@ -1,12 +1,14 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import Button from '@mui/material/Button';
+import Button from '@mui/material/Button'
+
+import { MuiSizeTypes } from '@/types/MuiSize'
 
 type Props = {
   children?: React.ReactNode
   color?: 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning'
   variant?: 'contained' | 'outlined' | 'text'
-  size?: 'small' | 'medium' | 'large'
+  size?: MuiSizeTypes
   disabled?: boolean
 };
 

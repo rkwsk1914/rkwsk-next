@@ -2,6 +2,8 @@ import React from 'react'
 
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
+import { MuiSizeOptions } from '@/types/MuiSize'
+
 import { ButtonElement as StoryComponent } from '.'
 
 export default {
@@ -18,7 +20,7 @@ export default {
       control: 'select', options: ['contained', 'outlined', 'text'],
     },
     size: {
-      control: 'select', options: ['small', 'medium', 'large']
+      control: 'select', options: [MuiSizeOptions]
     },
     disabled: {
       control: 'boolean',
