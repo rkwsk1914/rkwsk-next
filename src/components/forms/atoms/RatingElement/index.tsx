@@ -5,7 +5,7 @@ import Rating from '@mui/material/Rating'
 import { InputAttributeTypes } from '@/types/InputAttribute'
 import { MuiSizeTypes } from '@/types/MuiSize'
 
-interface BaseProps extends Omit<InputAttributeTypes, 'value' | 'onChange'> {
+interface BaseProps extends Omit<InputAttributeTypes, 'onChange'> {
   size?: MuiSizeTypes
   max: number
   precision: 0.5 | 1

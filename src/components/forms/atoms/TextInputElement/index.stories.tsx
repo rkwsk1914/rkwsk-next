@@ -48,6 +48,7 @@ Default.args = {
   placeholder: "",
   helperText: "this error",
   id: 'default',
+  label: 'default',
   onChange: action('onChange'),
   value: ""
 }
@@ -64,6 +65,7 @@ Uncontrolled.args = {
   error: false,
   disabled: false,
   id: 'uncontrolled',
+  label: 'uncontrolled',
   onChange: action('onChange'),
   defaultValue: ""
 }

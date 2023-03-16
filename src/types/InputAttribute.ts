@@ -7,10 +7,11 @@ interface RegisterTypes {
 }
 
 interface AttributeTypes extends RegisterTypes {
-  id: string
-  disabled: boolean
+  id?: string
+  label: string
   error: boolean
   helperText: string
+  disabled?: boolean
 }
 
 export type InputAttributeTypes = AttributeTypes

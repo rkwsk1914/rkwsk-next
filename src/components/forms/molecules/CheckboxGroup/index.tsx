@@ -10,14 +10,13 @@ import { InputAttributeTypes } from '@/types/InputAttribute'
 
 interface Props extends InputAttributeTypes {
   focused: boolean
-  data: Array<Omit<React.ComponentProps<typeof CheckboxElement>, "onChange" | "defaultChecked" | "name">>
+  data: Array<React.ComponentProps<typeof CheckboxElement>>
 }
 
 export const CheckboxGroup: React.FC<Props> = (
   {
     label,
     name,
-    required,
     error,
     helperText,
     focused,
@@ -27,7 +26,6 @@ export const CheckboxGroup: React.FC<Props> = (
 ): JSX.Element => {
   return (
     <FormControl
-      required={required}
       error={error}
       focused={focused}
       component="fieldset"

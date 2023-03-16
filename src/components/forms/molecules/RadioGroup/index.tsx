@@ -10,14 +10,14 @@ import { InputAttributeTypes } from '@/types/InputAttribute'
 
 interface Props extends InputAttributeTypes {
   focused: boolean
-  data: Array<Omit<React.ComponentProps<typeof RadioElement>, "onChange" | "defaultChecked" | "name">>
+  data: Array<React.ComponentProps<typeof RadioElement>>
 }
 
 export const RadioGroup: React.FC<Props> = (
   {
+    id,
     label,
     name,
-    required,
     error,
     helperText,
     focused,
@@ -27,7 +27,6 @@ export const RadioGroup: React.FC<Props> = (
 ): JSX.Element => {
   return (
     <FormControl
-      required={required}
       error={error}
       focused={focused}
       component="fieldset"

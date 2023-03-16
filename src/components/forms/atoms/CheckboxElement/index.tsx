@@ -5,7 +5,8 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 
 import { InputAttributeTypes } from '@/types/InputAttribute'
 
-interface BaseProps extends Pick<InputAttributeTypes, 'label' | 'value' | 'name' | 'onChange'| 'disabled'> {
+interface BaseProps extends Omit<InputAttributeTypes, 'error' | 'helperText'> {
+  value: number | string
   size: 'small' | 'medium'
   icon?: React.ReactNode
   checkedIcon?: React.ReactNode

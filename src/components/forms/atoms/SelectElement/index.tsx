@@ -15,7 +15,7 @@ import { Theme, useTheme } from '@mui/material/styles'
 import { InputAttributeTypes } from '@/types/InputAttribute'
 
 
-interface BaseProps extends Omit<InputAttributeTypes, 'value'> {
+interface BaseProps extends InputAttributeTypes {
   title: string
   selectItems: Array<string>
   variant: 'filled' | 'outlined' | 'standard'

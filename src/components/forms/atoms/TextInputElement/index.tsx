@@ -31,6 +31,7 @@ export const TextInputElement = React.forwardRef(
     function RefComponent (
       {
         id,
+        label,
         disabled,
         error,
         helperText,
@@ -52,6 +53,7 @@ export const TextInputElement = React.forwardRef(
   return (
     <TextField
       id={id}
+      label={label}
       disabled={disabled}
       error={error}
       helperText={helperText}
