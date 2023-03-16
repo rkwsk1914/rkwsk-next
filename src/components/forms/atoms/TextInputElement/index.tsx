@@ -5,14 +5,14 @@ import TextField from '@mui/material/TextField'
 import { AutoCompleteType } from '@/types/AutoCompleteType'
 import { InputAttributeTypes } from '@/types/InputAttribute'
 
-interface BaseProps extends Omit<InputAttributeTypes, 'value'> {
+interface BaseProps extends InputAttributeTypes {
   type: 'text' | 'tel' | 'email' | 'number' | 'password' | 'search' | 'url'
   autoComplete: AutoCompleteType
-  autoFocus: boolean
-  variant: 'filled' | 'outlined' | 'standard'
+  autoFocus?: boolean
+  variant?: 'filled' | 'outlined' | 'standard'
   placeholder?: string
   rows?: number
-  size: 'small' | 'medium'
+  size?: 'small' | 'medium'
 }
 
 interface ControlledProps extends BaseProps {
@@ -25,47 +25,50 @@ interface UncontrolledProps extends BaseProps {
   defaultValue?: string
 }
 
-type Props = ControlledProps | UncontrolledProps
+type RefProps = ControlledProps | UncontrolledProps
 
-export const TextInputElement: React.FC<Props> = (
-  {
-    id,
-    label,
-    name,
-    type,
-    variant,
-    helperText,
-    autoComplete,
-    autoFocus,
-    placeholder,
-    rows,
-    size = 'medium',
-    disabled,
-    error,
-    onChange,
-    value,
-    defaultValue
-  }
-): JSX.Element => {
+export const TextInputElement = React.forwardRef(
+    function RefComponent (
+      {
+        id,
+        disabled,
+        error,
+        helperText,
+        name,
+        onChange,
+        onBlur,
+        type,
+        autoComplete,
+        autoFocus = false,
+        variant = 'standard',
+        placeholder,
+        rows,
+        size = 'medium',
+        value,
+        defaultValue
+      }: RefProps,
+      ref?: React.Ref<HTMLInputElement>
+    ): JSX.Element {
   return (
     <TextField
       id={id}
-      label={label}
-      name={name}
-      type={type}
-      variant={variant}
+      disabled={disabled}
+      error={error}
       helperText={helperText}
-      autoFocus={autoFocus}
+      name={name}
+      onChange={onChange}
+      onBlur={onBlur}
+      type={type}
       autoComplete={autoComplete}
+      autoFocus={autoFocus}
+      variant={variant}
       placeholder={placeholder}
-      value={value}
-      defaultValue={defaultValue}
       rows={rows}
       size={size}
-      error={error}
-      disabled={disabled}
-      onChange={onChange}
+      value={value}
+      defaultValue={defaultValue}
       fullWidth
+      inputRef={ref}
     />
   )
-}
+})

@@ -3,6 +3,7 @@
  */
 export type AutoCompleteType =
   'name' |
+  'email' |
   'honorific-prefix' |
   'given-name' |
   'additional-name' |
@@ -49,6 +50,7 @@ export type AutoCompleteType =
 
 export const AutoCompleteOptions = [
   'name',
+  'email',
   'honorific-prefix',
   'given-name',
   'additional-name',

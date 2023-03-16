@@ -1,14 +1,19 @@
-export type InputAttributeTypes = {
-  id: string
-  label: string
+import { ChangeHandler } from "react-hook-form"
+
+interface RegisterTypes {
   name: string
+  onChange?: ChangeHandler | ((e: React.ChangeEvent<HTMLInputElement>) => void)
+  onBlur?: ChangeHandler | ((e: React.FocusEvent<HTMLInputElement>) => void)
+}
+
+interface AttributeTypes extends RegisterTypes {
+  id: string
   disabled: boolean
-  required: boolean
   error: boolean
   helperText: string
-  value: string | number
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
+
+export type InputAttributeTypes = AttributeTypes
 
 export const InputAttributeOptions = {
   disabled: {
