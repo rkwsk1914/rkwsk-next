@@ -9,7 +9,7 @@ import { TextInputElement } from '@/components/forms/atoms/TextInputElement'
 
 
 const schema = z.object({
-  email: z.string().min(1, { message: 'Required' }),
+  email: z.string().email({ message: 'email no' }).min(5).nonempty({ message: 'Required' }),
 })
 
 type Inputs = {
@@ -31,8 +31,7 @@ export const LoginForm: React.FC = (): JSX.Element => {
         id="email"
         label='email'
         disabled={false}
-        helperText={""}
-        value={""}
+        helperText={errors.email?.message || ""}
         type='email'
         autoComplete='email'
         error={errors.email ? true :false}
