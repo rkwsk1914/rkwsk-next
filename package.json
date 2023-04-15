@@ -11,31 +11,31 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@types/node": "18.14.1",
-    "@types/react": "18.0.28",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
-    "eslint": "8.34.0",
-    "eslint-config-next": "13.2.1",
-    "next": "13.2.1",
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.3.0",
+    "next": "13.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "4.9.5"
+    "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-interactions": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/builder-webpack5": "^6.5.16",
+    "@babel/core": "^7.21.4",
+    "@storybook/addon-actions": "^7.0.4",
+    "@storybook/addon-essentials": "^7.0.4",
+    "@storybook/addon-interactions": "^7.0.4",
+    "@storybook/addon-links": "^7.0.4",
+    "@storybook/builder-webpack5": "^7.0.4",
     "@storybook/manager-webpack5": "^6.5.16",
-    "@storybook/react": "^6.5.16",
-    "@storybook/testing-library": "^0.0.13",
-    "babel-loader": "^8.3.0",
+    "@storybook/react": "^7.0.4",
+    "@storybook/testing-library": "^0.1.0",
+    "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "eslint-plugin-storybook": "^0.6.11",
-    "sass": "^1.58.3",
-    "sass-loader": "^13.2.0",
-    "style-loader": "^3.3.1"
+    "sass": "^1.62.0",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2"
   }
 }
