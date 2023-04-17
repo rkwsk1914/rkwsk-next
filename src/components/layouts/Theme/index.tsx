@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
 
-import { ThemeSwitch } from '@/components/molecules/ThemeSwitch'
-import { darkTheme, lightTheme } from '@/const/DarkTheme';
+import { ThemeSwitch } from '@/components/forms/molecules/ThemeSwitch'
+import { darkTheme, lightTheme } from '@/const/DarkTheme'
 
 import styles from './style.module.scss'
 
@@ -34,5 +34,5 @@ export const Theme: React.FC<Props> = (
         {children}
       </div>
     </ThemeProvider>
-  );
+  )
 }

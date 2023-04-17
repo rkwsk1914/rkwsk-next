@@ -1,12 +1,15 @@
-import * as React from 'react';
-
+import * as React from 'react'
 
 type Props = {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 };
 
 export const FunctionComponent: React.FC<Props> = (
-  {children}
+  {
+    children
+  }
 ): JSX.Element => {
-  return (<>{children}</>);
+  return (
+    <>{children}</>
+  )
 }

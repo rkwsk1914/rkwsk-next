@@ -2,10 +2,10 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
-import { FunctionComponent as StoryComponent } from '.'
+import { ReactHookFormExam as StoryComponent } from '.'
 
 export default {
-  title: 'Sample/FunctionComponent',
+  title: 'Sample/ReactHookFormExam',
   component: StoryComponent,
 } as Meta<typeof StoryComponent>
 
@@ -16,6 +16,4 @@ const Template: StoryFn<typeof StoryComponent> = (
 )
 
 export const Default = Template.bind({})
-Default.args = {
-  children: 'Sample',
-}
+Default.args = {}

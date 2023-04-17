@@ -1,11 +1,13 @@
 import React from 'react'
 
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
+
+import { MuiSizeOptions } from '@/types/MuiSize'
 
 import { ButtonElement as StoryComponent } from '.'
 
 export default {
-  title: 'Atoms/ButtonElement',
+  title: 'Forms/Atoms/ButtonElement',
   component: StoryComponent,
   argTypes: {
     isDark: {
@@ -18,15 +20,15 @@ export default {
       control: 'select', options: ['contained', 'outlined', 'text'],
     },
     size: {
-      control: 'select', options: ['small', 'medium', 'large']
+      control: 'select', options: [MuiSizeOptions]
     },
     disabled: {
       control: 'boolean',
     },
   }
-} as ComponentMeta<typeof StoryComponent>
+} as Meta<typeof StoryComponent>
 
-const Template: ComponentStory<typeof StoryComponent> = (
+const Template: StoryFn<typeof StoryComponent> = (
   args?: React.ComponentProps<typeof StoryComponent>
 ) => (
   <StoryComponent {...args}></StoryComponent>

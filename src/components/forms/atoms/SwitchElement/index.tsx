@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import Switch from '@mui/material/Switch';
+import Switch from '@mui/material/Switch'
 
 interface BaseProps {
   icon?: React.ReactNode

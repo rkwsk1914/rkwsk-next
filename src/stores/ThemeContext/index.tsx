@@ -1,4 +1,4 @@
-import { createContext, useState, useCallback } from 'react';
+import { createContext, useState, useCallback } from 'react'
 
 import { ThemeContextType } from '@/types/ThemeContext'
 
