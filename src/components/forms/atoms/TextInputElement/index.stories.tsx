@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { action } from "@storybook/addon-actions"
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryFn, Meta } from '@storybook/react'
 
 import { AutoCompleteOptions } from '@/types/AutoCompleteType'
 import { InputAttributeOptions } from '@/types/InputAttribute'
@@ -28,9 +28,9 @@ export default {
     error: InputAttributeOptions.error,
     required: InputAttributeOptions.required,
   }
-} as ComponentMeta<typeof StoryComponent>
+} as Meta<typeof StoryComponent>
 
-const Template: ComponentStory<typeof StoryComponent> = (
+const Template: StoryFn<typeof StoryComponent> = (
   args: React.ComponentProps<typeof StoryComponent>
 ) => (
   <StoryComponent {...args}></StoryComponent>
