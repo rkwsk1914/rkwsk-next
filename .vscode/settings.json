@@ -4,6 +4,7 @@
         "hookform",
         "rkwsk",
         "roboto",
-        "stylelint"
+        "stylelint",
+        "tailwindcss"
     ]
 }
