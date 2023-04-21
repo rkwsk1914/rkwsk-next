@@ -1,0 +1,20 @@
+import * as React from 'react'
+
+import { MenuListItem } from '@/components/atoms/MenuListItem'
+import { MenuDataType } from '@/types/MenuDataType'
+
+import styles from './style.module.scss'
+
+type Props = {
+  data: Array<MenuDataType>
+};
+
+export const MenuList: React.FC<Props> = ({ data }): JSX.Element => {
+  return (
+    <ul className={styles.ul}>
+      {data.map((item, index) => (
+        <MenuListItem key={index} data={item}/>
+      ))}
+    </ul>
+  )
+}
