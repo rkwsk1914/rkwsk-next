@@ -1,18 +1,16 @@
-const spaceSizes = {
-  "4px": "4px",
-  "8px": "8px",
-  "12px": "12px",
-  "16px": "16px",
-  "24px": "24px",
-  "32px": "32px",
-  "40px": "40px",
-  "48px": "48px",
-  "56px": "56px",
-  "64px": "64px",
-  "72px": "72px",
-  "80px": "80px",
+const sizes = {
+  "8": "8px",
+  "16": "16px",
+  "24": "24px",
+  "32": "32px",
+  "40": "40px",
+  "48": "48px",
+  "56": "56px",
+  "64": "64px",
+  "72": "72px",
+  "80": "80px",
 }
 
 module.exports = {
-  spaceSizes
+  sizes
 }

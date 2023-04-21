@@ -1,7 +1,7 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const { defaultTheme } = require('tailwindcss/defaultTheme')
 
 const { colors } = require("./tailwind/colors.js")
-const { spaceSizes } = require("./tailwind/sizes.js")
+const { sizes } = require("./tailwind/sizes.js")
 
 module.exports = {
   mode: 'jit',
@@ -13,15 +13,15 @@ module.exports = {
       sans: ['Poppins', 'Hiragino Kaku Gothic ProN', 'Helvetica', 'Arial', 'sans-serif'],
     },
     extend: {
-      extend: {
-        spacing: spaceSizes,
-        colors: Object.assign(colors),
-        screens: {
-          small: "750px",
-          medium: "960px",
-          large: "1200px",
-          xLarge: "1600px",
-        },
+      spacing: sizes,
+      height: sizes,
+      lineHeight: sizes,
+      colors: Object.assign(colors),
+      screens: {
+        small: "750px",
+        medium: "960px",
+        large: "1200px",
+        xLarge: "1600px",
       },
     },
   },
