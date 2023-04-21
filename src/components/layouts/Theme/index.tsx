@@ -23,7 +23,6 @@ export const Theme: React.FC<Props> = (
 ): JSX.Element => {
   const [isDarkMode, setIsDarkMode] = useState(isDark)
 
-
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <CssBaseline />
