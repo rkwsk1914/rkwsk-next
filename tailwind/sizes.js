@@ -11,8 +11,8 @@ const spaceSizes = {
   "64px": "64px",
   "72px": "72px",
   "80px": "80px",
-};
+}
 
 module.exports = {
   spaceSizes
-};
+}

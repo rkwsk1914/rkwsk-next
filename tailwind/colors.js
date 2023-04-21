@@ -9,6 +9,6 @@ const colors = {
   variation8: "#edebda",
   variation9: "#295760",
   accent10: "#9f303b",
-};
+}
 
-module.exports = { colors };
+module.exports = { colors }

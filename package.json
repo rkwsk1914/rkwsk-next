@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "fix": "npm run lint:fix && npm run lint:css:fix",
     "lint": "next lint",
     "lint:fix": "next lint --fix && stylelint --fix **/*.{css,scss,sass}",
     "lint:css": "stylelint **/*.{css,scss,sass}",
