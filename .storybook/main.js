@@ -21,6 +21,7 @@ module.exports = {
     name: "@storybook/nextjs",
     options: {}
   },
+  staticDirs: ["../public"],
   core: {
     builder: "@storybook/builder-webpack5"
   },
