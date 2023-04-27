@@ -1,0 +1,15 @@
+.button {
+  display: block;
+  @apply w-48;
+
+  svg {
+    display: block;
+    @apply w-full h-32;
+  }
+
+  span {
+    display: block;
+    margin-top: -8px;
+    @apply text-16;
+  }
+}
