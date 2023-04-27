@@ -23,7 +23,7 @@ export const parameters = {
 
 const decoratorsTheme = (Story) => {
   return (
-    <Theme isTest>
+    <Theme isTest isDark>
       <Story />
     </Theme>
   )
