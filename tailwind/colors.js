@@ -1,14 +1,32 @@
+const pallet = {
+  color1: '#215CCF', //main1
+  color2: '#', //main2
+  color3: '#020C20', //main3
+  color4: "#FFF", //balance4
+  color5: "#333", //balance5
+  color6: "#", //balance6
+  color7: "#", //variation7
+  color8: "#", //variation8
+  color9: "#", //variation9
+  color10: "#FFBD59", //accent10
+}
+
+const light = {
+  lightBg: pallet.color4,
+  lightText: pallet.color5,
+  lightAccent: pallet.color10,
+}
+
+const dark = {
+  darkBg: pallet.color3,
+  darkText: pallet.color4,
+  darkAccent: pallet.color10,
+}
+
 const colors = {
-  main1: '#46292c',
-  main2: '#0f3c50',
-  main3: '#d09e24',
-  balance4: "#87746c",
-  balance5: "#382517",
-  balance6: "#a95e2c",
-  variation7: "#4a4b32",
-  variation8: "#edebda",
-  variation9: "#295760",
-  accent10: "#9f303b",
+  main: pallet.color1,
+  ...light,
+  ...dark,
 }
 
 module.exports = { colors }
