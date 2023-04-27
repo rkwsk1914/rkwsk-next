@@ -14,8 +14,10 @@ module.exports = {
     },
     extend: {
       spacing: sizes,
+      width: sizes,
       height: sizes,
       lineHeight: sizes,
+      fontSize: sizes,
       colors: Object.assign(colors),
       screens: {
         small: "750px",
