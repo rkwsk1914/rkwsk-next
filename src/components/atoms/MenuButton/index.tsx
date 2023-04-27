@@ -24,9 +24,9 @@ export const MenuButton: React.FC<Props> = (
   return (
     <button className={className} onClick={callBack}>
       {(isOpen) ? (
-        <MenuIcon />
-      ) : (
         <CloseIcon />
+      ) : (
+        <MenuIcon />
       )}
       <span>menu</span>
     </button>
