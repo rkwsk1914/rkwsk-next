@@ -1,3 +1,5 @@
 .image {
-  width: 100%;
+  @apply w-full;
+  max-width: 500px;
+  display: block;
 }
