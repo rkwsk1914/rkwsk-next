@@ -7,7 +7,7 @@
   @apply w-0;
 
   opacity: 0;
-  transition: width .3s ease-in .1s, opacity .3s ease-in .2s;
+  transition: width .2s ease-in .05s, opacity .2s ease-in .1s;
 
   &.open {
     opacity: 1;
