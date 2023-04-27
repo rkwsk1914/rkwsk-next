@@ -6,7 +6,6 @@ import { ThemeProvider } from '@mui/material/styles'
 import { ThemeSwitch } from '@/components/forms/molecules/ThemeSwitch'
 import { darkTheme, lightTheme } from '@/const/DarkTheme'
 
-import styles from './style.module.scss'
 
 type Props = {
   children?: React.ReactNode
@@ -29,9 +28,7 @@ export const Theme: React.FC<Props> = (
       {isTest && (
         <ThemeSwitch checked={isDarkMode} onChange={() => setIsDarkMode(!isDarkMode)} />
       )}
-      <div className={styles.content}>
-        {children}
-      </div>
+      {children}
     </ThemeProvider>
   )
 }
