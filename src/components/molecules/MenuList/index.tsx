@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { memo } from 'react'
 
 
 import { MenuListItem } from '@/components/atoms/MenuListItem'
@@ -12,7 +12,7 @@ type Props = {
   data: Array<MenuDataType>
 };
 
-export const MenuList: React.FC<Props> = ({ data }): JSX.Element => {
+export const MenuList: React.FC<Props> = memo(({ data }): JSX.Element => {
   const className = useGetDarkModeStyleClass(styles.ul, styles.dark)
 
   return (
@@ -22,4 +22,6 @@ export const MenuList: React.FC<Props> = ({ data }): JSX.Element => {
       ))}
     </ul>
   )
-}
+})
+
+MenuList.displayName = 'MenuList'

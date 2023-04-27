@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { memo } from 'react'
 
 import Link from 'next/link'
 
@@ -12,13 +12,13 @@ type Props = {
   data: MenuDataType
 };
 
-const Content: React.FC<Props> = ({ data }): JSX.Element => {
+export const MenuListItem: React.FC<Props> = memo(({ data }): JSX.Element => {
   const className = useGetDarkModeStyleClass(styles.li, styles.dark)
   return (
     <li className={className}>
       <Link href={data.href}>{data.text}</Link>
     </li>
   )
-}
+})
 
-export const MenuListItem =  React.memo(Content)
+MenuListItem.displayName = 'MenuListItem'
