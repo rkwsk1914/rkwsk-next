@@ -7,7 +7,7 @@ type Props = {
   description: string
 };
 
-export const FunctionComponent: React.FC<Props> = (
+export const MyHead: React.FC<Props> = (
   {
     title,
     description
