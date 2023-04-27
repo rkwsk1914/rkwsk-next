@@ -1,0 +1,9 @@
+.content {
+  @apply bg-lightBg p-24;
+
+  min-height: 300px;
+
+  &.dark {
+    @apply bg-darkBg;
+  }
+}
