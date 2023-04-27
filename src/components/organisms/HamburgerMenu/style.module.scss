@@ -1,0 +1,15 @@
+.nav {
+  display: flex;
+  align-items: flex-start;
+}
+
+.content {
+  @apply w-0;
+  opacity: 0;
+  transition: width .3s ease-in .1s, opacity .3s ease-in .2s;
+
+  &.open {
+    opacity: 1;
+    width: 100px;
+  }
+}
