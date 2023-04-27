@@ -2,7 +2,6 @@ import { memo } from 'react'
 
 import Link from 'next/link'
 
-import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 import { MenuDataType } from '@/types/MenuDataType'
 
 import styles from './style.module.scss'
@@ -13,9 +12,8 @@ type Props = {
 };
 
 export const MenuListItem: React.FC<Props> = memo(({ data }): JSX.Element => {
-  const className = useGetDarkModeStyleClass(styles.li, styles.dark)
   return (
-    <li className={className}>
+    <li className={styles.li}>
       <Link href={data.href}>{data.text}</Link>
     </li>
   )
