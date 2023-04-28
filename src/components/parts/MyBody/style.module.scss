@@ -1,10 +1,12 @@
 .content {
   @apply px-16;
+
   position: relative;
 }
 
 .nav {
   position: fixed;
+
   @apply z-hamburgerMenu;
 }
 
