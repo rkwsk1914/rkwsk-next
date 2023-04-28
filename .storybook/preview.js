@@ -5,6 +5,7 @@ import * as NextImage from "next/image";
 import { Theme } from '../src/components/layouts/Theme'
 
 import '../src/styles/Tailwind.css';
+import './assets/reset.css';
 
 Object.defineProperty(NextImage, 'default', {
   configurable: true,
