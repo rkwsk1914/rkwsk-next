@@ -1,6 +1,9 @@
 import * as React from 'react'
 
-import { Theme } from '@/components/layouts/Theme'
+import { HamburgerMenu } from '@/components/organisms/HamburgerMenu'
+import { GLOBAL_NAV_DATA } from '@/const/GlobalNavData'
+
+import styles from './style.module.scss'
 
 type Props = {
   children?: React.ReactNode
@@ -12,6 +15,13 @@ export const MyBody: React.FC<Props> = (
   }
 ): JSX.Element => {
   return (
-    <Theme>{children}</Theme>
+    <body className={styles.content}>
+      <div className={styles.nav}>
+        <HamburgerMenu data={GLOBAL_NAV_DATA} />
+      </div>
+      <main>
+        {children}
+      </main>
+    </body>
   )
 }

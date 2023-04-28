@@ -1,0 +1,12 @@
+.content {
+  @apply px-16;
+  position: relative;
+}
+
+.nav {
+  position: fixed;
+}
+
+main {
+  @apply pt-48;
+}
