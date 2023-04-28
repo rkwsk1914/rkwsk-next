@@ -5,6 +5,7 @@
 
 .nav {
   position: fixed;
+  @apply z-hamburgerMenu;
 }
 
 main {
