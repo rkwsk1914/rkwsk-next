@@ -1,8 +1,8 @@
 import * as React from 'react'
 
 import clsx from 'clsx'
+
 import { SectionTitle } from '@/components/atoms/SectionTitle'
-import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
 import styles from './style.module.scss'
 
