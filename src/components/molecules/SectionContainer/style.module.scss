@@ -1,0 +1,63 @@
+.section {
+  @apply px-16;
+
+  @screen medium {
+    max-width: 1200px;
+
+    @apply px-0 mx-auto;
+  }
+}
+
+.content {
+  p {
+    @apply text-16;
+
+    sup, small {
+      @apply text-8;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    &+p {
+      @apply mt-8;
+    }
+  }
+
+  &.level1 {
+    @apply mt-16;
+
+    @media small {
+      @apply mt-32;
+    }
+  }
+
+  &.level2 {
+    @apply mt-16;
+
+    @media small {
+      @apply mt-24;
+    }
+  }
+
+  &.level3 {
+    @apply mt-16;
+
+    @media small {
+      @apply mt-24;
+    }
+  }
+
+  &.level4 {
+    @apply mt-16;
+  }
+
+  &.level5 {
+    @apply mt-16;
+  }
+
+  &.level6 {
+    @apply mt-16;
+  }
+}
