@@ -1,0 +1,56 @@
+.title {
+  @apply text-main;
+  font-weight: bold;
+
+  &.dark {
+    @apply text-white;
+  }
+}
+
+h1.title {
+  @apply text-40;
+
+  @screen small {
+    @apply text-56;
+  }
+}
+
+h2.title {
+  @apply text-32;
+
+  @screen small {
+    @apply text-48;
+  }
+}
+
+h3.title {
+  @apply text-24;
+
+  @screen small {
+    @apply text-40;
+  }
+}
+
+h4.title {
+  @apply text-16;
+
+  @screen small {
+    @apply text-32;
+  }
+}
+
+h5.title {
+  @apply text-16;
+
+  @screen small {
+    @apply text-24;
+  }
+}
+
+h6.title {
+  @apply text-16;
+
+  @screen small {
+    @apply text-16;
+  }
+}
