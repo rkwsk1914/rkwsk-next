@@ -1,0 +1,15 @@
+.header {
+  @apply w-full pr-16;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.menu_btn {
+  @apply w-full;
+}
+
+.theme_btn {
+  @apply w-spUI pt-16;
+}
