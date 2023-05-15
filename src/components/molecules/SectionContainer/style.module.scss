@@ -2,9 +2,9 @@
   @apply px-16;
 
   @screen medium {
-    max-width: 1200px;
-
     @apply px-0 mx-auto;
+
+    max-width: 1200px;
   }
 }
 
