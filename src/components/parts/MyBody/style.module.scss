@@ -5,11 +5,11 @@
 }
 
 .nav {
-  position: fixed;
+  @apply z-hamburgerMenu w-full;
 
-  @apply z-hamburgerMenu;
+  position: fixed;
 }
 
 main {
-  @apply pt-48;
+  @apply pt-96;
 }

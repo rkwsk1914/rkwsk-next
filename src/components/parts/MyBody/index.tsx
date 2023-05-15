@@ -1,6 +1,7 @@
-import * as React from 'react'
+import { useState } from 'react'
 
-import { HamburgerMenu } from '@/components/organisms/HamburgerMenu'
+import { Theme } from '@/components/layouts/Theme'
+import { GlobalNavigation } from '@/components/organisms/GlobalNavigation'
 import { GLOBAL_NAV_DATA } from '@/const/GlobalNavData'
 
 import styles from './style.module.scss'
@@ -14,14 +15,20 @@ export const MyBody: React.FC<Props> = (
     children
   }
 ): JSX.Element => {
+  const [isDarkMode, setIsDarkMode] = useState(false)
   return (
-    <body className={styles.content}>
-      <div className={styles.nav}>
-        <HamburgerMenu data={GLOBAL_NAV_DATA} />
-      </div>
-      <main>
-        {children}
-      </main>
-    </body>
+    <Theme isDark={isDarkMode}>
+      <body className={styles.content}>
+        <div className={styles.nav}>
+          <GlobalNavigation
+            data={GLOBAL_NAV_DATA}
+            isDark={isDarkMode}
+            callBack={() => {setIsDarkMode(!isDarkMode)}} />
+        </div>
+        <main>
+          {children}
+        </main>
+      </body>
+    </Theme>
   )
 }
