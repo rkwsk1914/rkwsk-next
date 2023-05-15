@@ -1,16 +1,8 @@
-$dot-size: 50%;
-$bg-size: 4px;
-
 .wrap {
-  @apply w-full;
+  @apply w-full h-full;
 
+  overflow: hidden;
   position: relative;
-}
-
-.image {
-  @apply w-full;
-
-  display: block;
 }
 
 .content {
@@ -22,6 +14,9 @@ $bg-size: 4px;
 }
 
 .bg_dot {
+  $dot-size: 50%;
+  $bg-size: 4px;
+
   @apply w-full h-full;
 
   background-color: transparent;
@@ -29,4 +24,10 @@ $bg-size: 4px;
     radial-gradient(#555 $dot-size, transparent $dot-size);
   background-size: $bg-size $bg-size;
   position: absolute;
+}
+
+.image {
+  @apply w-full;
+
+  display: block;
 }
