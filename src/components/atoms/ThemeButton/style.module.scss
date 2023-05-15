@@ -1,17 +1,17 @@
 .button {
+  @apply w-full p-16;
+
   display: block;
 
-  @apply w-full;
-
   svg {
-    display: block;
-
     @apply w-full;
+
+    display: block;
   }
 
   span {
-    display: block;
-
     @apply text-8;
+
+    display: block;
   }
 }

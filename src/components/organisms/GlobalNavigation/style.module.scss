@@ -1,8 +1,8 @@
 .header {
-  @apply w-full pr-16;
+  @apply w-full;
 
-  display: flex;
   align-items: flex-start;
+  display: flex;
   justify-content: space-between;
 }
 
@@ -11,5 +11,5 @@
 }
 
 .theme_btn {
-  @apply w-spUI pt-16;
+  @apply w-96;
 }
