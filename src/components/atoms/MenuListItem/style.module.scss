@@ -4,7 +4,7 @@
   width: 100%;
 
   & > * {
-    @apply h-48 leading-48;
+    @apply h-spUI leading-spUI;
 
     display: block;
     transition: opacity ease-in .3s;

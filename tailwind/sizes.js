@@ -9,6 +9,7 @@ const sizes = {
   "64": "64px",
   "72": "72px",
   "80": "80px",
+  "spUI": "56px",
 }
 
 module.exports = {
