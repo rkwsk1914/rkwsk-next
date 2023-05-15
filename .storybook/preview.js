@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as NextImage from "next/image";
 
-import { Theme } from '../src/components/layouts/Theme'
+import { ThemeContextProvider } from '../src/stores/ThemeContext'
 
 import '../src/styles/Tailwind.css';
 import './assets/reset.css';
@@ -24,9 +24,9 @@ export const parameters = {
 
 const decoratorsTheme = (Story) => {
   return (
-    <Theme isTest isDark>
+    <ThemeContextProvider isTest isDark>
       <Story />
-    </Theme>
+    </ThemeContextProvider>
   )
 }
 

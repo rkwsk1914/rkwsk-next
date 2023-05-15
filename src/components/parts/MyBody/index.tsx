@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 
 import { Theme } from '@/components/layouts/Theme'
 import { GlobalNavigation } from '@/components/organisms/GlobalNavigation'
 import { GLOBAL_NAV_DATA } from '@/const/GlobalNavData'
+import { ThemeContext } from '@/stores/ThemeContext'
 
 import styles from './style.module.scss'
 
@@ -15,15 +16,19 @@ export const MyBody: React.FC<Props> = (
     children
   }
 ): JSX.Element => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const {
+    isDarkModeCTX,
+    handleIsDarkMode
+  }  = useContext(ThemeContext)
+
   return (
-    <Theme isDark={isDarkMode}>
+    <Theme isDark={isDarkModeCTX}>
       <body className={styles.content}>
         <div className={styles.nav}>
           <GlobalNavigation
             data={GLOBAL_NAV_DATA}
-            isDark={isDarkMode}
-            callBack={() => {setIsDarkMode(!isDarkMode)}} />
+            isDark={isDarkModeCTX}
+            callBack={() => {handleIsDarkMode(!isDarkModeCTX)}} />
         </div>
         <main>
           {children}

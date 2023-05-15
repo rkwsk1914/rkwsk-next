@@ -1,5 +1,6 @@
 import { createContext, useState, useCallback } from 'react'
 
+import { Theme } from '@/components/layouts/Theme'
 import { ThemeContextType } from '@/types/ThemeContext'
 
 export const ThemeContext = createContext<ThemeContextType>({
@@ -10,16 +11,17 @@ export const ThemeContext = createContext<ThemeContextType>({
 type Props = {
   children?: React.ReactNode
   defaultMode: 'light' | 'dark'
+  isTest?: boolean
 };
 
 export const ThemeContextProvider: React.FC<Props> = ({
   children,
-  defaultMode
+  defaultMode,
+  isTest
 }) => {
   const [isDarkModeCTX, setIsDarkModeCTX] = useState<boolean>(defaultMode === 'dark')
 
   const handleIsDarkMode = useCallback((isDarkModeCTX: boolean) => {
-    console.log('IN')
     setIsDarkModeCTX(isDarkModeCTX)
   }, [])
 
@@ -29,7 +31,9 @@ export const ThemeContextProvider: React.FC<Props> = ({
       handleIsDarkMode
     }
     }>
-      {children}
+      <Theme isDark={isDarkModeCTX} isTest={isTest}>
+        {children}
+      </Theme>
     </ThemeContext.Provider>
   )
 }
