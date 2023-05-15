@@ -4,6 +4,7 @@ import clsx from 'clsx'
 
 import { MenuButton } from '@/components/atoms/MenuButton'
 import { MenuList } from '@/components/molecules/MenuList'
+import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 import { MenuDataType } from '@/types/MenuDataType'
 
 import styles from './style.module.scss'
@@ -23,12 +24,16 @@ export const HamburgerMenu: React.FC<Props> = (
     [styles.open]: isOpen,
   })
 
+  const className = useGetDarkModeStyleClass(styles.nav, styles.dark)
+
   return (
-    <nav className={styles.nav}>
+    <nav className={className}>
       <div className={contentClass}>
-        { (isOpen) ? <MenuList data={data}/> : <></> }
+        <MenuList data={data}/>
       </div>
-      <MenuButton isOpen={isOpen} callBack={() => setIsOpen(!isOpen)}/>
+      <div className={styles.btn}>
+        <MenuButton isOpen={isOpen} callBack={() => setIsOpen(!isOpen)}/>
+      </div>
     </nav>
   )
 }
