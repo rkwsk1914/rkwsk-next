@@ -1,17 +1,16 @@
 .button {
   display: block;
 
-  @apply w-48;
+  @apply w-full;
 
   svg {
     display: block;
 
-    @apply w-full h-32;
+    @apply w-full;
   }
 
   span {
     display: block;
-    margin-top: -8px;
 
     @apply text-8;
   }
