@@ -30,7 +30,7 @@ export const SectionContainer: React.FC<Props> = (
 
   return (
     <section className={styles.section}>
-      <SectionTitle level={level}>{title}</SectionTitle>
+      {title && <SectionTitle level={level}>{title}</SectionTitle>}
       <div className={className}>
         {children}
       </div>
