@@ -1,0 +1,28 @@
+.wrap {
+  @apply w-full;
+  position: relative;
+}
+
+.image {
+  @apply w-full;
+
+  display: block;
+}
+
+.content {
+  @apply w-full h-full p-16;
+  position: absolute;
+  color: #fff;
+  z-index: 1;
+}
+
+.bg_dot {
+  @apply w-full h-full;
+  position: absolute;
+  $dotSize: 50%; //76%
+  $bgSize: 4px;
+  background-color: transparent;
+  background-image:
+    radial-gradient(#555 $dotSize, transparent $dotSize);
+  background-size: $bgSize $bgSize;
+}
