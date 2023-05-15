@@ -14,9 +14,9 @@ $bg-size: 4px;
 }
 
 .content {
-  @apply w-full h-full p-16;
+  @apply w-full h-full;
 
-  color: #fff;
+  color: #fff!important;
   position: absolute;
   z-index: 1;
 }
