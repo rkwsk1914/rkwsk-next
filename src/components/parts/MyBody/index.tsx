@@ -22,18 +22,16 @@ export const MyBody: React.FC<Props> = (
   }  = useContext(ThemeContext)
 
   return (
-    <Theme isDark={isDarkModeCTX}>
-      <body className={styles.content}>
+    <body className={styles.content}>
+      <Theme isDark={isDarkModeCTX}>
         <div className={styles.nav}>
           <GlobalNavigation
             data={GLOBAL_NAV_DATA}
             isDark={isDarkModeCTX}
             callBack={() => {handleIsDarkMode(!isDarkModeCTX)}} />
         </div>
-        <main>
-          {children}
-        </main>
-      </body>
-    </Theme>
+
+      </Theme>
+    </body>
   )
 }
