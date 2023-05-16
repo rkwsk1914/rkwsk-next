@@ -36,14 +36,16 @@ Default.args = {
       value: 1,
       checked: false,
       disabled: false,
-      size: "medium"
+      size: "medium",
+      name: "check"
     },
     {
       label: "value 2",
       value: 2,
       checked: false,
       disabled: false,
-      size: "medium"
+      size: "medium",
+      name: "check"
     },
   ],
   onChange: action('onChange'),
