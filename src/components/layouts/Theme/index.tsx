@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { createContext, useState, useCallback } from 'react'
 
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
@@ -6,10 +6,14 @@ import clsx from 'clsx'
 
 import { ThemeSwitch } from '@/components/forms/molecules/ThemeSwitch'
 import { darkTheme, lightTheme } from '@/const/DarkTheme'
-import { ThemeContext } from '@/stores/ThemeContext'
+import { ThemeContextType } from '@/types/ThemeContext'
 
 import styles from './style.module.scss'
 
+export const ThemeContext = createContext<ThemeContextType>({
+  isDarkModeCTX: false,
+  handleIsDarkMode: (isDarkModeCTX: boolean) => {}
+})
 
 type Props = {
   children?: React.ReactNode
@@ -17,32 +21,40 @@ type Props = {
   isTest?: boolean
 };
 
-export const Theme: React.FC<Props> = (
-  {
-    children,
-    isDark = false,
-    isTest
-  }
-): JSX.Element => {
-  const {
-    isDarkModeCTX,
-    handleIsDarkMode
-  }  = useContext(ThemeContext)
+export const ThemeContextProvider: React.FC<Props> = ({
+  children,
+  isDark = false,
+  isTest
+}) => {
+  const [isDarkModeCTX, setIsDarkModeCTX] = useState<boolean>(isDark)
 
-  const className = clsx(styles.content, {
+  const handleIsDarkMode = useCallback((isDarkModeCTX: boolean) => {
+    setIsDarkModeCTX(isDarkModeCTX)
+  }, [])
+
+  const contentClassName = clsx(styles.content, {
     [styles.dark]: isDarkModeCTX,
+  }, {
+    [styles.is_test]: isTest,
   })
 
   return (
-    <ThemeProvider theme={isDarkModeCTX ? darkTheme : lightTheme}>
-    <CssBaseline />
-      {isTest ?
-        <div className={className}>
-          <ThemeSwitch checked={isDarkModeCTX} onChange={() => handleIsDarkMode(!isDarkModeCTX)} />
+    <ThemeContext.Provider value={{
+      isDarkModeCTX,
+      handleIsDarkMode
+    }
+    }>
+      <ThemeProvider theme={isDarkModeCTX ? darkTheme : lightTheme}>
+        <CssBaseline />
+        <div className={contentClassName}>
+          {isTest &&
+            <ThemeSwitch
+              checked={isDarkModeCTX}
+              onChange={() => handleIsDarkMode(!isDarkModeCTX)} />
+          }
           {children}
-        </div> :
-        <>{children}</>
-      }
-  </ThemeProvider>
+        </div>
+      </ThemeProvider>
+    </ThemeContext.Provider>
   )
 }

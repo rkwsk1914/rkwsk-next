@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as NextImage from "next/image";
 
-import { ThemeContextProvider } from '../src/stores/ThemeContext'
+import { ThemeContextProvider } from '../src/components/layouts/Theme'
 
 import '../src/styles/Tailwind.css';
 import './assets/reset.css';
