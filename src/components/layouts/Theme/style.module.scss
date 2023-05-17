@@ -1,11 +1,11 @@
 .content {
-  @apply bg-lightBg;
+  @apply bg-lightBg text-lightText;
 
   &.is_test {
     min-height: 300px;
   }
 
   &.dark {
-    @apply bg-darkBg;
+    @apply bg-darkBg text-darkText;
   }
 }
