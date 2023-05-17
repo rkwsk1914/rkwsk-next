@@ -60,4 +60,8 @@
   &.level6 {
     @apply mt-16;
   }
+
+  &.no_title {
+    @apply mt-0;
+  }
 }

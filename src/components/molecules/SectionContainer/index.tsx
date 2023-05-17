@@ -26,6 +26,8 @@ export const SectionContainer: React.FC<Props> = (
     [styles.level4]: level === 4,
     [styles.level5]: level === 5,
     [styles.level6]: level === 6,
+  }, {
+    [styles.no_title]: !title,
   })
 
   return (
