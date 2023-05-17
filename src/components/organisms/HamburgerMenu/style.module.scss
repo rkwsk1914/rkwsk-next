@@ -8,11 +8,14 @@
 
   background-color: rgba($color: #ccc, $alpha: .9);
   opacity: 0;
-  transition: width .2s ease-in .05s, opacity .2s ease-in .1s, padding .2s ease-in .1s;
+  pointer-events: none;
+  transition: width .2s ease-in .05s,
+    opacity .2s ease-in .1s,
+    padding .2s ease-in .1s;
 
   &.open {
     @apply px-16;
-
+    pointer-events: inherit;
     opacity: 1;
     width: 90%;
   }
