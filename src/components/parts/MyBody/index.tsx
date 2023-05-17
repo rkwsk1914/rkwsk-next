@@ -27,7 +27,6 @@ const Content: React.FC<Props> = (
           data={GLOBAL_NAV_DATA}
           isDark={isDarkModeCTX}
           callBack={() => {
-            console.log(isDarkModeCTX)
             handleIsDarkMode(!isDarkModeCTX)
           }} />
       </div>
