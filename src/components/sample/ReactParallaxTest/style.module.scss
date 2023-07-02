@@ -1,0 +1,27 @@
+.div {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+}
+
+.fix {
+  position: fixed;
+}
+
+.parallax {
+  width: 10rem;
+  height: 10rem;
+  perspective: 500px;
+}
+
+.wrap {
+  height: 500vh;
+  width: 100%;
+}
+
+.box {
+  overflow: scroll;
+  height: 50vh;
+  width: 100%;
+  border: 1px solid;
+}

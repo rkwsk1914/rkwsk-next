@@ -55,6 +55,7 @@
     "postcss-safe-parser": "^6.0.0",
     "postcss-scss": "^4.0.6",
     "react-hook-form": "^7.43.9",
+    "react-parallax": "^3.5.1",
     "react-scroll-parallax": "^3.4.2",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
