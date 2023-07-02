@@ -28,6 +28,42 @@ Default.args = {
         level={2} >
         <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
         <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+        <SectionContainer
+          title={'section 1-2'}
+          level={3} >
+          <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+          <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+        </SectionContainer>
+        <SectionContainer
+          title={'section 1-3'}
+          level={3} >
+          <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+          <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+          <SectionContainer
+            title={'section 1-3-1'}
+            level={4} >
+            <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+            <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+          </SectionContainer>
+          <SectionContainer
+            title={'section 1-3-2'}
+            level={4} >
+            <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+            <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+            <SectionContainer
+              title={'section 1-3-2-1'}
+              level={5} >
+              <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+              <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+              <SectionContainer
+                title={'section 1-3-2-1-1'}
+                level={6} >
+                <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+                <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+              </SectionContainer>
+            </SectionContainer>
+          </SectionContainer>
+        </SectionContainer>
       </SectionContainer>
       <SectionContainer
         title={'section 2'}

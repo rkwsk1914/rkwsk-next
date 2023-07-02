@@ -1,35 +1,36 @@
 .title {
   @apply text-main;
 
+  line-height: 1;
   font-weight: bold;
 }
 
 h1.title {
-  @apply text-40;
+  @apply text-40 mb-16;
 
   @screen small {
-    @apply text-56;
+    @apply text-56 mb-24;
   }
 }
 
 h2.title {
-  @apply text-32;
+  @apply text-32 mb-16;
 
   @screen small {
-    @apply text-48;
+    @apply text-48 mb-24;
   }
 }
 
 h3.title {
-  @apply text-24;
+  @apply text-24 mb-16;
 
   @screen small {
-    @apply text-40;
+    @apply text-40 mb-24;
   }
 }
 
 h4.title {
-  @apply text-16;
+  @apply text-16 mb-16;
 
   @screen small {
     @apply text-32;
@@ -37,7 +38,7 @@ h4.title {
 }
 
 h5.title {
-  @apply text-16;
+  @apply text-16 mb-16;;
 
   @screen small {
     @apply text-24;
@@ -45,7 +46,7 @@ h5.title {
 }
 
 h6.title {
-  @apply text-16;
+  @apply text-16 mb-16;
 
   @screen small {
     @apply text-16;

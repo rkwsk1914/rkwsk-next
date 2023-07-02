@@ -10,9 +10,7 @@
 
     max-width: 1200px;
   }
-}
 
-.content {
   p {
     @apply text-16;
 
@@ -30,42 +28,34 @@
   }
 
   &.level1 {
-    @apply mt-16;
-
-    @media small {
-      @apply mt-32;
-    }
+    @apply pt-0;
   }
 
   &.level2 {
-    @apply mt-16;
+    @apply pt-48;
 
-    @media small {
-      @apply mt-24;
+    @screen small {
+      @apply pt-72;
     }
   }
 
   &.level3 {
-    @apply mt-16;
+    @apply pt-40;
 
-    @media small {
-      @apply mt-24;
+    @screen small {
+      @apply pt-64;
     }
   }
 
   &.level4 {
-    @apply mt-16;
+    @apply pt-32;
   }
 
   &.level5 {
-    @apply mt-16;
+    @apply pt-24;
   }
 
   &.level6 {
-    @apply mt-16;
-  }
-
-  &.no_title {
-    @apply mt-0;
+    @apply pt-24;
   }
 }

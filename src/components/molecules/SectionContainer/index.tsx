@@ -19,7 +19,7 @@ export const SectionContainer: React.FC<Props> = (
     level = 2
   }
 ): JSX.Element => {
-  const className = clsx(styles.content, {
+  const className = clsx(styles.section, {
     [styles.level1]: level === 1,
     [styles.level2]: level === 2,
     [styles.level3]: level === 3,
@@ -31,11 +31,9 @@ export const SectionContainer: React.FC<Props> = (
   })
 
   return (
-    <section className={styles.section}>
+    <section className={className}>
       {title && <SectionTitle level={level}>{title}</SectionTitle>}
-      <div className={className}>
-        {children}
-      </div>
+      {children}
     </section>
   )
 }
