@@ -9,14 +9,14 @@ import styles from './style.module.scss'
 type Props = {
   data: Array<MenuDataType>
   isDark: boolean,
-  callBack?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  callBackChangeTheme?: (e: React.MouseEvent<HTMLButtonElement>) => void
 };
 
 export const GlobalNavigation: React.FC<Props> = (
   {
     data,
     isDark,
-    callBack
+    callBackChangeTheme
   }
 ): JSX.Element => {
   return (
@@ -24,9 +24,9 @@ export const GlobalNavigation: React.FC<Props> = (
       <div className={styles.menu_btn}>
         <HamburgerMenu data={data}/>
       </div>
-      {callBack && (
+      {callBackChangeTheme && (
         <div className={styles.theme_btn}>
-          <ThemeButton isDark={isDark} callBack={callBack}/>
+          <ThemeButton isDark={isDark} callBack={callBackChangeTheme}/>
         </div>
       )}
     </div>

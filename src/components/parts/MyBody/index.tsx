@@ -26,7 +26,7 @@ const Content: React.FC<Props> = (
         <GlobalNavigation
           data={GLOBAL_NAV_DATA}
           isDark={isDarkModeCTX}
-          callBack={() => {
+          callBackChangeTheme={() => {
             handleIsDarkMode(!isDarkModeCTX)
           }} />
       </div>
