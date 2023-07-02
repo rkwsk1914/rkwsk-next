@@ -1,7 +1,11 @@
 .section {
-  @apply px-16;
+  @apply px-16 w-full;
 
-  @screen medium {
+  @screen small {
+    @apply px-32;
+  }
+
+  @screen large {
     @apply px-0 mx-auto;
 
     max-width: 1200px;

@@ -4,8 +4,12 @@
   position: relative;
 }
 
-.nav {
+.header {
   @apply z-hamburgerMenu w-full;
 
   position: fixed;
+}
+
+.article {
+  @apply pt-spUI;
 }

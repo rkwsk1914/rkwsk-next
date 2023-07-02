@@ -22,15 +22,17 @@ const Content: React.FC<Props> = (
 
   return (
     <main className={styles.content}>
-      <div className={styles.nav}>
+      <header className={styles.header}>
         <GlobalNavigation
           data={GLOBAL_NAV_DATA}
           isDark={isDarkModeCTX}
           callBackChangeTheme={() => {
             handleIsDarkMode(!isDarkModeCTX)
           }} />
-      </div>
-      {children}
+      </header>
+      <article className={styles.article}>
+        {children}
+      </article>
     </main>
   )
 }

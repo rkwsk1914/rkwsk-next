@@ -23,7 +23,24 @@ Default.args = {
     <SectionContainer
       title={'Hello World'}
       level={1} >
-      sample
+      <SectionContainer
+        title={'section 1'}
+        level={2} >
+        <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+        <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+      </SectionContainer>
+      <SectionContainer
+        title={'section 2'}
+        level={2} >
+        <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+        <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+      </SectionContainer>
+      <SectionContainer
+        title={'section 3'}
+        level={2} >
+        <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+        <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+      </SectionContainer>
     </SectionContainer>
   ),
   title: '',

@@ -2,10 +2,6 @@
   @apply text-main;
 
   font-weight: bold;
-
-  &.dark {
-    @apply text-white;
-  }
 }
 
 h1.title {
