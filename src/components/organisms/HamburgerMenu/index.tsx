@@ -24,6 +24,10 @@ export const HamburgerMenu: React.FC<Props> = (
     [styles.open]: isOpen,
   })
 
+  const btnClassName = clsx(styles.btn, {
+    [styles.open]: isOpen,
+  })
+
   const navClassName = useGetDarkModeStyleClass(styles.nav, styles.dark)
 
   return (
@@ -31,7 +35,7 @@ export const HamburgerMenu: React.FC<Props> = (
       <div className={contentClassName}>
         <MenuList data={data}/>
       </div>
-      <div className={styles.btn}>
+      <div className={btnClassName}>
         <MenuButton isOpen={isOpen} callBack={() => setIsOpen(!isOpen)}/>
       </div>
     </nav>
