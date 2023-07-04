@@ -11,5 +11,15 @@
 }
 
 .article {
-  @apply py-96;
+  @apply px-16;
+
+  @screen small {
+    @apply px-32;
+  }
+
+  @screen large {
+    @apply mx-auto px-0;
+
+    max-width: 1200px;
+  }
 }

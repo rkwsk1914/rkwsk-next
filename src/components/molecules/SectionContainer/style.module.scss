@@ -1,14 +1,8 @@
 .section {
-  @apply px-16 w-full;
+  @apply pt-16 w-full;
 
   @screen small {
-    @apply px-32;
-  }
-
-  @screen large {
-    @apply px-0 mx-auto;
-
-    max-width: 1200px;
+    @apply pt-32;
   }
 
   p {
@@ -25,37 +19,5 @@
     &+p {
       @apply mt-8;
     }
-  }
-
-  &.level1 {
-    @apply pt-0;
-  }
-
-  &.level2 {
-    @apply pt-48;
-
-    @screen small {
-      @apply pt-72;
-    }
-  }
-
-  &.level3 {
-    @apply pt-40;
-
-    @screen small {
-      @apply pt-64;
-    }
-  }
-
-  &.level4 {
-    @apply pt-32;
-  }
-
-  &.level5 {
-    @apply pt-24;
-  }
-
-  &.level6 {
-    @apply pt-24;
   }
 }
