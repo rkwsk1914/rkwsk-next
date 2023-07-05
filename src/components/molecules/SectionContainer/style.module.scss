@@ -1,9 +1,5 @@
 .section {
-  @apply pt-16 w-full;
-
-  @screen small {
-    @apply pt-32;
-  }
+  @apply w-full;
 
   p {
     @apply text-16;
@@ -20,4 +16,19 @@
       @apply mt-8;
     }
   }
+}
+
+$level: 1;
+@while $level <= 6 {
+  .level#{$level} {
+    h#{$level} {
+      margin-bottom: (48px - ($level * 8));
+    }
+
+    & > section {
+      margin-top: (72px - ($level * 8));
+    }
+  }
+
+  $level: $level + 1;
 }

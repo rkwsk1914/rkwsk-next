@@ -33,6 +33,7 @@ const Content: React.FC<Props> = (
       <article className={styles.article}>
         {children}
       </article>
+      <footer></footer>
     </main>
   )
 }
