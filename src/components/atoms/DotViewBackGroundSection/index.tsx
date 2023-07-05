@@ -10,12 +10,12 @@ type Props = {
   imgSrc: string
 };
 
-export const FirstViewBackGround: React.FC<Props> = ({
+export const DotViewBackGroundSection: React.FC<Props> = ({
   children,
   imgSrc
 }): JSX.Element => {
   return (
-    <div className={styles.wrap}>
+    <section className={styles.wrap}>
       <div className={styles.content}>{children}</div>
       <div className={styles.bg_dot}></div>
       <Image
@@ -24,6 +24,6 @@ export const FirstViewBackGround: React.FC<Props> = ({
         width={500}
         height={500}
         className={styles.image} />
-    </div>
+    </section>
   )
 }

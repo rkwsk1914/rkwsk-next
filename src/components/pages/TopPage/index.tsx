@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { FirstViewBackGround } from '@/components/atoms/FirstViewBackGround'
+import { DotViewBackGroundSection } from '@/components/atoms/DotViewBackGroundSection'
 import { Logo } from '@/components/atoms/Logo'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { MySite } from '@/components/templates/MySite'
@@ -15,11 +15,11 @@ export const TopPage: React.FC<Props> = (): JSX.Element => {
       <SectionContainer>
         <div className={styles.logo}><Logo /></div>
       </SectionContainer>
-      <FirstViewBackGround imgSrc='/cafe.jpg'>
+      <DotViewBackGroundSection imgSrc='/cafe.jpg'>
         <SectionContainer title={'Hello World'} level={1}>
           Hello
         </SectionContainer>
-      </FirstViewBackGround>
+      </DotViewBackGroundSection>
     </MySite>
   )
 }
