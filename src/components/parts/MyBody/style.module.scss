@@ -11,7 +11,7 @@
 }
 
 .article {
-  @apply px-16;
+  @apply px-16 pt-72;
 
   @screen small {
     @apply px-32;

@@ -11,10 +11,10 @@ type Props = {
 export const Logo: React.FC<Props> = (): JSX.Element => {
   return (
     <Image
-      src='/logo.png'
+      src='/logo.svg'
       alt='Ryo Kawasaki Front-End-Engineer'
-      width={500}
-      height={500}
+      width={340}
+      height={253}
       className={styles.image} />
   )
 }

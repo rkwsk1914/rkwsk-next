@@ -12,6 +12,7 @@ type Props = {
         startValue: number
         endValue: number
         property: string
+        unit?: '%' | 'px' | 'rem' | 'em'
     }[];
   }[]
   wrapClassName?: string
