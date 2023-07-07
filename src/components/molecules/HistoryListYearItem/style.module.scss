@@ -1,0 +1,64 @@
+$sp-year-circle: 56px;
+$pc-year-circle: 88px;
+
+.year {
+  @apply bg-lightAccent;
+
+  width: $sp-year-circle;
+  height: $sp-year-circle;
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  min-height: $sp-year-circle;
+  min-width: $sp-year-circle;
+
+  @screen small {
+    width: $pc-year-circle;
+    height: $pc-year-circle;
+    min-height: $pc-year-circle;
+    min-width: $pc-year-circle;
+  }
+
+  span {
+    @apply text-16 font-bold text-lightBg;
+
+    display: block;
+    line-height: 1;
+    text-align: center;
+
+    @screen small {
+      @apply text-24;
+    }
+  }
+}
+
+.content {
+  @apply w-full;
+}
+
+.li {
+  align-items: flex-start;
+  display: flex;
+  justify-content: flex-start;
+
+  &.left {
+    .year {
+      order: 1
+    }
+
+    .content {
+      order: 2
+    }
+  }
+
+  &.right {
+    .year {
+      order: 2
+    }
+
+    .content {
+      order: 1
+    }
+  }
+}
