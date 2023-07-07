@@ -1,25 +1,17 @@
 import * as React from 'react'
 
 import clsx from 'clsx'
+import { PlxItem } from "react-plx"
 
 import { Logo } from '@/components/atoms/Logo'
 import { PlxComponent } from '@/components/atoms/PlxComponent'
-import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
-
 
 import styles from './style.module.scss'
 
-type Props = {
-  children?: React.ReactNode
-};
+type Props = {};
 
-export const HeaderLogo: React.FC<Props> = (
-  {
-    children
-  }
-): JSX.Element => {
-  const className = useGetDarkModeStyleClass(styles.li, styles.dark)
-  const parallaxData = [
+export const HeaderLogo: React.FC<Props> = ({}): JSX.Element => {
+  const parallaxData: PlxItem[] = [
     {
       start: 0,
       end: 500,
