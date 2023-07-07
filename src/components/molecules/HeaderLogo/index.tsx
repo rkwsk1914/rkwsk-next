@@ -1,6 +1,7 @@
-import * as React from 'react'
+import { useState } from 'react'
 
 import clsx from 'clsx'
+import Link from 'next/link'
 import { PlxItem } from "react-plx"
 
 import { Logo } from '@/components/atoms/Logo'
@@ -11,6 +12,8 @@ import styles from './style.module.scss'
 type Props = {};
 
 export const HeaderLogo: React.FC<Props> = ({}): JSX.Element => {
+  const [isInHeader, setIsInHeader] = useState(false)
+
   const parallaxData: PlxItem[] = [
     {
       start: 0,
@@ -31,13 +34,34 @@ export const HeaderLogo: React.FC<Props> = ({}): JSX.Element => {
     },
   ]
 
+  const changeToTopLink = () => {
+    setIsInHeader(true)
+  }
+
+  const changeToImage = () => {
+    setIsInHeader(false)
+  }
+
   return (
     <PlxComponent
       parallaxData={parallaxData}
-      wrapClassName={clsx(styles.logoWrap)}>
-      <div className={styles.logo}>
-        <Logo />
-      </div>
+      wrapClassName={clsx(styles.logoWrap)}
+      onPlxEnd={changeToTopLink}
+      onPlxStart={changeToImage}
+    >
+      {isInHeader ? (
+        <Link
+          className={styles.logo}
+          href="/"
+        >
+          <Logo />
+        </Link>
+      ) : (
+        <div className={styles.logo}>
+          <Logo />
+        </div>
+      )}
+
     </PlxComponent>
   )
 }
