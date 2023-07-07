@@ -1,0 +1,34 @@
+.box {
+  @apply w-full p-16;
+
+  display: block;
+
+  &+& {
+    @apply mt-16;
+  }
+}
+
+.month {
+  @apply text-lightText text-8 w-full border-lightText pb-8;
+
+  @screen small {
+    @apply text-16;
+  }
+
+  border-bottom: 1px solid;
+  display: block;
+}
+
+.content {
+  @apply text-16 mt-8;
+
+  @screen small {
+    @apply text-24;
+  }
+}
+
+.dark {
+  .month {
+    @apply text-darkText border-darkText;
+  }
+}
