@@ -9,7 +9,7 @@ export const MyHistorySection: React.FC<Props> = ({
   data
 }): JSX.Element => {
   return (
-    <SectionContainer level={2} title={'Back Ground'}>
+    <SectionContainer id={'back-ground'} title={'Back Ground'}>
       <HistoryList data={data}/>
     </SectionContainer>
   )

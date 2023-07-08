@@ -1,7 +1,8 @@
 const zIndex = {
   layer1: '1',
+  underLogo: '9',
   hamburgerMenu: '10',
-  headerLogo: '11',
+  overLogo: '11',
 
 }
 

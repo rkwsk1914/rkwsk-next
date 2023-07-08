@@ -1,5 +1,5 @@
 .logoWrap {
-  @apply z-headerLogo w-full px-16;
+  @apply w-full px-16;
 
   @screen small {
     @apply px-0;
@@ -13,4 +13,12 @@
   & > * {
     margin: 0 auto;
   }
+}
+
+.under_header {
+  @apply z-underLogo;
+}
+
+.over_header {
+  @apply z-overLogo;
 }

@@ -10,13 +10,15 @@ type Props = {
   children?: React.ReactNode
   title?: React.ReactNode
   level?: 1 | 2 | 3 | 4 | 5 | 6
+  id?: string
 };
 
 export const SectionContainer: React.FC<Props> = (
   {
     children,
     title,
-    level = 2
+    level = 2,
+    id
   }
 ): JSX.Element => {
   const className = clsx(styles.section, {
@@ -31,7 +33,7 @@ export const SectionContainer: React.FC<Props> = (
   })
 
   return (
-    <section className={className}>
+    <section id={id} className={className}>
       {title && <SectionTitle level={level}>{title}</SectionTitle>}
       {children}
     </section>

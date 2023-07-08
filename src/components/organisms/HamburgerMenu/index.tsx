@@ -33,7 +33,7 @@ export const HamburgerMenu: React.FC<Props> = (
   return (
     <nav className={navClassName}>
       <div className={contentClassName}>
-        <MenuList data={data}/>
+        <MenuList data={data} onClick={() => {setIsOpen(!isOpen)}}/>
       </div>
       <div className={btnClassName}>
         <MenuButton isOpen={isOpen} callBack={() => setIsOpen(!isOpen)}/>

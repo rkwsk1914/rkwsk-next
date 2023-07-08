@@ -51,13 +51,13 @@ export const HeaderLogo: React.FC<Props> = ({}): JSX.Element => {
     >
       {isInHeader ? (
         <Link
-          className={styles.logo}
+          className={clsx(styles.logo, styles.over_header)}
           href="/"
         >
           <Logo />
         </Link>
       ) : (
-        <div className={styles.logo}>
+        <div className={clsx(styles.logo, styles.under_header)}>
           <Logo />
         </div>
       )}

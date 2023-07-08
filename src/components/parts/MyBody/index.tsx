@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import { ThemeContextProvider, ThemeContext } from '@/components/layouts/Theme'
 import { GlobalNavigation } from '@/components/organisms/GlobalNavigation'
-import { GLOBAL_NAV_DATA } from '@/const/GlobalNavData'
+import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
 
 import styles from './style.module.scss'
 
