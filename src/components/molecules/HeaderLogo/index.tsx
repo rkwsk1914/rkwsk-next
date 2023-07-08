@@ -45,19 +45,27 @@ export const HeaderLogo: React.FC<Props> = ({}): JSX.Element => {
   return (
     <PlxComponent
       parallaxData={parallaxData}
-      wrapClassName={clsx(styles.logoWrap)}
+      wrapClassName={clsx(
+        styles.logoWrap,
+        {
+          [styles.over_header]: isInHeader
+        },
+        {
+          [styles.under_header]: !isInHeader
+        }
+      )}
       onPlxEnd={changeToTopLink}
       onPlxStart={changeToImage}
     >
       {isInHeader ? (
         <Link
-          className={clsx(styles.logo, styles.over_header)}
+          className={styles.logo}
           href="/"
         >
           <Logo />
         </Link>
       ) : (
-        <div className={clsx(styles.logo, styles.under_header)}>
+        <div className={styles.logo}>
           <Logo />
         </div>
       )}

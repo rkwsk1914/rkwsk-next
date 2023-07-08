@@ -23,11 +23,11 @@ $level: 1;
 @while $level <= 6 {
   .level#{$level} {
     h#{$level} {
-      margin-bottom: (48px - ($level * 8));
+      padding-bottom: (48px - ($level * 8));
     }
 
     & > section {
-      margin-top: (72px - ($level * 8));
+      padding-top: (72px - ($level * 8));
     }
   }
 
