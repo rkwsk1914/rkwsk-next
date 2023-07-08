@@ -8,8 +8,11 @@ export default {
   title: 'Molecules/HistoryListYearItem',
   component: StoryComponent,
   argTypes: {
-    rightOrLeft: {
+    yearPos: {
       control: 'select', options: ['right', 'left'],
+    },
+    isLastItem: {
+      control: 'boolean',
     },
   }
 } as Meta<typeof StoryComponent>
@@ -22,7 +25,7 @@ const Template: StoryFn<typeof StoryComponent> = (
 
 export const Default = Template.bind({})
 Default.args = {
-  rightOrLeft: 'right',
+  yearPos: 'right',
   year: 1996,
   monthlyDate: [
     {
@@ -34,6 +37,26 @@ Default.args = {
     },
     {
       month: 8,
+      content: <>
+        text text text text text text text text text text <br />
+        text text text text text text text text text text
+      </>
+    }
+  ]
+}
+
+export const withOutMonth = Template.bind({})
+withOutMonth.args = {
+  yearPos: 'right',
+  year: 1996,
+  monthlyDate: [
+    {
+      content: <>
+        text text text text text text text text text text <br />
+        text text text text text text text text text text
+      </>
+    },
+    {
       content: <>
         text text text text text text text text text text <br />
         text text text text text text text text text text

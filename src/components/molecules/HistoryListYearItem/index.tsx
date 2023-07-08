@@ -17,14 +17,16 @@ interface MonthlyDateType {
 
 type Props = {
   year: number
-  rightOrLeft: 'right' | 'left'
+  yearPos: 'right' | 'left'
+  isLastItem?: boolean
   monthlyDate: Array<MonthlyDateType>
 };
 
 export const HistoryListYearItem: React.FC<Props> = (
   {
     year,
-    rightOrLeft,
+    yearPos,
+    isLastItem,
     monthlyDate
   }
 ): JSX.Element => {
@@ -32,11 +34,12 @@ export const HistoryListYearItem: React.FC<Props> = (
   return (
     <li className={
       clsx(liClassName, {
-        [styles.right]: rightOrLeft === 'right',
-        [styles.left]: rightOrLeft === 'left'
+        [styles.right]: yearPos === 'right',
+        [styles.left]: yearPos === 'left',
       })}>
+      {!isLastItem && <div className={styles.border} />}
       <div className={styles.year}>
-      <span>{year}</span>
+        <span>{year}</span>
       </div>
       <div className={styles.content}>
         {monthlyDate.map((data, index) => (

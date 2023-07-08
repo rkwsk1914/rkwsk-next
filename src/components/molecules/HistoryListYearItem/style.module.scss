@@ -1,5 +1,6 @@
-$sp-year-circle: 56px;
-$pc-year-circle: 88px;
+$sp-year-circle: 64px;
+$pc-year-circle: 96px;
+$border-width: 4px;
 
 .year {
   @apply bg-lightAccent;
@@ -37,28 +38,54 @@ $pc-year-circle: 88px;
   @apply w-full;
 }
 
+.border {
+  @apply h-full bg-lightAccent;
+  display: block;
+  width: $border-width;
+  position: absolute;
+}
+
 .li {
+  width: calc(50% + ($sp-year-circle / 2));
   align-items: flex-start;
   display: flex;
   justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+
+  @screen small {
+    width: calc(50% + ($pc-year-circle / 2));
+  }
 
   &.left {
-    .year {
-      order: 1
+    @apply mr-0 ml-auto;
+
+    .border {
+      right: auto;
+      left: ($sp-year-circle / 2) - ($border-width / 2);
+
+      @screen small {
+        left: ($pc-year-circle / 2) - ($border-width / 2);
+      }
     }
 
-    .content {
-      order: 2
-    }
+    .year { order: 2 }
+    .content { order: 3 }
   }
 
   &.right {
-    .year {
-      order: 2
+    @apply mr-auto ml-0;
+
+    .border {
+      left: auto;
+      right: ($sp-year-circle / 2) - ($border-width / 2);
+
+      @screen small {
+        right: ($pc-year-circle / 2) - ($border-width / 2);
+      }
     }
 
-    .content {
-      order: 1
-    }
+    .year { order: 2 }
+    .content { order: 1 }
   }
 }
