@@ -18,5 +18,16 @@ const Template: StoryFn<typeof StoryComponent> = (
 export const Default = Template.bind({})
 Default.args = {
   month: 7,
-  children: 'Sample',
+  children: <>
+    text text text text text text text text text text <br />
+    text text text text text text text text text text
+  </>
+}
+
+export const withOutMonth = Template.bind({})
+withOutMonth.args = {
+  children: <>
+    text text text text text text text text text text <br />
+    text text text text text text text text text text
+  </>,
 }

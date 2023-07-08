@@ -1,7 +1,11 @@
 .box {
-  @apply w-full px-16;
+  @apply w-full px-8;
 
   display: block;
+
+  @screen small {
+    @apply px-16;
+  }
 
   &+& {
     @apply mt-16;
@@ -9,10 +13,10 @@
 }
 
 .month {
-  @apply text-lightText text-8 w-full border-lightText pb-8;
+  @apply text-lightText text-8 w-full border-lightText py-8;
 
   @screen small {
-    @apply text-16;
+    @apply text-16 py-8 mt-8;
   }
 
   border-bottom: 1px solid;
