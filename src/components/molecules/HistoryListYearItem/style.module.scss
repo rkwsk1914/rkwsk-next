@@ -44,17 +44,20 @@ $border-width: 4px;
   display: block;
   position: absolute;
   width: $border-width;
+  z-index: -1;
 }
 
 .li {
   align-items: flex-start;
   display: flex;
   justify-content: flex-start;
+  min-height: calc($sp-year-circle * 2);
   position: relative;
   width: calc(50% + ($sp-year-circle / 2));
   z-index: 1;
 
   @screen small {
+    min-height: calc($pc-year-circle * 2);
     width: calc(50% + ($pc-year-circle / 2));
   }
 

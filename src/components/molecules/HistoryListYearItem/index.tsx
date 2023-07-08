@@ -16,7 +16,7 @@ interface MonthlyDateType {
 
 
 type Props = {
-  year: number
+  year: number | '現在' | 'now'
   yearPos: 'right' | 'left'
   isLastItem?: boolean
   monthlyDate: Array<MonthlyDateType>
