@@ -73,8 +73,7 @@ const HISTORY_DATA: DataType =[
       {
         month: 9,
         content: <>
-          フリーランスに転向<br />
-          フロントエンドエンジニアとして活動を開始
+          フロントエンドエンジニアとして活動中
         </>
       }
     ]

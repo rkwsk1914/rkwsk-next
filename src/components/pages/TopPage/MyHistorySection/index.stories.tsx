@@ -2,7 +2,7 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
-import HISTORY_DATA from '@/const/HistoryData'
+import HISTORY_DATA from '@/const/page/HistoryData'
 
 import { MyHistorySection as StoryComponent } from '.'
 

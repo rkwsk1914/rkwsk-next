@@ -5,7 +5,7 @@ import { DotViewBackGroundSection } from '@/components/atoms/DotViewBackGroundSe
 import { HeaderLogo } from '@/components/molecules/HeaderLogo'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { MySite } from '@/components/templates/MySite'
-import HISTORY_DATA from '@/const/HistoryData'
+import HISTORY_DATA from '@/const/page/HistoryData'
 
 import { MyHistorySection } from './MyHistorySection'
 import styles from './style.module.scss'
