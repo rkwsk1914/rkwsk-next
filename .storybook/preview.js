@@ -1,16 +1,6 @@
-import React from 'react'
-
-import * as NextImage from "next/image";
-
 import { ThemeContextProvider } from '../src/components/layouts/Theme'
-
 import '../src/styles/Tailwind.css';
 import './assets/reset.css';
-
-Object.defineProperty(NextImage, 'default', {
-  configurable: true,
-  value: props => <img {...props} />
-});
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -20,14 +10,35 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
 
-const decoratorsTheme = (Story) => {
-  return (
-    <ThemeContextProvider isTest isDark>
-      <Story />
-    </ThemeContextProvider>
-  )
-}
+export const globalTypes = {
+  image: {
+    name: 'Image',
+    description: 'Global image component',
+    defaultValue: 'Custom',
+    toolbar: {
+      items: ['Custom', 'Next'],
+      showName: true,
+    },
+  },
+};
 
-export const decorators = [decoratorsTheme];
+export const decorators = [
+  (Story, context) => {
+    const { image } = context.globals;
+    if (image === 'Custom') {
+      return (
+        <ThemeContextProvider isTest isDark>
+          <Story />
+        </ThemeContextProvider>
+      );
+    } else {
+      return (
+        <NextImageContext.Provider value={NextImage}>
+          <Story />
+        </NextImageContext.Provider>
+      );
+    }
+  },
+];
