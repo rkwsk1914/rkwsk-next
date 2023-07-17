@@ -1,3 +1,5 @@
+type DigitString = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
+
 type DDVer31FormatType =
   '01' |
   '02' |
@@ -63,11 +65,7 @@ type DDVer30FormatType =
   '29' |
   '30'
 
-type TimeFormatType<H extends string, M extends string, S extends number> = `${H}:${M}:${S}`;
-
-type DateFormatType<M extends string, D extends string> = `${M}-${D}`
-
-export type YYYYType = number  & { length: 4 }
+export type YYYYType = `${DigitString}${DigitString}${DigitString}${DigitString}`
 
 export type MonthMMType =
   '01' |
@@ -148,29 +146,30 @@ export type HHType =
 
 export type MinuitMMType = HHType
 
-export type SSSType = number  & { length: 3 }
+export type SSSType = `${DigitString}${DigitString}${DigitString}`
 
-export type DateType =
-  DateFormatType<
+type MmDdFormatType<M extends string, D extends string> = `${M}-${D}`
+
+export type MmDdType =
+  MmDdFormatType<
     '01' | '03' | '05' | '07' | '08'| '10' | '12',
     DDVer31FormatType
   > |
-  DateFormatType<
+  MmDdFormatType<
     '02' | '04' | '06' | '09' | '11',
     DDVer30FormatType
   >
 
-export type TimeType = TimeFormatType<HHType, MinuitMMType, SSSType>
+type DateFormatType<Y extends string> = `${Y}-${MmDdType}`
+
+export type DateType = DateFormatType<`${DigitString}${DigitString}${DigitString}${DigitString}`>
+
+type TimeFormatType<S extends string> = `${HHType}:${HHType}:${S}`;
+
+export type TimeType = TimeFormatType<`${DigitString}${DigitString}${DigitString}`>
 
 type DateAndTimeFormatType<
-    H extends string,
-    MM extends string,
-    S extends number
-  > = `${YYYYType}-${DateType}T${H}:${MM}:${S}Z`;
+    D extends string,
+    T extends string
+  > = `${D}T${T}Z`;
 
-export type DateAndTimeType =
-  DateAndTimeFormatType<
-    HHType,
-    HHType,
-    SSSType
-  >
