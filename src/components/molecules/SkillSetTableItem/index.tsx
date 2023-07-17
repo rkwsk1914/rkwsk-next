@@ -1,15 +1,12 @@
 import * as React from 'react'
 
 import { RatingElement } from '@/components/forms/atoms/RatingElement'
+import { SkillSetDateType } from '@/types/SkillSetDateType'
 
-type Props = {
-  children?: React.ReactNode
-  value: number
-  acquisitionDate?: string
-};
+type Props = SkillSetDateType;
 
 export const SkillSetTableItem: React.FC<Props> = ({
-  children,
+  skillName,
   value,
   acquisitionDate
 }): JSX.Element => {
@@ -40,7 +37,7 @@ export const SkillSetTableItem: React.FC<Props> = ({
 
   return (
     <tr>
-      <th>{children}</th>
+      <th>{skillName}</th>
       <td>
         <RatingElement
           max={5}

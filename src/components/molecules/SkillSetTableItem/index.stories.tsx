@@ -1,11 +1,8 @@
 import React from 'react'
 
-import { faReact } from '@fortawesome/free-brands-svg-icons'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { StoryFn, Meta } from '@storybook/react'
 
+import { ICON_DATA } from '@/const/IconDate'
 
 import { SkillSetTableItem as StoryComponent } from '.'
 
@@ -22,8 +19,8 @@ const Template: StoryFn<typeof StoryComponent> = (
 
 export const Default = Template.bind({})
 Default.args = {
-  children: <>
-    <FontAwesomeIcon icon={faReact} />
+  skillName: <>
+    {ICON_DATA.react}
   </>,
   value: 5,
   acquisitionDate: "2019-05-05"
@@ -31,16 +28,16 @@ Default.args = {
 
 export const NoDate = Template.bind({})
 NoDate.args = {
-  children: <>
-    <FontAwesomeIcon icon={faCoffee} />
+  skillName: <>
+    {ICON_DATA.html5}
   </>,
   value: 5
 }
 
 export const MissDate = Template.bind({})
 MissDate.args = {
-  children: <>
-    <FontAwesomeIcon icon={faCoffee} />
+  skillName: <>
+    {ICON_DATA.html5}
   </>,
   value: 5,
   acquisitionDate: "aaa"
