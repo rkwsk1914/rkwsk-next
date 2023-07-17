@@ -8,7 +8,7 @@ type Props = {
   acquisitionDate?: string
 };
 
-export const SkillSetItem: React.FC<Props> = ({
+export const SkillSetTableItem: React.FC<Props> = ({
   children,
   value,
   acquisitionDate

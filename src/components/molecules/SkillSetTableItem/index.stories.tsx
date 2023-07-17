@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StoryFn, Meta } from '@storybook/react'
 
 
-import { SkillSetItem as StoryComponent } from '.'
+import { SkillSetTableItem as StoryComponent } from '.'
 
 export default {
-  title: 'Molecules/SkillSetItem',
+  title: 'Molecules/SkillSetTableItem',
   component: StoryComponent,
 } as Meta<typeof StoryComponent>
 
