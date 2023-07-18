@@ -1,3 +1,33 @@
-.ul {
-  @apply m-0 p-0 w-full;
+.table {
+  @apply w-full;
+
+  th, td {
+    @apply p-8;
+    font-weight: normal;
+    line-height: 1;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td {
+    text-align: center;
+  }
+}
+
+.col_1 {
+  width: 35%;
+}
+
+.col_2 {
+  width: 25%;
+}
+
+.col_3 {
+  width: 10%;
+}
+
+.col_4 {
+  width: 25%;
 }

@@ -8,7 +8,8 @@ type Props = SkillSetDateType;
 export const SkillSetTableItem: React.FC<Props> = ({
   skillName,
   value,
-  acquisitionDate
+  acquisitionDate,
+  category
 }): JSX.Element => {
 
   const checkDateFormat = ():boolean => {
@@ -51,6 +52,7 @@ export const SkillSetTableItem: React.FC<Props> = ({
         />
       </td>
       <td>{calculateYearsOfExperience()}</td>
+      <td>{category}</td>
     </tr>
   )
 }
