@@ -19,7 +19,7 @@ export const BACK_END_SET_DATA: Array<SkillSetDateType> = [
   { skillName: "", value: 5, acquisitionDate: "", category: "work-experience" },
 ]
 
-export const TOOL_SKILL_SET_DATA: Array<SkillSetDateType> = [
+export const USABLE_TOOL_DATA: Array<SkillSetDateType> = [
   { skillName: "", value: 5, acquisitionDate: "", category: "work-experience" },
 ]
 
@@ -28,4 +28,12 @@ export const WORKING_SKILL_SET_DATA: Array<SkillSetDateType> = [
   { skillName: "", value: 5, acquisitionDate: "", category: "work-experience" },
   { skillName: "", value: 5, acquisitionDate: "", category: "work-experience" },
   { skillName: "", value: 5, acquisitionDate: "", category: "work-experience" },
+]
+
+export const SKILL_SET_DATA: Array<{title: string, data: Array<SkillSetDateType>}> = [
+  { title: "FRONT END SKILL", data:  FRONT_END_SKILL_SET_DATA },
+  { title: "DEVELOP SKILL", data:  DEVELOP_SKILL_SET_DATA },
+  { title: "BACK END", data:  BACK_END_SET_DATA },
+  { title: "USABLE TOOL ", data: USABLE_TOOL_DATA },
+  { title: "WORKING SKILL", data: WORKING_SKILL_SET_DATA },
 ]
