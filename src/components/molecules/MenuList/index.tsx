@@ -2,9 +2,11 @@ import { memo } from 'react'
 
 
 import { MenuListItem } from '@/components/atoms/MenuListItem'
-import { MenuDataType } from '@/types/MenuDataType'
 
 import styles from './style.module.scss'
+
+import { MenuDataType } from '@/types/MenuDataType'
+
 
 
 type Props = {

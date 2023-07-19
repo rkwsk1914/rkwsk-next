@@ -1,9 +1,10 @@
 import * as React from 'react'
 
+import HISTORY_DATA from '@/const/page/HistoryData'
+
 import { HeaderLogo } from '@/components/molecules/HeaderLogo'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { MySite } from '@/components/templates/MySite'
-import HISTORY_DATA from '@/const/page/HistoryData'
 
 import { MyHistorySection } from './MyHistorySection'
 import styles from './style.module.scss'

@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { RatingElement } from '@/components/forms/atoms/RatingElement'
+
 import { SkillSetDateType } from '@/types/SkillSetDateType'
 
 type Props = SkillSetDateType;

@@ -1,4 +1,5 @@
 import { ICON_DATA } from '@/const/IconDate'
+
 import { SkillSetDateType } from '@/types/SkillSetDateType'
 
 export const FRONT_END_SKILL_SET_DATA: Array<SkillSetDateType> = [

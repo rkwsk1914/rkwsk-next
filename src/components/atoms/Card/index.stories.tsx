@@ -2,8 +2,9 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
-import { SkillSetTable } from '@/components/organisms/SkillSetTable'
 import { FRONT_END_SKILL_SET_DATA } from '@/const/page/SkillSetData'
+
+import { SkillSetTable } from '@/components/organisms/SkillSetTable'
 
 import { Card as StoryComponent } from '.'
 

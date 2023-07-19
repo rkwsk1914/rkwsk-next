@@ -1,9 +1,11 @@
 import * as React from 'react'
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
-import { MonthType } from '@/types/MonthType'
 
 import styles from './style.module.scss'
+
+import { MonthType } from '@/types/MonthType'
+
 
 type Props = {
   month?: MonthType

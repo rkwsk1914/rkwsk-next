@@ -4,11 +4,14 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import clsx from 'clsx'
 
-import { ThemeSwitch } from '@/components/forms/molecules/ThemeSwitch'
 import { darkTheme, lightTheme } from '@/const/DarkTheme'
-import { ThemeContextType } from '@/types/ThemeContext'
+
+import { ThemeSwitch } from '@/components/forms/molecules/ThemeSwitch'
 
 import styles from './style.module.scss'
+
+import { ThemeContextType } from '@/types/ThemeContext'
+
 
 export const ThemeContext = createContext<ThemeContextType>({
   isDarkModeCTX: false,

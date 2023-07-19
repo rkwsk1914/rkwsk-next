@@ -6,9 +6,10 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 import { action } from "@storybook/addon-actions"
 import { StoryFn, Meta } from '@storybook/react'
 
+import { RadioElement as StoryComponent } from '.'
+
 import { InputAttributeOptions } from '@/types/InputAttribute'
 
-import { RadioElement as StoryComponent } from '.'
 
 export default {
   title: 'Forms/Atoms/RadioElement',

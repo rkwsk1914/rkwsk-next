@@ -8,9 +8,10 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import { action } from "@storybook/addon-actions"
 import { StoryFn, Meta } from '@storybook/react'
 
+import { CheckboxElement as StoryComponent } from '.'
+
 import { InputAttributeOptions } from '@/types/InputAttribute'
 
-import { CheckboxElement as StoryComponent } from '.'
 
 export default {
   title: 'Forms/Atoms/CheckboxElement',

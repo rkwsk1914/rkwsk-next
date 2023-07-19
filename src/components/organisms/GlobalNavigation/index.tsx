@@ -2,9 +2,11 @@ import * as React from 'react'
 
 import { ThemeButton } from '@/components/atoms/ThemeButton'
 import { HamburgerMenu } from '@/components/organisms/HamburgerMenu'
-import { MenuDataType } from '@/types/MenuDataType'
 
 import styles from './style.module.scss'
+
+import { MenuDataType } from '@/types/MenuDataType'
+
 
 type Props = {
   data: Array<MenuDataType>

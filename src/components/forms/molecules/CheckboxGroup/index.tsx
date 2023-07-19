@@ -6,6 +6,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 import FormLabel from '@mui/material/FormLabel'
 
 import { CheckboxElement } from '@/components/forms/atoms/CheckboxElement'
+
 import { InputAttributeTypes } from '@/types/InputAttribute'
 
 interface Props extends InputAttributeTypes {

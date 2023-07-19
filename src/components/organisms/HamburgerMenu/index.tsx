@@ -2,12 +2,15 @@ import { useState } from 'react'
 
 import clsx from 'clsx'
 
+import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
+
 import { MenuButton } from '@/components/atoms/MenuButton'
 import { MenuList } from '@/components/molecules/MenuList'
-import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
-import { MenuDataType } from '@/types/MenuDataType'
 
 import styles from './style.module.scss'
+
+import { MenuDataType } from '@/types/MenuDataType'
+
 
 type Props = {
   data: Array<MenuDataType>
