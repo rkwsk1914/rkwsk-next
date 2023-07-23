@@ -7,6 +7,7 @@ import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { MySite } from '@/components/templates/MySite'
 
 import { MyHistorySection } from './MyHistorySection'
+import { MySkillSetSection } from './MySkillSetSection'
 import styles from './style.module.scss'
 
 type Props = {};
@@ -22,6 +23,7 @@ export const TopPage: React.FC<Props> = (): JSX.Element => {
           <div className={styles.firstViewBg} />
         </SectionContainer>
         <MyHistorySection data={HISTORY_DATA} />
+        <MySkillSetSection />
       </SectionContainer>
     </MySite>
   )

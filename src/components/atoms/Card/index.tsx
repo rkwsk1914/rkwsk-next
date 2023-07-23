@@ -5,22 +5,33 @@ import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
 import styles from './style.module.scss'
 
-type Props = {
+type RefProps = {
   title?: string
   children?: React.ReactNode
+  matchHeight?: number | null
 };
 
-export const Card: React.FC<Props> = ({
-  title,
-  children
-}): JSX.Element => {
-  const cardClassName = useGetDarkModeStyleClass(styles.card, styles.dark)
-  return (
-    <div className={cardClassName}>
-      {title && <div className={styles.head}>{title}</div>}
-      <div className={styles.body}>
-        {children}
+export const Card = React.forwardRef(
+  function RefComponent (
+    {
+      title,
+      children,
+      matchHeight
+    }: RefProps,
+    ref?: React.Ref<HTMLDivElement> | null
+  ): JSX.Element {
+    const cardClassName = useGetDarkModeStyleClass(styles.card, styles.dark)
+    const cardHeight = matchHeight ? `${matchHeight}px` : 'auto'
+
+    console.log(title, cardHeight)
+
+    return (
+      <div className={cardClassName} ref={ref} style={{ minHeight: cardHeight }}>
+        {title && <div className={styles.head}>{title}</div>}
+        <div className={styles.body}>
+          {children}
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)
