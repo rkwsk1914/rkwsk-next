@@ -10,7 +10,7 @@ type RefProps = {
   matchHeight?: number | null
 };
 
-export const Card = React.forwardRef(
+export const MyCard = React.forwardRef(
   function RefComponent (
     {
       title,

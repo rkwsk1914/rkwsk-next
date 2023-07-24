@@ -6,11 +6,11 @@ import { FRONT_END_SKILL_SET_DATA, WORKING_SKILL_SET_DATA } from '@/const/page/S
 
 import { SkillSetTable } from '@/components/organisms/SkillSetTable'
 
-import { Card as StoryComponent } from '.'
+import { MyCard as StoryComponent } from '.'
 
 
 export default {
-  title: 'Atoms/Card',
+  title: 'Atoms/MyCard',
   component: StoryComponent,
 } as Meta<typeof StoryComponent>
 
