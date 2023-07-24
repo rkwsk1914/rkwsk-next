@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
 import styles from './style.module.scss'
@@ -22,8 +21,6 @@ export const Card = React.forwardRef(
   ): JSX.Element {
     const cardClassName = useGetDarkModeStyleClass(styles.card, styles.dark)
     const cardHeight = matchHeight ? `${matchHeight}px` : 'auto'
-
-    console.log(title, cardHeight)
 
     return (
       <div className={cardClassName} ref={ref} style={{ minHeight: cardHeight }}>

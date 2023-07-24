@@ -1,6 +1,11 @@
-import { useEffect, useState, useRef, useCallback, RefObject } from 'react'
+import * as React from 'react'
 
-import { Carousel } from '3d-react-carousel-ts'
+import Slider from "react-slick"
+import { Settings } from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
+import { useMatchHeight } from '@/hooks/useMatchHeight'
 
 import { SKILL_SET_DATA } from '@/const/page/SkillSetData'
 
@@ -11,36 +16,32 @@ import { SkillSetTable } from '@/components/organisms/SkillSetTable'
 type Props = {};
 
 export const MySkillSetSection: React.FC<Props> = ({}): JSX.Element => {
-  const [cardHeight, setCardHeight] = useState<number | null>(null)
-  const refsArray = useRef<RefObject<HTMLDivElement>[]>([])
-
-  const adjustCardHeight = useCallback(() => {
-    let maxHeight = 0
-    refsArray.current.forEach((ref) => {
-      const itemHeight = ref.current?.getBoundingClientRect().height
-      if (itemHeight && maxHeight < itemHeight) maxHeight = itemHeight
-    })
-    if (maxHeight > 0) setCardHeight(maxHeight)
-  }, [])
-
-  useEffect(() => {
-    adjustCardHeight()
-    window.addEventListener('resize', adjustCardHeight)
-    return () => {
-      window.removeEventListener('resize', adjustCardHeight)
-    }
-  }, [adjustCardHeight])
+  const dataLength = SKILL_SET_DATA.length
+  const {height, refsArray} = useMatchHeight(dataLength)
 
   const slides = SKILL_SET_DATA.map((item, index) => (
-    <Card key={index} title={item.title} ref={refsArray.current[index]} matchHeight={cardHeight}>
+    <Card key={index} title={item.title} ref={refsArray.current[index]} matchHeight={height}>
       <SkillSetTable data={item.data} />
     </Card>
   ))
 
+  const settings: Settings = {
+    infinite:true, //to allow the slides to show infinitely
+    speed: 300, //this is the speed of slider in ms
+    slidesToShow:1, //number of slides to show up on screen
+    centerPadding: '50px',
+    autoplay: true,
+    arrows: true,
+    dots: true,
+    centerMode: true
+  }
+
   return (
     <SectionContainer id={'skills'} title={'Skills'}>
       <div>
-        <Carousel slides={slides} autoplay={false} />
+        <Slider {...settings}>
+          {slides}
+        </Slider>
       </div>
     </SectionContainer>
   )
