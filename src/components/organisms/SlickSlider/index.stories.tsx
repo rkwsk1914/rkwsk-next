@@ -5,7 +5,7 @@ import { StoryFn, Meta } from '@storybook/react'
 import { SlickSlider as StoryComponent } from '.'
 
 export default {
-  title: 'Atoms/SlickSlider',
+  title: 'Organisms/SlickSlider',
   component: StoryComponent,
 } as Meta<typeof StoryComponent>
 

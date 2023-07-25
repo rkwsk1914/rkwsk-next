@@ -5,7 +5,7 @@ import { useMatchHeight } from '@/hooks/useMatchHeight'
 import { SKILL_SET_DATA } from '@/const/page/SkillSetData'
 
 import { MyCard } from '@/components/atoms/MyCard'
-import { SlickSlider, OriginalSettings } from '@/components/atoms/SlickSlider'
+import { SlickSlider, OriginalSettings } from '@/components/organisms/SlickSlider'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { SkillSetTable } from '@/components/organisms/SkillSetTable'
 

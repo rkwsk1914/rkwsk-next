@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { PlxItem } from "react-plx"
 
 import { Logo } from '@/components/atoms/Logo'
-import { PlxComponent } from '@/components/atoms/PlxComponent'
+import { PlxComponent } from '@/components/organisms/PlxComponent'
 
 import styles from './style.module.scss'
 
