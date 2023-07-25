@@ -4,9 +4,10 @@
 
 .arrowButton {
   @apply text-24;
+
+  position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  position: absolute;
   z-index: 1;
 
   &.right {
@@ -21,19 +22,19 @@
 .dots {
   @apply w-full mt-24;
 
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
 
   .dot {
     @apply bg-darkBg;
 
     width: 24px;
-    min-width: 24px;
     height: 24px;
-    min-height: 24px;
     border-radius: 50%;
     display: block;
+    min-height: 24px;
+    min-width: 24px;
     opacity: .6;
 
     &:not(:first-child) {
