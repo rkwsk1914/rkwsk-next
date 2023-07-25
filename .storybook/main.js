@@ -7,15 +7,7 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-actions",
-    "@storybook/addon-docs",
-    {
-      name: "@storybook/addon-postcss",
-      options: {
-        postcssLoaderOptions: {
-          implementation: require('postcss'),
-        },
-      },
-    }
+    "@storybook/addon-docs"
   ],
   framework: {
     name: "@storybook/nextjs",
