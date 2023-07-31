@@ -28,11 +28,27 @@ export const MySkillSetSection: React.FC = (): JSX.Element => {
     speed: 300,
     slidesToShow:1,
     centerPadding: '150px',
-    autoplay: true,
+    autoplay: false,
     arrows: true,
     dots: true,
     centerMode: true,
-    useCSS: true
+    useCSS: true,
+    responsive: [
+      {
+        breakpoint: 750, // min-width 749
+        settings: {
+          infinite:true,
+          speed: 300,
+          slidesToShow:1,
+          centerPadding: '0px',
+          autoplay: false,
+          arrows: true,
+          dots: true,
+          centerMode: true,
+          useCSS: true
+        }
+      }
+    ]
   }
 
   return (
