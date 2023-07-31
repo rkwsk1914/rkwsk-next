@@ -5,20 +5,20 @@ import { ERROR_MESSAGE } from '@/const/ErrorMessage'
 const requiredMessage = ERROR_MESSAGE[1]
 
 const NAME_SCHEMA = zod
-.string()
-.min(1, { message: requiredMessage })
-.max(50, { message: ERROR_MESSAGE[3] })
+  .string()
+  .min(1, { message: requiredMessage })
+  .max(50, { message: ERROR_MESSAGE[3] })
 
 const EMAIL_SCHEMA = zod
-.string()
-.min(1, { message: requiredMessage })
-.email({ message: ERROR_MESSAGE[0] })
-.max(100, { message: ERROR_MESSAGE[2] })
+  .string()
+  .min(1, { message: requiredMessage })
+  .email({ message: ERROR_MESSAGE[0] })
+  .max(100, { message: ERROR_MESSAGE[2] })
 
 const TEL_SCHEMA = zod
-.string()
-.min(1, { message: requiredMessage })
-.max(11, { message: ERROR_MESSAGE[4] })
+  .string()
+  .min(1, { message: requiredMessage })
+  .max(11, { message: ERROR_MESSAGE[4] })
 
 const SCHEMA = zod.object({
   email: EMAIL_SCHEMA,
