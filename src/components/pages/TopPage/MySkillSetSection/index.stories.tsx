@@ -2,7 +2,7 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
-import HISTORY_DATA from '@/const/page/HistoryData'
+import { SKILL_SET_DATA } from '@/const/page/SkillSetData'
 
 import { MySkillSetSection as StoryComponent } from '.'
 
@@ -19,5 +19,5 @@ const Template: StoryFn<typeof StoryComponent> = (
 
 export const Default = Template.bind({})
 Default.args = {
-  data: HISTORY_DATA
+  data: SKILL_SET_DATA
 }

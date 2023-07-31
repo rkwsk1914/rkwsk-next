@@ -2,8 +2,6 @@ import * as React from 'react'
 
 import { useMatchHeight } from '@/hooks/useMatchHeight'
 
-import { SKILL_SET_DATA } from '@/const/page/SkillSetData'
-
 import { MyCard } from '@/components/atoms/MyCard'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { SkillSetTable } from '@/components/organisms/SkillSetTable'
@@ -11,11 +9,19 @@ import { SlickSlider, OriginalSettings } from '@/components/organisms/SlickSlide
 
 import styles from './style.module.scss'
 
-export const MySkillSetSection: React.FC = (): JSX.Element => {
-  const dataLength = SKILL_SET_DATA.length
+import { SkillSetDateType } from '@/types/SkillSetDateType'
+
+type Props = {
+  data: SkillSetDateType
+}
+
+export const MySkillSetSection: React.FC<Props> = ({
+  data
+}): JSX.Element => {
+  const dataLength = data.length
   const {height, refsArray} = useMatchHeight(dataLength)
 
-  const slides = SKILL_SET_DATA.map((item, index) => (
+  const slides = data.map((item, index) => (
     <div key={index} className={styles.cardWrap}>
       <MyCard title={item.title} ref={refsArray.current[index]} matchHeight={height}>
         <SkillSetTable data={item.data} />

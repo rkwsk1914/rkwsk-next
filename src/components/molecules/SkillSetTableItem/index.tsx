@@ -4,9 +4,9 @@ import { RatingElement } from '@/components/forms/atoms/RatingElement'
 
 import styles from './style.module.scss'
 
-import { SkillSetDateType } from '@/types/SkillSetDateType'
+import { SkillSetItemDataType } from '@/types/SkillSetDateType'
 
-type Props = SkillSetDateType;
+type Props = SkillSetItemDataType;
 
 export const SkillSetTableItem: React.FC<Props> = ({
   skillName,

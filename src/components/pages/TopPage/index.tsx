@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import HISTORY_DATA from '@/const/page/HistoryData'
+import { SKILL_SET_DATA } from '@/const/page/SkillSetData'
 
 import { HeaderLogo } from '@/components/molecules/HeaderLogo'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
@@ -23,7 +24,7 @@ export const TopPage: React.FC<Props> = (): JSX.Element => {
           <div className={styles.firstViewBg} />
         </SectionContainer>
         <MyHistorySection data={HISTORY_DATA} />
-        <MySkillSetSection />
+        <MySkillSetSection data={SKILL_SET_DATA} />
       </SectionContainer>
     </MySite>
   )
