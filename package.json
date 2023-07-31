@@ -4,16 +4,19 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run test-silent && next build",
     "start": "next start",
-    "fix": "npm run lint:fix && npm run lint:css:fix",
-    "lint": "next lint",
-    "lint:fix": "next lint --fix",
+    "fix": "npm run lint:fix && npm run test",
+    "lint": "npm run lint:next && npm run lint:css",
+    "lint:fix": "npm run lint:next:fix && npm run lint:css:fix",
+    "lint:next": "next lint",
+    "lint:next:fix": "next lint --fix",
     "lint:css": "stylelint **/*.{css,scss,sass}",
     "lint:css:fix": "stylelint --fix **/*.{css,scss,sass}",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "jest"
+    "test": "jest",
+    "test-silent": "jest --silent"
   },
   "dependencies": {
     "@types/react-dom": "^18.2.6",
