@@ -2,10 +2,10 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
-import { LoginForm as StoryComponent } from '.'
+import { SampleForm as StoryComponent } from '.'
 
 export default {
-  title: 'Forms/Templates/LoginForm',
+  title: 'Forms/Templates/SampleForm',
   component: StoryComponent,
 } as Meta<typeof StoryComponent>
 

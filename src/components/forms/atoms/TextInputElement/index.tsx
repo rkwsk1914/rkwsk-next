@@ -2,25 +2,14 @@ import * as React from 'react'
 
 import TextField from '@mui/material/TextField'
 
-import { AutoCompleteType } from '@/types/AutoCompleteType'
-import { InputAttributeTypes } from '@/types/InputAttribute'
+import { TextInputBaseProps } from '@/types/InputAttribute'
 
-interface BaseProps extends InputAttributeTypes {
-  type: 'text' | 'tel' | 'email' | 'number' | 'password' | 'search' | 'url'
-  autoComplete: AutoCompleteType
-  autoFocus?: boolean
-  variant?: 'filled' | 'outlined' | 'standard'
-  placeholder?: string
-  rows?: number
-  size?: 'small' | 'medium'
-}
-
-interface ControlledProps extends BaseProps {
+interface ControlledProps extends TextInputBaseProps {
   value?: string
   defaultValue?: never
 }
 
-interface UncontrolledProps extends BaseProps {
+interface UncontrolledProps extends TextInputBaseProps {
   value?: never
   defaultValue?: string
 }
