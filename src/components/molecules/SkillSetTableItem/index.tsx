@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import { RatingElement } from '@/components/forms/atoms/RatingElement'
 
+import styles from './style.module.scss'
+
 import { SkillSetDateType } from '@/types/SkillSetDateType'
 
 type Props = SkillSetDateType;
@@ -38,9 +40,9 @@ export const SkillSetTableItem: React.FC<Props> = ({
   }
 
   return (
-    <tr>
-      <th>{skillName}</th>
-      <td>
+    <tr className={styles.tr}>
+      <th className={styles.skillName}>{skillName}</th>
+      <td className={styles.value}>
         <RatingElement
           max={5}
           precision={0.5}
@@ -52,8 +54,8 @@ export const SkillSetTableItem: React.FC<Props> = ({
           helperText=''
         />
       </td>
-      <td>{calculateYearsOfExperience()}</td>
-      <td>{category}</td>
+      <td className={styles.yearsOfExperience}>{calculateYearsOfExperience()}</td>
+      <td className={styles.category}>{category}</td>
     </tr>
   )
 }
