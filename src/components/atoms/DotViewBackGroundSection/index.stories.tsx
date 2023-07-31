@@ -24,7 +24,7 @@ Default.args = {
 }
 
 export const HasSection = Template.bind({})
-Default.args = {
+HasSection.args = {
   children: (
     <SectionContainer
       title={'section 1'}
