@@ -1,24 +1,24 @@
 import * as zod from 'zod'
 
-import { ErrorMessage } from '@/const/ErrorMessage'
+import { ERROR_MESSAGE } from '@/const/ErrorMessage'
 
-const requiredMessage = ErrorMessage[1].msg
+const requiredMessage = ERROR_MESSAGE[1]
 
 const NAME_SCHEMA = zod
 .string()
 .min(1, { message: requiredMessage })
-.max(50)
+.max(50, { message: ERROR_MESSAGE[3] })
 
 const EMAIL_SCHEMA = zod
 .string()
 .min(1, { message: requiredMessage })
-.email({ message: ErrorMessage[0].msg })
-.max(100)
+.email({ message: ERROR_MESSAGE[0] })
+.max(100, { message: ERROR_MESSAGE[2] })
 
 const TEL_SCHEMA = zod
 .string()
 .min(1, { message: requiredMessage })
-.max(11)
+.max(11, { message: ERROR_MESSAGE[4] })
 
 const SCHEMA = zod.object({
   email: EMAIL_SCHEMA,

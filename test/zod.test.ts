@@ -1,4 +1,4 @@
-import { ErrorMessage } from '@/const/ErrorMessage'
+import { ERROR_MESSAGE } from '@/const/ErrorMessage'
 import * as S from '@/const/Schema'
 
 
@@ -17,15 +17,53 @@ const testExpectInValid = (validFormData: any, schema: any, errorMsg: string) =>
   expect(validationResult.error.issues[0].message).toBe(errorMsg)
 }
 
+const testRequire = (schema: any) => {
+  test('Require Test', () => {
+    testExpectInValid("", schema, ERROR_MESSAGE[1])
+  })
+}
+
+const testOverMaxLength = (parentTestName: string, validFormData: string, schema: any, errorMsg: string) => {
+  const testName = 'Over Max Length Test'
+  test(testName, () => {
+    console.log(`[ ${parentTestName} / ${testName} ] Length: `, validFormData.length)
+    testExpectInValid(validFormData, schema, errorMsg)
+  })
+}
+
+const testNotExceedingMaxLength = (parentTestName: string, validFormData: string, schema: any, errorMsg: string) => {
+  const testName = 'Not Exceeding Max LengthTest'
+  test(testName, () => {
+    console.log(`[ ${parentTestName} / ${testName} ] Length: `, validFormData.length)
+    testExpectSuccess(validFormData, schema)
+  })
+}
+
 describe('Zod Test', () => {
-  describe('Email Test', () => {
+  const testName = 'Email Test'
+  describe(testName, () => {
+    const schema = S.EMAIL_SCHEMA
     it('Success Test', () => {
-      testExpectSuccess("sample@gmail.com", S.EMAIL_SCHEMA)
+      testExpectSuccess("sample@gmail.com", schema)
     })
 
     it('Miss Test', () => {
-      testExpectInValid("samplesample", S.EMAIL_SCHEMA, ErrorMessage[0].msg)
+      testExpectInValid("samplesample", schema, ERROR_MESSAGE[0])
     })
+
+    testRequire(schema)
+    testOverMaxLength(
+      testName,
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com",
+      schema,
+      ERROR_MESSAGE[2]
+    )
+    testNotExceedingMaxLength(
+      testName,
+      "aaaaaaaaaaaa@gmail.com",
+      schema,
+      ERROR_MESSAGE[2]
+    )
   })
 })
 
