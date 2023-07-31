@@ -24,5 +24,5 @@ Default.args = {
     { text: 'menu 4', href: '/' },
   ],
   isDark: true,
-  callBack: () => {console.log("click")}
+  callBackChangeTheme: () => {console.log("click")}
 }
