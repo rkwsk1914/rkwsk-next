@@ -1,32 +1,37 @@
 import * as zod from 'zod'
 
-const requiredMessage = "入力必須項目です。"
+import { ErrorMessage } from '@/const/ErrorMessage'
 
-const nameZod = zod
-  .string()
-  .min(1, { message: requiredMessage })
-  .max(50)
+const requiredMessage = ErrorMessage[1].msg
 
+const NAME_SCHEMA = zod
+.string()
+.min(1, { message: requiredMessage })
+.max(50)
 
-export const SCHEMA = zod.object({
-  email: zod
-    .string()
-    .min(1, { message: requiredMessage })
-    .email({ message: 'メールアドレスの形式で入力してください。例）sample@sample.com' })
-    .max(100)
-  ,
-  firstName: nameZod
-  ,
-  lastName: nameZod
-  ,
-  firstKanaName: nameZod
-  ,
-  lastKanaName: nameZod
-  ,
-  tel: zod
-    .number()
-    .min(1, { message: requiredMessage })
-    .max(10)
-  ,
-  
+const EMAIL_SCHEMA = zod
+.string()
+.min(1, { message: requiredMessage })
+.email({ message: ErrorMessage[0].msg })
+.max(100)
+
+const TEL_SCHEMA = zod
+.string()
+.min(1, { message: requiredMessage })
+.max(11)
+
+const SCHEMA = zod.object({
+  email: EMAIL_SCHEMA,
+  firstName: NAME_SCHEMA,
+  lastName: NAME_SCHEMA,
+  firstKanaName: NAME_SCHEMA,
+  lastKanaName: NAME_SCHEMA,
+  tel: TEL_SCHEMA,
 })
+
+export {
+  EMAIL_SCHEMA,
+  NAME_SCHEMA,
+  TEL_SCHEMA,
+  SCHEMA
+}
