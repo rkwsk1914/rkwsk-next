@@ -1,0 +1,28 @@
+.card {
+  @apply bg-lightBg w-full;
+
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  box-shadow: 8px 8px 16px -4px #ccc;
+
+  .head {
+    @apply px-16 pt-16 text-24;
+
+    @screen small {
+      @apply text-24;
+    }
+  }
+
+  .body {
+    @apply p-16;
+  }
+}
+
+.dark {
+  &.card {
+    @apply bg-darkBg;
+
+    border-color: #66B2FF;
+    box-shadow: 8px 8px 16px -4px #66B2FF;
+  }
+}

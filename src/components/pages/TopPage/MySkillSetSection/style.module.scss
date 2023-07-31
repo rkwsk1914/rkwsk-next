@@ -1,0 +1,7 @@
+.cardWrap {
+  @apply px-16 py-16;
+
+  @screen small {
+    @apply px-32 py-16;
+  }
+}

@@ -1,0 +1,15 @@
+.header {
+  @apply w-full;
+
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu_btn {
+  @apply w-full;
+}
+
+.theme_btn {
+  @apply w-96;
+}

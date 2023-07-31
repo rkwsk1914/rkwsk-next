@@ -2,9 +2,10 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
+import { SelectElement as StoryComponent } from '.'
+
 import { InputAttributeOptions } from '@/types/InputAttribute'
 
-import { SelectElement as StoryComponent } from '.'
 
 export default {
   title: 'Forms/Atoms/SelectElement',

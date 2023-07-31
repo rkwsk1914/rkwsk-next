@@ -2,9 +2,10 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
+import { ButtonElement as StoryComponent } from '.'
+
 import { MuiSizeOptions } from '@/types/MuiSize'
 
-import { ButtonElement as StoryComponent } from '.'
 
 export default {
   title: 'Forms/Atoms/ButtonElement',

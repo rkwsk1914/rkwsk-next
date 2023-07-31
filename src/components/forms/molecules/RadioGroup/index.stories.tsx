@@ -3,9 +3,10 @@ import React from 'react'
 import { action } from "@storybook/addon-actions"
 import { StoryFn, Meta } from '@storybook/react'
 
+import { RadioGroup as StoryComponent } from '.'
+
 import { InputAttributeOptions } from '@/types/InputAttribute'
 
-import { RadioGroup as StoryComponent } from '.'
 
 export default {
   title: 'Forms/Molecules/RadioGroup',
@@ -36,14 +37,16 @@ Default.args = {
       value: 1,
       checked: false,
       disabled: false,
-      size: "medium"
+      size: "medium",
+      name: "radio"
     },
     {
       label: "value 2",
       value: 2,
       checked: false,
       disabled: false,
-      size: "medium"
+      size: "medium",
+      name: "radio"
     },
   ],
   onChange: action('onChange'),

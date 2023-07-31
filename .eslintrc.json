@@ -35,32 +35,32 @@
             "position": "before"
           },
           {
-            "pattern": "@/components",
+            "pattern": "@/components/**",
             "group": "parent",
             "position": "before"
           },
           {
-            "pattern": "@/hooks",
+            "pattern": "@/hooks/**",
             "group": "internal",
             "position": "after"
           },
           {
-            "pattern": "@/const",
+            "pattern": "@/const/**",
             "group": "internal",
             "position": "after"
           },
           {
-            "pattern": "@/stores",
+            "pattern": "@/stores/**",
             "group": "internal",
             "position": "after"
           },
           {
-            "pattern": "@/api",
+            "pattern": "@/api/**",
             "group": "internal",
             "position": "after"
           },
           {
-            "pattern": "@/types",
+            "pattern": "@/types/**",
             "group": "type",
             "position": "after"
           },

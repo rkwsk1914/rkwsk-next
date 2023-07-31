@@ -1,0 +1,25 @@
+.color_pattern_box {
+  width: 100%;
+  height: 100%;
+
+  @apply bg-lightBg text-lightText;
+
+  span {
+    @apply text-lightAccent;
+  }
+
+  .main {
+    width: 80px;
+    height: 80px;
+
+    @apply bg-main;
+  }
+}
+
+.dark {
+  @apply bg-darkBg text-darkText;
+
+  span {
+    @apply text-darkAccent;
+  }
+}

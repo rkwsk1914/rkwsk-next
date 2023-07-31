@@ -1,0 +1,35 @@
+.section {
+  @apply w-full;
+
+  p {
+    @apply text-16;
+
+    sup, small {
+      @apply text-8;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    &+p {
+      @apply mt-8;
+    }
+  }
+}
+
+$level: 1;
+
+@while $level <= 6 {
+  .level#{$level} {
+    h#{$level} {
+      padding-bottom: (48px - ($level * 8));
+    }
+
+    & > section {
+      padding-top: (72px - ($level * 8));
+    }
+  }
+
+  $level: $level + 1;
+}

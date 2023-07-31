@@ -3,9 +3,10 @@ import React from 'react'
 import { action } from "@storybook/addon-actions"
 import { StoryFn, Meta } from '@storybook/react'
 
+import { RatingWithStatus as StoryComponent } from '.'
+
 import { InputAttributeOptions } from '@/types/InputAttribute'
 
-import { RatingWithStatus as StoryComponent } from '.'
 
 export default {
   title: 'Forms/molecules/RatingWithStatus',

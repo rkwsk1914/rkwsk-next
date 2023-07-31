@@ -13,6 +13,7 @@ module.exports = {
     name: "@storybook/nextjs",
     options: {}
   },
+  staticDirs: ["../public"],
   core: {
     builder: "@storybook/builder-webpack5"
   },
@@ -21,6 +22,23 @@ module.exports = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '../src')
     };
+    // `postcss-loader` を追加する
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [
+        {
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              plugins: [
+                require('tailwindcss')('./tailwind.config.js'),
+                require('autoprefixer'),
+              ],
+            },
+          },
+        },
+      ],
+    });
     return {
       ...config
     };

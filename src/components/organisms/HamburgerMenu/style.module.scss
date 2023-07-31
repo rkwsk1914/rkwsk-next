@@ -1,0 +1,49 @@
+$transition-duration: .2s;
+$transition-timing-function: ease-in;
+$menu-area-width: 80vw;
+
+.nav {
+  align-items: flex-start;
+  display: flex;
+
+  @apply w-full;
+}
+
+.content {
+  @apply w-0;
+
+  background-color: rgba($color: #ccc, $alpha: .9);
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition-duration: $transition-duration;
+  transition-property: width, opacity, padding;
+  transition-timing-function: $transition-timing-function;
+
+  &.open {
+    @apply px-16;
+
+    opacity: 1;
+    pointer-events: inherit;
+    width: $menu-area-width;
+  }
+}
+
+.btn {
+  transition-duration: $transition-duration;
+  transition-property: margin-left;
+  transition-timing-function: $transition-timing-function;
+
+  &.open {
+    margin-left: $menu-area-width;
+  }
+}
+
+.dark {
+  .content {
+    background-color: rgba($color: #333, $alpha: .9);
+  }
+}

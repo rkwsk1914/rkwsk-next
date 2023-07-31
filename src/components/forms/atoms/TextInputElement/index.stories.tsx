@@ -3,10 +3,11 @@ import React from 'react'
 import { action } from "@storybook/addon-actions"
 import { StoryFn, Meta } from '@storybook/react'
 
+import { TextInputElement as StoryComponent } from '.'
+
 import { AutoCompleteOptions } from '@/types/AutoCompleteType'
 import { InputAttributeOptions } from '@/types/InputAttribute'
 
-import { TextInputElement as StoryComponent } from '.'
 
 export default {
   title: 'Forms/Atoms/TextInputElement',

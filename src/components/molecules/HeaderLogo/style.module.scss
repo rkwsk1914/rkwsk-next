@@ -1,0 +1,24 @@
+.logoWrap {
+  @apply w-full px-16;
+
+  @screen small {
+    @apply px-0;
+  }
+
+  left: 0;
+  position: fixed
+}
+
+.logo {
+  & > * {
+    margin: 0 auto;
+  }
+}
+
+.under_header {
+  @apply z-underLogo;
+}
+
+.over_header {
+  @apply z-overLogo;
+}

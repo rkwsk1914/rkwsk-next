@@ -26,8 +26,8 @@
 }
 
 .description p {
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+  background-color: rgb(var(--callout-rgb) 0.5);
+  border: 1px solid rgb(var(--callout-border-rgb) 0.3);
   border-radius: var(--border-radius);
   margin: 0;
   padding: 1rem;
@@ -47,8 +47,8 @@
 }
 
 .card {
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
+  background: rgb(var(--card-rgb) 0);
+  border: 1px solid rgb(var(--card-border-rgb) 0);
   border-radius: var(--border-radius);
   padding: 1rem 1.2rem;
   transition: background 200ms, border 200ms;
@@ -114,7 +114,7 @@
   height: 75px;
   align-items: center;
   border-radius: var(--border-radius);
-  box-shadow: 0px 2px 8px -1px #0000001a;
+  box-shadow: 0 2px 8px -1px #0000001a;
   display: flex;
   justify-content: center;
   margin-left: 16px;
@@ -142,8 +142,8 @@
 .thirteen::after {
   background: linear-gradient(
     to bottom right,
-    rgba(var(--tile-start-rgb), 1),
-    rgba(var(--tile-end-rgb), 1)
+    rgb(var(--tile-start-rgb) 1),
+    rgb(var(--tile-end-rgb) 1)
   );
   background-clip: content-box;
   border-radius: var(--border-radius);
@@ -154,8 +154,8 @@
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    background: rgba(var(--card-rgb), 0.1);
-    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+    background: rgb(var(--card-rgb) 0.1);
+    border: 1px solid rgb(var(--card-border-rgb) 0.15);
   }
 
   .card:hover span {
@@ -224,12 +224,12 @@
     backdrop-filter: blur(24px);
     background: linear-gradient(
       to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
+      rgb(var(--background-start-rgb) 1),
+      rgb(var(--callout-rgb) 0.5)
     );
     background-clip: padding-box;
     border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
+    border-bottom: 1px solid rgb(var(--callout-border-rgb) 0.25);
     border-radius: 0;
     inset: 0 0 auto;
     padding: 2rem 1rem 1.4rem;

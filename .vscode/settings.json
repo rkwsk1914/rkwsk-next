@@ -1,9 +1,13 @@
 {
     "cSpell.words": [
+        "clsx",
+        "fontawesome",
         "fontsource",
+        "fortawesome",
         "hookform",
         "rkwsk",
         "roboto",
-        "stylelint"
+        "stylelint",
+        "tailwindcss"
     ]
 }
