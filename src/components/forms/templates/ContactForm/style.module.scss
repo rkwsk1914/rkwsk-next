@@ -1,0 +1,54 @@
+.formArea {
+  @apply px-16;
+
+  @screen small {
+    @apply px-56;
+  }
+
+  @screen medium {
+    @apply mx-auto px-0;
+
+    max-width: 700px;
+  }
+
+  & > * {
+    &:not(:first-child) {
+      @apply mt-24;
+    }
+  }
+
+  .submitArea {
+    @apply mx-auto;
+
+    max-width: 320px;
+
+    & > * {
+      @apply w-full;
+    }
+  }
+
+  .nameArea {
+    display: block;
+
+    @screen small {
+      display: flex;
+    }
+
+    & > * {
+      @apply w-full;
+
+      @screen small {
+        @apply w-1/2;
+      }
+
+      &:not(:first-child) {
+        @apply mt-24;
+
+        @screen small {
+          @apply ml-16 mt-0;
+        }
+      }
+    }
+  }
+
+}
