@@ -7,6 +7,7 @@ import { HeaderLogo } from '@/components/molecules/HeaderLogo'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { MySite } from '@/components/templates/MySite'
 
+import { ContactSection } from './ContactSection'
 import { MyHistorySection } from './MyHistorySection'
 import { MySkillSetSection } from './MySkillSetSection'
 import styles from './style.module.scss'
@@ -25,6 +26,7 @@ export const TopPage: React.FC<Props> = (): JSX.Element => {
         </SectionContainer>
         <MyHistorySection data={HISTORY_DATA} />
         <MySkillSetSection data={SKILL_SET_DATA} />
+        <ContactSection />
       </SectionContainer>
     </MySite>
   )
