@@ -36,7 +36,7 @@ export const TEXT_INPUT_DATA: TextInputDataType = {
   },
   lastKanaName: {
     id: "lastKanaName",
-    label: "ふりがな（姓）",
+    label: "ふりがな（名）",
     type: 'text',
   },
   email: {
