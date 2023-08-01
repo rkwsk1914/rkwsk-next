@@ -1,5 +1,6 @@
 import React from 'react'
 
+import '@fortawesome/fontawesome-free'
 import {
   faReact,
   faVuejs,
@@ -31,6 +32,7 @@ import {
   faCircleChevronLeft
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 export const ICON_DATA = {
   react: <FontAwesomeIcon icon={faReact} />,
