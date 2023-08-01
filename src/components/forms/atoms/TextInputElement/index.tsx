@@ -33,6 +33,7 @@ export const TextInputElement = React.forwardRef(
         variant = 'standard',
         placeholder,
         rows,
+        multiline = false,
         size = 'medium',
         value,
         defaultValue
@@ -55,6 +56,7 @@ export const TextInputElement = React.forwardRef(
       variant={variant}
       placeholder={placeholder}
       rows={rows}
+      multiline={multiline}
       size={size}
       value={value}
       defaultValue={defaultValue}
