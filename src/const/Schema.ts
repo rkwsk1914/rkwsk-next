@@ -20,6 +20,11 @@ const TEL_SCHEMA = zod
   .min(1, { message: requiredMessage })
   .max(11, { message: ERROR_MESSAGE[4] })
 
+const TEXT_AREA_SCHEMA = zod
+  .string()
+  .min(1, { message: requiredMessage })
+  .max(500, { message: ERROR_MESSAGE[5] })
+
 const SCHEMA = zod.object({
   email: EMAIL_SCHEMA,
   firstName: NAME_SCHEMA,
@@ -27,6 +32,7 @@ const SCHEMA = zod.object({
   firstKanaName: NAME_SCHEMA,
   lastKanaName: NAME_SCHEMA,
   tel: TEL_SCHEMA,
+  contact: TEXT_AREA_SCHEMA,
 })
 
 export {

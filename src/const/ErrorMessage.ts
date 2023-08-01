@@ -3,7 +3,8 @@ const maxLengthErrorMessage = (value: string | number ) => `最大${value}文字
 export const MAX_LENGTH_LIST = {
   email: 100,
   name: 50,
-  tel: 11
+  tel: 11,
+  contact: 500
 }
 
 export const ERROR_MESSAGE: Array<string> = [
@@ -12,4 +13,5 @@ export const ERROR_MESSAGE: Array<string> = [
   maxLengthErrorMessage(MAX_LENGTH_LIST.email), // 2
   maxLengthErrorMessage(MAX_LENGTH_LIST.name), // 3
   maxLengthErrorMessage(MAX_LENGTH_LIST.tel), // 4
+  maxLengthErrorMessage(MAX_LENGTH_LIST.contact), // 5
 ]
