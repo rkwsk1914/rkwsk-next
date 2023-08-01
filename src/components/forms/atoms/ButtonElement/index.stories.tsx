@@ -21,7 +21,7 @@ export default {
       control: 'select', options: ['contained', 'outlined', 'text'],
     },
     size: {
-      control: 'select', options: [MuiSizeOptions]
+      control: 'select', options: MuiSizeOptions
     },
     disabled: {
       control: 'boolean',
