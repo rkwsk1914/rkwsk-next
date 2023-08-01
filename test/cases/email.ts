@@ -1,27 +1,21 @@
 import { ERROR_MESSAGE } from '@/const/ErrorMessage'
 import { EMAIL_SCHEMA } from '@/const/Schema'
 
-import * as ZodTest from './../zod/modules'
-
-const validFormDataList = [
-  // 0
-  "sample@gmail.com",
-  // 1
-  "samplesample",
-  // 2
-  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com",
-  // 3
-  "aaaaaaaaaaaa@gmail.com",
-]
+import { JestZodMethods } from './../zod/modules'
 
 export const emailTest = () => {
   const testName = 'Email Test'
+
   describe(testName, () => {
     const schema = EMAIL_SCHEMA
-    test('Success Test', () => ZodTest.testExpectSuccess(validFormDataList[0], schema))
-    test('Miss Test', () => ZodTest.testExpectInValid(validFormDataList[1], schema, ERROR_MESSAGE[0]))
-    ZodTest.testRequire(schema)
-    ZodTest.testOverMaxLength(testName, validFormDataList[2], schema, ERROR_MESSAGE[2])
-    ZodTest.testNotExceedingMaxLength(testName, validFormDataList[3], schema)
+    const Test = new JestZodMethods(testName, schema)
+    Test.testExpectSuccess('sample@gmail.com')
+    Test.testExpectMiss('sample', ERROR_MESSAGE[0])
+    Test.testRequire()
+    Test.testOverMaxLength(
+      'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com',
+      ERROR_MESSAGE[2]
+    )
+    Test.testNotOverMaxLength('aaaaaaaaaaaa@gmail.com')
   })
 }

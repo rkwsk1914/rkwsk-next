@@ -1,8 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm, SubmitHandler } from 'react-hook-form'
+
+import { useChrFormatChange } from '@/hooks/useChrFormatChange'
 
 import { SCHEMA } from '@/const/Schema'
 import { TEXT_INPUT_DATA } from '@/const/TextInputData'
+
 
 import { ButtonElement } from '@/components/forms/atoms/ButtonElement'
 import { TextInputElement } from '@/components/forms/atoms/TextInputElement'
@@ -27,35 +30,87 @@ export const ContactForm: React.FC<Props> = ({
   onSubmit
 }): JSX.Element => {
   const formInputTextNameList: Array<keyof Inputs> = [
-    "firstName",
-    "lastName",
-    "firstKanaName",
-    "lastKanaName",
-    "tel",
-    "email",
-    "contact",
+    'firstName',
+    'lastName',
+    'firstKanaName',
+    'lastKanaName',
+    'tel',
+    'email',
+    'contact',
   ]
-  const { register, trigger, handleSubmit, watch, formState: { errors, isDirty, isValid } } = useForm<Inputs>({
+  const { register, trigger, handleSubmit, setValue, formState: { errors, isDirty, isValid } } = useForm<Inputs>({
     resolver: zodResolver(SCHEMA),
   })
 
+  const {
+    fixHiraGanaText,
+    fixHalfWidth,
+    removeFullWidth,
+    removeFullWidthNumber,
+    removeFullWidthSymbol,
+    removeOtherHalfNumber,
+  } = useChrFormatChange()
+
   const onSubmitCallBack: SubmitHandler<Inputs> = (data) => {
-    console.log(data)
     onSubmit()
   }
 
   const setTextInputElementProps = (index: number): React.ComponentProps<
     typeof TextInputElement
   > => {
+    const onlyTrigger = () => {
+      trigger(formInputTextNameList[index])
+    }
+
+    const FixName = (event: React.FocusEvent<HTMLInputElement>) => {
+      const fixValue = removeFullWidthSymbol(removeFullWidthNumber(event.target.value))
+      setValue(formInputTextNameList[index], fixValue)
+      trigger(formInputTextNameList[index])
+    }
+
+    const FixKanaName = (event: React.FocusEvent<HTMLInputElement>) => {
+      const fullValue = removeFullWidthSymbol(removeFullWidthNumber(event.target.value))
+      const fixValue = fixHiraGanaText(fullValue)
+      setValue(formInputTextNameList[index], fixValue)
+      trigger(formInputTextNameList[index])
+    }
+
+    const FixEmail = (event: React.FocusEvent<HTMLInputElement>) => {
+      const fixValue = removeFullWidth(fixHalfWidth(event.target.value))
+      setValue(formInputTextNameList[index], fixValue)
+      trigger(formInputTextNameList[index])
+    }
+
+    const FixTelInput = (event: React.FocusEvent<HTMLInputElement>) => {
+      const fixValue = removeOtherHalfNumber(fixHalfWidth(event.target.value))
+      setValue(formInputTextNameList[index], fixValue)
+      trigger(formInputTextNameList[index])
+    }
+
+    const setOnBlur = (index: number) => {
+      switch (formInputTextNameList[index]) {
+        case 'firstName':
+        case 'lastName':
+          return FixName
+        case 'firstKanaName':
+        case 'lastKanaName':
+          return FixKanaName
+        case 'email':
+          return FixEmail
+        case 'tel':
+          return FixTelInput
+        default:
+          return onlyTrigger
+      }
+    }
+
     return {
         variant: 'outlined',
         helperText: errors[formInputTextNameList[index]]?.message,
         error: errors[formInputTextNameList[index]] ? true : false,
         ...TEXT_INPUT_DATA[formInputTextNameList[index]],
         ...register(formInputTextNameList[index]),
-        onBlur: () => {
-          trigger(formInputTextNameList[index])
-        },
+        onBlur: setOnBlur(index)
       }
     }
 
