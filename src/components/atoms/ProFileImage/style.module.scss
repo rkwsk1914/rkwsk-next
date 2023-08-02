@@ -1,0 +1,51 @@
+.item {
+  @apply w-full;
+
+  max-width: 500px;
+  position: relative;
+  transition: max-width .1s ease;
+}
+
+.image {
+  width: 70%;
+  position: relative;
+  display: block;
+  margin: 0 0 0 auto;
+  z-index: 2;
+  transition: width .1s ease;
+}
+
+.headingText,
+.backText {
+  @apply text-56;
+
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: font-size .1s ease;
+}
+
+.headingText {
+  z-index: 3;
+  -webkit-text-stroke: 2px #fff;
+  color: transparent;
+}
+
+.backText {
+  z-index: 1;
+  color: #fff;
+}
+
+.item:hover {
+  max-width: 600px;
+
+  .image {
+    width: 80%;
+  }
+
+  .headingText,
+  .backText {
+    @apply text-64;
+  }
+}
