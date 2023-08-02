@@ -7,6 +7,7 @@ import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 import styles from './style.module.scss'
 
 type Props =  {
+  children?: React.ReactNode
   firstName: string
   lastName: string
   image: Omit<React.ComponentProps<typeof Image>, 'alt' | 'className'>
@@ -15,6 +16,7 @@ type Props =  {
 
 export const ProFileImage: React.FC<Props> = (
   {
+    children,
     firstName,
     lastName,
     image,
@@ -42,6 +44,9 @@ export const ProFileImage: React.FC<Props> = (
       <HeadingTag />
       <Image className={styles.image} alt={`${firstName} ${lastName}`} {...image} />
       <span className={styles.backText}>{name}</span>
+      <div className={styles.content}>
+        {children}
+      </div>
     </div>
   )
 }

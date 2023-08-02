@@ -17,6 +17,7 @@ const Template: StoryFn<typeof StoryComponent> = (
 
 export const Default = Template.bind({})
 Default.args = {
+  children: <>sample<br /></>,
   firstName: 'KAWASAKI',
   lastName: 'RYO',
   image: {

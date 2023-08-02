@@ -6,6 +6,12 @@
   transition: max-width .1s ease;
 }
 
+.content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
 .image {
   width: 70%;
   position: relative;
