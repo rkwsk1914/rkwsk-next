@@ -7,18 +7,18 @@
 }
 
 .content {
-  position: absolute;
-  left: 0;
   bottom: 0;
+  left: 0;
+  position: absolute;
 }
 
 .image {
-  width: 70%;
-  position: relative;
   display: block;
   margin: 0 0 0 auto;
-  z-index: 2;
+  position: relative;
   transition: width .1s ease;
+  width: 70%;
+  z-index: 2;
 }
 
 .headingText,
@@ -33,14 +33,14 @@
 }
 
 .headingText {
-  z-index: 3;
-  -webkit-text-stroke: 2px #fff;
   color: transparent;
+  -webkit-text-stroke: 2px #fff;
+  z-index: 3;
 }
 
 .backText {
-  z-index: 1;
   color: #fff;
+  z-index: 1;
 }
 
 .item:hover {
