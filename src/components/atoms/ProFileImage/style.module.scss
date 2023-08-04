@@ -39,9 +39,12 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   opacity: 1;
   transition-property: opacity;
 
-
   @screen medium {
     opacity: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
 
@@ -62,7 +65,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   z-index: 2;
 
   @screen medium {
-    width: 40%;
+    width: 60%;
   }
 
   &::after {
@@ -103,21 +106,22 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
 .headingText,
 .backText {
-  @apply text-40;
+  @apply text-40 h-40 leading-40;
   @extend %extend-transition;
 
+  display: block;
   font-weight: bold;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  transition-property: font-size;
+  transition-property: font-size height line-height;
 
   @screen small {
-    @apply text-64;
+    @apply text-64 h-64 leading-64;
   }
 
   @screen medium {
-    @apply text-56;
+    @apply text-56 h-56 leading-56;
   }
 }
 
@@ -142,10 +146,10 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .item:hover {
-  cursor: pointer;
-
   .imageWrap {
-    width: 60%;
+    @screen medium {
+      width: 80%;
+    }
 
     &::after {
       opacity: 0;
@@ -165,7 +169,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   .headingText,
   .backText {
     @screen medium {
-      @apply text-64;
+      @apply text-64 h-64 leading-64;
     }
   }
 }
