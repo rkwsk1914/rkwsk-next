@@ -3,7 +3,7 @@ $pc-year-circle: 96px;
 $border-width: 4px;
 
 .year {
-  @apply bg-lightAccent;
+  @apply bg-accent;
 
   width: $sp-year-circle;
   height: $sp-year-circle;
@@ -39,7 +39,7 @@ $border-width: 4px;
 }
 
 .border {
-  @apply h-full bg-lightAccent;
+  @apply h-full bg-accent;
 
   display: block;
   position: absolute;

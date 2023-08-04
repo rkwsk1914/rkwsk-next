@@ -24,8 +24,8 @@ Default.args = {
   </>
 }
 
-export const withOutMonth = Template.bind({})
-withOutMonth.args = {
+export const withoutMonth = Template.bind({})
+withoutMonth.args = {
   children: <>
     text text text text text text text text text text <br />
     text text text text text text text text text text

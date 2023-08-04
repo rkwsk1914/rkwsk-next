@@ -25,7 +25,8 @@
           "each",
           "if",
           "else",
-          "else if"
+          "else if",
+          "extend"
         ]
       }
     ],
@@ -42,7 +43,8 @@
           "each",
           "if",
           "else",
-          "else if"
+          "else if",
+          "extend"
         ]
       }
     ],

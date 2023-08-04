@@ -13,6 +13,7 @@ type TextInputDataType = {
   address1: InputElementProps,
   address2: InputElementProps,
   password: InputElementProps,
+  contact: InputElementProps,
 }
 
 export const TEXT_INPUT_DATA: TextInputDataType = {
@@ -35,7 +36,7 @@ export const TEXT_INPUT_DATA: TextInputDataType = {
   },
   lastKanaName: {
     id: "lastKanaName",
-    label: "ふりがな（姓）",
+    label: "ふりがな（名）",
     type: 'text',
   },
   email: {
@@ -72,5 +73,10 @@ export const TEXT_INPUT_DATA: TextInputDataType = {
     label: "パスワード",
     type: 'password',
     autoComplete: "new-password"
+  },
+  contact: {
+    id: "contact",
+    label: "お問い合わせ内容",
+    type: 'text',
   },
 }

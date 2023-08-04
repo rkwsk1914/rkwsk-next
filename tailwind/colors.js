@@ -14,19 +14,18 @@ const pallet = {
 const light = {
   lightBg: pallet.color4,
   lightText: pallet.color5,
-  lightAccent: pallet.color10,
 }
 
 const dark = {
   darkBg: pallet.color3,
   darkText: pallet.color4,
-  darkAccent: pallet.color10,
 }
 
 const colors = {
   main: pallet.color1,
   ...light,
   ...dark,
+  accent: pallet.color10,
 }
 
 module.exports = { colors }

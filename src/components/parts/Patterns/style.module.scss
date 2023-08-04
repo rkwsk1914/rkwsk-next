@@ -5,7 +5,7 @@
   @apply bg-lightBg text-lightText;
 
   span {
-    @apply text-lightAccent;
+    @apply text-accent;
   }
 
   .main {
@@ -20,6 +20,6 @@
   @apply bg-darkBg text-darkText;
 
   span {
-    @apply text-darkAccent;
+    @apply text-accent;
   }
 }

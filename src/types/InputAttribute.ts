@@ -26,6 +26,7 @@ export interface TextInputBaseProps extends InputAttributeTypes {
   placeholder?: string
   rows?: number
   size?: 'small' | 'medium'
+  multiline?: boolean
 }
 
 export const InputAttributeOptions = {

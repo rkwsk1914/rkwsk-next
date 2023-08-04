@@ -45,8 +45,8 @@ Default.args = {
   ]
 }
 
-export const withOutMonth = Template.bind({})
-withOutMonth.args = {
+export const withoutMonth = Template.bind({})
+withoutMonth.args = {
   yearPos: 'right',
   year: 1996,
   monthlyDate: [
