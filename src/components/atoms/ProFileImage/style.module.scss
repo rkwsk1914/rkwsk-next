@@ -1,7 +1,7 @@
 $transition-duration: .5s;
 $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
-.extend_transition {
+%extend-transition {
   transition-duration: $transition-duration;
   transition-timing-function: $transition-timing-function;
 }
@@ -14,7 +14,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
 .buttonWrap {
   @apply w-full;
-  @extend .extend_transition;
+  @extend %extend-transition;
 
   bottom: 5%;
   left: 50%;
@@ -31,7 +31,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
 .button {
   @apply h-spUI leading-spUI border-lightText w-full;
-  @extend .extend_transition;
+  @extend %extend-transition;
 
   border: 2px solid;
   border-radius: 50px;
@@ -52,7 +52,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .imageWrap {
-  @extend .extend_transition;
+  @extend %extend-transition;
 
   border-radius: 50px;
   margin: 0 0 0 auto;
@@ -68,7 +68,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   &::after {
     @screen medium {
       @apply bg-accent;
-      @extend .extend_transition;
+      @extend %extend-transition;
 
       width: 100%;
       height: 100%;
@@ -104,7 +104,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 .headingText,
 .backText {
   @apply text-40;
-  @extend .extend_transition;
+  @extend %extend-transition;
 
   font-weight: bold;
   position: absolute;
@@ -118,6 +118,26 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   @screen medium {
     @apply text-56;
+  }
+}
+
+.dark {
+  .backText {
+    @apply text-darkText;
+  }
+
+  .button {
+    @apply  border-darkText text-darkText;
+  }
+
+  .imageWrap {
+    &::after {
+      @apply bg-main;
+    }
+  }
+
+  .headingText {
+    -webkit-text-stroke: 2px rgb(255 255 255);
   }
 }
 
@@ -147,25 +167,5 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
     @screen medium {
       @apply text-64;
     }
-  }
-}
-
-.dark {
-  .backText {
-    @apply text-darkText;
-  }
-
-  .button {
-    @apply  border-darkText text-darkText;
-  }
-
-  .imageWrap {
-    &::after {
-      @apply bg-main;
-    }
-  }
-
-  .headingText {
-    -webkit-text-stroke: 2px rgb(255 255 255);
   }
 }
