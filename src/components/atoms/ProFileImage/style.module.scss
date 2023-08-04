@@ -16,13 +16,13 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   @apply w-full;
   @extend .extend_transition;
 
-  position: absolute;
-  max-width: 80%;
-  left: 50%;
-  transform: translateX(-50%);
   bottom: 5%;
-  z-index: 3;
+  left: 50%;
+  max-width: 80%;
+  position: absolute;
+  transform: translateX(-50%);
   transition-property: max-width;
+  z-index: 3;
 
   @screen medium {
     max-width: 40%;
@@ -34,8 +34,8 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   @extend .extend_transition;
 
   border: 2px solid;
-  font-weight: bold;
   border-radius: 50px;
+  font-weight: bold;
   opacity: 1;
   transition-property: opacity;
 

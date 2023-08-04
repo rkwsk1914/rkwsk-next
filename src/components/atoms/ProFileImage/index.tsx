@@ -20,13 +20,13 @@ interface WithButton extends BaseProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
   buttonText?: string
 }
-
 interface WithoutButton extends BaseProps {
   onClick?: never
   buttonText?: never
 }
 
 type Props = WithButton | WithoutButton
+
 export const ProFileImage: React.FC<Props> = (
   {
     children,
