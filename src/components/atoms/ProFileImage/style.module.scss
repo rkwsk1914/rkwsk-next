@@ -1,9 +1,48 @@
+$transition-duration: .5s;
+$transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+.extend_transition {
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-timing-function;
+}
+
 .item {
   @apply w-full;
 
-  max-width: 500px;
   position: relative;
-  transition: max-width .1s ease;
+}
+
+.buttonWrap {
+  @apply w-full;
+  @extend .extend_transition;
+
+  position: absolute;
+  max-width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5%;
+  z-index: 3;
+  transition-property: max-width;
+
+  @screen medium {
+    max-width: 40%;
+  }
+}
+
+.button {
+  @apply h-spUI leading-spUI border-lightText w-full;
+  @extend .extend_transition;
+
+  border: 2px solid;
+  font-weight: bold;
+  border-radius: 50px;
+  opacity: 1;
+  transition-property: opacity;
+
+
+  @screen medium {
+    opacity: 0;
+  }
 }
 
 .content {
@@ -12,46 +51,121 @@
   position: absolute;
 }
 
-.image {
-  display: block;
+.imageWrap {
+  @extend .extend_transition;
+
+  border-radius: 50px;
   margin: 0 0 0 auto;
   position: relative;
-  transition: width .1s ease;
-  width: 70%;
+  transition-property: width;
+  width: 60%;
   z-index: 2;
+
+  @screen medium {
+    width: 40%;
+  }
+
+  &::after {
+    @screen medium {
+      @apply bg-accent;
+      @extend .extend_transition;
+
+      width: 100%;
+      height: 100%;
+      content: "";
+      display: block;
+      left: 0;
+      opacity: 0.35;
+      position: absolute;
+      top: 0;
+      transition-property: opacity;
+    }
+  }
+}
+
+.image {
+  @apply w-full;
+
+  display: block;
+}
+
+.headingText {
+  color: transparent;
+  -webkit-text-stroke: 2px #FFBD59;
+  z-index: 3;
+}
+
+.backText {
+  @apply text-accent;
+
+  z-index: 1;
 }
 
 .headingText,
 .backText {
-  @apply text-56;
+  @apply text-40;
+  @extend .extend_transition;
 
   font-weight: bold;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  transition: font-size .1s ease;
-}
+  transition-property: font-size;
 
-.headingText {
-  color: transparent;
-  -webkit-text-stroke: 2px #fff;
-  z-index: 3;
-}
+  @screen small {
+    @apply text-64;
+  }
 
-.backText {
-  color: #fff;
-  z-index: 1;
+  @screen medium {
+    @apply text-56;
+  }
 }
 
 .item:hover {
-  max-width: 600px;
+  cursor: pointer;
 
-  .image {
-    width: 80%;
+  .imageWrap {
+    width: 60%;
+
+    &::after {
+      opacity: 0;
+    }
+  }
+
+  .buttonWrap {
+    @screen medium {
+      max-width: 80%;
+    }
+  }
+
+  .button {
+    opacity: 1;
   }
 
   .headingText,
   .backText {
-    @apply text-64;
+    @screen medium {
+      @apply text-64;
+    }
+  }
+}
+
+.dark {
+  .backText {
+    @apply text-darkText;
+  }
+
+  .button {
+    @apply  border-darkText text-darkText;
+  }
+
+  .imageWrap {
+    &::after {
+      @apply bg-main;
+    }
+  }
+
+  .headingText {
+    -webkit-text-stroke: 2px rgb(255 255 255);
   }
 }

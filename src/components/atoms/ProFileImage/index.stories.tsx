@@ -18,12 +18,29 @@ const Template: StoryFn<typeof StoryComponent> = (
 export const Default = Template.bind({})
 Default.args = {
   children: <>sample<br /></>,
-  firstName: 'KAWASAKI',
-  lastName: 'RYO',
-  image: {
-    src: '/cafe.jpg',
-    width: 340,
-    height: 253
+  name: {
+    firstName: 'KAWASAKI',
+    lastName: 'RYO',
   },
-  sectionLevel: 2
+  image: {
+    src: '/pic-me.jpg',
+    width: 1478,
+    height: 1108
+  },
+}
+
+export const WithButton = Template.bind({})
+WithButton.args = {
+  children: <>sample<br /></>,
+  name: {
+    firstName: 'KAWASAKI',
+    lastName: 'RYO',
+  },
+  image: {
+    src: '/pic-me.jpg',
+    width: 1478,
+    height: 1108
+  },
+  buttonText: 'Detail',
+  onClick: (e) => console.log('ProfileImage Click.', e)
 }
