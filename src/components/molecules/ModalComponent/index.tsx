@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState } from 'react'
 
 import Modal from '@mui/material/Modal'
 
@@ -7,20 +7,33 @@ import { ButtonElement } from '@/components/forms/atoms/ButtonElement'
 
 import styles from './style.module.scss'
 
-type Props = {
+interface BaseProps {
   children?: React.ReactNode
-  buttonText?: string
 }
+interface WithButton extends BaseProps {
+  buttonText?: string
+  onClose?: never
+  isOpen?: never
+}
+interface WithoutButton extends BaseProps {
+  buttonText?: never
+  onClose?: (event?: React.MouseEvent<HTMLButtonElement>) => void
+  isOpen?: boolean
+}
+
+type Props = WithButton | WithoutButton
 
 export const ModalComponent: React.FC<Props> = (
   {
     children,
     buttonText,
+    onClose,
+    isOpen = false,
   }
 ): JSX.Element => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const handleClose = () => onClose ? onClose() : setOpen(false)
 
   return (
     <div>
@@ -28,7 +41,7 @@ export const ModalComponent: React.FC<Props> = (
         <ButtonElement onClick={handleOpen}>{buttonText}</ButtonElement>
       )}
       <Modal
-        open={open}
+        open={isOpen || open}
         onClose={handleClose}
       >
         <div className={styles.modalContent}>

@@ -10,7 +10,7 @@ export default {
 } as Meta<typeof StoryComponent>
 
 const Template: StoryFn<typeof StoryComponent> = (
-  args?: React.ComponentProps<typeof StoryComponent>
+  args: React.ComponentProps<typeof StoryComponent>
 ) => (
   <StoryComponent {...args}></StoryComponent>
 )
@@ -18,5 +18,5 @@ const Template: StoryFn<typeof StoryComponent> = (
 export const Default = Template.bind({})
 Default.args = {
   children: 'Sample',
-  buttonText: 'Modal Open'
+  buttonText: 'Modal Open',
 }
