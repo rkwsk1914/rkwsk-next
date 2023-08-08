@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css"
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
-import { ICON_DATA } from '@/const/IconDate'
+import { ICON_DATA } from '@/const/IconData'
 
 import styles from './style.module.scss'
 
