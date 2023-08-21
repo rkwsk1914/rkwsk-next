@@ -47,6 +47,20 @@ $border-width: 4px;
   z-index: -1;
 }
 
+.dark {
+  .border {
+    @apply bg-darkWaring;
+  }
+
+  .year {
+    @apply bg-darkWaring;
+
+    span {
+      @apply text-darkBg;
+    }
+  }
+}
+
 .li {
   align-items: flex-start;
   display: flex;
@@ -94,16 +108,3 @@ $border-width: 4px;
   }
 }
 
-.dark {
-  .border {
-    @apply bg-darkWaring;
-  }
-
-  .year {
-    @apply bg-darkWaring;
-
-    span {
-      @apply text-darkBg;
-    }
-  }
-}
