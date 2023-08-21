@@ -70,7 +70,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   &::after {
     @screen medium {
-      @apply bg-accent;
+      @apply bg-lightWaring;
       @extend %extend-transition;
 
       width: 100%;
@@ -99,7 +99,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .backText {
-  @apply text-accent;
+  @apply text-lightWaring;
 
   z-index: 1;
 }
@@ -136,7 +136,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   .imageWrap {
     &::after {
-      @apply bg-main;
+      @apply bg-lightPrime;
     }
   }
 

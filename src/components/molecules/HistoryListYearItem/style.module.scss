@@ -3,7 +3,7 @@ $pc-year-circle: 96px;
 $border-width: 4px;
 
 .year {
-  @apply bg-accent;
+  @apply bg-lightWaring;
 
   width: $sp-year-circle;
   height: $sp-year-circle;
@@ -39,7 +39,7 @@ $border-width: 4px;
 }
 
 .border {
-  @apply h-full bg-accent;
+  @apply h-full bg-lightWaring;
 
   display: block;
   position: absolute;
@@ -91,5 +91,19 @@ $border-width: 4px;
 
     .year { order: 2 }
     .content { order: 1 }
+  }
+}
+
+.dark {
+  .border {
+    @apply bg-darkWaring;
+  }
+
+  .year {
+    @apply bg-darkWaring;
+
+    span {
+      @apply text-darkBg;
+    }
   }
 }
