@@ -2,6 +2,7 @@
   0%, 100% {
       border-radius: 59% 41% 21% 79% / 62% 53% 47% 38%;
   }
+
   50% {
       border-radius: 26% 74% 52% 48% / 52% 32% 68% 48%;
   }
@@ -12,19 +13,19 @@
 }
 
 .fluid {
-  position: absolute;
-  background: aqua;
   width: 50vh;
   height: 50vh;
   animation: fluid-animation 3s ease 0s infinite normal;
+  background: aqua;
   opacity: .7;
+  position: absolute;
 }
 
 .image {
-  position: absolute;
-  background: lightseagreen;
   width: 50vh;
   height: auto;
   animation: fluid-animation 3s ease 0s infinite normal;
   animation-delay: 1s;
+  background: lightseagreen;
+  position: absolute;
 }
