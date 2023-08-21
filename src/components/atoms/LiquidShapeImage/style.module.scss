@@ -1,9 +1,9 @@
-$init_border_radius: 59% 41% 21% 79% / 62% 53% 47% 38%;
-$side_ratio: 15%;
+$init-border-radius: 59% 41% 21% 79% / 62% 53% 47% 38%;
+$side-ratio: 15%;
 
 @keyframes fluid-animation {
   0% {
-    border-radius: $init_border_radius;
+    border-radius: $init-border-radius;
   }
 
   33% {
@@ -15,7 +15,7 @@ $side_ratio: 15%;
   }
 
   100% {
-    border-radius: $init_border_radius;
+    border-radius: $init-border-radius;
   }
 }
 
@@ -34,10 +34,10 @@ $side_ratio: 15%;
 .fluid {
   @apply bg-lightPrime;
 
-  width: calc(100% - $side_ratio);
+  width: calc(100% - $side-ratio);
   height: 75%;
   animation-delay: 0s;
-  right: $side_ratio;
+  right: $side-ratio;
   top: 50%;
   transform: translate(5%, -50%);
 }
@@ -45,10 +45,10 @@ $side_ratio: 15%;
 .fluid2 {
   @apply bg-lightWaring;
 
-  width: calc(100% - $side_ratio);
+  width: calc(100% - $side-ratio);
   height: 75%;
   animation-delay: 1s;
-  left: $side_ratio;
+  left: $side-ratio;
   top: 50%;
   transform: translate(-5%, -50%);
 }
