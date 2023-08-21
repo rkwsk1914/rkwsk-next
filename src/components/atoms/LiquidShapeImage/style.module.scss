@@ -1,0 +1,30 @@
+@keyframes fluid-animation {
+  0%, 100% {
+      border-radius: 59% 41% 21% 79% / 62% 53% 47% 38%;
+  }
+  50% {
+      border-radius: 26% 74% 52% 48% / 52% 32% 68% 48%;
+  }
+}
+
+.container {
+  position: relative;
+}
+
+.fluid {
+  position: absolute;
+  background: aqua;
+  width: 50vh;
+  height: 50vh;
+  animation: fluid-animation 3s ease 0s infinite normal;
+  opacity: .7;
+}
+
+.image {
+  position: absolute;
+  background: lightseagreen;
+  width: 50vh;
+  height: auto;
+  animation: fluid-animation 3s ease 0s infinite normal;
+  animation-delay: 1s;
+}
