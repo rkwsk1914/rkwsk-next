@@ -15,7 +15,7 @@
     "lint:css:fix": "stylelint --fix **/*.{css,scss,sass}",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "jest",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "test-silent": "jest --silent"
   },
   "dependencies": {

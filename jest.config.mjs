@@ -9,4 +9,4 @@ const configObject = {
   },
 }
 
-module.exports = configObject
+export default configObject
