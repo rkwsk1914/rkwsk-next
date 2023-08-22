@@ -12,7 +12,7 @@ import styles from './style.module.scss'
 import { MenuDataType } from '@/types/MenuDataType'
 
 type Props = {
-  data?: MenuDataType
+  data: MenuDataType
 };
 
 export const MenuListItem: React.FC<Props> = memo(({
@@ -24,8 +24,6 @@ export const MenuListItem: React.FC<Props> = memo(({
     const regex = /^#.*/
     return regex.test(href)
   }
-
-  if (!data) return <></>
 
   return (
     <li className={liClassName}>
