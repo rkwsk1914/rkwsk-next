@@ -23,3 +23,9 @@
     max-width: 1200px;
   }
 }
+
+.scrollButton {
+  @apply bottom-16 right-16 z-ScrollTopButton;
+
+  position: fixed;
+}
