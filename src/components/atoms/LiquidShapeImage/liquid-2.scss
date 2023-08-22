@@ -26,8 +26,8 @@ $side-ratio: 25%;
   height: 75%;
   animation: liquid-animation 5s ease 0s infinite normal;
   border-radius: $init-border-radius;
-  right: 0;
   position: absolute;
+  right: 0;
   top: 50%;
   transform: translate(-5%, -50%);
 }

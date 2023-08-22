@@ -3,9 +3,9 @@ import * as React from 'react'
 import { useMatchHeight } from '@/hooks/useMatchHeight'
 
 import { MyCard } from '@/components/atoms/MyCard'
+import { SlickSlider, OriginalSettings } from '@/components/libraries/SlickSlider'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { SkillSetTable } from '@/components/organisms/SkillSetTable'
-import { SlickSlider, OriginalSettings } from '@/components/organisms/SlickSlider'
 
 import styles from './style.module.scss'
 
