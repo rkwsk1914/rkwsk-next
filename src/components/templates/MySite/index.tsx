@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { MyBody } from '@/components/parts/MyBody'
-import { MyHead } from '@/components/parts/MyHead'
+import { MyBody } from '@/components/layouts/MyBody'
+import { MyHead } from '@/components/layouts/MyHead'
 
 type Props = {
   children?: React.ReactNode
