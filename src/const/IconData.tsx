@@ -27,14 +27,15 @@ import {
   faSlack,
   faWindows,
   faNode,
-  faMicrosoft
+  faMicrosoft,
 } from '@fortawesome/free-brands-svg-icons'
 // import {  } from '@fortawesome/free-regular-svg-icons'
 // import {  } from '@fortawesome/fontawesome-common-types'
 // import {  } from '@fortawesome/free-regular-svg-icons'
 import {
   faCircleChevronRight,
-  faCircleChevronLeft
+  faCircleChevronLeft,
+  faCircleChevronUp
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -72,4 +73,5 @@ export const ICON_DATA = {
   microsoft: <FontAwesomeIcon icon={faMicrosoft} />,
   circleChevronRight: <FontAwesomeIcon icon={faCircleChevronRight} />,
   circleChevronLeft: <FontAwesomeIcon icon={faCircleChevronLeft} />,
+  circleChevronUp: <FontAwesomeIcon icon={faCircleChevronUp} />,
 }
