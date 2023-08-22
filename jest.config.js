@@ -1,7 +1,7 @@
 const configObject = {
   testEnvironment: 'node',
   transform: {
-    '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.(js|jsx)$': 'babel-jest',
   },
   preset: 'ts-jest',
   moduleNameMapper: {
