@@ -1,23 +1,6 @@
-$init-border-radius: 59% 41% 21% 79% / 62% 53% 47% 38%;
-$side-ratio: 15%;
-
-@keyframes fluid-animation {
-  0% {
-    border-radius: $init-border-radius;
-  }
-
-  33% {
-    border-radius: 34% 65% 34% 56% / 57% 42% 55% 42%;
-  }
-
-  66% {
-    border-radius: 26% 74% 52% 48% / 52% 32% 68% 48%;
-  }
-
-  100% {
-    border-radius: $init-border-radius;
-  }
-}
+@import "./liquid-1";
+@import "./liquid-2";
+@import "./liquid-image";
 
 .container {
   @apply w-full;
@@ -26,48 +9,3 @@ $side-ratio: 15%;
   position: relative;
 }
 
-.fluid, .fluid2, .image {
-  animation: fluid-animation 3s ease 2s infinite normal;
-  position: absolute;
-}
-
-.fluid {
-  @apply bg-lightPrime;
-
-  width: calc(100% - $side-ratio);
-  height: 75%;
-  animation-delay: 0s;
-  right: $side-ratio;
-  top: 50%;
-  transform: translate(5%, -50%);
-}
-
-.fluid2 {
-  @apply bg-lightWaring;
-
-  width: calc(100% - $side-ratio);
-  height: 75%;
-  animation-delay: 1s;
-  left: $side-ratio;
-  top: 50%;
-  transform: translate(-5%, -50%);
-}
-
-.image {
-  @apply w-auto h-full;
-
-  animation-delay: 2s;
-  left: 50%;
-  top: 0%;
-  transform: translate(-50%, 0%);
-}
-
-.dark {
-  .fluid {
-    @apply bg-darkPrime;
-  }
-
-  .fluid2 {
-    @apply bg-darkWaring;
-  }
-}

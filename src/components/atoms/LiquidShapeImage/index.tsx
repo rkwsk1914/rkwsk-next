@@ -18,8 +18,8 @@ export const LiquidShapeImage: React.FC<Props> = (
   const classNameContainer = useGetDarkModeStyleClass(styles.container, styles.dark)
   return (
     <div className={classNameContainer}>
-      <div className={styles.fluid} />
-      <div className={styles.fluid2} />
+      <div className={styles.liquid} />
+      <div className={styles.liquid2} />
       <Image className={styles.image} {...image} />
     </div>
   )

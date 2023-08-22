@@ -5,12 +5,12 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   @apply w-spUI h-spUI text-spUI text-lightWaring;
 
   border-radius: 50%;
+  cursor: pointer;
   display: block;
   opacity: .4;
   transition-duration: $transition-duration;
   transition-property: opacity;
   transition-timing-function: $transition-timing-function;
-  cursor: pointer;
 
   & > svg {
     display: block;
