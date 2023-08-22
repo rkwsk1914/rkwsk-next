@@ -13,7 +13,8 @@ export const ScrollTopButton: React.FC = (): JSX.Element => {
 
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     animateScroll.scrollToTop({
-      smooth: true
+      smooth: true,
+      duration: 500,
     })
   }
 

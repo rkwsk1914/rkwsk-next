@@ -10,6 +10,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   transition-duration: $transition-duration;
   transition-property: opacity;
   transition-timing-function: $transition-timing-function;
+  cursor: pointer;
 
   & > svg {
     display: block;
