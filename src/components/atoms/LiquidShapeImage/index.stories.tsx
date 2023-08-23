@@ -23,6 +23,6 @@ Default.args = {
     src: '/pic-me.jpg',
     width: 1478,
     height: 1108,
-    alt: 'test'
   },
+  alt: 'test'
 }

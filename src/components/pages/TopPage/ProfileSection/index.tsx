@@ -35,11 +35,12 @@ export const ProfileSection: React.FC<Props> = ({}): JSX.Element => {
   return (
     <SectionContainer id={GLOBAL_NAV_DATA.profile.id}>
       <section className={styles.area}>
-        <LiquidShapeImage image={{
+        <LiquidShapeImage
+          alt='profile'
+          image={{
           src: '/pic-me.jpg',
           width: 1478,
           height: 1108,
-          alt: 'profile'
         }} />
         <ModalComponent isOpen={open} onClose={handleClose}>
           sample
