@@ -11,6 +11,7 @@ $border-width: 4px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
+  flex-direction: row;
   min-height: $sp-year-circle;
   min-width: $sp-year-circle;
 
@@ -36,6 +37,9 @@ $border-width: 4px;
 
 .content {
   @apply w-full;
+
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .border {
