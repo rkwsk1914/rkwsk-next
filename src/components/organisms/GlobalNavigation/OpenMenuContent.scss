@@ -3,8 +3,8 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
 %extend-transition {
   transition-duration: $transition-duration;
-  transition-timing-function: $transition-timing-function;
   transition-property: transform;
+  transition-timing-function: $transition-timing-function;
 }
 
 .open_content {
@@ -13,10 +13,10 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   width: 100vw;
   height: 100vh;
+  display: block;
+  left: 0;
   position: absolute;
   top: 0;
-  left: 0;
-  display: block;
 
   @screen small {
     @apply pt-0 px-16;
