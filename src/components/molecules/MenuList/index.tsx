@@ -1,5 +1,6 @@
 import { memo } from 'react'
 
+import clsx from 'clsx'
 
 import { MenuListItem } from '@/components/atoms/MenuListItem'
 
@@ -11,16 +12,22 @@ import { MenuDataType } from '@/types/MenuDataType'
 
 type Props = {
   data: Array<MenuDataType>
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void
+  onClick?: () => void
+  type?: 'vertical' | 'horizontality'
 };
 
 export const MenuList: React.FC<Props> = memo(({
   data,
-  onClick
+  onClick,
+  type = 'vertical'
 }): JSX.Element => {
 
+  const ulClassName = clsx(styles.ul, {
+    [styles.horizontality]: type === 'horizontality',
+  })
+
   return (
-    <ul className={styles.ul}>
+    <ul className={ulClassName}>
       {data.map((item, index) => (
         <MenuListItem key={index} data={item} onClick={onClick} />
       ))}

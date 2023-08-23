@@ -13,19 +13,21 @@ import { MenuDataType } from '@/types/MenuDataType'
 
 type Props = {
   data: MenuDataType
+  onClick?: () => void
 };
 
 
 export const MenuListItem: React.FC<Props> = memo(({
   data,
+  onClick
 }): JSX.Element => {
   const liClassName = useGetDarkModeStyleClass(styles.li, styles.dark)
 
   return (
     <li className={liClassName}>
       {data.href ?
-        <Link href={data.href}>{data.text}</Link> :
-        <ScrollLink className='aaa' to={data.id} smooth>{data.text}</ScrollLink>
+        <Link href={data.href} onClick={onClick}>{data.text}</Link> :
+        <ScrollLink className='aaa' to={data.id} smooth onClick={onClick}>{data.text}</ScrollLink>
       }
     </li>
   )

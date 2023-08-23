@@ -35,7 +35,7 @@ const Content: React.FC<Props> = (
     <main className={styles.content}>
       <header className={styles.header}>
         <GlobalNavigation
-          data={getGlobalNavDataArray()}
+          menu={getGlobalNavDataArray()}
           isDark={isDarkModeCTX}
           callBackChangeTheme={() => {
             handleIsDarkMode(!isDarkModeCTX)

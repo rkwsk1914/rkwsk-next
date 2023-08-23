@@ -1,0 +1,71 @@
+$transition-duration: .5s;
+$transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+%extend-transition {
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-timing-function;
+  transition-property: transform;
+}
+
+.open_content {
+  @apply p-16 bg-lightWaring text-lightBg;
+  @extend %extend-transition;
+
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+
+  @screen small {
+    @apply pt-0 px-16;
+  }
+
+  .btn_area {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    @screen small {
+      @apply px-32;
+    }
+  }
+
+  &.top {
+    transform: translateY(-100%);
+
+    &.open {
+      transform: translateY(0%);
+    }
+  }
+
+  &.bottom {
+    transform: translateY(100%);
+
+    &.open {
+      transform: translateY(0%);
+    }
+  }
+
+  &.left {
+    transform: translateX(-100%);
+
+    &.open {
+      transform: translateX(0%);
+    }
+  }
+
+  &.right {
+    transform: translateX(100%);
+
+    &.open {
+      transform: translateX(0%);
+    }
+  }
+
+  &.dark {
+    @apply bg-darkWaring text-darkBg;
+  }
+}
