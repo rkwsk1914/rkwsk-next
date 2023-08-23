@@ -1,5 +1,19 @@
 .section {
-  @apply w-full;
+  @apply px-16;
+
+  @screen small {
+    @apply px-32;
+  }
+
+  @screen large {
+    @apply mx-auto px-0;
+
+    max-width: 1200px;
+  }
+
+  &.full {
+    @apply w-full;
+  }
 
   p {
     @apply text-16;
@@ -21,13 +35,69 @@
 $level: 1;
 
 @while $level <= 6 {
-  .level#{$level} {
-    h#{$level} {
-      padding-bottom: (48px - ($level * 8));
+  .section.level#{$level} {
+    & > .section {
+      @apply px-0;
+
+      @screen small {
+        @apply pl-32;
+      }
     }
 
-    & > section {
-      padding-top: (72px - ($level * 8));
+    @if $level == 1 {
+      h#{$level} {
+        @apply pb-32;
+
+        @screen small {
+          @apply pb-32;
+        }
+      }
+
+      & > .section {
+        @apply pt-24;
+
+        @screen small {
+          @apply pt-48;
+        }
+      }
+    }
+    @else if $level >= 2 and $level <= 4 {
+      h#{$level} {
+        @apply pb-24;
+
+        @screen small {
+          @apply pb-32;
+        }
+      }
+
+      & > .section {
+        @apply pt-32;
+
+        @screen small {
+          @apply pt-48;
+        }
+      }
+    }
+    @else {
+      h#{$level} {
+        @apply pb-16;
+
+        @screen small {
+          @apply pb-24;
+        }
+      }
+
+      & > .section {
+        @apply pt-24;
+
+        @screen small {
+          @apply pt-32;
+        }
+      }
+    }
+
+    h#{$level} + .section {
+      @apply pt-0;
     }
   }
 
