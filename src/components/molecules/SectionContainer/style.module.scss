@@ -6,7 +6,7 @@
   }
 
   @screen large {
-    @apply mx-auto px-0;
+    @apply mx-auto;
 
     max-width: 1200px;
   }
@@ -30,6 +30,10 @@
       @apply mt-8;
     }
   }
+
+  & > .section {
+    @apply px-0;
+  }
 }
 
 $level: 1;
@@ -37,27 +41,26 @@ $level: 1;
 @while $level <= 6 {
   .section.level#{$level} {
     & > .section:not(.full) {
-      @apply px-0;
 
-      @screen small {
+      @screen large {
         @apply pl-32;
       }
     }
 
     @if $level == 1 {
       h#{$level} {
-        @apply pb-32;
+        @apply pb-48;
 
         @screen small {
-          @apply pb-32;
+          @apply pb-64;
         }
       }
 
       & > .section {
-        @apply pt-24;
+        @apply pt-spUI;
 
         @screen small {
-          @apply pt-48;
+          @apply pt-spUI;
         }
       }
     } @else if $level >= 2 and $level <= 4 {
@@ -107,19 +110,35 @@ $level: 1;
 }
 
 .full {
-  @apply w-full px-0;
+  @apply w-full px-16;
+
+  @screen medium {
+    @apply px-32;
+  }
+
+  @screen large {
+    @apply px-0;
+  }
 
   max-width: 100%;
-}
 
-$h-level: 1;
+  & > .section {
+    @apply px-0;
+  }
 
-@while $h-level <= 6 {
-  .full {
+  $h-level: 1;
+
+  @while $h-level <= 6 {
     & > h#{$h-level} {
       @extend %extend;
     }
-  }
 
-  $h-level: $h-level + 1;
+    $h-level: $h-level + 1;
+  }
+}
+
+.section {
+  & > .full {
+    @apply px-0;
+  }
 }
