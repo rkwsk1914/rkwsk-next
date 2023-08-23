@@ -13,11 +13,10 @@
 }
 
 .section {
+  @apply text-16;
   @extend %extend;
 
   p {
-    @apply text-16;
-
     sup, small {
       @apply text-8;
     }
