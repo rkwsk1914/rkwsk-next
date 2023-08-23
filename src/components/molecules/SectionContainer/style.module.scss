@@ -40,7 +40,6 @@ $level: 1;
 @while $level <= 6 {
   .section.level#{$level} {
     & > .section:not(.full) {
-
       @screen large {
         @apply pl-32;
       }

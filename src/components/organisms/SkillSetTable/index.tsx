@@ -23,11 +23,11 @@ export const SkillSetTable: React.FC<Props> = ({
       <tbody>
         <tr className={styles.first_row}>
           <th></th>
-          <th>level of skill</th>
-          <th>Years of experience</th>
-          <th>Experience</th>
+          <th>習得度</th>
+          <th>経験年数</th>
+          <th>実務経験</th>
         </tr>
-        {data.map((item, index) => (
+        {data.sort((a, b) => b.value - a.value).map((item, index) => (
           <SkillSetTableItem
             key={index}
             skillName={item.skillName}

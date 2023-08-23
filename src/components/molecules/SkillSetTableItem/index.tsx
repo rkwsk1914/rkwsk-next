@@ -1,5 +1,12 @@
 import * as React from 'react'
 
+
+import clsx from 'clsx'
+
+import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
+
+import { ICON_DATA } from '@/const/IconData'
+
 import { RatingElement } from '@/components/forms/atoms/RatingElement'
 
 import styles from './style.module.scss'
@@ -39,6 +46,8 @@ export const SkillSetTableItem: React.FC<Props> = ({
     return '-'
   }
 
+  const starClassName = useGetDarkModeStyleClass(styles.star, styles.dark)
+
   return (
     <tr className={styles.tr}>
       <th className={styles.skillName}>{skillName}</th>
@@ -55,7 +64,11 @@ export const SkillSetTableItem: React.FC<Props> = ({
         />
       </td>
       <td className={styles.yearsOfExperience}>{calculateYearsOfExperience()}</td>
-      <td className={styles.category}>{category}</td>
+      <td className={styles.category}>
+        <span className={clsx({
+          [starClassName]: category === 'work-experience',
+        })}>{category === 'self-studying' ? ICON_DATA.study : ICON_DATA.star}</span>
+      </td>
     </tr>
   )
 }
