@@ -1,7 +1,7 @@
 @import "./OpenMenuContent";
 
 .nav {
-  @apply w-full px-16;
+  @apply w-full px-16 bg-lightBg;
 
   align-items: flex-start;
   display: flex;
@@ -10,6 +10,10 @@
 
   @screen small {
     @apply px-32;
+  }
+
+  &.dark {
+    @apply bg-darkBg;
   }
 }
 
