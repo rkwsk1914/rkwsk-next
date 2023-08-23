@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
 
 import { ScrollTopButton } from '@/components/atoms/ScrollTopButton'
+import { MyFooter } from '@/components/layouts/MyFooter'
 import { ThemeContextProvider, ThemeContext } from '@/components/layouts/Theme'
 import { GlobalNavigation } from '@/components/organisms/GlobalNavigation'
 
@@ -47,7 +48,7 @@ const Content: React.FC<Props> = (
       <div className={styles.scrollButton}>
         <ScrollTopButton />
       </div>
-      <footer></footer>
+      <MyFooter />
     </main>
   )
 }
