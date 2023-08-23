@@ -120,5 +120,6 @@ $h-level: 1;
       @extend %extend;
     }
   }
+
   $h-level: $h-level + 1;
 }
