@@ -6,11 +6,11 @@ $init-border-radius: 48% 52% 50% 50% / 42% 59% 41% 58%;
   }
 
   33% {
-    border-radius: 32% 68% 63% 37% / 65% 46% 54% 35%;
+    border-radius: 74% 26% 52% 48% / 74% 72% 28% 26%;
   }
 
   66% {
-    border-radius: 74% 26% 52% 48% / 74% 72% 28% 26%;
+    border-radius: 32% 68% 63% 37% / 65% 46% 54% 35%;
   }
 
   100% {
@@ -19,12 +19,10 @@ $init-border-radius: 48% 52% 50% 50% / 42% 59% 41% 58%;
 }
 
 .image {
-  @apply w-auto h-full;
+  @apply w-auto h-auto;
 
+  max-height: 100%;
   animation: liquid-animation 5s ease 0s infinite normal;
   border-radius: $init-border-radius;
-  left: 50%;
-  position: absolute;
-  top: 0%;
-  transform: translate(-50%, 0%);
+  position: relative;
 }

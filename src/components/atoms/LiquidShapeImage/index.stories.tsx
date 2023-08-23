@@ -12,7 +12,9 @@ export default {
 const Template: StoryFn<typeof StoryComponent> = (
   args: React.ComponentProps<typeof StoryComponent>
 ) => (
-  <StoryComponent {...args}></StoryComponent>
+  <div style={{ height: '500px' }}>
+    <StoryComponent {...args}></StoryComponent>
+  </div>
 )
 
 export const Default = Template.bind({})

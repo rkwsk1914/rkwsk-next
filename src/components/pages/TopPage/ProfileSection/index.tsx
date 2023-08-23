@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
-import { ProFileImage } from '@/components/atoms/ProFileImage'
+import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
+
+import { LiquidShapeImage } from '@/components/atoms/LiquidShapeImage'
 import { ModalComponent } from '@/components/molecules/ModalComponent'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
-
 
 import styles from './style.module.scss'
 
@@ -32,15 +33,14 @@ export const ProfileSection: React.FC<Props> = ({}): JSX.Element => {
   }
 
   return (
-    <SectionContainer id={'profile'} title={'Profile'}>
+    <SectionContainer id={GLOBAL_NAV_DATA.profile.id}>
       <section className={styles.area}>
-        <ProFileImage
-          name={name}
-          image={profileImage}
-          sectionLevel={3}
-          buttonText='Detail'
-          onClick={handleOpen}
-        />
+        <LiquidShapeImage image={{
+          src: '/pic-me.jpg',
+          width: 1478,
+          height: 1108,
+          alt: 'profile'
+        }} />
         <ModalComponent isOpen={open} onClose={handleClose}>
           sample
         </ModalComponent>

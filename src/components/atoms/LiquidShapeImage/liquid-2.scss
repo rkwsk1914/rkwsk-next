@@ -7,11 +7,11 @@ $side-ratio: 25%;
   }
 
   33% {
-    border-radius: 34% 65% 34% 56% / 57% 42% 55% 42%;
+    border-radius: 26% 74% 52% 48% / 52% 32% 68% 48%;
   }
 
   66% {
-    border-radius: 26% 74% 52% 48% / 52% 32% 68% 48%;
+    border-radius: 34% 65% 34% 56% / 57% 42% 55% 42%;
   }
 
   100% {
@@ -24,7 +24,7 @@ $side-ratio: 25%;
 
   width: calc(100% - $side-ratio);
   height: 75%;
-  animation: liquid-animation 5s ease 0s infinite normal;
+  animation: liquid-animation 5s ease 1s infinite normal;
   border-radius: $init-border-radius;
   position: absolute;
   right: 0;
