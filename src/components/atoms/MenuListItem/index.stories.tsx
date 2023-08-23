@@ -19,7 +19,7 @@ export const ScrollLink = Template.bind({})
 ScrollLink.args = {
   data: {
     text: 'menu1',
-    href: '#menu1'
+    id: 'menu1'
   }
 }
 
@@ -27,6 +27,7 @@ export const PageLink = Template.bind({})
 PageLink.args = {
   data: {
     text: 'menu1',
+    id: 'menu1',
     href: '/'
   }
 }

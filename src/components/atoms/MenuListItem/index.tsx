@@ -15,10 +15,6 @@ type Props = {
   data: MenuDataType
 };
 
-export const isScrollLink = (href: string): boolean => {
-  const regex = /^#.*/
-  return regex.test(href)
-}
 
 export const MenuListItem: React.FC<Props> = memo(({
   data,
@@ -27,9 +23,9 @@ export const MenuListItem: React.FC<Props> = memo(({
 
   return (
     <li className={liClassName}>
-      {isScrollLink(data.href) ?
-        <ScrollLink to={data.href} smooth>{data.text}</ScrollLink> :
-        <Link href={data.href}>{data.text}</Link>
+      {data.href ?
+        <Link href={data.href}>{data.text}</Link> :
+        <ScrollLink className='aaa' to={data.id} smooth>{data.text}</ScrollLink>
       }
     </li>
   )
