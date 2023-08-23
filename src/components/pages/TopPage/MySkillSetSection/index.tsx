@@ -50,7 +50,21 @@ export const MySkillSetSection: React.FC<Props> = ({
           slidesToShow:1,
           centerPadding: '0px',
           autoplay: false,
-          arrows: true,
+          arrows: false,
+          dots: true,
+          centerMode: true,
+          useCSS: true
+        }
+      },
+      {
+        breakpoint: 960, // min-width 960
+        settings: {
+          infinite:true,
+          speed: 300,
+          slidesToShow:1,
+          centerPadding: '0px',
+          autoplay: false,
+          arrows: false,
           dots: true,
           centerMode: true,
           useCSS: true

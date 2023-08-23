@@ -21,6 +21,12 @@ export const SkillSetTable: React.FC<Props> = ({
         <col className={styles.col_4}/>
       </colgroup>
       <tbody>
+        <tr className={styles.first_row}>
+          <th></th>
+          <th>level of skill</th>
+          <th>Years of experience</th>
+          <th>Experience</th>
+        </tr>
         {data.map((item, index) => (
           <SkillSetTableItem
             key={index}
