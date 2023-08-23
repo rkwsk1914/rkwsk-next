@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import { useMatchHeight } from '@/hooks/useMatchHeight'
 
+import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
+
 import { MyCard } from '@/components/atoms/MyCard'
 import { SlickSlider, OriginalSettings } from '@/components/libraries/SlickSlider'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
@@ -58,7 +60,7 @@ export const MySkillSetSection: React.FC<Props> = ({
   }
 
   return (
-    <SectionContainer id={'skills'} title={'Skills'}>
+    <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text}>
       <SlickSlider settings={settings}>
         {slides}
       </SlickSlider>

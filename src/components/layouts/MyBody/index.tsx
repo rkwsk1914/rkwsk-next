@@ -8,6 +8,9 @@ import { GlobalNavigation } from '@/components/organisms/GlobalNavigation'
 
 import styles from './style.module.scss'
 
+import { MenuDataType } from '@/types/MenuDataType'
+
+
 type Props = {
   children?: React.ReactNode
 };
@@ -22,11 +25,17 @@ const Content: React.FC<Props> = (
     handleIsDarkMode
   }  = useContext(ThemeContext)
 
+  const getGlobalNavDataArray = (): MenuDataType[] => {
+    const keys = Object.keys(GLOBAL_NAV_DATA)
+
+    return keys.map(key => GLOBAL_NAV_DATA[key])
+  }
+
   return (
     <main className={styles.content}>
       <header className={styles.header}>
         <GlobalNavigation
-          data={GLOBAL_NAV_DATA}
+          data={getGlobalNavDataArray()}
           isDark={isDarkModeCTX}
           callBackChangeTheme={() => {
             handleIsDarkMode(!isDarkModeCTX)
