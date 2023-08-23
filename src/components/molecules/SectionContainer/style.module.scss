@@ -33,6 +33,40 @@
   & > .section {
     @apply px-0;
   }
+
+  &.full {
+    @apply w-full px-16;
+
+    @screen medium {
+      @apply px-32;
+    }
+
+    @screen large {
+      @apply px-0;
+    }
+
+    max-width: 100%;
+
+    & > .section {
+      @apply px-0;
+    }
+
+
+    $h-level: 1;
+
+    @while $h-level <= 6 {
+      & > h#{$h-level} {
+        @apply px-0;
+        @extend %extend;
+      }
+
+      $h-level: $h-level + 1;
+    }
+  }
+
+  & > .full {
+    @apply px-0;
+  }
 }
 
 $level: 1;
@@ -105,38 +139,4 @@ $level: 1;
 
 .no_title {
   padding-top: 0;
-}
-
-.full {
-  @apply w-full px-16;
-
-  @screen medium {
-    @apply px-32;
-  }
-
-  @screen large {
-    @apply px-0;
-  }
-
-  max-width: 100%;
-
-  & > .section {
-    @apply px-0;
-  }
-
-  $h-level: 1;
-
-  @while $h-level <= 6 {
-    & > h#{$h-level} {
-      @extend %extend;
-    }
-
-    $h-level: $h-level + 1;
-  }
-}
-
-.section {
-  & > .full {
-    @apply px-0;
-  }
 }
