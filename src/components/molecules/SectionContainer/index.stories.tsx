@@ -115,3 +115,32 @@ InnerLevel3.args = {
   title: 'title3',
   level: 3,
 }
+
+export const widthFull = Template.bind({})
+widthFull.args = {
+  children: (
+    <SectionContainer
+      {...setSampleData(2,
+        <SectionContainer
+        {...setSampleData(3,
+          <SectionContainer
+          {...setSampleData(4,
+            <SectionContainer
+            {...setSampleData(5,
+              <SectionContainer
+              {...setSampleData(6, null)} />,
+            )}
+          />,
+          )}
+          isFull
+        />,
+        )}
+      />,
+      )}
+      isFull
+    />
+  ),
+  title: 'title1',
+  level: 1,
+  isFull: true
+}

@@ -60,7 +60,7 @@ export const MySkillSetSection: React.FC<Props> = ({
   }
 
   return (
-    <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text}>
+    <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text} isFull>
       <SlickSlider settings={settings}>
         {slides}
       </SlickSlider>

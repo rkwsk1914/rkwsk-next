@@ -1,4 +1,4 @@
-.section {
+%extend {
   @apply px-16;
 
   @screen small {
@@ -10,10 +10,10 @@
 
     max-width: 1200px;
   }
+}
 
-  &.full {
-    @apply w-full;
-  }
+.section {
+  @extend %extend;
 
   p {
     @apply text-16;
@@ -36,7 +36,7 @@ $level: 1;
 
 @while $level <= 6 {
   .section.level#{$level} {
-    & > .section {
+    & > .section:not(.full) {
       @apply px-0;
 
       @screen small {
@@ -60,8 +60,7 @@ $level: 1;
           @apply pt-48;
         }
       }
-    }
-    @else if $level >= 2 and $level <= 4 {
+    } @else if $level >= 2 and $level <= 4 {
       h#{$level} {
         @apply pb-24;
 
@@ -77,8 +76,7 @@ $level: 1;
           @apply pt-48;
         }
       }
-    }
-    @else {
+    } @else {
       h#{$level} {
         @apply pb-16;
 
@@ -106,4 +104,21 @@ $level: 1;
 
 .no_title {
   padding-top: 0;
+}
+
+.full {
+  @apply w-full px-0;
+
+  max-width: 100%;
+}
+
+$h-level: 1;
+
+@while $h-level <= 6 {
+  .full {
+    & > h#{$h-level} {
+      @extend %extend;
+    }
+  }
+  $h-level: $h-level + 1;
 }

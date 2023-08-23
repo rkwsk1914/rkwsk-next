@@ -20,7 +20,7 @@ export const TopPage: React.FC<Props> = (): JSX.Element => {
 
   return (
     <MySite title={'rkwsk'} description={'rkwsk'}>
-      <SectionContainer level={1}>
+      <SectionContainer level={1} isFull>
         <HeaderLogo />
         <SectionContainer>
           <div className={styles.firstViewBg} />
