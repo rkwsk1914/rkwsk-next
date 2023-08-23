@@ -15,15 +15,15 @@ type Props = {
   data: MenuDataType
 };
 
+export const isScrollLink = (href: string): boolean => {
+  const regex = /^#.*/
+  return regex.test(href)
+}
+
 export const MenuListItem: React.FC<Props> = memo(({
   data,
 }): JSX.Element => {
   const liClassName = useGetDarkModeStyleClass(styles.li, styles.dark)
-
-  const isScrollLink = (href: string): boolean => {
-    const regex = /^#.*/
-    return regex.test(href)
-  }
 
   return (
     <li className={liClassName}>

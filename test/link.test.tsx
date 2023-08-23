@@ -1,16 +1,14 @@
 import React from 'react'
 
-import { shallow } from 'enzyme'
+import { render } from '@testing-library/react'
 
-import { MenuListItem } from '@/components/atoms/MenuListItem'
+import { isScrollLink } from '@/components/atoms/MenuListItem'
 
 describe('scroll Link href test', () => {
-  const wrapper = shallow(<MenuListItem data={{text: 'test', href: 'test'}} />)
-  const instance = wrapper.instance() as any
 
   const donTest = (testHref: string, toBe: boolean) => {
     test(testHref, () => {
-      expect(instance.isScrollLink(testHref)).toBe(toBe)
+      expect(isScrollLink(testHref)).toBe(toBe)
     })
   }
 
