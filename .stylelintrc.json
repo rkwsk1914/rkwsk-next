@@ -10,7 +10,7 @@
     "stylelint-declaration-block-no-ignored-properties"
   ],
   "customSyntax": "postcss-scss",
-  "ignoreFiles": ["**/node_modules/**"],
+  "ignoreFiles": ["**/node_modules/**", "**/coverage/**"],
   "rules": {
     "at-rule-no-unknown": [
       true,

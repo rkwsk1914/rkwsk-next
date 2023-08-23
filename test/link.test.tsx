@@ -1,7 +1,6 @@
 import React from 'react'
 
 import '@testing-library/jest-dom'
-//import { render } from '@testing-library/react'
 import renderer from 'react-test-renderer'
 
 import { isScrollLink, MenuListItem } from '@/components/atoms/MenuListItem'
