@@ -24,9 +24,15 @@
 }
 
 .content {
-  @apply text-16 mt-8;
+  @apply mt-8;
+
+  font-size: 12px;
 
   @screen small {
+    @apply text-16;
+  }
+
+  @screen medium {
     @apply text-24;
   }
 }
