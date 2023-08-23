@@ -4,22 +4,55 @@
 
   @apply bg-lightBg text-lightText;
 
-  span {
-    @apply text-accent;
+  & > * {
+    @apply mt-8;
   }
+}
 
-  .main {
-    width: 80px;
-    height: 80px;
+.div {
+  @apply h-56 w-1/2;
+}
 
-    @apply bg-main;
-  }
+.prime {
+  @apply bg-lightPrime;
+}
+
+.warning {
+  @apply bg-lightWaring;
+}
+
+.dangerous {
+  @apply bg-lightDangerous;
 }
 
 .dark {
   @apply bg-darkBg text-darkText;
 
-  span {
-    @apply text-accent;
+  .prime {
+    @apply bg-darkPrime;
+  }
+
+  .warning {
+    @apply bg-darkWaring;
+  }
+
+  .dangerous {
+    @apply bg-darkDangerous;
+  }
+}
+
+.gradient {
+  @apply bg-gradient-to-r h-56 w-1/2;
+
+  &.prime {
+    @apply from-prime-from to-prime-to;
+  }
+
+  &.warning {
+    @apply from-warning-from to-warning-to;
+  }
+
+  &.dangerous {
+    @apply from-dangerous-from to-dangerous-to;
   }
 }

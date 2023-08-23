@@ -1,15 +1,35 @@
-.header {
-  @apply w-full;
+@import "./OpenMenuContent";
+
+.nav {
+  @apply w-full px-16 bg-lightBg;
 
   align-items: flex-start;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  position: relative;
+
+  @screen small {
+    @apply px-32;
+  }
+
+  &.dark {
+    @apply bg-darkBg;
+  }
 }
 
 .menu_btn {
-  @apply w-full;
+  @apply w-spUI h-spUI;
+
+  align-items: center;
+  display: flex;
 }
 
-.theme_btn {
-  @apply w-96;
+.large_screen_menu_list {
+  display: none;
+
+  @screen small {
+    display: block;
+    max-width: 100%;
+    min-width: 50%;
+  }
 }

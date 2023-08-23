@@ -2,25 +2,27 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
-import { HamburgerMenu as StoryComponent } from '.'
+import { LiquidShapeImage as StoryComponent } from '.'
 
 export default {
-  title: 'Organisms/HamburgerMenu',
+  title: 'Atoms/LiquidShapeImage',
   component: StoryComponent,
 } as Meta<typeof StoryComponent>
 
 const Template: StoryFn<typeof StoryComponent> = (
   args: React.ComponentProps<typeof StoryComponent>
 ) => (
-  <StoryComponent {...args}></StoryComponent>
+  <div style={{ height: '500px' }}>
+    <StoryComponent {...args}></StoryComponent>
+  </div>
 )
 
 export const Default = Template.bind({})
 Default.args = {
-  data: [
-    { text: 'menu 1', href: '/' },
-    { text: 'menu 2', href: '/' },
-    { text: 'menu 3', href: '/' },
-    { text: 'menu 4', href: '/' },
-  ],
+  image: {
+    src: '/pic-me.jpg',
+    width: 1478,
+    height: 1108,
+  },
+  alt: 'test'
 }

@@ -10,7 +10,7 @@ import { SkillSetTable } from '@/components/organisms/SkillSetTable'
 import { SlickSlider as StoryComponent } from '.'
 
 export default {
-  title: 'Organisms/SlickSlider',
+  title: 'Libraries/SlickSlider',
   component: StoryComponent,
 } as Meta<typeof StoryComponent>
 

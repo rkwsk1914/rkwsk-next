@@ -1,9 +1,9 @@
 .area {
   @apply mx-auto;
 
-  max-width: 500px;
+  height: 300px;
 
-  @screen medium {
-    max-width: 700px;
+  @screen small {
+    height: 700px;
   }
 }

@@ -10,7 +10,8 @@ type Props = {
   children?: React.ReactNode
   title?: React.ReactNode
   level?: 1 | 2 | 3 | 4 | 5 | 6
-  id?: string
+  id?: string,
+  isFull?: boolean
 };
 
 export const SectionContainer: React.FC<Props> = (
@@ -18,10 +19,11 @@ export const SectionContainer: React.FC<Props> = (
     children,
     title,
     level = 2,
-    id
+    id,
+    isFull = false
   }
 ): JSX.Element => {
-  const className = clsx(styles.section, {
+  const classNameSection = clsx(styles.section, {
     [styles.level1]: level === 1,
     [styles.level2]: level === 2,
     [styles.level3]: level === 3,
@@ -30,10 +32,11 @@ export const SectionContainer: React.FC<Props> = (
     [styles.level6]: level === 6,
   }, {
     [styles.no_title]: !title,
+    [styles.full]: isFull,
   })
 
   return (
-    <section id={id} className={className}>
+    <section id={id} className={classNameSection}>
       {title && <SectionTitle level={level}>{title}</SectionTitle>}
       {children}
     </section>

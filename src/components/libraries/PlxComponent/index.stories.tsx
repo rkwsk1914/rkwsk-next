@@ -5,7 +5,7 @@ import { StoryFn, Meta } from '@storybook/react'
 import { PlxComponent as StoryComponent } from '.'
 
 export default {
-  title: 'Organisms/PlxComponent',
+  title: 'Libraries/PlxComponent',
   component: StoryComponent,
 } as Meta<typeof StoryComponent>
 

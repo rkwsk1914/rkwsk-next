@@ -1,9 +1,22 @@
+%extend {
+  @apply px-16;
+
+  @screen small {
+    @apply px-32;
+  }
+
+  @screen large {
+    @apply mx-auto;
+
+    max-width: 1200px;
+  }
+}
+
 .section {
-  @apply w-full;
+  @apply text-16;
+  @extend %extend;
 
   p {
-    @apply text-16;
-
     sup, small {
       @apply text-8;
     }
@@ -16,18 +29,108 @@
       @apply mt-8;
     }
   }
+
+  & > .section {
+    @apply px-0;
+  }
+
+  &.full {
+    @apply w-full px-16;
+
+    @screen medium {
+      @apply px-32;
+    }
+
+    @screen large {
+      @apply px-0;
+    }
+
+    max-width: 100%;
+
+    & > .section {
+      @apply px-0;
+    }
+
+
+    $h-level: 1;
+
+    @while $h-level <= 6 {
+      & > h#{$h-level} {
+        @apply px-0;
+        @extend %extend;
+      }
+
+      $h-level: $h-level + 1;
+    }
+  }
+
+  & > .full {
+    @apply px-0;
+  }
 }
 
 $level: 1;
 
 @while $level <= 6 {
-  .level#{$level} {
-    h#{$level} {
-      padding-bottom: (48px - ($level * 8));
+  .section.level#{$level} {
+    & > .section:not(.full) {
+      @screen large {
+        @apply pl-32;
+      }
     }
 
-    & > section {
-      padding-top: (72px - ($level * 8));
+    @if $level == 1 {
+      h#{$level} {
+        @apply pb-48;
+
+        @screen small {
+          @apply pb-64;
+        }
+      }
+
+      & > .section {
+        @apply pt-spUI;
+
+        @screen small {
+          @apply pt-spUI;
+        }
+      }
+    } @else if $level >= 2 and $level <= 4 {
+      h#{$level} {
+        @apply pb-24;
+
+        @screen small {
+          @apply pb-32;
+        }
+      }
+
+      & > .section {
+        @apply pt-32;
+
+        @screen small {
+          @apply pt-48;
+        }
+      }
+    } @else {
+      h#{$level} {
+        @apply pb-16;
+
+        @screen small {
+          @apply pb-24;
+        }
+      }
+
+      & > .section {
+        @apply pt-24;
+
+        @screen small {
+          @apply pt-32;
+        }
+      }
+    }
+
+    h#{$level} + .section {
+      @apply pt-0;
     }
   }
 

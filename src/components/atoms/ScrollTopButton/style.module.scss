@@ -1,0 +1,26 @@
+$transition-duration: .5s;
+$transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+.btn {
+  @apply w-spUI h-spUI text-spUI text-lightWaring;
+
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  opacity: .4;
+  transition-duration: $transition-duration;
+  transition-property: opacity;
+  transition-timing-function: $transition-timing-function;
+
+  & > svg {
+    display: block;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.dark {
+  @apply text-darkWaring;
+}

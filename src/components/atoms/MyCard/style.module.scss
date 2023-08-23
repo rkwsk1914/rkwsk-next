@@ -6,7 +6,7 @@
   box-shadow: 8px 8px 16px -4px #ccc;
 
   .head {
-    @apply px-16 pt-16 text-24;
+    @apply px-16 pt-16 text-16;
 
     @screen small {
       @apply text-24;

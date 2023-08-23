@@ -2,10 +2,12 @@ import * as React from 'react'
 
 import { useMatchHeight } from '@/hooks/useMatchHeight'
 
+import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
+
 import { MyCard } from '@/components/atoms/MyCard'
+import { SlickSlider, OriginalSettings } from '@/components/libraries/SlickSlider'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { SkillSetTable } from '@/components/organisms/SkillSetTable'
-import { SlickSlider, OriginalSettings } from '@/components/organisms/SlickSlider'
 
 import styles from './style.module.scss'
 
@@ -48,7 +50,21 @@ export const MySkillSetSection: React.FC<Props> = ({
           slidesToShow:1,
           centerPadding: '0px',
           autoplay: false,
-          arrows: true,
+          arrows: false,
+          dots: true,
+          centerMode: true,
+          useCSS: true
+        }
+      },
+      {
+        breakpoint: 960, // min-width 960
+        settings: {
+          infinite:true,
+          speed: 300,
+          slidesToShow:1,
+          centerPadding: '0px',
+          autoplay: false,
+          arrows: false,
           dots: true,
           centerMode: true,
           useCSS: true
@@ -58,7 +74,7 @@ export const MySkillSetSection: React.FC<Props> = ({
   }
 
   return (
-    <SectionContainer id={'skills'} title={'Skills'}>
+    <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text} isFull>
       <SlickSlider settings={settings}>
         {slides}
       </SlickSlider>

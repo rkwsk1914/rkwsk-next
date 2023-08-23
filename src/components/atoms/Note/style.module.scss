@@ -1,0 +1,29 @@
+.ul {
+  @apply m-0 w-full;
+}
+
+.li {
+  @apply w-full;
+
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  span {
+    @apply mr-8;
+
+    display: block;
+  }
+
+  div {
+    display: block;
+    min-width: 0;
+    overflow-wrap: break-word;
+    text-align: left;
+  }
+
+  &+& {
+    @apply mt-8
+  }
+}
