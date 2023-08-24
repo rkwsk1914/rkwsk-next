@@ -25,7 +25,7 @@ export const SkillSetTable: React.FC<Props> = ({
           <th></th>
           <th>習得度</th>
           <th>経験年数</th>
-          <th>実務経験</th>
+          <th>実務<br className={styles.pc_none} />経験</th>
         </tr>
         {data.sort((a, b) => b.value - a.value).map((item, index) => (
           <SkillSetTableItem

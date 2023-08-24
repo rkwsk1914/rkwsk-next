@@ -31,6 +31,7 @@ const NextButton: React.FC<CustomArrowProps>= ({
     <button
       className={clsx(styles.arrowButton, styles.left)}
       onClick={onClick}
+      aria-label={'slide next button'}
     >{ICON_DATA.circleChevronLeft}</button>
   )
 }
@@ -42,6 +43,7 @@ const PrevButton: React.FC<CustomArrowProps>= ({
     <button
       className={clsx(styles.arrowButton, styles.right)}
       onClick={onClick}
+      aria-label={'slide previous button'}
     >{ICON_DATA.circleChevronRight}</button>
   )
 }

@@ -8,11 +8,12 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .open_content {
-  @apply p-16 bg-lightWaring text-lightBg;
+  @apply px-16 bg-lightWaring text-lightBg;
   @extend %extend-transition;
 
   width: 100vw;
   height: 100vh;
+  box-sizing: border-box;
   display: block;
   left: 0;
   position: absolute;

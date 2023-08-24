@@ -7,19 +7,21 @@ type Props = {
   children?: React.ReactNode
   title: string
   description: string
+  isDark?: boolean
 };
 
 export const MySite: React.FC<Props> = (
   {
     children,
     title,
-    description
+    description,
+    isDark = false
   }
 ): JSX.Element => {
   return (
     <>
       <MyHead title={title} description={description} />
-      <MyBody>
+      <MyBody isDark={isDark}>
         {children}
       </MyBody>
     </>

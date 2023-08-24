@@ -75,7 +75,7 @@ export const TEXT_INPUT_DATA: TextInputDataType = {
     autoComplete: "new-password"
   },
   contact: {
-    id: "contact",
+    id: "content",
     label: "お問い合わせ内容",
     type: 'text',
   },

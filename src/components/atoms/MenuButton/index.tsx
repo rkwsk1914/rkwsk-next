@@ -24,11 +24,16 @@ export const MenuButton: React.FC<Props> = (
   return (
     <button className={className} onClick={callBack}>
       {(isOpen) ? (
-        <CloseIcon />
+        <>
+          <CloseIcon />
+          <span>close</span>
+        </>
       ) : (
-        <MenuIcon />
+        <>
+          <MenuIcon />
+          <span>menu</span>
+        </>
       )}
-      <span>menu</span>
     </button>
   )
 }
