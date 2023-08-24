@@ -3,6 +3,14 @@
 
   table-layout: fixed;
 
+  th {
+    text-align: left;
+  }
+
+  td {
+    text-align: center;
+  }
+
   th, td {
     @apply p-8;
 
@@ -26,23 +34,15 @@
     }
   }
 
-  th {
-    text-align: left;
-  }
-
-  td {
-    text-align: center;
-  }
-}
-
-.first_row {
-  th,td {
-    @apply text-16;
-
-    text-align: center;
-
-    @screen small {
+  .first_row {
+    th,td {
       @apply text-16;
+
+      text-align: center;
+
+      @screen small {
+        @apply text-16;
+      }
     }
   }
 }
