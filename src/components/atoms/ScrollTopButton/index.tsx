@@ -19,7 +19,7 @@ export const ScrollTopButton: React.FC = (): JSX.Element => {
   }
 
   return (
-    <button className={className} onClick={onClick}>
+    <button className={className} onClick={onClick} aria-label={'scroll page top button'}>
       {ICON_DATA.circleChevronUp}
     </button>
   )
