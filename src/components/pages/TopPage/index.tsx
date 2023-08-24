@@ -16,7 +16,7 @@ type Props = {};
 
 export const TopPage: React.FC<Props> = (): JSX.Element => {
   return (
-    <MySite title={'rkwsk'} description={'rkwsk'}>
+    <MySite title={'rkwsk'} description={'rkwsk'} isDark>
       <SectionContainer level={1} isFull>
         <ProfileSection />
         <MyHistorySection data={HISTORY_DATA} />

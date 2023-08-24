@@ -11,12 +11,16 @@ import styles from './style.module.scss'
 
 import { MenuDataType } from '@/types/MenuDataType'
 
-
-type Props = {
+type ContentProps = {
   children?: React.ReactNode
 };
 
-const Content: React.FC<Props> = (
+type Props = {
+  children?: React.ReactNode
+  isDark?: boolean
+};
+
+const Content: React.FC<ContentProps> = (
   {
     children
   }
@@ -55,11 +59,12 @@ const Content: React.FC<Props> = (
 
 export const MyBody: React.FC<Props> = (
   {
-    children
+    children,
+    isDark
   }
 ): JSX.Element => {
   return (
-    <ThemeContextProvider>
+    <ThemeContextProvider isDark={isDark}>
       <Content>{children}</Content>
     </ThemeContextProvider>
   )
