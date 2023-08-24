@@ -13,11 +13,11 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 
   width: 100vw;
   height: 100vh;
+  box-sizing: border-box;
   display: block;
   left: 0;
   position: absolute;
   top: 0;
-  box-sizing: border-box;
 
   @screen small {
     @apply pt-0 px-16;
