@@ -19,7 +19,7 @@ type Inputs = {
   lastKanaName: string,
   tel: string,
   email: string,
-  content: string,
+  contact: string,
 };
 
 type Props = {
@@ -36,7 +36,7 @@ export const ContactForm: React.FC<Props> = ({
     'lastKanaName',
     'tel',
     'email',
-    'content',
+    'contact',
   ]
   const { register, trigger, handleSubmit, setValue, formState: { errors, isDirty, isValid } } = useForm<Inputs>({
     resolver: zodResolver(SCHEMA),

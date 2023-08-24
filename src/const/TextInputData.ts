@@ -13,7 +13,7 @@ type TextInputDataType = {
   address1: InputElementProps,
   address2: InputElementProps,
   password: InputElementProps,
-  content: InputElementProps,
+  contact: InputElementProps,
 }
 
 export const TEXT_INPUT_DATA: TextInputDataType = {
@@ -74,8 +74,8 @@ export const TEXT_INPUT_DATA: TextInputDataType = {
     type: 'password',
     autoComplete: "new-password"
   },
-  content: {
-    id: "contact",
+  contact: {
+    id: "content",
     label: "お問い合わせ内容",
     type: 'text',
   },
