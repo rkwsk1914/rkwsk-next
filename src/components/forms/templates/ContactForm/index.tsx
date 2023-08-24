@@ -1,16 +1,19 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
+import { useAPI } from '@/hooks/useAPI'
 import { useChrFormatChange } from '@/hooks/useChrFormatChange'
 
 import { SCHEMA } from '@/const/Schema'
 import { TEXT_INPUT_DATA } from '@/const/TextInputData'
 
-
 import { ButtonElement } from '@/components/forms/atoms/ButtonElement'
 import { TextInputElement } from '@/components/forms/atoms/TextInputElement'
 
+
 import styles from './style.module.scss'
+
+import { PostContactDataType } from '@/types/APIDataType'
 
 type Inputs = {
   firstName: string,
@@ -42,6 +45,8 @@ export const ContactForm: React.FC<Props> = ({
     resolver: zodResolver(SCHEMA),
   })
 
+  const {doPostContact} = useAPI()
+
   const {
     fixHiraGanaText,
     fixHalfWidth,
@@ -51,13 +56,12 @@ export const ContactForm: React.FC<Props> = ({
     removeOtherHalfNumber,
   } = useChrFormatChange()
 
-  const onSubmitCallBack: SubmitHandler<Inputs> = (data) => {
+  const onSubmitCallBack: SubmitHandler<Inputs> = (data: PostContactDataType) => {
+    doPostContact(data)
     onSubmit()
   }
 
-  const setTextInputElementProps = (index: number): React.ComponentProps<
-    typeof TextInputElement
-  > => {
+  const setTextInputElementProps = (index: number): React.ComponentProps<typeof TextInputElement> => {
     const onlyTrigger = () => {
       trigger(formInputTextNameList[index])
     }
@@ -105,14 +109,14 @@ export const ContactForm: React.FC<Props> = ({
     }
 
     return {
-        variant: 'outlined',
-        helperText: errors[formInputTextNameList[index]]?.message,
-        error: errors[formInputTextNameList[index]] ? true : false,
-        ...TEXT_INPUT_DATA[formInputTextNameList[index]],
-        ...register(formInputTextNameList[index]),
-        onBlur: setOnBlur(index)
-      }
+      variant: 'outlined',
+      helperText: errors[formInputTextNameList[index]]?.message,
+      error: errors[formInputTextNameList[index]] ? true : false,
+      ...TEXT_INPUT_DATA[formInputTextNameList[index]],
+      ...register(formInputTextNameList[index]),
+      onBlur: setOnBlur(index)
     }
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmitCallBack)}>
