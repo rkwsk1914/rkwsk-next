@@ -15,16 +15,15 @@
 .container {
   @apply w-full h-full;
 
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  opacity: 0;
   align-items: flex-start;
   animation-duration: 1.5s;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   animation-name: fade-in;
   animation-timing-function: ease-in-out;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  position: relative;
 }
 
