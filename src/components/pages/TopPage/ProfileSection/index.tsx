@@ -41,6 +41,7 @@ export const ProfileSection: React.FC<Props> = ({}): JSX.Element => {
           src: '/pic-me.jpg',
           width: 1478,
           height: 1108,
+          loading: 'lazy',
         }} />
         <ModalComponent isOpen={open} onClose={handleClose}>
           sample
