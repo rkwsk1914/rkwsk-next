@@ -2,7 +2,9 @@ import React from "react"
 
 import clsx from "clsx"
 import Plx from "react-plx" // docs https://www.npmjs.com/package/react-plx#parallaxdata
-import { PlxProps } from "react-plx"
+import { PlxProps, PlxItem } from "react-plx"
+
+export type ParallaxData = PlxItem
 
 interface Props extends PlxProps {
   children?: React.ReactNode
@@ -15,7 +17,9 @@ export const PlxComponent: React.FC<Props> = (
     parallaxData,
     onPlxStart,
     onPlxEnd,
-    wrapClassName
+    wrapClassName,
+    disabled,
+    tagName
   }
 ): JSX.Element => {
   return (
@@ -23,7 +27,10 @@ export const PlxComponent: React.FC<Props> = (
       className={clsx(wrapClassName && wrapClassName)}
       onPlxStart={onPlxStart}
       onPlxEnd={onPlxEnd}
-      parallaxData={parallaxData}>
+      parallaxData={parallaxData}
+      disabled={disabled}
+      tagName={tagName}
+    >
       {children}
     </Plx>
   )
