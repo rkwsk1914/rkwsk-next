@@ -5,14 +5,16 @@ import { StoryFn, Meta } from '@storybook/react'
 import { HistoryListMonthItem as StoryComponent } from '.'
 
 export default {
-  title: 'Atoms/HistoryListMonthItem',
+  title: 'Molecules/HistoryListMonthItem',
   component: StoryComponent,
 } as Meta<typeof StoryComponent>
 
 const Template: StoryFn<typeof StoryComponent> = (
   args: React.ComponentProps<typeof StoryComponent>
 ) => (
-  <StoryComponent {...args}></StoryComponent>
+  <div style={{ marginTop: '100vh', width: '100%', height: '1000vh' }}>
+    <StoryComponent {...args}></StoryComponent>
+  </div>
 )
 
 export const Default = Template.bind({})
