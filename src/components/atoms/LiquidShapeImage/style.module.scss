@@ -2,28 +2,12 @@
 @import "./liquid-2";
 @import "./liquid-image";
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 .container {
   @apply w-full h-full;
 
   align-items: flex-start;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-  animation-name: fade-in;
-  animation-timing-function: ease-in-out;
   display: flex;
   justify-content: center;
-  opacity: 0;
   position: relative;
 }
 
