@@ -18,20 +18,48 @@ const Template: StoryFn<typeof StoryComponent> = (
   <StoryComponent {...args}></StoryComponent>
 )
 
-const setSampleData = (
-  level: 1 | 2 | 3 | 4 | 5 | 6  = 2,
-  children: React.ReactNode = <></>,
-  isTitle: boolean = true,
-  isFull: boolean = false
-) => {
+type SampleDataArgs = {
+  level: 1 | 2 | 3 | 4 | 5 | 6
+  isTitle?: boolean
+  isFull?: boolean
+  hasContent?: boolean
+  stopFullLevel?: 1 | 2 | 3 | 4 | 5 | 6
+  recursive?: boolean
+}
+
+const setSampleData = (args: SampleDataArgs) => {
+  const {
+    level = 2,
+    isTitle = true,
+    isFull = false,
+    hasContent = true,
+    stopFullLevel,
+    recursive = false,
+  } = args
+
+  const innerArgs: SampleDataArgs = {
+    level: (level + 1 > 6) ? 6 : level + 1,
+    isTitle: isTitle,
+    isFull: stopFullLevel ? (stopFullLevel === level + 1) ? false : true : isFull,
+    hasContent: (level + 1 <= 6) ? hasContent : false,
+    stopFullLevel: stopFullLevel,
+    recursive: recursive,
+  }
+
+  const children = hasContent ? (
+    <>
+      <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+      <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+      {level === 6 ? null : recursive && <SectionContainer {...setSampleData(innerArgs)} />}
+    </>
+  ) : (
+    <>
+      {level === 6 ? null : recursive && <SectionContainer {...setSampleData(innerArgs)} />}
+    </>
+  )
+
   return {
-    children: (
-      <>
-        <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-        <p>text text text text text text <br />text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
-        {children}
-      </>
-    ),
+    children: children,
     title: isTitle ? `title${level}` : null,
     isFull: isFull,
     level: level
@@ -40,99 +68,35 @@ const setSampleData = (
 
 export const Default = Template.bind({})
 Default.args = {
-  ...setSampleData()
+  ...setSampleData({ level: 1 })
 }
 
 export const Inner = Template.bind({})
 Inner.args = {
-  ...setSampleData(1,
-    <SectionContainer
-    {...setSampleData(2,
-      <SectionContainer
-      {...setSampleData(3,
-        <SectionContainer
-        {...setSampleData(4,
-          <SectionContainer
-          {...setSampleData(5,
-            <SectionContainer
-            {...setSampleData(6)} />,
-          )} />,
-        )}
-      />,
-      )}
-    />,
-    )}
-  />,
-  )
+  ...setSampleData({ level: 1, recursive: true })
 }
 
 export const InnerWithoutTitle = Template.bind({})
 InnerWithoutTitle.args = {
-  ...setSampleData(1,
-    <SectionContainer
-    {...setSampleData(2,
-      <SectionContainer
-      {...setSampleData(3,
-        <SectionContainer
-        {...setSampleData(4,
-          <SectionContainer
-          {...setSampleData(5,
-            <SectionContainer
-            {...setSampleData(6, null, false)} />,
-            false
-          )} />,
-          false
-        )}
-      />,
-      false
-      )}
-    />,
-    false
-    )}
-  />,
-  false
-  )
+  ...setSampleData({ level: 1, isTitle: false, recursive: true })
+}
+
+export const InnerOnlyTitle = Template.bind({})
+InnerOnlyTitle.args = {
+  ...setSampleData({ level: 1, hasContent: false, recursive: true })
 }
 
 export const InnerLevel3 = Template.bind({})
 InnerLevel3.args = {
-  ...setSampleData(3,
-    <SectionContainer
-    {...setSampleData(4,
-      <SectionContainer
-      {...setSampleData(5,
-        <SectionContainer
-        {...setSampleData(6)} />,
-      )} />,
-    )}
-  />,
-  )
+  ...setSampleData({ level: 3, recursive: true })
 }
 
-export const widthFull = Template.bind({})
-widthFull.args = {
-  ...setSampleData(1,
-    <SectionContainer
-    {...setSampleData(2,
-      <SectionContainer
-      {...setSampleData(3,
-        <SectionContainer
-        {...setSampleData(4,
-          <SectionContainer
-          {...setSampleData(5,
-            <SectionContainer
-            {...setSampleData(6)} />,
-            true
-          )} />,
-          true, true
-        )}
-      />,
-      true
-      )}
-    />,
-    true, true
-    )}
-  />,
-  true, true
-  )
+export const WidthFull = Template.bind({})
+WidthFull.args = {
+  ...setSampleData({ level: 1, isFull: true, recursive: true})
+}
+
+export const WidthFullHasNoFull = Template.bind({})
+WidthFullHasNoFull.args = {
+  ...setSampleData({ level: 1, isFull: true, stopFullLevel: 3, recursive: true})
 }
