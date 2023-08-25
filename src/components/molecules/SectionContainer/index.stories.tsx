@@ -18,12 +18,14 @@ const Template: StoryFn<typeof StoryComponent> = (
   <StoryComponent {...args}></StoryComponent>
 )
 
+type LevelType = 1 | 2 | 3 | 4 | 5 | 6
+
 type SampleDataArgs = {
-  level: 1 | 2 | 3 | 4 | 5 | 6
+  level: LevelType
   isTitle?: boolean
   isFull?: boolean
   hasContent?: boolean
-  stopFullLevel?: 1 | 2 | 3 | 4 | 5 | 6
+  stopFullLevel?: LevelType
   recursive?: boolean
 }
 
@@ -37,8 +39,25 @@ const setSampleData = (args: SampleDataArgs) => {
     recursive = false,
   } = args
 
+  const setNextLevel = (level: LevelType):LevelType => {
+    switch (level) {
+      case 1:
+        return 2
+      case 2:
+        return 1
+      case 3:
+        return 4
+      case 4:
+        return 5
+      case 5:
+      case 6:
+      default:
+        return 6
+    }
+  }
+
   const innerArgs: SampleDataArgs = {
-    level: (level + 1 > 6) ? 6 : level + 1,
+    level: setNextLevel(level),
     isTitle: isTitle,
     isFull: stopFullLevel ? (stopFullLevel === level + 1) ? false : true : isFull,
     hasContent: (level + 1 <= 6) ? hasContent : false,
