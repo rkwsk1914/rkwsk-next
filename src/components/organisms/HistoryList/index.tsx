@@ -5,7 +5,7 @@ import { HistoryListYearItem } from '@/components/organisms/HistoryListYearItem'
 import styles from './style.module.scss'
 
 type Props = {
-  data: Array<Omit<React.ComponentProps<typeof HistoryListYearItem>, 'yearPos'>>
+  data: Array<Omit<React.ComponentProps<typeof HistoryListYearItem>, 'yearPos' | 'endPointClassName' | 'endElementClassName'>>
 };
 
 export const HistoryList: React.FC<Props> = (
