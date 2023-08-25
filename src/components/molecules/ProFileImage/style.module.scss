@@ -125,24 +125,10 @@ $image-width: 60%;
   opacity: 0;
 }
 
-%extend-transition {
-  transition-delay: .1s;
-  transition-duration: .5s;
-  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
 .item {
   @apply w-full mx-auto;
-  @extend %extend-transition;
 
-  transition-property: padding;
   box-sizing: border-box;
-
-  &:hover {
-    @screen large {
-      padding: 0 15% 10% 15%;
-    }
-  }
 }
 
 .main_content {

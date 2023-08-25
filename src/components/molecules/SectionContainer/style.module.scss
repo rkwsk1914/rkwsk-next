@@ -55,7 +55,6 @@
 
     @while $h-level <= 6 {
       & > h#{$h-level} {
-        @apply px-0;
         @extend %extend;
       }
 
