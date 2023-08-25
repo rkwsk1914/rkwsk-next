@@ -21,7 +21,8 @@ const Template: StoryFn<typeof StoryComponent> = (
 const setSampleData = (
   level: 1 | 2 | 3 | 4 | 5 | 6  = 2,
   children: React.ReactNode = <></>,
-  isTitle: boolean = true
+  isTitle: boolean = true,
+  isFull: boolean = false
 ) => {
   return {
     children: (
@@ -32,6 +33,7 @@ const setSampleData = (
       </>
     ),
     title: isTitle ? `title${level}` : null,
+    isFull: isFull,
     level: level
   }
 }
@@ -43,104 +45,94 @@ Default.args = {
 
 export const Inner = Template.bind({})
 Inner.args = {
-  children: (
+  ...setSampleData(1,
     <SectionContainer
-      {...setSampleData(2,
+    {...setSampleData(2,
+      <SectionContainer
+      {...setSampleData(3,
         <SectionContainer
-        {...setSampleData(3,
+        {...setSampleData(4,
           <SectionContainer
-          {...setSampleData(4,
+          {...setSampleData(5,
             <SectionContainer
-            {...setSampleData(5,
-              <SectionContainer
-              {...setSampleData(6)} />
-            )}
-          />
-          )}
-        />
+            {...setSampleData(6)} />,
+          )} />,
         )}
-      />
+      />,
       )}
-    />
-  ),
-  title: 'title1',
-  level: 1,
+    />,
+    )}
+  />,
+  )
 }
 
 export const InnerWithoutTitle = Template.bind({})
 InnerWithoutTitle.args = {
-  children: (
+  ...setSampleData(1,
     <SectionContainer
-      {...setSampleData(2,
+    {...setSampleData(2,
+      <SectionContainer
+      {...setSampleData(3,
         <SectionContainer
-        {...setSampleData(3,
+        {...setSampleData(4,
           <SectionContainer
-          {...setSampleData(4,
+          {...setSampleData(5,
             <SectionContainer
-            {...setSampleData(5,
-              <SectionContainer
-              {...setSampleData(6, null, false)} />,
-              false
-            )}
-          />,
+            {...setSampleData(6, null, false)} />,
+            false
+          )} />,
           false
-          )}
-        />,
-        false
         )}
       />,
       false
       )}
-    />
-  ),
-  title: 'title1',
-  level: 1,
+    />,
+    false
+    )}
+  />,
+  false
+  )
 }
 
 export const InnerLevel3 = Template.bind({})
 InnerLevel3.args = {
-  children: (
+  ...setSampleData(3,
     <SectionContainer
-      {...setSampleData(4,
+    {...setSampleData(4,
+      <SectionContainer
+      {...setSampleData(5,
         <SectionContainer
-        {...setSampleData(5,
-          <SectionContainer
-          {...setSampleData(6)}
-        />
-        )}
-      />
-      )}
-    />
-  ),
-  title: 'title3',
-  level: 3,
+        {...setSampleData(6)} />,
+      )} />,
+    )}
+  />,
+  )
 }
 
 export const widthFull = Template.bind({})
 widthFull.args = {
-  children: (
+  ...setSampleData(1,
     <SectionContainer
-      {...setSampleData(2,
+    {...setSampleData(2,
+      <SectionContainer
+      {...setSampleData(3,
         <SectionContainer
-        {...setSampleData(3,
+        {...setSampleData(4,
           <SectionContainer
-          {...setSampleData(4,
+          {...setSampleData(5,
             <SectionContainer
-            {...setSampleData(5,
-              <SectionContainer
-              {...setSampleData(6, null)} />,
-            )}
-          />,
-          )}
-          isFull
-        />,
+            {...setSampleData(6)} />,
+            true
+          )} />,
+          true, true
         )}
       />,
+      true
       )}
-      isFull
-    />
-  ),
-  title: 'title1',
-  level: 1,
-  isFull: true
+    />,
+    true, true
+    )}
+  />,
+  true, true
+  )
 }
