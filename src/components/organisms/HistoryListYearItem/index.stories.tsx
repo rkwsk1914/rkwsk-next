@@ -2,6 +2,8 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
+import { ScrollWrap, SAMPLE_END_ELEMENT_CLASS_NAME } from '@/components/parts/ScrollWrap'
+
 import { HistoryListYearItem as StoryComponent } from '.'
 
 export default {
@@ -20,15 +22,14 @@ export default {
 const Template: StoryFn<typeof StoryComponent> = (
   args: React.ComponentProps<typeof StoryComponent>
 ) => (
-  <div style={{ marginTop: '100vh', width: '100%', height: '1000vh' }}>
+  <ScrollWrap>
     <StoryComponent {...args}></StoryComponent>
-    <div className='end'></div>
-  </div>
+  </ScrollWrap>
 )
 
 export const Default = Template.bind({})
 Default.args = {
-  endElementClassName: '.end',
+  endElementClassName: SAMPLE_END_ELEMENT_CLASS_NAME,
   yearPos: 'right',
   year: 1996,
   monthlyDate: [
@@ -51,7 +52,7 @@ Default.args = {
 
 export const withoutMonth = Template.bind({})
 withoutMonth.args = {
-  endElementClassName: '.end',
+  endElementClassName: SAMPLE_END_ELEMENT_CLASS_NAME,
   yearPos: 'right',
   year: 1996,
   monthlyDate: [

@@ -2,6 +2,8 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
+import { ScrollWrap } from '@/components/parts/ScrollWrap'
+
 import { HistoryList as StoryComponent } from '.'
 
 export default {
@@ -12,9 +14,9 @@ export default {
 const Template: StoryFn<typeof StoryComponent> = (
   args: React.ComponentProps<typeof StoryComponent>
 ) => (
-  <div style={{ marginTop: '100vh', width: '100%', height: '1000vh' }}>
+  <ScrollWrap>
     <StoryComponent {...args}></StoryComponent>
-  </div>
+  </ScrollWrap>
 )
 
 export const Default = Template.bind({})
