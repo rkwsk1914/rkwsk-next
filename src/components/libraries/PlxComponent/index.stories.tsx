@@ -2,6 +2,8 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
+import { ScrollWrap, SAMPLE_END_ELEMENT_CLASS_NAME } from '@/components/parts/ScrollWrap'
+
 import { PlxComponent as StoryComponent } from '.'
 
 export default {
@@ -12,26 +14,28 @@ export default {
 const Template: StoryFn<typeof StoryComponent> = (
   args: React.ComponentProps<typeof StoryComponent>
 ) => (
-  <StoryComponent {...args}></StoryComponent>
+  <ScrollWrap>
+    <StoryComponent {...args}></StoryComponent>
+  </ScrollWrap>
 )
 
 export const Default = Template.bind({})
 Default.args = {
   children: (
-    <div style={{ height: '500vh' }}>
-      <div
-        style={{
-          width: '200px',
-          height: '200px',
-          backgroundColor: 'aqua',
-          position: 'fixed'
-        }}
-    /></div>
+    <div
+      style={{
+        width: '200px',
+        height: '200px',
+        backgroundColor: 'aqua',
+        position: 'fixed',
+        top: '50%',
+      }}
+    />
   ),
   parallaxData: [
     {
       start: 0,
-      end: 300,
+      end: SAMPLE_END_ELEMENT_CLASS_NAME,
       properties: [
         {
           startValue: 1,

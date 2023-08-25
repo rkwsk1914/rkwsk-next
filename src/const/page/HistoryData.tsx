@@ -1,6 +1,6 @@
-import { HistoryListYearItem } from '@/components/molecules/HistoryListYearItem'
+import { HistoryList } from '@/components/organisms/HistoryList'
 
-type DataType = Array<Omit<React.ComponentProps<typeof HistoryListYearItem>, 'yearPos'>>
+type DataType = React.ComponentProps<typeof HistoryList>['data']
 
 const HISTORY_DATA: DataType =[
   {

@@ -9,6 +9,10 @@
 
   &+& {
     @apply mt-16;
+
+    @screen small {
+      @apply mt-32;
+    }
   }
 }
 
@@ -30,10 +34,6 @@
 
   @screen small {
     @apply text-16;
-  }
-
-  @screen medium {
-    @apply text-24;
   }
 }
 

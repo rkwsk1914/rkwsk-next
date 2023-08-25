@@ -51,12 +51,10 @@
       @apply px-0;
     }
 
-
     $h-level: 1;
 
     @while $h-level <= 6 {
       & > h#{$h-level} {
-        @apply px-0;
         @extend %extend;
       }
 
@@ -67,76 +65,35 @@
   & > .full {
     @apply px-0;
   }
-}
 
-$level: 1;
-
-@while $level <= 6 {
-  .section.level#{$level} {
-    & > .section:not(.full) {
-      @screen large {
-        @apply pl-32;
-      }
-    }
-
-    @if $level == 1 {
-      h#{$level} {
-        @apply pb-48;
-
-        @screen small {
-          @apply pb-64;
-        }
-      }
-
-      & > .section {
-        @apply pt-spUI;
-
-        @screen small {
-          @apply pt-spUI;
-        }
-      }
-    } @else if $level >= 2 and $level <= 4 {
-      h#{$level} {
-        @apply pb-24;
-
-        @screen small {
-          @apply pb-32;
-        }
-      }
-
-      & > .section {
-        @apply pt-32;
-
-        @screen small {
-          @apply pt-48;
-        }
-      }
-    } @else {
-      h#{$level} {
-        @apply pb-16;
-
-        @screen small {
-          @apply pb-24;
-        }
-      }
-
-      & > .section {
-        @apply pt-24;
-
-        @screen small {
-          @apply pt-32;
-        }
-      }
-    }
-
-    h#{$level} + .section {
-      @apply pt-0;
+  & > &:not(.full) {
+    @screen large {
+      @apply pl-32;
     }
   }
 
-  $level: $level + 1;
+  &.no_title {
+    @apply pt-0;
+  }
+
+  $level: 1;
+
+  @while $level <= 6 {
+    &.level#{$level} {
+      @if $level == 1 {
+        & > .section { @apply pt-96; }
+        & > h#{$level} + *:not(.section) { @apply pt-72; }
+      } @else if $level >= 2 and $level < 4 {
+        & > .section { @apply pt-72; }
+        & > h#{$level} + *:not(.section) { @apply pt-56; }
+      } @else {
+        & > .section { @apply pt-32; }
+        & > h#{$level} + *:not(.section) { @apply pt-24; }
+      }
+    }
+
+    $level: $level + 1;
+  }
 }
 
-.no_title {
-  padding-top: 0;
-}
+

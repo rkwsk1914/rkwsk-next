@@ -26,7 +26,12 @@
           "if",
           "else",
           "else if",
-          "extend"
+          "extend",
+          "mixin",
+          "include",
+          "use",
+          "return",
+          "function"
         ]
       }
     ],
@@ -46,6 +51,14 @@
           "else if",
           "extend"
         ]
+      }
+    ],
+    "scss/function-no-unknown": [
+      true,
+      {
+          "ignoreFunctions": [
+            "/^calc-/"
+          ]
       }
     ],
     "selector-anb-no-unmatchable": [

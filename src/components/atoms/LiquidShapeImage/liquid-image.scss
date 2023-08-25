@@ -19,7 +19,7 @@ $init-border-radius: 48% 52% 50% 50% / 42% 59% 41% 58%;
 }
 
 .image {
-  @apply w-auto h-auto;
+  @apply w-2/3 h-auto;
 
   animation: liquid-animation 5s ease 0s infinite normal;
   border-radius: $init-border-radius;
