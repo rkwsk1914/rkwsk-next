@@ -91,6 +91,11 @@ InnerLevel3.args = {
   ...setSampleData({ level: 3, recursive: true })
 }
 
+export const InnerWithoutTitleLevel3 = Template.bind({})
+InnerWithoutTitleLevel3.args = {
+  ...setSampleData({ level: 3, isTitle: false, recursive: true })
+}
+
 export const WidthFull = Template.bind({})
 WidthFull.args = {
   ...setSampleData({ level: 1, isFull: true, recursive: true})

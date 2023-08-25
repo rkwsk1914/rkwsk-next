@@ -46,7 +46,7 @@ const Content: React.FC<ContentProps> = (
             handleIsDarkMode(!isDarkModeCTX)
           }} />
       </header>
-      <article className={styles.article}>
+      <article>
         {children}
       </article>
       <div className={styles.scrollButton}>
