@@ -29,7 +29,7 @@ type Inputs = {
 };
 
 type Props = {
-  onSubmit: (event?: React.FormEvent<HTMLFormElement>) => void,
+  onSubmit?: (event?: React.FormEvent<HTMLFormElement>) => void,
   isTestMode?: boolean
 }
 
@@ -93,7 +93,7 @@ export const ContactForm: React.FC<Props> = ({
       children: res.message
     })
     setShowAlert(true)
-    onSubmit()
+    onSubmit && onSubmit()
   }
 
   const setTextInputElementProps = (index: number): React.ComponentProps<typeof TextInputElement> => {
