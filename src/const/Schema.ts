@@ -2,7 +2,7 @@ import * as zod from 'zod'
 
 import { ERROR_MESSAGE } from '@/const/ErrorMessage'
 
-const requiredMessage = ERROR_MESSAGE[1]
+const requiredMessage = ERROR_MESSAGE.required
 
 const POST_CODE_WITH_HYPHEN = new RegExp(/^[0-9]{3}-[0-9]{4}$/)
 
@@ -20,7 +20,7 @@ const NAME_SCHEMA = zod
   .string()
   .min(1, { message: requiredMessage })
   .max(50, { message: ERROR_MESSAGE[3] })
-  .regex(JAPAN_FULL_WIDTH, { message: ERROR_MESSAGE[10] })
+  .regex(JAPAN_FULL_WIDTH, { message: ERROR_MESSAGE.fullCharacter })
 
 const NAME_KANA_SCHEMA = zod
   .string()
@@ -37,8 +37,8 @@ const EMAIL_SCHEMA = zod
 const TEL_SCHEMA = zod
   .string()
   .min(1, { message: requiredMessage })
-  .regex(TEL_CODE, { message: ERROR_MESSAGE[9]})
-  .length(11, { message: ERROR_MESSAGE[10] })
+  .length(11, { message: ERROR_MESSAGE[9] })
+  .regex(TEL_CODE, { message: ERROR_MESSAGE[11]})
 
 const TEXT_AREA_SCHEMA = zod
   .string()
