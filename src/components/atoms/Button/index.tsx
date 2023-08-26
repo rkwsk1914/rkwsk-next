@@ -13,29 +13,38 @@ import styles from './style.module.scss'
 
 
 interface BaseProps {
-  text: string
+  children: string
   type?: 'prime' | 'dangerous' | 'warning' | 'standard'
   onClick?: () => void
+}
+
+interface SubmitProps extends BaseProps {
+  href?: string
+  toId?: never
+  submit?: boolean
 }
 
 interface LinkProps extends BaseProps {
   href?: string
   toId?: never
+  submit?: never
 }
 
 interface ScrollProps extends BaseProps {
   href?: never
   toId?: string
+  submit?: never
 }
 
-type Props = LinkProps | ScrollProps;
+type Props = LinkProps | ScrollProps | SubmitProps;
 
 export const Button: React.FC<Props> = (
   {
-    text,
+    children,
     type,
     href,
     toId,
+    submit,
     onClick
   }
 ): JSX.Element => {
@@ -49,15 +58,19 @@ export const Button: React.FC<Props> = (
 
   if (href) return (
     <Link className={buttonClassName} href={href}>
-      {text}<span className={styles.arrow}>{ICON_DATA.arrowRight}</span>
+      {children}<span className={styles.arrow}>{ICON_DATA.arrowRight}</span>
     </Link>
   )
 
   if (toId) return (
-    <ScrollLink className={buttonClassName} to={toId} smooth onClick={onClick}>{text}</ScrollLink>
+    <ScrollLink className={buttonClassName} to={toId} smooth onClick={onClick}>{children}</ScrollLink>
+  )
+
+  if (submit) return (
+    <input className={buttonClassName} type="submit" value={children} />
   )
 
   return (
-    <button className={buttonClassName} onClick={onClick}>{text}</button>
+    <button className={buttonClassName} onClick={onClick}>{children}</button>
   )
 }

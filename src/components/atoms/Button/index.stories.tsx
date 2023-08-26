@@ -17,14 +17,14 @@ const Template: StoryFn<typeof StoryComponent> = (
 
 export const Default = Template.bind({})
 Default.args = {
-  text: 'button',
+  children: 'button',
   type: 'standard',
   onClick: () => { console.log('click') }
 }
 
 export const LinkType = Template.bind({})
 LinkType.args = {
-  text: 'button',
+  children: 'button',
   type: 'standard',
   href: './',
   onClick: () => { console.log('click') }
@@ -32,8 +32,16 @@ LinkType.args = {
 
 export const ScrollType = Template.bind({})
 ScrollType.args = {
-  text: 'button',
+  children: 'button',
   type: 'standard',
   toId: 'test',
+  onClick: () => { console.log('click') }
+}
+
+export const SubmitType = Template.bind({})
+SubmitType.args = {
+  children: 'button',
+  type: 'standard',
+  submit: true,
   onClick: () => { console.log('click') }
 }
