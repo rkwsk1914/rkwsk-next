@@ -38,7 +38,8 @@ import {
   faCircleChevronUp,
   faGraduationCap,
   faLaptopFile,
-  faStar
+  faStar,
+  faArrowRight
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -80,4 +81,5 @@ export const ICON_DATA = {
   study: <FontAwesomeIcon icon={faGraduationCap} />,
   laptopFile: <FontAwesomeIcon icon={faLaptopFile} />,
   star: <FontAwesomeIcon icon={faStar} />,
+  arrowRight: <FontAwesomeIcon icon={faArrowRight} />
 }

@@ -30,6 +30,7 @@ $side-ratio: 25%;
   right: 0;
   top: 50%;
   transform: translate(-5%, -50%);
+  will-change: filter;
 }
 
 .dark {

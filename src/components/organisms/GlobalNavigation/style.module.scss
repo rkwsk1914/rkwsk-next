@@ -25,6 +25,7 @@
   justify-content: flex-end;
   position: relative;
   transform: translateY(-100%);
+  will-change: filter;
 
   @screen small {
     @apply px-32;

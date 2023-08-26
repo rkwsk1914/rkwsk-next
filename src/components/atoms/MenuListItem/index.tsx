@@ -27,7 +27,7 @@ export const MenuListItem: React.FC<Props> = memo(({
     <li className={liClassName}>
       {data.href ?
         <Link href={data.href} onClick={onClick}>{data.text}</Link> :
-        <ScrollLink className='aaa' to={data.id} smooth onClick={onClick}>{data.text}</ScrollLink>
+        <ScrollLink to={data.id} smooth onClick={onClick}>{data.text}</ScrollLink>
       }
     </li>
   )

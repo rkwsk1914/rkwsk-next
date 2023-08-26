@@ -1,0 +1,109 @@
+%extend-button-reset {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+}
+
+%extend-gradient {
+  @apply bg-gradient-to-r
+}
+
+%extend-base {
+  @apply w-full h-spUI p-8 text-24;
+
+  border-radius: 50px;
+  display: block;
+  text-align: center;
+}
+
+$transition-duration: .5s;
+$transition-timing-function: liner;
+$arrow-init: translate(-100%, -50%);
+
+@keyframes arrow-animation {
+  0% {
+    transform: translate(-130%, -50%);
+  }
+
+  50% {
+    transform: translate(-30%, -50%);
+  }
+
+  100% {
+    transform: translate(-130%, -50%);
+  }
+}
+
+.arrow {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: arrow-animation;
+  animation-play-state: paused;
+  animation-timing-function: linear;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: $arrow-init;
+  will-change: filter;
+}
+
+.button {
+  @extend %extend-button-reset, %extend-base;
+
+  cursor: pointer;
+  position: relative;
+
+  &::after {
+    @apply bg-white;
+    @extend %extend-base;
+
+    content: "";
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition-duration: $transition-duration;
+    transition-property: opacity;
+    transition-timing-function: $transition-timing-function;
+  }
+
+  &:hover {
+    &::after {
+      opacity: .4;
+    }
+
+    .arrow {
+      animation-play-state: running;
+    }
+  }
+
+  &.prime {
+    @apply from-prime-from to-prime-to text-darkText;
+    @extend %extend-gradient;
+  }
+
+  &.warning {
+    @apply from-warning-from to-warning-to text-darkText;
+    @extend %extend-gradient;
+  }
+
+  &.dangerous {
+    @apply from-dangerous-from to-dangerous-to text-darkText;
+    @extend %extend-gradient;
+  }
+
+  &.standard {
+    @apply bg-lightText text-lightBg;
+  }
+}
+
+.dark {
+  &.standard {
+    @apply bg-darkText text-darkBg;
+  }
+}

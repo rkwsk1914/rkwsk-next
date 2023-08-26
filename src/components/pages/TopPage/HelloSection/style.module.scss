@@ -1,0 +1,106 @@
+@mixin title-init {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+@keyframes slide-in {
+  0% {
+    @include title-init;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@mixin animation($delay) {
+  animation-delay: $delay;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: slide-in;
+  animation-timing-function: ease-in-out;
+  will-change: filter;
+}
+
+.title {
+  @apply text-24 text-lightWaring mb-32;
+  @include title-init;
+  @include animation(.5s);
+
+  font-weight: bold;
+  text-align: center;
+
+
+  @screen small {
+    @apply text-64;
+  }
+
+  @screen medium {
+    @apply text-96;
+  }
+}
+
+.text {
+  @apply text-16;
+
+  text-align: center;
+
+  @screen small {
+    @apply text-24;
+  }
+
+  &.medium {
+    display: none;
+
+    @screen medium {
+      display: block;
+    }
+  }
+
+  &.large {
+    @include animation(1.5s);
+
+    display: block;
+
+    @screen medium {
+      display: none;
+    }
+  }
+}
+
+.btn_wrap {
+  @apply mt-40;
+
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @screen small {
+    flex-wrap: nowrap;
+  }
+
+  & > button, & > a {
+    width: 200px;
+
+    @screen small {
+      width: 300px;
+    }
+
+    &:not(:first-child) {
+      @apply mt-16;
+
+      @screen small {
+        @apply ml-16 mt-0;
+      }
+    }
+  }
+}
+
+.dark {
+  .title {
+    @apply text-darkWaring;
+  }
+}
