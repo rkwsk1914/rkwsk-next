@@ -114,6 +114,7 @@ $image-width: 60%;
   animation-name: name-animation;
   animation-timing-function: ease;
   transform: $name-init;
+  will-change: filter;
 }
 
 %extends-fade-in-animation {
