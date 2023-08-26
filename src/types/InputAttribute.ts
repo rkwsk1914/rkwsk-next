@@ -14,6 +14,7 @@ interface AttributeTypes extends RegisterTypes {
   error?: boolean
   helperText?: string
   disabled?: boolean
+  required?: boolean
 }
 
 export type InputAttributeTypes = AttributeTypes

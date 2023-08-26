@@ -36,7 +36,8 @@ export const TextInputElement = React.forwardRef(
         multiline = false,
         size = 'medium',
         value,
-        defaultValue
+        defaultValue,
+        required,
       }: RefProps,
       ref?: React.Ref<HTMLInputElement>
     ): JSX.Element {
@@ -62,6 +63,7 @@ export const TextInputElement = React.forwardRef(
       defaultValue={defaultValue}
       fullWidth
       inputRef={ref}
+      required={required}
     />
   )
 })

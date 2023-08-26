@@ -17,5 +17,10 @@ const Template: StoryFn<typeof StoryComponent> = (
 
 export const Default = Template.bind({})
 Default.args = {
+  isTestMode: false
+}
+
+export const APIDisplaySimulation = Template.bind({})
+APIDisplaySimulation.args = {
   isTestMode: true
 }
