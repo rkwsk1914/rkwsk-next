@@ -14,19 +14,24 @@
   }
 }
 
-.title {
-  @apply text-24 text-lightWaring mb-32;
-  @include title-init;
-
-  animation-delay: .5s;
+@mixin animation($delay) {
+  animation-delay: $delay;
   animation-duration: .5s;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;
   animation-name: slide-in;
   animation-timing-function: ease-in-out;
+  will-change: filter;
+}
+
+.title {
+  @apply text-24 text-lightWaring mb-32;
+  @include title-init;
+  @include animation(.5s);
+
   font-weight: bold;
   text-align: center;
-  will-change: filter;
+
 
   @screen small {
     @apply text-64;
@@ -40,8 +45,28 @@
 .text {
   @apply text-16;
 
+  text-align: center;
+
   @screen small {
     @apply text-24;
+  }
+
+  &.medium {
+    display: none;
+
+    @screen medium {
+      display: block;
+    }
+  }
+
+  &.large {
+    @include animation(1.5s);
+
+    display: block;
+
+    @screen medium {
+      display: none;
+    }
   }
 }
 

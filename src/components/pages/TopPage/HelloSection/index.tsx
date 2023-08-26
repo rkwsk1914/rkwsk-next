@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
+import clsx from 'clsx'
+
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
 import { PlxComponent, ParallaxData } from '@/components/libraries/PlxComponent'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
-
 
 
 import styles from './style.module.scss'
@@ -35,6 +36,16 @@ export const HelloSection: React.FC<Props> = ({}): JSX.Element => {
     },
   ]
 
+  const TextArea = () => {
+    return (
+      <>
+        <p>Hello, My name is Ryo Kawasaki.</p>
+        <p>This is my Engineer portfolio site.</p>
+        <p>See relax please.</p>
+      </>
+    )
+  }
+
   return (
     <SectionContainer id={'hello'}>
       <div className={contentClassName}>
@@ -43,12 +54,13 @@ export const HelloSection: React.FC<Props> = ({}): JSX.Element => {
           parallaxData={parallaxData}
           disabled={isFixParallax}
           onPlxEnd={() => { setIsFixParallax(true) }}
-          wrapClassName={styles.text}
+          wrapClassName={clsx(styles.text, styles.large)}
         >
-          <p>Hello, My name is Ryo Kawasaki.</p>
-          <p>This is my Engineer portfolio site.</p>
-          <p>See relax please.</p>
+          <TextArea />
         </PlxComponent>
+        <div className={clsx(styles.text, styles.medium)}>
+          <TextArea />
+        </div>
       </div>
       <div className={'hello-end'}></div>
     </SectionContainer>
