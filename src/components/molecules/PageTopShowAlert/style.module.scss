@@ -1,0 +1,19 @@
+$transition-duration: .5s;
+$transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+.wrap {
+  @apply w-full px-8;
+  position: fixed;
+  top: 0;
+  transition-duration: $transition-duration;
+  transition-property: transform;
+  transition-timing-function: $transition-timing-function;
+}
+
+.open {
+  transform: translateY(10%);
+}
+
+.close {
+  transform: translateY(-100%);
+}
