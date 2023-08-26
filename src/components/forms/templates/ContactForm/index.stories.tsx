@@ -16,4 +16,6 @@ const Template: StoryFn<typeof StoryComponent> = (
 )
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+  isTestMode: true
+}

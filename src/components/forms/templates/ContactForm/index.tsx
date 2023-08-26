@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
@@ -9,11 +11,12 @@ import { TEXT_INPUT_DATA } from '@/const/TextInputData'
 
 import { ButtonElement } from '@/components/forms/atoms/ButtonElement'
 import { TextInputElement } from '@/components/forms/atoms/TextInputElement'
-
+import { PageTopShowAlert } from '@/components/molecules/PageTopShowAlert'
 
 import styles from './style.module.scss'
 
 import { PostContactDataType } from '@/types/APIDataType'
+
 
 type Inputs = {
   firstName: string,
@@ -26,12 +29,21 @@ type Inputs = {
 };
 
 type Props = {
-  onSubmit: (event?: React.FormEvent<HTMLFormElement>) => void
+  onSubmit: (event?: React.FormEvent<HTMLFormElement>) => void,
+  isTestMode: boolean
 }
 
+type AlertProps = Pick<React.ComponentProps<typeof PageTopShowAlert>, 'type' | 'children'>
+
 export const ContactForm: React.FC<Props> = ({
-  onSubmit
+  onSubmit,
+  isTestMode = false
 }): JSX.Element => {
+  const [showAlert, setShowAlert] = useState(false)
+  const [alertProps, setAlertsProps] = useState<AlertProps>({
+    type: 'info',
+    children: <></>
+  })
   const formInputTextNameList: Array<keyof Inputs> = [
     'firstName',
     'lastName',
@@ -43,9 +55,18 @@ export const ContactForm: React.FC<Props> = ({
   ]
   const { register, trigger, handleSubmit, setValue, formState: { errors, isDirty, isValid } } = useForm<Inputs>({
     resolver: zodResolver(SCHEMA),
+    defaultValues: isTestMode ? {
+      firstName: "山田",
+      lastName: "太郎",
+      firstKanaName: "やまだ",
+      lastKanaName: "たろう",
+      tel: "09058233302",
+      email: "sample@sample.com",
+      contact: "テスト、テスト、テスト、テスト、テスト、テスト、テスト。",
+    } : undefined
   })
 
-  const {doPostContact} = useAPI()
+  const {doPostContact, doAPIDisplaySimulation} = useAPI()
 
   const {
     fixHiraGanaText,
@@ -56,8 +77,22 @@ export const ContactForm: React.FC<Props> = ({
     removeOtherHalfNumber,
   } = useChrFormatChange()
 
-  const onSubmitCallBack: SubmitHandler<Inputs> = (data: PostContactDataType) => {
-    doPostContact(data)
+  const onSubmitCallBack: SubmitHandler<Inputs> = async (data: PostContactDataType) => {
+    if (isTestMode) {
+      const res = doAPIDisplaySimulation(false)
+      setAlertsProps({
+        type: res.isError ? 'error' : 'success',
+        children: res.message
+      })
+      setShowAlert(true)
+      return
+    }
+    const res = await doPostContact(data)
+    setAlertsProps({
+      type: res.isError ? 'error' : 'success',
+      children: res.message
+    })
+    setShowAlert(true)
     onSubmit()
   }
 
@@ -120,6 +155,11 @@ export const ContactForm: React.FC<Props> = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmitCallBack)}>
+      <PageTopShowAlert
+        isOpen={showAlert}
+        onClose={() => {setShowAlert(false)}}
+        variant='standard'
+        {...alertProps} />
       <div className={styles.formArea}>
         <div className={styles.nameArea}>
           <TextInputElement {...setTextInputElementProps(0)} />
@@ -135,7 +175,7 @@ export const ContactForm: React.FC<Props> = ({
 
         <div className={styles.submitArea}>
           <ButtonElement
-            disabled={(isDirty && isValid) ? false : true}
+            disabled={isTestMode ? false : (isDirty && isValid) ? false : true}
             type='submit'
             variant='contained'
             size='large'

@@ -4,7 +4,7 @@ const zIndex = {
   underLogo: '9',
   hamburgerMenu: '10',
   overLogo: '11',
-
+  alert: '12',
 }
 
 
