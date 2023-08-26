@@ -1,9 +1,3 @@
 .area {
   @apply mx-auto;
-
-  height: 300px;
-
-  @screen small {
-    height: 700px;
-  }
 }

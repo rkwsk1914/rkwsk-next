@@ -39,28 +39,31 @@ const setSampleData = (args: SampleDataArgs) => {
     recursive = false,
   } = args
 
-  const setNextLevel = (level: LevelType):LevelType => {
+  const setInnerLevel = (level: LevelType):LevelType => {
     switch (level) {
       case 1:
         return 2
       case 2:
-        return 1
+        return 3
       case 3:
         return 4
       case 4:
         return 5
       case 5:
+        return 6
       case 6:
       default:
         return 6
     }
   }
 
+  const innerLevel = setInnerLevel(level)
+
   const innerArgs: SampleDataArgs = {
-    level: setNextLevel(level),
+    level: innerLevel,
     isTitle: isTitle,
-    isFull: stopFullLevel ? (stopFullLevel === level + 1) ? false : true : isFull,
-    hasContent: (level + 1 <= 6) ? hasContent : false,
+    isFull: stopFullLevel ? (stopFullLevel === innerLevel) ? false : true : isFull,
+    hasContent: hasContent,
     stopFullLevel: stopFullLevel,
     recursive: recursive,
   }

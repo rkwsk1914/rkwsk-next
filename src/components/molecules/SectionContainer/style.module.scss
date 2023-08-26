@@ -80,15 +80,28 @@
 
   @while $level <= 6 {
     &.level#{$level} {
-      @if $level == 1 {
-        & > .section { @apply pt-96; }
-        & > h#{$level} + *:not(.section) { @apply pt-72; }
-      } @else if $level >= 2 and $level < 4 {
-        & > .section { @apply pt-72; }
-        & > h#{$level} + *:not(.section) { @apply pt-56; }
-      } @else {
-        & > .section { @apply pt-32; }
-        & > h#{$level} + *:not(.section) { @apply pt-24; }
+      & > .section {
+        @if $level == 1 {
+          @apply pt-96;
+        }
+        @else if $level >= 2 and $level < 4 {
+          @apply pt-72;
+        }
+        @else {
+          @apply pt-32;
+        }
+      }
+
+      & > h#{$level} + *:not(.section) {
+        @if $level == 1 {
+          @apply pt-72;
+        }
+        @else if $level >= 2 and $level < 4 {
+          @apply pt-56;
+        }
+        @else {
+          @apply pt-24;
+        }
       }
     }
 

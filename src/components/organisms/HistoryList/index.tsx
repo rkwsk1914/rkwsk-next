@@ -30,7 +30,7 @@ export const HistoryList: React.FC<Props> = (
           )
         })}
       </ul>
-      <div className='history-list-year-item-end' style={{ width: '100px', height: '100px', }}></div>
+      <div className='history-list-year-item-end'></div>
     </>
   )
 }
