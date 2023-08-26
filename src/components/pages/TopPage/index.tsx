@@ -7,6 +7,7 @@ import { SectionContainer } from '@/components/molecules/SectionContainer'
 import { MySite } from '@/components/templates/MySite'
 
 import { ContactSection } from './ContactSection'
+import { HelloSection } from './HelloSection'
 import { MyHistorySection } from './MyHistorySection'
 import { MySkillSetSection } from './MySkillSetSection'
 import { ProfileSection } from './ProfileSection'
@@ -19,6 +20,7 @@ export const TopPage: React.FC<Props> = (): JSX.Element => {
     <MySite title={'rkwsk'} description={'rkwsk'} isDark>
       <SectionContainer level={1} isFull>
         <ProfileSection />
+        <HelloSection />
         <MyHistorySection data={HISTORY_DATA} />
         <MySkillSetSection data={SKILL_SET_DATA} />
         <ContactSection />

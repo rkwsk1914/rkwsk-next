@@ -1,0 +1,52 @@
+@mixin title-init {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+@keyframes slide-in {
+  0% {
+    @include title-init;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.title {
+  @apply text-24 text-lightWaring mb-32;
+  @include title-init;
+
+  animation-delay: .5s;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: slide-in;
+  animation-timing-function: ease-in-out;
+  font-weight: bold;
+  text-align: center;
+  will-change: filter;
+
+  @screen small {
+    @apply text-64;
+  }
+
+  @screen medium {
+    @apply text-96;
+  }
+}
+
+.text {
+  @apply text-16;
+
+  @screen small {
+    @apply text-24;
+  }
+}
+
+.dark {
+  .title {
+    @apply text-darkWaring;
+  }
+}
