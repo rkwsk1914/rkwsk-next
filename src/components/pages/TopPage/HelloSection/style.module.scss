@@ -70,6 +70,35 @@
   }
 }
 
+.btn_wrap {
+  @apply mt-40;
+
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @screen small {
+    flex-wrap: nowrap;
+  }
+
+  & > button, & > a {
+    width: 200px;
+
+    @screen small {
+      width: 300px;
+    }
+
+    &:not(:first-child) {
+      @apply mt-16;
+
+      @screen small {
+        @apply ml-16 mt-0;
+      }
+    }
+  }
+}
+
 .dark {
   .title {
     @apply text-darkWaring;

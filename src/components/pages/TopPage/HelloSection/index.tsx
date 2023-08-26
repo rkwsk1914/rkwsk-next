@@ -4,6 +4,9 @@ import clsx from 'clsx'
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
+import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
+
+import { Button } from '@/components/atoms/Button'
 import { PlxComponent, ParallaxData } from '@/components/libraries/PlxComponent'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 
@@ -41,7 +44,13 @@ export const HelloSection: React.FC<Props> = ({}): JSX.Element => {
       <>
         <p>Hello, My name is Ryo Kawasaki.</p>
         <p>This is my Engineer portfolio site.</p>
-        <p>See relax please.</p>
+        <p>Please feel free to explore at your leisure.</p>
+
+        <div className={styles.btn_wrap}>
+          <Button type='prime' toId={GLOBAL_NAV_DATA.skills.id}>{GLOBAL_NAV_DATA.skills.text}</Button>
+          <Button type='dangerous' toId={GLOBAL_NAV_DATA.history.id}>{GLOBAL_NAV_DATA.history.text}</Button>
+          <Button type='warning' toId={GLOBAL_NAV_DATA.contact.id}>{GLOBAL_NAV_DATA.contact.text}</Button>
+        </div>
       </>
     )
   }
