@@ -15,8 +15,8 @@ export const nameTest = () => {
       ERROR_MESSAGE[3]
     )
     Test.testNotOverMaxLength('ああああああああああああああああああああああああああああああああああああああああああああああああああ')
-    Test.testMissRegExp('1234567890', ERROR_MESSAGE[10])
-    Test.testMissRegExp('１２３４５６７８９０', ERROR_MESSAGE[10])
+    Test.testMissRegExp('1234567890', ERROR_MESSAGE.fullCharacter)
+    Test.testMissRegExp('１２３４５６７８９０', ERROR_MESSAGE.fullCharacter)
   })
 }
 

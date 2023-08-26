@@ -30,7 +30,7 @@ type Inputs = {
 
 type Props = {
   onSubmit: (event?: React.FormEvent<HTMLFormElement>) => void,
-  isTestMode: boolean
+  isTestMode?: boolean
 }
 
 type AlertProps = Pick<React.ComponentProps<typeof PageTopShowAlert>, 'type' | 'children'>

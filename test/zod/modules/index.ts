@@ -36,7 +36,7 @@ export class JestZodMethods {
 
   testRequire () {
     test('Require Test', () => {
-      this.testNG("", ERROR_MESSAGE[1])
+      this.testNG("", ERROR_MESSAGE.required)
     })
   }
 
