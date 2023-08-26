@@ -1,6 +1,8 @@
-import * as React from 'react'
+import { memo, useLayoutEffect, useState } from 'react'
 
+import clsx from 'clsx'
 import Image from 'next/image'
+
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
@@ -15,15 +17,22 @@ type Props = {
   children?: React.ReactNode
 }
 
-export const ProFileImage: React.FC<Props> = ({
+export const ProFileImage: React.FC<Props> = memo(({
   image,
   sectionLevel = 2,
   children,
 }): JSX.Element => {
+  const [firstLoad, setFirstLoad] = useState(false)
   const itemClassName = useGetDarkModeStyleClass(styles.item, styles.dark)
   const myName = (<>{'KAWASAKI'}<br />{'RYO'}</>)
 
-  const headingClassName = styles.headingText
+  const headingClassName = clsx(styles.headingText,{
+    [styles.replay_avoidance]: firstLoad
+  })
+
+  const backTextClassName = clsx(styles.backText,{
+    [styles.replay_avoidance]: firstLoad
+  })
 
   const HeadingTag = () => {
     switch (sectionLevel) {
@@ -35,6 +44,12 @@ export const ProFileImage: React.FC<Props> = ({
     }
   }
 
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      setFirstLoad(true)
+    }, 3000)
+  }, [firstLoad, setFirstLoad])
+
   return (
     <div className={itemClassName}>
       <div className={styles.main_content}>
@@ -44,10 +59,12 @@ export const ProFileImage: React.FC<Props> = ({
             alt='profile'
             image={image} />
         </div>
-        <span className={styles.backText}>{myName}</span>
+        <span className={backTextClassName}>{myName}</span>
         <small className={styles.subText}>Front End Engineer</small>
       </div>
       {children && <div className={styles.content}>{children}</div>}
     </div>
   )
-}
+})
+
+ProFileImage.displayName = 'ProFileImage'
