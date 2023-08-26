@@ -83,11 +83,9 @@
       & > .section {
         @if $level == 1 {
           @apply pt-96;
-        }
-        @else if $level >= 2 and $level < 4 {
+        } @else if $level >= 2 and $level < 4 {
           @apply pt-72;
-        }
-        @else {
+        } @else {
           @apply pt-32;
         }
       }
@@ -95,11 +93,9 @@
       & > h#{$level} + *:not(.section) {
         @if $level == 1 {
           @apply pt-72;
-        }
-        @else if $level >= 2 and $level < 4 {
+        } @else if $level >= 2 and $level < 4 {
           @apply pt-56;
-        }
-        @else {
+        } @else {
           @apply pt-24;
         }
       }
