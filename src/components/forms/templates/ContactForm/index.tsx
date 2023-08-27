@@ -53,7 +53,7 @@ export const ContactForm: React.FC<Props> = ({
     'email',
     'contact',
   ]
-  const { register, trigger, handleSubmit, setValue, formState: { errors, isDirty, isValid } } = useForm<Inputs>({
+  const { register, trigger, handleSubmit, setValue, reset, formState: { errors, isDirty, isValid } } = useForm<Inputs>({
     resolver: zodResolver(SCHEMA),
     defaultValues: isTestMode ? {
       firstName: "山田",
@@ -85,6 +85,7 @@ export const ContactForm: React.FC<Props> = ({
         children: res.message
       })
       setShowAlert(true)
+      reset()
       return
     }
 
@@ -95,6 +96,7 @@ export const ContactForm: React.FC<Props> = ({
     })
     setShowAlert(true)
     onSubmit && onSubmit()
+    reset()
   }
 
   const setTextInputElementProps = (index: number): React.ComponentProps<typeof TextInputElement> => {
