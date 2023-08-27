@@ -18,10 +18,10 @@ $arrow-init: translate(-100%, -50%);
 %extend-base {
   @apply w-full p-8;
 
+  align-items: center;
   border-radius: 50px;
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
 }
 
@@ -30,11 +30,11 @@ $arrow-init: translate(-100%, -50%);
   @extend %extend-base;
 
   content: "";
+  height: 100%;
   left: 0;
   opacity: 0;
   pointer-events: none;
   position: absolute;
-  height: 100%;
   top: 0;
   transition-duration: $transition-duration;
   transition-property: opacity;
@@ -123,12 +123,13 @@ $arrow-init: translate(-100%, -50%);
   &.outline {
     @apply bg-lightBg text-lightText border-lightText;
 
-    border-width: 1px;
     border-style: solid;
+    border-width: 1px;
   }
 
   &.small {
     @apply h-32;
+
     font-size: 12px;
   }
 

@@ -6,15 +6,14 @@ $transition-timing-function: liner;
   transition-timing-function: $transition-timing-function;
 }
 
-@mixin arrowPos ($which_side, $px) {
+@mixin arrow-pos($which_side, $px) {
   @if $which_side == 'left' {
     left: -8px;
 
     @screen small {
       left: $px;
     }
-  }
-  @else {
+  } @else {
     right: -8px;
 
     @screen small {
@@ -31,13 +30,13 @@ $transition-timing-function: liner;
   @apply text-spUI;
   @extend %extend-arrow-transition;
 
+  opacity: .1;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  transition-property: opacity;
   will-change: filter;
   z-index: 1;
-  opacity: .1;
-  transition-property: opacity;
 
   &:hover {
     opacity: 1;
@@ -48,11 +47,11 @@ $transition-timing-function: liner;
   }
 
   &.right {
-    @include arrowPos("right", 24px);
+    @include arrow-pos("right", 24px);
   }
 
   &.left {
-    @include arrowPos("left", 24px);
+    @include arrow-pos("left", 24px);
   }
 }
 
@@ -74,15 +73,16 @@ $transition-timing-function: liner;
   @apply bg-gradient-to-r from-warning-from to-warning-to;
   @extend %extend-arrow-transition;
 
-  width: 100%;
+  cursor: pointer;
   display: block;
   min-height: 8px;
   opacity: 0;
-  cursor: pointer;
   transition-property: opacity back-ground;
+  width: 100%;
 
   &:hover {
     @apply from-warning-from to-warning-to;
+
     opacity: 1;
   }
 
