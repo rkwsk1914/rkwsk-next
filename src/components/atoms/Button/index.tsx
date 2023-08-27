@@ -24,18 +24,21 @@ interface SubmitProps extends BaseProps {
   href?: string
   toId?: never
   submit?: boolean
+  scrollOption?: never
 }
 
 interface LinkProps extends BaseProps {
   href?: string
   toId?: never
   submit?: never
+  scrollOption?: never
 }
 
 interface ScrollProps extends BaseProps {
   href?: never
   toId?: string
   submit?: never
+  scrollOption?: Omit<React.ComponentProps<typeof ScrollLink>, 'to' | 'smooth' | 'ref'>
 }
 
 type Props = LinkProps | ScrollProps | SubmitProps;
@@ -48,6 +51,7 @@ export const Button: React.FC<Props> = (
     toId,
     submit,
     disabled,
+    scrollOption,
     size = 'medium',
     onClick
   }
@@ -76,7 +80,12 @@ export const Button: React.FC<Props> = (
   )
 
   if (toId) return (
-    <ScrollLink className={buttonClassName} to={toId} smooth onClick={onClick}>{children}</ScrollLink>
+    <ScrollLink
+      className={buttonClassName}
+      to={toId}
+      smooth
+      {...scrollOption}
+      onClick={onClick}>{children}</ScrollLink>
   )
 
   if (submit) return (

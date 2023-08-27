@@ -1,140 +1,26 @@
 @use "sass:map";
-
-$name-init: translate(-200%, -50%) skew(-40deg);
-$name-end: translate(0%, -50%) skew(0deg);
-$light-color: #333;
-$dark-color: #FFF;
-$name-size: (
-  small: 40px,
-  medium: 64px,
-  large: 96px,
-);
-$name-top: 35%;
-$image-width: 60%;
-
-@mixin set-name-size($size) {
-  font-size: map.get($name-size, $size);
-  line-height: map.get($name-size, $size);
-}
-
-@mixin name-size {
-  @include set-name-size("small");
-
-  @screen small {
-    @include set-name-size("medium");
-  }
-
-  @screen medium {
-    @include set-name-size("large");
-  }
-}
-
-@function calc-sub-text-font-size($size) {
-  @return calc(map.get($name-size, $size) / 3);
-}
-
-@function calc-sub-text-pos($size) {
-  $font-size: calc-sub-text-font-size($size);
-
-  @return calc($name-top + (map.get($name-size, $size)) + ($font-size));
-}
-
-@function calc-content-pos($size) {
-  $result: (
-    small: -15%,
-    medium: -20%,
-    large: -20%,
-  );
-
-  @return map.get($result, $size);
-}
-
-@mixin set-sub-text-pos-and-size($size) {
-  font-size: calc-sub-text-font-size($size);
-  top: calc-sub-text-pos($size);
-}
-
-@mixin sub-text-pos-and-size {
-  @include set-sub-text-pos-and-size("small");
-
-  @screen small {
-    @include set-sub-text-pos-and-size("medium");
-  }
-
-  @screen medium {
-    @include set-sub-text-pos-and-size("large");
-  }
-}
+@import './animation';
+@import './image';
+@import './name';
 
 @mixin set-content-pos($size) {
-  margin-top: calc-content-pos($size);
-}
+  $top: (
+    small: 15%,
+    medium: 20%,
+    large: 20%,
+  );
+  $bottom: (
+    small: 0%,
+    medium: 20%,
+    large: 10%,
+  );
 
-@mixin content-pos {
-  @include set-content-pos("small");
-
-  @screen small {
-    @include set-content-pos("medium");
-  }
-
-  @screen medium {
-    @include set-content-pos("large");
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes name-animation {
-  0% {
-    transform: $name-init;
-  }
-
-  50% {
-    transform: translate(20%, -50%) skew(-45deg);
-  }
-
-  100% {
-    transform: translate(0%, -50%) skew(0deg);
-  }
-}
-
-%extends-name-animation {
-  animation-delay: .5s;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-  animation-name: name-animation;
-  animation-timing-function: ease;
-  transform: $name-init;
-  will-change: filter;
-}
-
-%extends-fade-in-animation {
-  animation-delay: 1s;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-  animation-name: fade-in;
-  animation-timing-function: ease-in-out;
-  opacity: 0;
-}
-
-.item {
-  @apply w-full mx-auto;
-
-  box-sizing: border-box;
+  margin-top: -(map.get($top, $size));
+  padding-bottom: (map.get($bottom, $size));
 }
 
 .main_content {
-  @apply w-full;
+  @apply w-full h-auto;
 
   align-items: flex-start;
   display: flex;
@@ -143,54 +29,9 @@ $image-width: 60%;
   position: relative;
 }
 
-.image_wrap {
-  align-self: center;
-  margin: 0 0 0 auto;
-  position: relative;
-  width: $image-width;
-  z-index: 2;
-
-  @extend %extends-fade-in-animation;
-}
-
-.headingText {
-  color: transparent;
-  -webkit-text-stroke: 2px $light-color;
-  z-index: 3;
-}
-
-.backText {
-  color: $light-color;
-  z-index: 1;
-}
-
-.headingText,
-.backText {
-  @extend %extends-name-animation;
-  @include name-size;
-
-  font-weight: bold;
-  left: 0;
-  position: absolute;
-  top: $name-top;
-}
-
-.replay_avoidance {
-  animation-play-state: paused;
-  transform: $name-end;
-}
-
-.subText {
-  @extend %extends-name-animation;
-  @include sub-text-pos-and-size;
-
-  color: $light-color;
-  position: absolute;
-}
-
 .content {
   @apply p-16;
-  @include content-pos;
+  @include set-content-pos("small");
   @extend %extends-fade-in-animation;
 
   position: relative;
@@ -198,20 +39,11 @@ $image-width: 60%;
   z-index: 4;
 
   @screen small {
+    @include set-content-pos("medium");
     @apply p-32;
   }
-}
 
-.dark {
-  .headingText {
-    -webkit-text-stroke: 2px $dark-color;
-  }
-
-  .backText {
-    color: $dark-color;
-  }
-
-  .subText {
-    color: $dark-color;
+  @screen medium {
+    @include set-content-pos("large");
   }
 }

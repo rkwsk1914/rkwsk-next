@@ -23,7 +23,7 @@ export const ProFileImage: React.FC<Props> = memo(({
   children,
 }): JSX.Element => {
   const [firstLoad, setFirstLoad] = useState(false)
-  const itemClassName = useGetDarkModeStyleClass(styles.item, styles.dark)
+  const mainContentClassName = useGetDarkModeStyleClass(styles.main_content, styles.dark)
   const myName = (<>{'KAWASAKI'}<br />{'RYO'}</>)
 
   const headingClassName = clsx(styles.headingText,{
@@ -51,8 +51,8 @@ export const ProFileImage: React.FC<Props> = memo(({
   }, [firstLoad, setFirstLoad])
 
   return (
-    <div className={itemClassName}>
-      <div className={styles.main_content}>
+    <>
+      <div className={mainContentClassName}>
         <HeadingTag />
         <div className={styles.image_wrap}>
           <LiquidShapeImage
@@ -63,7 +63,7 @@ export const ProFileImage: React.FC<Props> = memo(({
         <small className={styles.subText}>Front End Engineer</small>
       </div>
       {children && <div className={styles.content}>{children}</div>}
-    </div>
+    </>
   )
 })
 
