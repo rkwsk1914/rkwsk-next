@@ -14,8 +14,10 @@ import styles from './style.module.scss'
 
 interface BaseProps {
   children: string
-  type?: 'prime' | 'dangerous' | 'warning' | 'standard'
+  type?: 'prime' | 'dangerous' | 'warning' | 'standard' | 'outline'
   onClick?: () => void
+  disabled?: boolean
+  size?: 'small' | 'medium' | 'large'
 }
 
 interface SubmitProps extends BaseProps {
@@ -45,6 +47,8 @@ export const Button: React.FC<Props> = (
     href,
     toId,
     submit,
+    disabled,
+    size = 'medium',
     onClick
   }
 ): JSX.Element => {
@@ -54,6 +58,15 @@ export const Button: React.FC<Props> = (
     [styles.dangerous]: type === 'dangerous',
     [styles.warning]: type === 'warning',
     [styles.standard]: type === 'standard',
+    [styles.outline]: type === 'outline',
+    [styles.small]: size === 'small',
+    [styles.medium]: size === 'medium',
+    [styles.large]: size === 'large',
+    [styles.disabled]: disabled,
+  })
+
+  const submitWrapClassName = clsx(styles.submit_wrap, {
+    [styles.disabled]: disabled,
   })
 
   if (href) return (
@@ -67,7 +80,9 @@ export const Button: React.FC<Props> = (
   )
 
   if (submit) return (
-    <input className={buttonClassName} type="submit" value={children} />
+    <div className={submitWrapClassName}>
+      <input className={buttonClassName} type="submit" value={children} />
+    </div>
   )
 
   return (

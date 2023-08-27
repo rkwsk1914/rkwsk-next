@@ -9,7 +9,7 @@ import { useChrFormatChange } from '@/hooks/useChrFormatChange'
 import { SCHEMA } from '@/const/Schema'
 import { TEXT_INPUT_DATA } from '@/const/TextInputData'
 
-import { ButtonElement } from '@/components/forms/atoms/ButtonElement'
+import { Button } from '@/components/atoms/Button'
 import { TextInputElement } from '@/components/forms/atoms/TextInputElement'
 import { PageTopShowAlert } from '@/components/molecules/PageTopShowAlert'
 
@@ -29,7 +29,7 @@ type Inputs = {
 };
 
 type Props = {
-  onSubmit: (event?: React.FormEvent<HTMLFormElement>) => void,
+  onSubmit?: (event?: React.FormEvent<HTMLFormElement>) => void,
   isTestMode?: boolean
 }
 
@@ -93,7 +93,7 @@ export const ContactForm: React.FC<Props> = ({
       children: res.message
     })
     setShowAlert(true)
-    onSubmit()
+    onSubmit && onSubmit()
   }
 
   const setTextInputElementProps = (index: number): React.ComponentProps<typeof TextInputElement> => {
@@ -174,12 +174,12 @@ export const ContactForm: React.FC<Props> = ({
         <TextInputElement {...setTextInputElementProps(6)} multiline rows={4}/>
 
         <div className={styles.submitArea}>
-          <ButtonElement
+
+          <Button
             disabled={isTestMode ? false : (isDirty && isValid) ? false : true}
-            type='submit'
-            variant='contained'
-            size='large'
-          >送信</ButtonElement>
+            type='prime'
+            submit
+          >送信</Button>
         </div>
       </div>
     </form>

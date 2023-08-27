@@ -1,9 +1,11 @@
 import * as React from 'react'
+import { useState } from 'react'
 
 import { useMatchHeight } from '@/hooks/useMatchHeight'
 
 import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
 
+import { Button } from '@/components/atoms/Button'
 import { MyCard } from '@/components/atoms/MyCard'
 import { SlickSlider, OriginalSettings } from '@/components/libraries/SlickSlider'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
@@ -22,6 +24,7 @@ export const MySkillSetSection: React.FC<Props> = ({
 }): JSX.Element => {
   const dataLength = data.length
   const {height, refsArray} = useMatchHeight(dataLength)
+  const [ slideNumber, setSlideNumber ] = useState<number | null>(null)
 
   const slides = data.map((item, index) => (
     <div key={index} className={styles.cardWrap}>
@@ -31,43 +34,51 @@ export const MySkillSetSection: React.FC<Props> = ({
     </div>
   ))
 
-  const settings: OriginalSettings = {
-    infinite:true,
+  const options = data.map((item, index) => (
+    <React.Fragment key={index}>
+      <Button type='outline' size='small' onClick={() => {setSlideNumber(index)}}>
+        {item.title}
+      </Button>
+    </React.Fragment>
+  ))
+
+  const commonSettings = {
+    infinite: true,
     speed: 300,
-    slidesToShow:1,
-    centerPadding: '150px',
     autoplay: false,
     arrows: true,
     dots: true,
     centerMode: true,
     useCSS: true,
+  }
+
+  const settings: OriginalSettings = {
+    slidesToShow: 3,
+    centerPadding: '150px',
+    ...commonSettings,
     responsive: [
       {
-        breakpoint: 750, // min-width 749
+        breakpoint: 750, // max-width 749
         settings: {
-          infinite:true,
-          speed: 300,
-          slidesToShow:1,
+          slidesToShow: 1,
           centerPadding: '0px',
-          autoplay: false,
-          arrows: false,
-          dots: true,
-          centerMode: true,
-          useCSS: true
+          ...commonSettings,
         }
       },
       {
-        breakpoint: 960, // min-width 960
+        breakpoint: 960, // max-width 960
         settings: {
-          infinite:true,
-          speed: 300,
-          slidesToShow:1,
+          slidesToShow: 1,
           centerPadding: '0px',
-          autoplay: false,
-          arrows: false,
-          dots: true,
-          centerMode: true,
-          useCSS: true
+          ...commonSettings,
+        }
+      },
+      {
+        breakpoint: 1200, // max-width 1200
+        settings: {
+          slidesToShow: 1,
+          centerPadding: '150px',
+          ...commonSettings,
         }
       }
     ]
@@ -75,7 +86,10 @@ export const MySkillSetSection: React.FC<Props> = ({
 
   return (
     <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text} isFull>
-      <SlickSlider settings={settings}>
+      <div className={styles.options_area}>
+        {options}
+      </div>
+      <SlickSlider settings={settings} externalSlideNumber={slideNumber}>
         {slides}
       </SlickSlider>
     </SectionContainer>

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 import clsx from 'clsx'
 import Slider, { Settings, CustomArrowProps } from "react-slick"
@@ -16,6 +16,7 @@ export type OriginalSettings = Settings
 type Props = {
   children?: React.ReactNode
   settings: OriginalSettings
+  externalSlideNumber?: number | null
 }
 
 type DotProps = {
@@ -55,7 +56,7 @@ const CustomDot: React.FC<DotProps>= ({
   return (
     <div
       className={clsx(
-        styles.dot,
+        styles.dotItem,
         {
           [styles.active]: active
         }
@@ -66,7 +67,8 @@ const CustomDot: React.FC<DotProps>= ({
 
 export const SlickSlider: React.FC<Props> = ({
   children,
-  settings
+  settings,
+  externalSlideNumber
 }): JSX.Element => {
   // const [isStopped, setIsStopped] = useState(false)
 
@@ -113,13 +115,18 @@ export const SlickSlider: React.FC<Props> = ({
             key={index}
             active={dot.props.className === "slick-active"}
             onClick={() => {
-              console.log(index)
               handleClickSlickGoTo(index)
             }} />
         ))}
       </div>
     )
   }
+
+  useEffect(() => {
+    if (externalSlideNumber || externalSlideNumber === 0) {
+      handleClickSlickGoTo(externalSlideNumber)
+    }
+  }, [externalSlideNumber])
 
   const mySettings: Settings = settings
   mySettings.prevArrow = mySettings.prevArrow ?? <NextButton />

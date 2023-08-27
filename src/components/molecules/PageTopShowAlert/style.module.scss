@@ -4,6 +4,7 @@ $transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 .wrap {
   @apply w-full px-8 z-alert;
 
+  left: 0;
   position: fixed;
   top: 0;
   transition-duration: $transition-duration;

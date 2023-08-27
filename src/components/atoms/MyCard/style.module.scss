@@ -1,12 +1,20 @@
+
+@mixin border-and-shadow($color) {
+  border-color: $color;
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 8px 8px 16px -4px $color;
+}
+
 .card {
   @apply bg-lightBg w-full;
-
-  border: 1px solid #ccc;
-  border-radius: 16px;
-  box-shadow: 8px 8px 16px -4px #ccc;
+  @include border-and-shadow(#ccc);
 
   .head {
-    @apply px-16 pt-16 text-16;
+    @apply px-16 pt-16 text-16 text-lightWaring;
+
+    font-weight: bold;
 
     @screen small {
       @apply text-24;
@@ -21,8 +29,10 @@
 .dark {
   &.card {
     @apply bg-darkBg;
+    @include border-and-shadow(#333);
 
-    border-color: #66B2FF;
-    box-shadow: 8px 8px 16px -4px #66B2FF;
+    .head {
+      @apply text-darkWaring;
+    }
   }
 }
