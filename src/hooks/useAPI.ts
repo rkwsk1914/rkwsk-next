@@ -1,10 +1,8 @@
 import axios from 'axios'
 
-import { API_END_POINTS, API_KEY } from '@/const/API'
 import { FORM_MESSAGE } from '@/const/FormMessage'
 
 import { PostContactDataType } from '@/types/APIDataType'
-
 
 type PostArgsType = {
   url: string
@@ -37,17 +35,20 @@ export const useAPI = () => {
   }
 
   const doPostContact = async (data: PostContactDataType): Promise<responseStateType> => {
-    const isError = await doPost({
-      url: API_END_POINTS.contact,
-      data: data,
+    const response = await fetch('/api/contact', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-MICROCMS-API-KEY': API_KEY,
-      }
+      },
+      body: JSON.stringify(data),
     })
+
+    console.log(response.status)
+    const isSuccess = response.status !== 200
+
     return {
-      isError: isError ? true : false,
-      message: FORM_MESSAGE[isError ? 1 : 0]
+      isError: isSuccess ? true : false,
+      message: FORM_MESSAGE[isSuccess ? 1 : 0]
     }
   }
 
