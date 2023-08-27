@@ -4,15 +4,12 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import clsx from 'clsx'
 
-import { useSessionStorage } from '@/hooks/useSessionStorage'
-
 import { darkTheme, lightTheme } from '@/const/DarkTheme'
 
 import { ThemeSwitch } from '@/components/forms/molecules/ThemeSwitch'
 
 import styles from './style.module.scss'
 
-import { SessionStorageDataValueType } from '@/types/SessionStorageDataType'
 import { ThemeContextType } from '@/types/ThemeContext'
 
 
@@ -32,26 +29,11 @@ export const ThemeContextProvider: React.FC<Props> = ({
   isDark = false,
   isTest
 }) => {
-  const {
-    setSessionStorage,
-    getSessionStorage
-  } = useSessionStorage()
-
-  const initThemeMode = () => {
-    if (isTest) return isDark
-
-    const value: SessionStorageDataValueType['themeMode'] = getSessionStorage('themeMode')
-    if (!value) return isDark
-
-    return (value === 'dark') ? true : false
-  }
-
-  const [isDarkModeCTX, setIsDarkModeCTX] = useState<boolean>(initThemeMode())
+  const [isDarkModeCTX, setIsDarkModeCTX] = useState<boolean>(isDark)
 
   const handleIsDarkMode = useCallback((isDarkModeCTX: boolean) => {
     setIsDarkModeCTX(isDarkModeCTX)
-    setSessionStorage('themeMode', isDarkModeCTX)
-  }, [setSessionStorage])
+  }, [])
 
   const contentClassName = clsx(styles.content, {
     [styles.dark]: isDarkModeCTX,
