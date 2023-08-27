@@ -4,6 +4,8 @@ import clsx from "clsx"
 import Plx from "react-plx" // docs https://www.npmjs.com/package/react-plx#parallaxdata
 import { PlxProps, PlxItem } from "react-plx"
 
+import styles from './style.module.scss'
+
 export type ParallaxData = PlxItem
 
 interface Props extends PlxProps {
@@ -24,7 +26,9 @@ export const PlxComponent: React.FC<Props> = (
 ): JSX.Element => {
   return (
     <Plx
-      className={clsx(wrapClassName && wrapClassName)}
+      className={clsx(styles.for_safari,
+        wrapClassName && wrapClassName,
+      )}
       onPlxStart={onPlxStart}
       onPlxEnd={onPlxEnd}
       parallaxData={parallaxData}

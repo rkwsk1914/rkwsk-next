@@ -36,7 +36,15 @@ export const MySkillSetSection: React.FC<Props> = ({
 
   const options = data.map((item, index) => (
     <React.Fragment key={index}>
-      <Button type='outline' size='small' onClick={() => {setSlideNumber(index)}}>
+      <Button
+        type='outline'
+        size='small'
+        toId='skill-slider'
+        onClick={() => {setSlideNumber(index)}}
+        scrollOption={{
+          offset: -96
+        }}
+      >
         {item.title}
       </Button>
     </React.Fragment>
@@ -89,9 +97,11 @@ export const MySkillSetSection: React.FC<Props> = ({
       <div className={styles.options_area}>
         {options}
       </div>
-      <SlickSlider settings={settings} externalSlideNumber={slideNumber}>
-        {slides}
-      </SlickSlider>
+      <div id="skill-slider">
+        <SlickSlider settings={settings} externalSlideNumber={slideNumber}>
+          {slides}
+        </SlickSlider>
+      </div>
     </SectionContainer>
   )
 }

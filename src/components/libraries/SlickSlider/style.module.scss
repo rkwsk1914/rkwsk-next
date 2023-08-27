@@ -24,6 +24,10 @@ $transition-timing-function: liner;
 
 .sliderWrap {
   @apply pb-24 w-full;
+
+  * {
+    will-change: filter;
+  }
 }
 
 .arrowButton {
