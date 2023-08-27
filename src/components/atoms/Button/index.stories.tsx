@@ -4,10 +4,17 @@ import { StoryFn, Meta } from '@storybook/react'
 
 import { Button as StoryComponent } from '.'
 
+import { MuiSizeOptions } from '@/types/MuiSize'
+
 export default {
   title: 'Atoms/Button',
   component: StoryComponent,
-  argTypes: { onClick: { action: 'clicked' } }
+  argTypes: {
+    size: {
+      control: 'select', options: MuiSizeOptions
+    },
+    onClick: { action: 'clicked' }
+  }
 } as Meta<typeof StoryComponent>
 
 const Template: StoryFn<typeof StoryComponent> = (
