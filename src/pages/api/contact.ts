@@ -10,7 +10,6 @@ export default async function handler(
 ) {
 
   if (req.method === "POST") {
-    console.log(req.body)
     const requestBody = req.body
     const result = await axios
       .post(API_END_POINTS.contact,

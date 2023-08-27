@@ -87,6 +87,7 @@ export const ContactForm: React.FC<Props> = ({
       setShowAlert(true)
       return
     }
+
     const res = await doPostContact(data)
     setAlertsProps({
       type: res.isError ? 'error' : 'success',
