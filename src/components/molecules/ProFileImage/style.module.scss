@@ -1,7 +1,7 @@
 @use "sass:map";
-@import './animation.scss';
-@import './image.scss';
-@import './name.scss';
+@import './animation';
+@import './image';
+@import './name';
 
 @mixin set-content-pos($size) {
   $top: (
@@ -14,6 +14,7 @@
     medium: 20%,
     large: 10%,
   );
+
   margin-top: -(map.get($top, $size));
   padding-bottom: (map.get($bottom, $size));
 }
