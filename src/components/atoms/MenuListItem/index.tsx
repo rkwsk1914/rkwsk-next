@@ -1,19 +1,21 @@
+import React from 'react'
 import { memo } from 'react'
 
 import Link from 'next/link'
+import { Link as ScrollLink } from 'react-scroll'
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
+
 
 import styles from './style.module.scss'
 
 import { MenuDataType } from '@/types/MenuDataType'
 
-
-
 type Props = {
   data: MenuDataType
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void
+  onClick?: () => void
 };
+
 
 export const MenuListItem: React.FC<Props> = memo(({
   data,
@@ -23,7 +25,10 @@ export const MenuListItem: React.FC<Props> = memo(({
 
   return (
     <li className={liClassName}>
-      <Link href={data.href} onClick={onClick}>{data.text}</Link>
+      {data.href ?
+        <Link href={data.href} onClick={onClick}>{data.text}</Link> :
+        <ScrollLink to={data.id} smooth onClick={onClick}>{data.text}</ScrollLink>
+      }
     </li>
   )
 })

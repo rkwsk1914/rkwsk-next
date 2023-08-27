@@ -1,3 +1,12 @@
 .ul {
   @apply m-0 p-0;
 }
+
+.horizontality {
+  @screen small {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

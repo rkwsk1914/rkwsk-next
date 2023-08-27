@@ -2,10 +2,9 @@ import { useState } from 'react'
 
 import clsx from 'clsx'
 import Link from 'next/link'
-import { PlxItem } from "react-plx"
 
 import { Logo } from '@/components/atoms/Logo'
-import { PlxComponent } from '@/components/organisms/PlxComponent'
+import { PlxComponent, ParallaxData } from '@/components/libraries/PlxComponent'
 
 import styles from './style.module.scss'
 
@@ -14,7 +13,7 @@ type Props = {};
 export const HeaderLogo: React.FC<Props> = ({}): JSX.Element => {
   const [isInHeader, setIsInHeader] = useState(false)
 
-  const parallaxData: PlxItem[] = [
+  const parallaxData: ParallaxData[] = [
     {
       start: 0,
       end: 500,

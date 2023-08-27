@@ -1,0 +1,44 @@
+.box {
+  @apply w-full px-8;
+
+  display: block;
+
+  @screen small {
+    @apply px-16;
+  }
+
+  &+& {
+    @apply mt-16;
+
+    @screen small {
+      @apply mt-32;
+    }
+  }
+}
+
+.month {
+  @apply text-lightText text-8 w-full border-lightText py-8;
+
+  @screen small {
+    @apply text-16 py-8 mt-8;
+  }
+
+  border-bottom: 1px solid;
+  display: block;
+}
+
+.content {
+  @apply mt-8;
+
+  font-size: 12px;
+
+  @screen small {
+    @apply text-16;
+  }
+}
+
+.dark {
+  .month {
+    @apply text-darkText border-darkText;
+  }
+}

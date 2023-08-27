@@ -1,0 +1,21 @@
+.content {
+  @apply px-0 w-full;
+
+  position: relative;
+}
+
+.header {
+  @apply z-hamburgerMenu w-full;
+
+  position: fixed;
+}
+
+.article {
+  @apply pb-96;
+}
+
+.scrollButton {
+  @apply bottom-16 right-16 z-ScrollTopButton;
+
+  position: fixed;
+}

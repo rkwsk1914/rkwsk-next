@@ -10,7 +10,7 @@
     "stylelint-declaration-block-no-ignored-properties"
   ],
   "customSyntax": "postcss-scss",
-  "ignoreFiles": ["**/node_modules/**"],
+  "ignoreFiles": ["**/node_modules/**", "**/coverage/**"],
   "rules": {
     "at-rule-no-unknown": [
       true,
@@ -25,7 +25,13 @@
           "each",
           "if",
           "else",
-          "else if"
+          "else if",
+          "extend",
+          "mixin",
+          "include",
+          "use",
+          "return",
+          "function"
         ]
       }
     ],
@@ -42,8 +48,17 @@
           "each",
           "if",
           "else",
-          "else if"
+          "else if",
+          "extend"
         ]
+      }
+    ],
+    "scss/function-no-unknown": [
+      true,
+      {
+          "ignoreFunctions": [
+            "/^calc-/"
+          ]
       }
     ],
     "selector-anb-no-unmatchable": [

@@ -1,0 +1,40 @@
+$init-border-radius: 59% 41% 21% 79% / 62% 53% 47% 38%;
+$side-ratio: 25%;
+
+@keyframes liquid-animation {
+  0% {
+    border-radius: $init-border-radius;
+  }
+
+  33% {
+    border-radius: 26% 74% 52% 48% / 52% 32% 68% 48%;
+  }
+
+  66% {
+    border-radius: 34% 65% 34% 56% / 57% 42% 55% 42%;
+  }
+
+  100% {
+    border-radius: $init-border-radius;
+  }
+}
+
+.liquid2 {
+  @apply bg-lightWaring;
+
+  width: calc(100% - $side-ratio);
+  height: 75%;
+  animation: liquid-animation 5s ease 1s infinite normal;
+  border-radius: $init-border-radius;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-5%, -50%);
+  will-change: filter;
+}
+
+.dark {
+  .liquid2 {
+    @apply bg-darkWaring;
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { StoryFn, Meta } from '@storybook/react'
 
-import { ICON_DATA } from '@/const/IconDate'
+import { ICON_DATA } from '@/const/IconData'
 
 import { SkillSetTableItem as StoryComponent } from '.'
 

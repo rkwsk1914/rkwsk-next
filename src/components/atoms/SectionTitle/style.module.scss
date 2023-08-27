@@ -1,8 +1,12 @@
 .title {
-  @apply text-main;
+  @apply text-lightPrime;
 
   font-weight: bold;
   line-height: 1;
+
+  &.dark {
+    @apply text-darkPrime;
+  }
 }
 
 h1.title {

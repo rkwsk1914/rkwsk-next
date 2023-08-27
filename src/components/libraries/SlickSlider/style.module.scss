@@ -1,0 +1,97 @@
+$transition-duration: .5s;
+$transition-timing-function: liner;
+
+%extend-arrow-transition {
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-timing-function;
+}
+
+@mixin arrow-pos($which_side, $px) {
+  @if $which_side == 'left' {
+    left: -8px;
+
+    @screen small {
+      left: $px;
+    }
+  } @else {
+    right: -8px;
+
+    @screen small {
+      right: $px;
+    }
+  }
+}
+
+.sliderWrap {
+  @apply pb-24 w-full;
+
+  * {
+    will-change: filter;
+  }
+}
+
+.arrowButton {
+  @apply text-spUI;
+  @extend %extend-arrow-transition;
+
+  opacity: .1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition-property: opacity;
+  will-change: filter;
+  z-index: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @screen small {
+    @apply text-56;
+  }
+
+  &.right {
+    @include arrow-pos("right", 24px);
+  }
+
+  &.left {
+    @include arrow-pos("left", 24px);
+  }
+}
+
+.dots {
+  @apply w-full mx-auto mt-16 bg-gradient-to-r from-prime-from to-prime-to;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  @screen small {
+    @apply mt-24;
+
+    max-width: 80%;
+  }
+}
+
+.dotItem {
+  @apply bg-gradient-to-r from-warning-from to-warning-to;
+  @extend %extend-arrow-transition;
+
+  cursor: pointer;
+  display: block;
+  min-height: 8px;
+  opacity: 0;
+  transition-property: opacity back-ground;
+  width: 100%;
+
+  &:hover {
+    @apply from-warning-from to-warning-to;
+
+    opacity: 1;
+  }
+
+  &.active {
+    opacity: 1;
+    pointer-events: none;
+  }
+}

@@ -1,5 +1,12 @@
 import * as React from 'react'
 
+import { useTheme } from '@mui/material/styles'
+import clsx from 'clsx'
+
+import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
+
+import { ICON_DATA } from '@/const/IconData'
+
 import { RatingElement } from '@/components/forms/atoms/RatingElement'
 
 import styles from './style.module.scss'
@@ -14,6 +21,7 @@ export const SkillSetTableItem: React.FC<Props> = ({
   acquisitionDate,
   category
 }): JSX.Element => {
+  const theme = useTheme()
 
   const checkDateFormat = ():boolean => {
     if (acquisitionDate) {
@@ -39,6 +47,15 @@ export const SkillSetTableItem: React.FC<Props> = ({
     return '-'
   }
 
+  const starClassName = useGetDarkModeStyleClass(styles.star, styles.dark)
+
+  const categoryIcon = () => {
+    const isDarkMode = theme.palette.mode === 'dark'
+    return category === 'self-studying' ?
+      ICON_DATA.study :
+      isDarkMode ? ICON_DATA.star : ICON_DATA.regularStar
+  }
+
   return (
     <tr className={styles.tr}>
       <th className={styles.skillName}>{skillName}</th>
@@ -55,7 +72,11 @@ export const SkillSetTableItem: React.FC<Props> = ({
         />
       </td>
       <td className={styles.yearsOfExperience}>{calculateYearsOfExperience()}</td>
-      <td className={styles.category}>{category}</td>
+      <td className={styles.category}>
+        <span className={clsx({
+          [starClassName]: category === 'work-experience',
+        })}>{categoryIcon()}</span>
+      </td>
     </tr>
   )
 }

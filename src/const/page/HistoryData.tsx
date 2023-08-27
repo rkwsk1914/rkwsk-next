@@ -1,6 +1,6 @@
-import { HistoryListYearItem } from '@/components/molecules/HistoryListYearItem'
+import { HistoryList } from '@/components/organisms/HistoryList'
 
-type DataType = Array<Omit<React.ComponentProps<typeof HistoryListYearItem>, 'yearPos'>>
+type DataType = React.ComponentProps<typeof HistoryList>['data']
 
 const HISTORY_DATA: DataType =[
   {
@@ -37,8 +37,8 @@ const HISTORY_DATA: DataType =[
       {
         month: 4,
         content: <>
-          富士ソフト株式会社 システム事業本部モビリティ事業部 車載システム開発部<br />
-          開発エンジニアとして就職
+          富士ソフト株式会社 システム事業本部モビリティ事業部 車載システム開発部 就職。<br />
+          開発エンジニアとして配属。
         </>
       }
     ]
@@ -49,8 +49,8 @@ const HISTORY_DATA: DataType =[
       {
         month: 9,
         content: <>
-          株式会社モードツー コミニュケーションデザイン部<br />
-          フロントエンドエンジニアに転職
+          株式会社モードツー コミニュケーションデザイン部 転職。<br />
+          フロントエンドエンジニアとして配属。
         </>
       }
     ]
@@ -59,10 +59,28 @@ const HISTORY_DATA: DataType =[
     year: 2022,
     monthlyDate: [
       {
+        month: 8,
+        content: <>
+          副業でフリーランス活動を開始。<br /><br />
+          shopifyによるECサイト開発プロジェクトに参画。<br />開発環境の構築・技術コンサル・フロントエンド開発を担当。
+        </>
+      },
+      {
         month: 9,
         content: <>
-          フリーランスに転向<br />
-          フロントエンドエンジニアとして活動を開始
+          web制作会社を退職。フリーランス・フロントエンドエンジニアとして活動を開始。<br /><br />
+          React+TypeScriptによる資産運用サービスのwebアプリケーション開発にフロントエンドエンジニアとして参画。
+        </>
+      },
+    ]
+  },
+  {
+    year: 2023,
+    monthlyDate: [
+      {
+        month: 1,
+        content: <>
+          保険広告会社のjQuery+Express サイトからNext.js+TypeScript サイトへのリファクタリングプロジェクトに参画。
         </>
       }
     ]
@@ -71,9 +89,8 @@ const HISTORY_DATA: DataType =[
     year: 'now',
     monthlyDate: [
       {
-        month: 9,
         content: <>
-          フロントエンドエンジニアとして活動中
+          保険広告会社のNext.js+TypeScript サイトのスクラム開発プロジェクトに参画中。
         </>
       }
     ]

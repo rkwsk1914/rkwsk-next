@@ -17,3 +17,11 @@
     }
   }
 }
+
+.star {
+  @apply text-lightPrime;
+
+  &.dark {
+    @apply text-darkPrime;
+  }
+}

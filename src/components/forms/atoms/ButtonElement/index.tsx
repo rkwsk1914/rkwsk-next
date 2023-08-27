@@ -10,23 +10,29 @@ type Props = {
   variant?: 'contained' | 'outlined' | 'text'
   size?: MuiSizeTypes
   disabled?: boolean
+  type?: 'submit' | 'button' | 'reset'
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 };
 
 export const ButtonElement: React.FC<Props> = (
   {
     children,
     color,
-    variant,
-    size,
-    disabled
+    type = 'button',
+    variant = 'contained',
+    size = 'large',
+    disabled,
+    onClick
   }
 ): JSX.Element => {
   return (
     <Button
+      type={type}
       color={color}
       variant={variant}
       size={size}
       disabled={disabled}
+      onClick={onClick}
     >
       {children}
     </Button>

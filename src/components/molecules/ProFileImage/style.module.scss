@@ -1,0 +1,49 @@
+@use "sass:map";
+@import './animation';
+@import './image';
+@import './name';
+
+@mixin set-content-pos($size) {
+  $top: (
+    small: 15%,
+    medium: 20%,
+    large: 20%,
+  );
+  $bottom: (
+    small: 0%,
+    medium: 20%,
+    large: 10%,
+  );
+
+  margin-top: -(map.get($top, $size));
+  padding-bottom: (map.get($bottom, $size));
+}
+
+.main_content {
+  @apply w-full h-auto;
+
+  align-items: flex-start;
+  display: flex;
+  height: max-content;
+  justify-content: space-between;
+  position: relative;
+}
+
+.content {
+  @apply p-16;
+  @include set-content-pos("small");
+  @extend %extends-fade-in-animation;
+
+  position: relative;
+  width: $image-width;
+  z-index: 4;
+
+  @screen small {
+    @include set-content-pos("medium");
+    @apply p-32;
+  }
+
+  @screen medium {
+    @include set-content-pos("large");
+  }
+}

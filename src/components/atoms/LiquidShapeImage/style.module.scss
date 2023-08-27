@@ -1,0 +1,13 @@
+@import "./liquid-1";
+@import "./liquid-2";
+@import "./liquid-image";
+
+.container {
+  @apply w-full h-full;
+
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+

@@ -21,7 +21,13 @@ export const SkillSetTable: React.FC<Props> = ({
         <col className={styles.col_4}/>
       </colgroup>
       <tbody>
-        {data.map((item, index) => (
+        <tr className={styles.first_row}>
+          <th></th>
+          <th>習得度</th>
+          <th>経験年数</th>
+          <th>実務<br className={styles.pc_none} />経験</th>
+        </tr>
+        {data.sort((a, b) => b.value - a.value).map((item, index) => (
           <SkillSetTableItem
             key={index}
             skillName={item.skillName}

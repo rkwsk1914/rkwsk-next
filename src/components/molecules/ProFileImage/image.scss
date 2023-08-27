@@ -1,0 +1,13 @@
+@import './animation';
+
+$image-width: 60%;
+
+.image_wrap {
+  align-self: center;
+  margin: 0 0 0 auto;
+  position: relative;
+  width: $image-width;
+  z-index: 2;
+
+  @extend %extends-fade-in-animation;
+}

@@ -7,7 +7,8 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "@storybook/addon-actions",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
+    "@storybook/addon-a11y"
   ],
   framework: {
     name: "@storybook/nextjs",
