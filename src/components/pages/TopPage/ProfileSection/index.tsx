@@ -24,7 +24,8 @@ export const ProfileSection: React.FC<Props> = ({}): JSX.Element => {
   const profileImage = {
     src: '/pic-me.jpg',
     width: 1478,
-    height: 1108
+    height: 1108,
+    priority: true
   }
 
   return (

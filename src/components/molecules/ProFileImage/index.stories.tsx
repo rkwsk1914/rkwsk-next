@@ -22,7 +22,8 @@ Default.args = {
   image: {
     src: '/pic-me.jpg',
     width: 1478,
-    height: 1108
+    height: 1108,
+    priority: true
   }
 }
 
