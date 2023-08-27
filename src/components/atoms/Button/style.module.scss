@@ -1,3 +1,7 @@
+$transition-duration: .5s;
+$transition-timing-function: liner;
+$arrow-init: translate(-100%, -50%);
+
 %extend-button-reset {
   appearance: none;
   background-color: transparent;
@@ -19,9 +23,20 @@
   text-align: center;
 }
 
-$transition-duration: .5s;
-$transition-timing-function: liner;
-$arrow-init: translate(-100%, -50%);
+%extend-btn-after {
+  @apply bg-white;
+  @extend %extend-base;
+
+  content: "";
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  transition-duration: $transition-duration;
+  transition-property: opacity;
+  transition-timing-function: $transition-timing-function;
+}
 
 @keyframes arrow-animation {
   0% {
@@ -52,6 +67,38 @@ $arrow-init: translate(-100%, -50%);
   will-change: filter;
 }
 
+.submit_wrap {
+  position: relative;
+  pointer-events: auto;
+  cursor: pointer;
+
+  &::after {
+    @extend %extend-btn-after;
+  }
+
+  &:hover {
+    &:hover {
+      &::after {
+        opacity: .4;
+      }
+
+      .arrow {
+        animation-play-state: running;
+      }
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    cursor: default;
+
+    &::after {
+      @apply bg-black;
+      opacity: .4;
+    }
+  }
+}
+
 .button {
   @extend %extend-button-reset, %extend-base;
 
@@ -59,17 +106,7 @@ $arrow-init: translate(-100%, -50%);
   position: relative;
 
   &::after {
-    @apply bg-white;
-    @extend %extend-base;
-
-    content: "";
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    transition-duration: $transition-duration;
-    transition-property: opacity;
-    transition-timing-function: $transition-timing-function;
+    @extend %extend-btn-after;
   }
 
   &:hover {

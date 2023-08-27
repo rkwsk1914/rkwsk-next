@@ -59,6 +59,10 @@ export const Button: React.FC<Props> = (
     [styles.disabled]: disabled,
   })
 
+  const submitWrapClassName = clsx(styles.submit_wrap, {
+    [styles.disabled]: disabled,
+  })
+
   if (href) return (
     <Link className={buttonClassName} href={href}>
       {children}<span className={styles.arrow}>{ICON_DATA.arrowRight}</span>
@@ -70,7 +74,9 @@ export const Button: React.FC<Props> = (
   )
 
   if (submit) return (
-    <input className={buttonClassName} type="submit" value={children} />
+    <div className={submitWrapClassName}>
+      <input className={buttonClassName} type="submit" value={children} />
+    </div>
   )
 
   return (
