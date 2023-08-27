@@ -30,8 +30,8 @@ $arrow-init: translate(-100%, -50%);
   content: "";
   left: 0;
   opacity: 0;
-  position: absolute;
   pointer-events: none;
+  position: absolute;
   top: 0;
   transition-duration: $transition-duration;
   transition-property: opacity;
@@ -67,38 +67,6 @@ $arrow-init: translate(-100%, -50%);
   will-change: filter;
 }
 
-.submit_wrap {
-  position: relative;
-  pointer-events: auto;
-  cursor: pointer;
-
-  &::after {
-    @extend %extend-btn-after;
-  }
-
-  &:hover {
-    &:hover {
-      &::after {
-        opacity: .4;
-      }
-
-      .arrow {
-        animation-play-state: running;
-      }
-    }
-  }
-
-  &.disabled {
-    pointer-events: none;
-    cursor: default;
-
-    &::after {
-      @apply bg-black;
-      opacity: .4;
-    }
-  }
-}
-
 .button {
   @extend %extend-button-reset, %extend-base;
 
@@ -120,11 +88,12 @@ $arrow-init: translate(-100%, -50%);
   }
 
   &.disabled {
-    pointer-events: none;
     cursor: default;
+    pointer-events: none;
 
     &::after {
       @apply bg-black;
+
       opacity: .4;
     }
   }
@@ -146,6 +115,39 @@ $arrow-init: translate(-100%, -50%);
 
   &.standard {
     @apply bg-lightText text-lightBg;
+  }
+}
+
+.submit_wrap {
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+
+  &::after {
+    @extend %extend-btn-after;
+  }
+
+  &:hover {
+    &:hover {
+      &::after {
+        opacity: .4;
+      }
+
+      .arrow {
+        animation-play-state: running;
+      }
+    }
+  }
+
+  &.disabled {
+    cursor: default;
+    pointer-events: none;
+
+    &::after {
+      @apply bg-black;
+
+      opacity: .4;
+    }
   }
 }
 
