@@ -36,9 +36,8 @@
 
   .first_row {
     th,td {
-      @apply text-16;
-
       text-align: center;
+      font-size: 12px;
 
       @screen small {
         @apply text-16;
@@ -67,7 +66,7 @@
   width: 25%;
 
   @screen small {
-    width: 10%;
+    width: 15%;
   }
 }
 
@@ -76,7 +75,7 @@
 
   @screen small {
     visibility: visible;
-    width: 25%;
+    width: 20%;
   }
 }
 

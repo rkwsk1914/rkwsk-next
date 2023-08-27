@@ -20,19 +20,51 @@ const Template: StoryFn<typeof StoryComponent> = (
   <StoryComponent {...args}></StoryComponent>
 )
 
+const settings = {
+  infinite:true,
+  speed: 300,
+  slidesToShow:1,
+  centerPadding: '150px',
+  autoplay: false,
+  arrows: true,
+  dots: true,
+  centerMode: true,
+  useCSS: true,
+  responsive: [
+    {
+      breakpoint: 750, // min-width 749
+      settings: {
+        infinite:true,
+        speed: 300,
+        slidesToShow:1,
+        centerPadding: '0px',
+        autoplay: false,
+        arrows: true,
+        dots: true,
+        centerMode: true,
+        useCSS: true
+      }
+    },
+    {
+      breakpoint: 960, // min-width 960
+      settings: {
+        infinite:true,
+        speed: 300,
+        slidesToShow:1,
+        centerPadding: '0px',
+        autoplay: false,
+        arrows: true,
+        dots: true,
+        centerMode: true,
+        useCSS: true
+      }
+    }
+  ]
+}
+
 export const Default = Template.bind({})
 Default.args = {
-  settings: {
-    infinite:true,
-    speed: 300,
-    slidesToShow:1,
-    centerPadding: '150px',
-    autoplay: true,
-    arrows: true,
-    dots: true,
-    centerMode: true,
-    useCSS: true
-  },
+  settings: settings,
   children:
     SKILL_SET_DATA.map((item, index) => (
       <div key={index}>

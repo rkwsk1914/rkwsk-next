@@ -5,3 +5,23 @@
     @apply px-32 py-16;
   }
 }
+
+.options_area {
+  @apply w-full;
+
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8px;
+  row-gap: 8px;
+
+  @screen small {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @screen large {
+    @apply mx-auto;
+    max-width: 80%;
+  }
+}
