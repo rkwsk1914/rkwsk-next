@@ -35,11 +35,6 @@
             "position": "before"
           },
           {
-            "pattern": "@/api/**",
-            "group": "parent",
-            "position": "before"
-          },
-          {
             "pattern": "@/components/**",
             "group": "parent",
             "position": "before"
