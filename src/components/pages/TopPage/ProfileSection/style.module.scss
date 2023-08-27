@@ -1,3 +1,40 @@
-.area {
-  @apply mx-auto;
+.link_btn_area {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.link_btn {
+  @apply text-32;
+
+  $transition-duration: .5s;
+  $transition-timing-function: liner;
+
+  transition-duration: $transition-duration;
+  transition-property: color;
+  transition-timing-function: $transition-timing-function;
+
+  @screen small {
+    @apply text-spUI;
+  }
+
+  &:hover {
+    @apply text-lightWaring;
+  }
+
+  &:not(:first-child) {
+    @apply ml-16;
+
+    @screen small {
+      @apply ml-16;
+    }
+  }
+}
+
+.dark {
+  .link_btn {
+    &:hover {
+      @apply text-darkWaring;
+    }
+  }
 }
