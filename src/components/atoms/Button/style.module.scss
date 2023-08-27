@@ -82,6 +82,16 @@ $arrow-init: translate(-100%, -50%);
     }
   }
 
+  &.disabled {
+    pointer-events: none;
+    cursor: default;
+
+    &::after {
+      @apply bg-black;
+      opacity: .4;
+    }
+  }
+
   &.prime {
     @apply from-prime-from to-prime-to text-darkText;
     @extend %extend-gradient;

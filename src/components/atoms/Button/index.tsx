@@ -16,6 +16,7 @@ interface BaseProps {
   children: string
   type?: 'prime' | 'dangerous' | 'warning' | 'standard'
   onClick?: () => void
+  disabled?: boolean
 }
 
 interface SubmitProps extends BaseProps {
@@ -45,6 +46,7 @@ export const Button: React.FC<Props> = (
     href,
     toId,
     submit,
+    disabled,
     onClick
   }
 ): JSX.Element => {
@@ -54,6 +56,7 @@ export const Button: React.FC<Props> = (
     [styles.dangerous]: type === 'dangerous',
     [styles.warning]: type === 'warning',
     [styles.standard]: type === 'standard',
+    [styles.disabled]: disabled,
   })
 
   if (href) return (
