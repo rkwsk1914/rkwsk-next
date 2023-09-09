@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 
-import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
+import { useRouter } from "next/router"
+
+import { GLOBAL_NAV_DATA, GLOBAL_TOP_NAV_DATA } from '@/const/page/GlobalNavData'
 
 import { ScrollTopButton } from '@/components/atoms/ScrollTopButton'
 import { MyFooter } from '@/components/layouts/MyFooter'
@@ -29,10 +31,13 @@ const Content: React.FC<ContentProps> = (
     handleIsDarkMode
   }  = useContext(ThemeContext)
 
-  const getGlobalNavDataArray = (): MenuDataType[] => {
-    const keys = Object.keys(GLOBAL_NAV_DATA)
+  const router = useRouter()
 
-    return keys.map(key => GLOBAL_NAV_DATA[key])
+  const getGlobalNavDataArray = (): MenuDataType[] => {
+    const data = (router.pathname === '/') ? GLOBAL_TOP_NAV_DATA : GLOBAL_NAV_DATA
+    const keys = Object.keys(data)
+
+    return keys.map(key => data[key])
   }
 
   return (
