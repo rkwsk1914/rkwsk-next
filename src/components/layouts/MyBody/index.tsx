@@ -4,7 +4,7 @@ import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
 
 import { ScrollTopButton } from '@/components/atoms/ScrollTopButton'
 import { MyFooter } from '@/components/layouts/MyFooter'
-import { ThemeContextProvider, ThemeContext } from '@/components/layouts/Theme'
+import { ThemeContext } from '@/components/layouts/Theme'
 import { GlobalNavigation } from '@/components/organisms/GlobalNavigation'
 
 import styles from './style.module.scss'
@@ -17,7 +17,6 @@ type ContentProps = {
 
 type Props = {
   children?: React.ReactNode
-  isDark?: boolean
 };
 
 const Content: React.FC<ContentProps> = (
@@ -60,12 +59,9 @@ const Content: React.FC<ContentProps> = (
 export const MyBody: React.FC<Props> = (
   {
     children,
-    isDark
   }
 ): JSX.Element => {
   return (
-    <ThemeContextProvider isDark={isDark}>
-      <Content>{children}</Content>
-    </ThemeContextProvider>
+    <Content>{children}</Content>
   )
 }
