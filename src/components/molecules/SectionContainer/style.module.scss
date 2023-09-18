@@ -90,6 +90,12 @@
         }
       }
 
+      & > h#{$level} {
+        @if $level == 1 {
+          @apply pt-96;
+        }
+      }
+
       & > h#{$level} + *:not(.section) {
         @if $level == 1 {
           @apply pt-72;
