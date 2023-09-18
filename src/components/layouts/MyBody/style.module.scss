@@ -12,6 +12,8 @@
 
 .article {
   @apply pb-96;
+
+  min-height: calc(100vh - 96px)
 }
 
 .scrollButton {
