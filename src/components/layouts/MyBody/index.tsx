@@ -1,10 +1,12 @@
 import { useContext } from 'react'
 
-import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
+import { useRouter } from "next/router"
+
+import { GLOBAL_NAV_DATA, GLOBAL_TOP_NAV_DATA } from '@/const/page/GlobalNavData'
 
 import { ScrollTopButton } from '@/components/atoms/ScrollTopButton'
 import { MyFooter } from '@/components/layouts/MyFooter'
-import { ThemeContextProvider, ThemeContext } from '@/components/layouts/Theme'
+import { ThemeContext } from '@/components/layouts/Theme'
 import { GlobalNavigation } from '@/components/organisms/GlobalNavigation'
 
 import styles from './style.module.scss'
@@ -17,7 +19,6 @@ type ContentProps = {
 
 type Props = {
   children?: React.ReactNode
-  isDark?: boolean
 };
 
 const Content: React.FC<ContentProps> = (
@@ -30,10 +31,13 @@ const Content: React.FC<ContentProps> = (
     handleIsDarkMode
   }  = useContext(ThemeContext)
 
-  const getGlobalNavDataArray = (): MenuDataType[] => {
-    const keys = Object.keys(GLOBAL_NAV_DATA)
+  const router = useRouter()
 
-    return keys.map(key => GLOBAL_NAV_DATA[key])
+  const getGlobalNavDataArray = (): MenuDataType[] => {
+    const data = (router.pathname === '/') ? GLOBAL_TOP_NAV_DATA : GLOBAL_NAV_DATA
+    const keys = Object.keys(data)
+
+    return keys.map(key => data[key])
   }
 
   return (
@@ -60,12 +64,9 @@ const Content: React.FC<ContentProps> = (
 export const MyBody: React.FC<Props> = (
   {
     children,
-    isDark
   }
 ): JSX.Element => {
   return (
-    <ThemeContextProvider isDark={isDark}>
-      <Content>{children}</Content>
-    </ThemeContextProvider>
+    <Content>{children}</Content>
   )
 }
