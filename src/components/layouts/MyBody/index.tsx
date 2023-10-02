@@ -32,6 +32,7 @@ const Content: React.FC<ContentProps> = (
   }  = useContext(ThemeContext)
 
   const router = useRouter()
+  const a = ""
 
   const getGlobalNavDataArray = (): MenuDataType[] => {
     const data = (router.pathname === '/') ? GLOBAL_TOP_NAV_DATA : GLOBAL_NAV_DATA
