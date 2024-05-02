@@ -80,7 +80,30 @@ const HISTORY_DATA: DataType =[
       {
         month: 1,
         content: <>
-          保険広告会社のjQuery+Express サイトからNext.js+TypeScript サイトへのリファクタリングプロジェクトに参画。
+          保険広告会社のjQuery+Express サイトからNext.js+TypeScript サイトへのリファクタリング業務に参画。
+        </>
+      },
+      {
+        month: 3,
+        content: <>
+          保険広告会社のNext.js + TypeScriptサイトのスクラム開発のプロジェクトに参画。
+        </>
+      },
+      {
+        month: 10,
+        content: <>
+          動物病院のカルテ管理アプリのフロントエンド開発プロジェクトに参画。
+        </>
+      }
+    ]
+  },
+  {
+    year: 2024,
+    monthlyDate: [
+      {
+        month: 1,
+        content: <>
+          労務管理サービスのWEBアプリケーション開発のプロジェクトに参画。
         </>
       }
     ]
@@ -90,7 +113,8 @@ const HISTORY_DATA: DataType =[
     monthlyDate: [
       {
         content: <>
-          保険広告会社のNext.js+TypeScript サイトのスクラム開発プロジェクトに参画中。
+          労務管理サービスのWEBアプリケーション開発のプロジェクトに参画中。
+          フロントエンドのUI開発と自動テストの実装エンジニアとして参画中。
         </>
       }
     ]
