@@ -5,6 +5,15 @@ install_if_package_changed() {
   new_rev="$2"
   action="$3"
 
+  if [ "$CI" = "true" ] || [ "$NETLIFY" = "true" ]; then
+    return 0
+  fi
+
+  if ! command -v npm >/dev/null 2>&1; then
+    echo "package files changed after git $action, but npm was not found; skipping npm install."
+    return 0
+  fi
+
   if [ -z "$old_rev" ] || [ -z "$new_rev" ]; then
     return 0
   fi
