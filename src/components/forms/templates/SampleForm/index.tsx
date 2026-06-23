@@ -2,22 +2,25 @@ import { useEffect } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from "react-hook-form"
+import * as zod from 'zod'
 
-import { SCHEMA } from '@/const/Schema'
+import { EMAIL_SCHEMA, NAME_SCHEMA } from '@/const/Schema'
 import { TEXT_INPUT_DATA } from '@/const/TextInputData'
 
 import { ButtonElement } from '@/components/forms/atoms/ButtonElement'
 import { TextInputElement } from '@/components/forms/atoms/TextInputElement'
 
-type Inputs = {
-  email: string,
-  firstName: string
-};
+const SAMPLE_SCHEMA = zod.object({
+  email: EMAIL_SCHEMA,
+  firstName: NAME_SCHEMA,
+})
+
+type Inputs = zod.infer<typeof SAMPLE_SCHEMA>
 
 export const SampleForm: React.FC = (): JSX.Element => {
   const formNameList: Array<keyof Inputs> = ["email", "firstName"]
   const { register, trigger, handleSubmit, watch, formState: { isValid,errors } } = useForm<Inputs>({
-    resolver: zodResolver(SCHEMA),
+    resolver: zodResolver(SAMPLE_SCHEMA),
   })
   const onSubmit: SubmitHandler<Inputs> = data => console.log(data)
 

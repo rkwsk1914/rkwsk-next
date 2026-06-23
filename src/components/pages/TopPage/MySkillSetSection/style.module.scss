@@ -9,11 +9,10 @@
 .options_area {
   @apply w-full;
 
-  column-gap: 8px;
+  gap: 8px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   max-width: 100%;
-  row-gap: 8px;
 
   @screen small {
     display: grid;

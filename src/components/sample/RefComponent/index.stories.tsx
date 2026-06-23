@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { action } from "@storybook/addon-actions"
+import { fn } from 'storybook/test'
+
 import { StoryFn, Meta } from '@storybook/react'
 
 import {RefComponent as StoryComponent} from '.'
@@ -22,5 +23,5 @@ const Template: StoryFn<typeof StoryComponent> = (
 export const Default = Template.bind({})
 Default.args = {
   children: 'Sample',
-  onClick: () => action('action'),
+  onClick: fn(),
 }

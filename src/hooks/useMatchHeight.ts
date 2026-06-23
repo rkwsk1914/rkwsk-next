@@ -4,7 +4,7 @@ export const useMatchHeight = (
   arrayDataLength: number
 ) => {
   const [height, setHeight] = useState<number | null>(null)
-  const refsArray = useRef<RefObject<HTMLDivElement>[]>([])
+  const refsArray = useRef<RefObject<HTMLDivElement | null>[]>([])
   const countArray = Array.from(new Array(arrayDataLength), (_) => "")
 
   countArray.forEach((_, index) => {
