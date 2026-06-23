@@ -1,7 +1,7 @@
 @use "sass:map";
-@import './animation';
-@import './image';
-@import './name';
+@use './animation' as *;
+@use './image' as *;
+@use './name';
 
 @mixin set-content-pos($size) {
   $top: (

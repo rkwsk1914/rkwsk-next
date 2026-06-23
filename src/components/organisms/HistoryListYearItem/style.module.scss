@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $sp-year-circle: 64px;
 $pc-year-circle: 96px;
 $border-width: 4px;
@@ -71,23 +73,23 @@ $border-width: 4px;
   justify-content: flex-start;
   min-height: calc($sp-year-circle * 2);
   position: relative;
-  width: calc(50% + ($sp-year-circle / 2));
+  width: calc(50% + math.div($sp-year-circle, 2));
   z-index: 1;
 
   @screen small {
     min-height: calc($pc-year-circle * 2);
-    width: calc(50% + ($pc-year-circle / 2));
+    width: calc(50% + math.div($pc-year-circle, 2));
   }
 
   &.left {
     @apply mr-0 ml-auto;
 
     .border {
-      left: ($sp-year-circle / 2) - ($border-width / 2);
+      left: math.div($sp-year-circle - $border-width, 2);
       right: auto;
 
       @screen small {
-        left: ($pc-year-circle / 2) - ($border-width / 2);
+        left: math.div($pc-year-circle - $border-width, 2);
       }
     }
 
@@ -100,10 +102,10 @@ $border-width: 4px;
 
     .border {
       left: auto;
-      right: ($sp-year-circle / 2) - ($border-width / 2);
+      right: math.div($sp-year-circle - $border-width, 2);
 
       @screen small {
-        right: ($pc-year-circle / 2) - ($border-width / 2);
+        right: math.div($pc-year-circle - $border-width, 2);
       }
     }
 
@@ -111,4 +113,3 @@ $border-width: 4px;
     .content { order: 1 }
   }
 }
-

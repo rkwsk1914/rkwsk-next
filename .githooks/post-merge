@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. "$(git rev-parse --show-toplevel)/scripts/npm-install-if-package-changed.sh"
+
+install_if_package_changed "ORIG_HEAD" "HEAD" "merge"

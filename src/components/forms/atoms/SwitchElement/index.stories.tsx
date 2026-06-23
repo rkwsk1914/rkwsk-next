@@ -2,8 +2,8 @@ import React from 'react'
 
 import LightModeIcon from '@mui/icons-material/LightMode'
 import NightlightIcon from '@mui/icons-material/Nightlight'
+import { fn } from 'storybook/test'
 
-import { action } from "@storybook/addon-actions"
 import { StoryFn, Meta } from '@storybook/react'
 
 import {SwitchElement as StoryComponent} from '.'
@@ -30,19 +30,19 @@ const Template: StoryFn<typeof StoryComponent> = (
 export const Default = Template.bind({})
 Default.args = {
   checked: false,
-  onChange: action("")
+  onChange: fn()
 }
 
 export const Uncontrolled = Template.bind({})
 Uncontrolled.args = {
   defaultChecked: false,
-  onChange: action("")
+  onChange: fn()
 }
 
 export const WithIcon = Template.bind({})
 WithIcon.args = {
   checked: false,
-  onChange: action(""),
+  onChange: fn(),
   icon: <LightModeIcon />,
   checkedIcon: <NightlightIcon />
 }

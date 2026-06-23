@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { action } from "@storybook/addon-actions"
+import { fn } from 'storybook/test'
+
 import { StoryFn, Meta } from '@storybook/react'
 
 import { RadioGroup as StoryComponent } from '.'
@@ -49,5 +50,5 @@ Default.args = {
       name: "radio"
     },
   ],
-  onChange: action('onChange'),
+  onChange: fn(),
 }

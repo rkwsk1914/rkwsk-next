@@ -2,8 +2,8 @@ import React from 'react'
 
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
+import { fn } from 'storybook/test'
 
-import { action } from "@storybook/addon-actions"
 import { StoryFn, Meta } from '@storybook/react'
 
 import { RadioElement as StoryComponent } from '.'
@@ -33,7 +33,7 @@ Default.args = {
   size: "small",
   disabled: false,
   label: 'default',
-  onChange: action('onChange'),
+  onChange: fn(),
   value: ""
 }
 
@@ -43,7 +43,7 @@ Uncontrolled.args = {
   size: "small",
   disabled: false,
   label: 'default',
-  onChange: action('onChange'),
+  onChange: fn(),
   value: ""
 }
 
@@ -52,7 +52,7 @@ Bookmark.args = {
   defaultChecked: false,
   size: "small",
   disabled: false,
-  onChange: action('onChange'),
+  onChange: fn(),
   value: "",
   icon: <BookmarkBorderIcon />,
   checkedIcon: <BookmarkIcon />

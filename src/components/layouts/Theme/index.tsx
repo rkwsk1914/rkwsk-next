@@ -1,7 +1,7 @@
 import { createContext, useState, useCallback, useEffect } from 'react'
 
 import CssBaseline from '@mui/material/CssBaseline'
-import { ThemeProvider } from '@mui/material/styles'
+import { THEME_ID, ThemeProvider } from '@mui/material/styles'
 import clsx from 'clsx'
 
 import { useSessionStorage } from '@/hooks/useSessionStrage'
@@ -48,6 +48,7 @@ export const ThemeContextProvider: React.FC<Props> = ({
   }, {
     [styles.is_test]: isTest,
   })
+  const muiTheme = isDarkModeCTX ? darkTheme : lightTheme
 
   useEffect(() => {
     const nowSessionIsDark = getFromSessionStorage('isDark')
@@ -62,7 +63,12 @@ export const ThemeContextProvider: React.FC<Props> = ({
       handleIsDarkMode
     }
     }>
-      <ThemeProvider theme={isDarkModeCTX ? darkTheme : lightTheme}>
+      <ThemeProvider theme={{
+        background: {
+          content: muiTheme.palette.background.default,
+        },
+        [THEME_ID]: muiTheme,
+      }}>
         <CssBaseline />
         <div className={contentClassName}>
           {isTest &&

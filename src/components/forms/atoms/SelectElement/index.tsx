@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
 import InputLabel from '@mui/material/InputLabel'
 import ListItemText from '@mui/material/ListItemText'
+import { MenuProps as MuiMenuProps } from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
@@ -37,11 +38,13 @@ type Props = ControlledProps | UncontrolledProps
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+const MenuProps: Partial<MuiMenuProps> = {
+  slotProps: {
+    paper: {
+      sx: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
     },
   },
 }
