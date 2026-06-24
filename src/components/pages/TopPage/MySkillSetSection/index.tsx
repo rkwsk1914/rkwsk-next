@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { useMemo, useState } from 'react'
 
+import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
+
 import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
 
 import { SectionContainer } from '@/components/molecules/SectionContainer'
@@ -264,6 +266,7 @@ const buildRows = (data: SkillSetDateType): SkillRow[] => {
 export const MySkillSetSection: React.FC<Props> = ({
   data
 }): JSX.Element => {
+  const skillsShellClassName = useGetDarkModeStyleClass(styles.skillsShell, styles.dark)
   const [activeFilter, setActiveFilter] = useState<SkillFilter>('all')
   const [openFilters, setOpenFilters] = useState<SkillGroup[]>(['front'])
   const rows = useMemo(() => buildRows(data), [data])
@@ -301,7 +304,7 @@ export const MySkillSetSection: React.FC<Props> = ({
 
   return (
     <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text}>
-      <div className={styles.skillsShell}>
+      <div className={skillsShellClassName}>
         <p className={styles.sub_text}>
           WEB制作で使用している技術・ツールをまとめています。<br />
           実務経験や習熟度の目安としてご覧ください。
