@@ -1,27 +1,634 @@
-.cardWrap {
-  @apply px-16 py-16;
+.skillsShell {
+  @apply w-full;
+}
+
+.sub_text {
+  @apply mb-40;
+}
+
+.tableArea {
+  @apply grid;
+
+  gap: 24px;
+  align-content: start;
+  align-self: start;
+}
+
+.filterTabs {
+  @apply flex overflow-x-auto;
+
+  gap: 8px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @screen small {
-    @apply px-32 py-16;
+    @apply grid overflow-hidden;
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  button {
+    @apply relative shrink-0 overflow-hidden border border-darkPrime px-16 text-darkText transition-colors;
+
+    min-width: 96px;
+    height: 36px;
+    background: rgb(2 12 32 / 0.72);
+    border-radius: 4px;
+    font-size: 12px;
+    isolation: isolate;
+
+    @screen small {
+      min-width: 0;
+      height: 40px;
+    }
+
+    &::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      opacity: 0;
+      background: linear-gradient(90deg, #1b49a1 0%, #69d0e7 100%);
+      border-radius: inherit;
+      transition: opacity 0.2s ease;
+    }
+
+    &.active {
+      @apply text-darkBg;
+
+      box-shadow: 0 0 0 1px rgb(105 208 231 / 0.24);
+
+      &::before {
+        opacity: 1;
+      }
+    }
   }
 }
 
-.options_area {
-  @apply w-full;
+.contentGrid {
+  @apply grid gap-24;
 
-  gap: 8px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 100%;
-
-  @screen small {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
+  align-items: start;
 
   @screen large {
-    @apply mx-auto;
+    grid-template-columns: minmax(0, 1fr) 372px;
+  }
+}
 
-    max-width: 80%;
+.tableCard,
+.infoCard {
+  border: 1px solid rgb(255 198 111 / 0.28);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.02)),
+    rgb(2 12 32 / 0.72);
+  border-radius: 8px;
+  box-shadow: 0 20px 52px rgb(0 0 0 / 0.28);
+}
+
+.tableCard {
+  overflow: hidden;
+}
+
+.skillTable {
+  @apply hidden;
+
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  @screen large {
+    display: table;
+  }
+
+  thead {
+    background: rgb(255 255 255 / 0.08);
+
+    th {
+      @apply text-darkText;
+
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 400;
+      text-align: left;
+    }
+  }
+
+  tbody {
+    tr {
+      border-top: 1px solid rgb(255 198 111 / 0.18);
+
+      &:nth-child(6),
+      &:nth-child(9),
+      &:nth-child(12) {
+        border-top-color: rgb(255 198 111 / 0.42);
+      }
+    }
+
+    th,
+    td {
+      @apply text-darkText;
+
+      padding: 10px 20px;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+      vertical-align: middle;
+    }
+
+    th {
+      @apply font-bold;
+
+      text-align: left;
+    }
+  }
+
+  th:nth-child(1) {
+    width: 30%;
+  }
+
+  th:nth-child(2) {
+    width: 30%;
+  }
+
+  th:nth-child(3) {
+    width: 20%;
+  }
+
+  th:nth-child(4) {
+    width: 20%;
+  }
+}
+
+.skillCell {
+  @apply flex items-center;
+
+  gap: 12px;
+  min-width: 0;
+
+  span:last-child {
+    overflow-wrap: anywhere;
+  }
+}
+
+.skillLogo {
+  @apply inline-flex shrink-0 items-center justify-center;
+
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  border: 1px solid rgb(105 208 231 / 0.36);
+  border-radius: 7px;
+  background: rgb(2 12 32 / 0.88);
+  color: var(--skill-logo-color, #69d0e7);
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.logoFallback {
+  @apply font-bold;
+
+  font-size: 12px;
+}
+
+.defaultLogo {
+  --skill-logo-color: #69d0e7;
+}
+
+.reactLogo {
+  --skill-logo-color: #61dafb;
+}
+
+.typeScriptLogo {
+  --skill-logo-color: #3178c6;
+}
+
+.nextLogo {
+  --skill-logo-color: #f5f7fb;
+}
+
+.htmlLogo {
+  --skill-logo-color: #e34f26;
+}
+
+.cssLogo {
+  --skill-logo-color: #1572b6;
+}
+
+.javaScriptLogo {
+  --skill-logo-color: #f7df1e;
+}
+
+.jQueryLogo {
+  --skill-logo-color: #0769ad;
+}
+
+.shopifyLogo {
+  --skill-logo-color: #7ab55c;
+}
+
+.wordpressLogo {
+  --skill-logo-color: #21759b;
+}
+
+.nodeLogo {
+  --skill-logo-color: #5fa04e;
+}
+
+.dockerLogo {
+  --skill-logo-color: #2496ed;
+}
+
+.awsLogo {
+  --skill-logo-color: #f90;
+}
+
+.graphqlLogo {
+  --skill-logo-color: #e10098;
+}
+
+.railsLogo {
+  --skill-logo-color: #c00;
+}
+
+.laravelLogo {
+  --skill-logo-color: #ff2d20;
+}
+
+.pythonLogo {
+  --skill-logo-color: #ffd43b;
+}
+
+.googleLogo {
+  --skill-logo-color: #34a853;
+}
+
+.vscodeLogo {
+  --skill-logo-color: #007acc;
+}
+
+.figmaLogo {
+  --skill-logo-color: #a259ff;
+}
+
+.xdLogo {
+  --skill-logo-color: #ff61f6;
+}
+
+.gitLogo {
+  --skill-logo-color: #f05032;
+}
+
+.githubLogo {
+  --skill-logo-color: #f5f7fb;
+}
+
+.photoshopLogo {
+  --skill-logo-color: #31a8ff;
+}
+
+.windowsLogo {
+  --skill-logo-color: #00a4ef;
+}
+
+.appleLogo {
+  --skill-logo-color: #d6dbe7;
+}
+
+.experienceMeter {
+  @apply grid;
+
+  gap: 4px;
+}
+
+.segments {
+  @apply flex;
+
+  gap: 4px;
+
+  span {
+    width: 12px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgb(91 111 140 / 0.42);
+
+    @screen small {
+      width: 28px;
+    }
+
+    &.filled {
+      background: #69d0e7;
+      box-shadow: 0 0 12px rgb(105 208 231 / 0.28);
+    }
+  }
+}
+
+.experienceMeter > span {
+  @apply text-darkText;
+
+  font-size: 11px;
+  opacity: 0.86;
+}
+
+.yearsContext {
+  @apply grid;
+
+  gap: 2px;
+  min-width: 0;
+
+  span {
+    @apply text-darkText;
+
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+
+  small {
+    @apply text-darkText;
+
+    font-size: 11px;
+    opacity: 0.76;
+    overflow-wrap: anywhere;
+  }
+}
+
+.confidence {
+  @apply flex items-center text-darkText;
+
+  gap: 9px;
+  font-size: 13px;
+}
+
+.highDot,
+.mediumDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+
+.highDot {
+  background: #7dcc67;
+}
+
+.mediumDot {
+  background: #ffc66f;
+}
+
+.mobileAccordion {
+  @apply grid;
+
+  @screen large {
+    @apply hidden;
+  }
+}
+
+.accordionTableHeader {
+  @apply hidden;
+}
+
+.desktopAccordion {
+  @screen large {
+    @apply grid;
+
+    align-content: start;
+
+    .accordionPanel {
+      align-content: start;
+      grid-auto-rows: max-content;
+    }
+
+    .accordionButton {
+      min-height: 56px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .accordionTableHeader {
+      @apply grid text-darkText;
+
+      grid-template-columns: 30% 30% 20% 20%;
+      padding: 14px 20px;
+      background: rgb(255 255 255 / 0.08);
+      font-size: 13px;
+    }
+
+    .mobileSkillRow {
+      grid-template-columns: 30% 30% 20% 20%;
+      padding: 10px 20px;
+      min-height: 0;
+    }
+
+    .mobileConfidence {
+      display: flex;
+    }
+
+    .mobileSkillExperience {
+      .experienceMeter > span {
+        display: block;
+      }
+    }
+  }
+}
+
+.accordionItem {
+  overflow: hidden;
+  border-bottom: 1px solid rgb(105 208 231 / 0.2);
+  background: transparent;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.accordionButton {
+  @apply flex w-full items-center justify-between px-16 text-left font-bold text-darkPrime;
+
+  min-height: 48px;
+  font-size: 14px;
+}
+
+.accordionMeta {
+  @apply flex items-center text-darkText;
+
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.accordionPanel {
+  @apply grid;
+
+  align-content: start;
+  grid-auto-rows: max-content;
+}
+
+.mobileSkillRow {
+  @apply grid items-center;
+
+  gap: 8px;
+  grid-template-columns: minmax(92px, 1fr) 80px 64px;
+  align-self: start;
+  min-width: 0;
+  min-height: 50px;
+  padding: 8px 12px;
+  border-top: 1px solid rgb(105 208 231 / 0.16);
+
+  @screen small {
+    gap: 8px 14px;
+    grid-template-columns: minmax(180px, 1.2fr) minmax(168px, 1fr) 116px;
+    padding: 10px 16px;
+  }
+}
+
+.mobileSkillName {
+  @apply flex items-center;
+
+  gap: 10px;
+  min-width: 0;
+
+  strong {
+    @apply text-darkText;
+
+    font-size: 13px;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.mobileSkillExperience {
+  min-width: 0;
+
+  @screen small {
+    min-width: auto;
+  }
+
+  .experienceMeter > span {
+    display: none;
+  }
+
+  .segments {
+    gap: 3px;
+
+    span {
+      width: 10px;
+      height: 7px;
+
+      @screen small {
+        width: 28px;
+        height: 8px;
+      }
+    }
+  }
+}
+
+.mobileSkillRow > .yearsContext {
+  align-self: center;
+
+  span,
+  small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @screen small {
+    align-self: center;
+  }
+}
+
+.mobileConfidence {
+  display: none;
+}
+
+.sidePanel {
+  @apply grid gap-24;
+}
+
+.infoCard {
+  @apply relative p-24;
+
+  h3 {
+    @apply font-bold text-darkWaring;
+
+    margin-bottom: 18px;
+    font-size: 20px;
+  }
+}
+
+.bookmark {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  width: 16px;
+  height: 28px;
+  background: #c79d4d;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%);
+}
+
+.coreList {
+  @apply grid;
+}
+
+.coreItem {
+  @apply grid items-center;
+
+  gap: 12px;
+  grid-template-columns: 32px minmax(0, 1fr) 118px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(255 198 111 / 0.16);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  strong {
+    @apply text-darkText;
+
+    font-size: 14px;
+  }
+
+  span:last-child {
+    @apply text-darkText;
+
+    font-size: 11px;
+    opacity: 0.72;
+  }
+}
+
+.learningList {
+  @apply grid gap-12;
+}
+
+.learningItem {
+  @apply grid items-center;
+
+  gap: 12px;
+  grid-template-columns: 64px minmax(0, 1fr) 44px;
+
+  & > span,
+  small {
+    @apply text-darkText;
+
+    font-size: 12px;
+  }
+
+  div {
+    height: 6px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgb(91 111 140 / 0.38);
+
+    span {
+      @apply block h-full;
+
+      border-radius: inherit;
+      background: #69d0e7;
+    }
   }
 }
