@@ -1,106 +1,453 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
-import { useMatchHeight } from '@/hooks/useMatchHeight'
+import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
 import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
 
-import { Button } from '@/components/atoms/Button'
-import { MyCard } from '@/components/atoms/MyCard'
-import { SlickSlider, OriginalSettings } from '@/components/libraries/SlickSlider'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
-import { SkillSetTable } from '@/components/organisms/SkillSetTable'
 
 import styles from './style.module.scss'
 
-import { SkillSetDateType } from '@/types/SkillSetDateType'
+import { SkillSetDateType, SkillSetItemDataType } from '@/types/SkillSetDateType'
 
 type Props = {
   data: SkillSetDateType
 }
 
+type SkillGroup = 'front' | 'back' | 'tools' | 'design'
+
+type SkillRow = SkillSetItemDataType & {
+  id: string
+  displayName: string
+  group: SkillGroup
+  context: string
+  confidence: 'High' | 'Medium'
+}
+
+type SkillFilter = 'all' | SkillGroup
+
+const FILTERS: Array<{ label: string, value: SkillFilter }> = [
+  { label: 'All Skills', value: 'all' },
+  { label: 'Front End', value: 'front' },
+  { label: 'Back End', value: 'back' },
+  { label: 'Tools', value: 'tools' },
+  { label: 'Design / UX', value: 'design' },
+]
+
+const LEVEL_LABELS: Record<SkillSetItemDataType['value'], string> = {
+  0: 'Learning',
+  1: 'Beginner',
+  2: 'Basic',
+  3: 'Intermediate',
+  4: 'Advanced',
+  5: 'Advanced',
+}
+
+const GROUP_BY_SOURCE_TITLE: Record<string, SkillGroup> = {
+  'FRONT END SKILL': 'front',
+  'BACK END SKILL': 'back',
+  'DEVELOP SKILL': 'back',
+  'USABLE TOOL': 'tools',
+  'USABLE OS': 'tools',
+}
+
+const CONTEXT_BY_LABEL: Record<string, string> = {
+  React: 'Main Framework',
+  TypeScript: 'Daily',
+  'Next.js': 'Production',
+  'Vue 3': 'Full Stack UI',
+  HTML5: 'Daily',
+  CSS3: 'Daily',
+  Sass: 'Styling',
+  SCSS: 'Styling',
+  JavaScript: 'Daily',
+  jQuery: 'Legacy UI',
+  Shopify: 'EC Frontend',
+  WordPress: 'CMS',
+  GraphQL: 'API Schema',
+  'Apollo Client': 'API Client',
+  'React Hook Form': 'Form',
+  'React Router': 'Routing',
+  Storybook: 'UI Testing',
+  Jest: 'Unit Testing',
+  Playwright: 'E2E Testing',
+  'Chakra UI': 'UI Library',
+  MUI: 'UI Library',
+  'Radix UI': 'UI Primitive',
+  Vuetify: 'UI Library',
+  'Node.js': 'API / Backend',
+  NestJS: 'Backend',
+  TypeORM: 'ORM',
+  PostgreSQL: 'Database',
+  'Amazon DynamoDB': 'Database',
+  Docker: 'Dev Environment',
+  AWS: 'Hosting / Infra',
+  'AWS Amplify': 'Hosting / Infra',
+  GCP: 'Cloud Platform',
+  Linux: 'Dev Environment',
+  'Ruby on Rails': 'Backend',
+  Laravel: 'Backend',
+  'Python 3': 'Scripting / Tools',
+  'Google Apps Script': 'Automation',
+  'Visual Studio Code': 'Editor',
+  Figma: 'Design Handoff',
+  'Adobe XD': 'UI Design',
+  Illustrator: 'Asset Editing',
+  webpack: 'Build Tool',
+  gulp: 'Build Tool',
+  Backlog: 'Project Tool',
+  Asana: 'Project Tool',
+  Jira: 'Project Tool',
+  Git: 'Version Control',
+  GitHub: 'Version Control',
+  'Adobe Photoshop': 'Asset Editing',
+  'Google Spreadsheet': 'Operations',
+  Windows: 'OS',
+  macOS: 'OS',
+  WSL: 'Dev Environment',
+}
+
+const CORE_STACK_LABELS = ['TypeScript', 'React', 'Next.js', 'Vue 3', 'NestJS', 'GraphQL', 'GitHub']
+
+const LEARNING_ITEMS = [
+  { label: 'Supabase', value: 45 },
+  { label: 'MongoDB', value: 40 },
+  { label: 'Ruby on Rails', value: 35 },
+  { label: 'Laravel', value: 30 },
+]
+
+const normalizeLabel = (item: SkillSetItemDataType): string => String(item.label || '').trim()
+
+const calculateYearsOfExperience = (acquisitionDate?: string): number | null => {
+  if (!acquisitionDate) return null
+
+  const datePattern = /^\d{4}-\d{2}-\d{2}$/
+  if (!datePattern.test(acquisitionDate)) return null
+
+  const today = new Date()
+  const startDay = new Date(acquisitionDate)
+  const monthDiff = today.getMonth() - startDay.getMonth()
+
+  if (monthDiff < 0) return today.getFullYear() - 1 - startDay.getFullYear()
+  return today.getFullYear() - startDay.getFullYear()
+}
+
+const getYearsLabel = (item: SkillSetItemDataType): string => {
+  const years = calculateYearsOfExperience(item.acquisitionDate)
+  if (years === null) return 'Recently'
+  if (years <= 0) return 'Under 1 yr'
+
+  return `${years}+ yrs`
+}
+
+const getConfidence = (value: SkillSetItemDataType['value']): SkillRow['confidence'] => value >= 4 ? 'High' : 'Medium'
+
+const getLogoText = (label: string): string => {
+  const logoText: Record<string, string> = {
+    TypeScript: 'TS',
+    'Next.js': 'N',
+    JavaScript: 'JS',
+    CSS3: '~',
+    Sass: 'Sass',
+    SCSS: 'SCSS',
+    'Node.js': 'JS',
+    NestJS: 'N',
+    TypeORM: 'ORM',
+    PostgreSQL: 'PG',
+    'Amazon DynamoDB': 'DB',
+    'AWS Amplify': 'AWS',
+    GCP: 'GCP',
+    GraphQL: 'GQL',
+    'Apollo Client': 'A',
+    'React Hook Form': 'RHF',
+    'React Router': 'RR',
+    Storybook: 'SB',
+    Jest: 'Jest',
+    Playwright: 'PW',
+    'Chakra UI': 'C',
+    MUI: 'MUI',
+    'Radix UI': 'R',
+    Vuetify: 'V',
+    'Ruby on Rails': 'Rb',
+    'Python 3': 'Py',
+    'Visual Studio Code': '<>',
+    'Adobe XD': 'UX',
+    'Adobe Photoshop': 'Ps',
+    Illustrator: 'Ai',
+    webpack: 'wp',
+    gulp: 'gulp',
+    'Google Spreadsheet': 'G',
+    'Google Apps Script': 'G',
+    macOS: '',
+  }
+
+  return logoText[label] || label.slice(0, 2).toUpperCase()
+}
+
+const getLogoColorClass = (label: string): string => {
+  const colorClassByLabel: Record<string, string> = {
+    React: styles.reactLogo,
+    TypeScript: styles.typeScriptLogo,
+    'Next.js': styles.nextLogo,
+    'Vue 3': styles.vueLogo,
+    HTML5: styles.htmlLogo,
+    CSS3: styles.cssLogo,
+    Sass: styles.sassLogo,
+    SCSS: styles.sassLogo,
+    JavaScript: styles.javaScriptLogo,
+    jQuery: styles.jQueryLogo,
+    Shopify: styles.shopifyLogo,
+    WordPress: styles.wordpressLogo,
+    'Node.js': styles.nodeLogo,
+    NestJS: styles.nestLogo,
+    Docker: styles.dockerLogo,
+    AWS: styles.awsLogo,
+    'AWS Amplify': styles.awsLogo,
+    GCP: styles.googleLogo,
+    GraphQL: styles.graphqlLogo,
+    'Apollo Client': styles.graphqlLogo,
+    'Ruby on Rails': styles.railsLogo,
+    Laravel: styles.laravelLogo,
+    'Python 3': styles.pythonLogo,
+    'Google Apps Script': styles.googleLogo,
+    'Visual Studio Code': styles.vscodeLogo,
+    Figma: styles.figmaLogo,
+    'Adobe XD': styles.xdLogo,
+    Illustrator: styles.illustratorLogo,
+    Git: styles.gitLogo,
+    GitHub: styles.githubLogo,
+    'Adobe Photoshop': styles.photoshopLogo,
+    'Google Spreadsheet': styles.googleLogo,
+    Windows: styles.windowsLogo,
+    macOS: styles.appleLogo,
+  }
+
+  return colorClassByLabel[label] || styles.defaultLogo
+}
+
+const buildRows = (data: SkillSetDateType): SkillRow[] => {
+  const rows = data.flatMap((group) => {
+    const sourceGroup = GROUP_BY_SOURCE_TITLE[group.title] || 'tools'
+
+    return group.data.map((item) => {
+      const displayName = normalizeLabel(item) || String(item.skillName)
+      const mappedGroup = displayName === 'Figma' || displayName === 'Adobe XD' || displayName === 'Adobe Photoshop' || displayName === 'Illustrator'
+        ? 'design'
+        : sourceGroup
+
+      return {
+        ...item,
+        id: displayName,
+        displayName,
+        group: mappedGroup,
+        context: CONTEXT_BY_LABEL[displayName] || (item.category === 'work-experience' ? 'Production' : 'Learning'),
+        confidence: getConfidence(item.value),
+      }
+    })
+  })
+
+  return rows
+    .filter((item) => item.displayName)
+    .reduce<SkillRow[]>((acc, item) => {
+      const existingIndex = acc.findIndex((row) => row.displayName === item.displayName)
+      if (existingIndex === -1) return [...acc, item]
+      if (item.value > acc[existingIndex].value) {
+        const clone = [...acc]
+        clone[existingIndex] = item
+        return clone
+      }
+
+      return acc
+    }, [])
+    .sort((a, b) => b.value - a.value)
+}
+
 export const MySkillSetSection: React.FC<Props> = ({
   data
 }): JSX.Element => {
-  const dataLength = data.length
-  const {height, refsArray} = useMatchHeight(dataLength)
-  const [ slideNumber, setSlideNumber ] = useState<number | null>(null)
+  const skillsShellClassName = useGetDarkModeStyleClass(styles.skillsShell, styles.dark)
+  const [activeFilter, setActiveFilter] = useState<SkillFilter>('all')
+  const [openFilters, setOpenFilters] = useState<SkillGroup[]>(['front'])
+  const rows = useMemo(() => buildRows(data), [data])
+  const visibleRows = activeFilter === 'all' ? rows : rows.filter((item) => item.group === activeFilter)
+  const accordionFilters = activeFilter === 'all'
+    ? FILTERS.filter((filter) => filter.value !== 'all')
+    : FILTERS.filter((filter) => filter.value === activeFilter)
+  const coreStack = CORE_STACK_LABELS
+    .map((label) => rows.find((item) => item.displayName === label))
+    .filter((item): item is SkillRow => Boolean(item))
 
-  const slides = data.map((item, index) => (
-    <div key={index} className={styles.cardWrap}>
-      <MyCard title={item.title} ref={refsArray.current[index]} matchHeight={height}>
-        <SkillSetTable data={item.data} />
-      </MyCard>
+  const renderLogo = (item: SkillRow): React.ReactNode => (
+    <span className={`${styles.skillLogo} ${getLogoColorClass(item.displayName)}`} aria-hidden="true">
+      {item.icon || <span className={styles.logoFallback}>{getLogoText(item.displayName)}</span>}
+    </span>
+  )
+
+  const renderSegments = (item: SkillRow): React.ReactNode => (
+    <div className={styles.experienceMeter}>
+      <div className={styles.segments} aria-label={`${LEVEL_LABELS[item.value]} experience`}>
+        {Array.from({ length: 6 }).map((_, index) => (
+          <span key={index} className={index < item.value ? styles.filled : ''}></span>
+        ))}
+      </div>
+      <span>{LEVEL_LABELS[item.value]}</span>
     </div>
-  ))
+  )
 
-  const options = data.map((item, index) => (
-    <React.Fragment key={index}>
-      <Button
-        type='outline'
-        size='small'
-        toId='skill-slider'
-        onClick={() => {setSlideNumber(index)}}
-        scrollOption={{
-          offset: -96
-        }}
-      >
-        {item.title}
-      </Button>
-    </React.Fragment>
-  ))
-
-  const commonSettings = {
-    infinite: true,
-    speed: 300,
-    autoplay: false,
-    arrows: true,
-    dots: true,
-    centerMode: true,
-    useCSS: true,
-  }
-
-  const settings: OriginalSettings = {
-    slidesToShow: 3,
-    centerPadding: '150px',
-    ...commonSettings,
-    responsive: [
-      {
-        breakpoint: 750, // max-width 749
-        settings: {
-          slidesToShow: 1,
-          centerPadding: '0px',
-          ...commonSettings,
-        }
-      },
-      {
-        breakpoint: 960, // max-width 960
-        settings: {
-          slidesToShow: 1,
-          centerPadding: '0px',
-          ...commonSettings,
-        }
-      },
-      {
-        breakpoint: 1200, // max-width 1200
-        settings: {
-          slidesToShow: 1,
-          centerPadding: '150px',
-          ...commonSettings,
-        }
-      }
-    ]
-  }
+  const renderConfidence = (item: SkillRow): React.ReactNode => (
+    <div className={styles.confidence}>
+      <span className={item.confidence === 'High' ? styles.highDot : styles.mediumDot}></span>
+      {item.confidence}
+    </div>
+  )
 
   return (
-    <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text} isFull>
-      <div className={styles.options_area}>
-        {options}
-      </div>
-      <div id="skill-slider">
-        <SlickSlider settings={settings} externalSlideNumber={slideNumber}>
-          {slides}
-        </SlickSlider>
+    <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text}>
+      <div className={skillsShellClassName}>
+        <p className={styles.sub_text}>
+          WEB制作で使用している技術・ツールをまとめています。<br />
+          実務経験や習熟度の目安としてご覧ください。
+        </p>
+        <div className={styles.contentGrid}>
+          <div className={styles.tableArea}>
+            <nav className={styles.filterTabs} aria-label="Skill categories">
+              {FILTERS.map((filter) => (
+                <button
+                  key={filter.value}
+                  type="button"
+                  className={activeFilter === filter.value ? styles.active : ''}
+                  aria-pressed={activeFilter === filter.value}
+                  onClick={() => {
+                    setActiveFilter(filter.value)
+                    setOpenFilters(filter.value === 'all' ? ['front'] : [filter.value])
+                  }}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </nav>
+            <div className={styles.tableCard}>
+              {activeFilter !== 'all' && (
+                <table className={styles.skillTable}>
+                  <thead>
+                    <tr>
+                      <th>Skill</th>
+                      <th>Experience</th>
+                      <th>Years / Context</th>
+                      <th>Confidence</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {visibleRows.map((item) => (
+                      <tr key={`${item.group}-${item.displayName}`}>
+                        <th>
+                          <span className={styles.skillCell}>
+                            {renderLogo(item)}
+                            <span>{item.displayName}</span>
+                          </span>
+                        </th>
+                        <td>{renderSegments(item)}</td>
+                        <td>
+                          <div className={styles.yearsContext}>
+                            <span>{getYearsLabel(item)}</span>
+                            <small>{item.context}</small>
+                          </div>
+                        </td>
+                        <td>{renderConfidence(item)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+              <div className={`${styles.mobileAccordion} ${activeFilter === 'all' ? styles.desktopAccordion : ''}`}>
+                <div className={styles.accordionTableHeader}>
+                  <span>Skill</span>
+                  <span>Experience</span>
+                  <span>Years / Context</span>
+                  <span>Confidence</span>
+                </div>
+                {accordionFilters.map((filter) => {
+                  const filterValue = filter.value as SkillGroup
+                  const groupRows = rows.filter((item) => item.group === filterValue)
+                  const isOpen = openFilters.includes(filterValue)
+
+                  return (
+                    <section key={filter.value} className={styles.accordionItem}>
+                      <button
+                        type="button"
+                        className={styles.accordionButton}
+                        aria-expanded={isOpen}
+                        onClick={() => {
+                          setOpenFilters((current) => (
+                            isOpen
+                              ? current.filter((value) => value !== filterValue)
+                              : [...current, filterValue]
+                          ))
+                        }}
+                      >
+                        <span>{filter.label}</span>
+                        <span className={styles.accordionMeta}>
+                          {groupRows.length} Skills
+                          <span>{isOpen ? '⌃' : '⌄'}</span>
+                        </span>
+                      </button>
+                      {isOpen && (
+                        <div className={styles.accordionPanel}>
+                          {groupRows.map((item) => (
+                            <article key={`${item.group}-${item.displayName}`} className={styles.mobileSkillRow}>
+                              <div className={styles.mobileSkillName}>
+                                {renderLogo(item)}
+                                <strong>{item.displayName}</strong>
+                              </div>
+                              <div className={styles.mobileSkillExperience}>
+                                {renderSegments(item)}
+                              </div>
+                              <div className={styles.yearsContext}>
+                                <span>{getYearsLabel(item)}</span>
+                                <small>{item.context}</small>
+                              </div>
+                              <div className={styles.mobileConfidence}>{renderConfidence(item)}</div>
+                            </article>
+                          ))}
+                        </div>
+                      )}
+                    </section>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+          <aside className={styles.sidePanel}>
+            <section className={`${styles.infoCard} ${styles.coreCard}`}>
+              <span className={styles.bookmark}></span>
+              <h3>Core Stack</h3>
+              <div className={styles.coreList}>
+                {coreStack.map((item) => (
+                  <div key={item.displayName} className={styles.coreItem}>
+                    {renderLogo(item)}
+                    <strong>{item.displayName}</strong>
+                    <span>{item.context}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section className={styles.infoCard}>
+              <h3>Currently Learning</h3>
+              <div className={styles.learningList}>
+                {LEARNING_ITEMS.map((item) => (
+                  <div key={item.label} className={styles.learningItem}>
+                    <span>{item.label}</span>
+                    <div>
+                      <span style={{ width: `${item.value}%` }}></span>
+                    </div>
+                    <small>{item.value}%</small>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </aside>
+        </div>
       </div>
     </SectionContainer>
   )

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+. "$(git rev-parse --show-toplevel)/scripts/npm-install-if-package-changed.sh"
+
+while read -r old_rev new_rev _rest
+do
+  install_if_package_changed "$old_rev" "$new_rev" "rewrite"
+done

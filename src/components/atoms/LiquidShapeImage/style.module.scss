@@ -1,6 +1,6 @@
-@import "./liquid-1";
-@import "./liquid-2";
-@import "./liquid-image";
+@use "./liquid-1";
+@use "./liquid-2";
+@use "./liquid-image";
 
 .container {
   @apply w-full h-full;
@@ -10,4 +10,3 @@
   justify-content: center;
   position: relative;
 }
-

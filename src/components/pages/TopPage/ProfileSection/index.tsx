@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
@@ -28,10 +29,11 @@ export const ProfileSection: React.FC<Props> = ({}): JSX.Element => {
     setOpen(false)
   }
 
-  const profileImage = {
+  const profileImage: Omit<React.ComponentProps<typeof Image>, 'alt' | 'className'> = {
     src: '/pic-me.jpg',
     width: 1478,
     height: 1108,
+    loading: 'eager',
   }
 
   const ProfileContentArea = () => {

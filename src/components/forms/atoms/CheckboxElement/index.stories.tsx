@@ -4,8 +4,8 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
+import { fn } from 'storybook/test'
 
-import { action } from "@storybook/addon-actions"
 import { StoryFn, Meta } from '@storybook/react'
 
 import { CheckboxElement as StoryComponent } from '.'
@@ -35,7 +35,7 @@ Default.args = {
   size: "small",
   disabled: false,
   label: 'default',
-  onChange: action('onChange'),
+  onChange: fn(),
   value: ""
 }
 
@@ -45,7 +45,7 @@ Uncontrolled.args = {
   size: "small",
   disabled: false,
   label: 'default',
-  onChange: action('onChange'),
+  onChange: fn(),
   value: ""
 }
 
@@ -54,7 +54,7 @@ Bookmark.args = {
   defaultChecked: false,
   size: "small",
   disabled: false,
-  onChange: action('onChange'),
+  onChange: fn(),
   value: "",
   icon: <BookmarkBorderIcon />,
   checkedIcon: <BookmarkIcon />
@@ -65,7 +65,7 @@ Favorites.args = {
   defaultChecked: false,
   size: "small",
   disabled: false,
-  onChange: action('onChange'),
+  onChange: fn(),
   value: "",
   icon: <FavoriteBorder />,
   checkedIcon: <Favorite />

@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { action } from "@storybook/addon-actions"
+import { fn } from 'storybook/test'
+
 import { StoryFn, Meta } from '@storybook/react'
 
 import { TextInputElement as StoryComponent } from '.'
@@ -50,7 +51,7 @@ Default.args = {
   helperText: "this error",
   id: 'default',
   label: 'default',
-  onChange: action('onChange'),
+  onChange: fn(),
   value: ""
 }
 
@@ -67,6 +68,6 @@ Uncontrolled.args = {
   disabled: false,
   id: 'uncontrolled',
   label: 'uncontrolled',
-  onChange: action('onChange'),
+  onChange: fn(),
   defaultValue: ""
 }

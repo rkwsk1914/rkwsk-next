@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { action } from "@storybook/addon-actions"
+import { fn } from 'storybook/test'
+
 import { StoryFn, Meta } from '@storybook/react'
 
 import { RatingWithStatus as StoryComponent } from '.'
@@ -34,7 +35,7 @@ Default.args = {
   value: 3,
   max: 5,
   precision: 0.5,
-  onChange: action('onChange'),
+  onChange: fn(),
   data: {
     0.5: 'Useless',
     1: 'Useless+',

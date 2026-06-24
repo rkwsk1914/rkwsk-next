@@ -49,8 +49,23 @@ const HISTORY_DATA: DataType =[
       {
         month: 9,
         content: <>
-          株式会社モードツー コミニュケーションデザイン部 転職。<br />
-          フロントエンドエンジニアとして配属。
+          株式会社モードツーへ転職。<br />
+          大規模Webサイトの保守運用案件にフロントエンドエンジニアとして参画。
+        </>
+      }
+    ]
+  },
+  {
+    year: 2021,
+    monthlyDate: [
+      {
+        month: 9,
+        content: <>
+          フリーランスとして活動を開始。<br /><br />
+          資産運用サービスのフロントエンド開発支援に参画。React / Next.js / Gatsby を用いた画面開発、
+          Jest を利用したテスト環境整備、既存コードの保守改善を担当。<br /><br />
+          Shopify によるワインECサイト制作にも参画し、仕様調査、Theme Kit による開発環境構築、
+          Liquid / SCSS / JavaScript による画面実装を担当。
         </>
       }
     ]
@@ -59,17 +74,10 @@ const HISTORY_DATA: DataType =[
     year: 2022,
     monthlyDate: [
       {
-        month: 8,
-        content: <>
-          副業でフリーランス活動を開始。<br /><br />
-          shopifyによるECサイト開発プロジェクトに参画。<br />開発環境の構築・技術コンサル・フロントエンド開発を担当。
-        </>
-      },
-      {
         month: 9,
         content: <>
-          web制作会社を退職。フリーランス・フロントエンドエンジニアとして活動を開始。<br /><br />
-          React+TypeScriptによる資産運用サービスのwebアプリケーション開発にフロントエンドエンジニアとして参画。
+          株式会社モードツーを退職。<br />
+          以降、フリーランスのWebエンジニアとして活動。
         </>
       },
     ]
@@ -80,19 +88,16 @@ const HISTORY_DATA: DataType =[
       {
         month: 1,
         content: <>
-          保険広告会社のjQuery+Express サイトからNext.js+TypeScript サイトへのリファクタリング業務に参画。
-        </>
-      },
-      {
-        month: 3,
-        content: <>
-          保険広告会社のNext.js + TypeScriptサイトのスクラム開発のプロジェクトに参画。
+          保険業界向けWebサービスのフロントエンド開発案件に参画。<br />
+          jQuery + Express ベースの既存サイトを Next.js + TypeScript へリニューアルし、
+          Storybook 環境再整備、Jest 対応、リファクタリング、コードレビューを担当。
         </>
       },
       {
         month: 10,
         content: <>
-          動物病院のカルテ管理アプリのフロントエンド開発プロジェクトに参画。
+          動物病院向けカルテ管理iPadアプリのWebアプリ化プロジェクトに参画。<br />
+          React + TypeScript / Chakra UI / React Hook Form を用いた画面実装、フォーム実装、ユニットテストを担当。
         </>
       }
     ]
@@ -103,9 +108,31 @@ const HISTORY_DATA: DataType =[
       {
         month: 1,
         content: <>
-          労務管理サービスのWEBアプリケーション開発のプロジェクトに参画。
+          HRテック系新規Webサービス開発プロジェクトに参画。<br />
+          Storybook Interaction Test / Chromatic による画面テスト整備、
+          React / TypeScript / GraphQL を用いた画面設計・実装、Playwright によるE2Eテスト整備を担当。
         </>
       }
+    ]
+  },
+  {
+    year: 2025,
+    monthlyDate: [
+      {
+        month: 4,
+        content: <>
+          クレーン作業安全支援システムのクラウドアプリケーション開発支援に参画。<br />
+          React + TypeScript / AWS Amplify 環境での保守開発、不具合修正、Jest 対応、型定義改善を担当。
+        </>
+      },
+      {
+        month: 6,
+        content: <>
+          デジタルツインプラットフォーム開発案件に参画。<br />
+          地方自治体向けの橋梁工事管理プラットフォームにて、Vue 3 / NestJS / GraphQL を用いた
+          フロントエンド・バックエンド開発、障害調査、テスト実装、コードレビューを担当。
+        </>
+      },
     ]
   },
   {
@@ -113,8 +140,9 @@ const HISTORY_DATA: DataType =[
     monthlyDate: [
       {
         content: <>
-          労務管理サービスのWEBアプリケーション開発のプロジェクトに参画中。
-          フロントエンドのUI開発と自動テストの実装エンジニアとして参画中。
+          デジタルツインプラットフォーム開発案件にWebエンジニアとして参画中。<br />
+          TypeScript / Vue 3 / NestJS / GraphQL を用いたフルスタック開発と、
+          既存機能改善・自動テスト整備・保守性改善に取り組んでいます。
         </>
       }
     ]

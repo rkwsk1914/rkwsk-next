@@ -2,5 +2,7 @@
   command = "npm run build"
   publish = ".next"
 
+# Legacy Netlify prerendering is dashboard-only and should stay disabled:
+# Project configuration > Build & deploy > Post processing > Prerendering.
 [[plugins]]
   package = "@netlify/plugin-nextjs"

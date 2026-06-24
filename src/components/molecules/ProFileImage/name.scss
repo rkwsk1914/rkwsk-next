@@ -1,4 +1,6 @@
+@use "sass:math";
 @use "sass:map";
+@use './animation' as *;
 
 
 $light-color: #333;
@@ -28,7 +30,7 @@ $name-top: 35%;
 }
 
 @function calc-sub-text-font-size($size) {
-  @return calc(map.get($name-size, $size) / 3);
+  @return math.div(map.get($name-size, $size), 3);
 }
 
 @function calc-sub-text-pos($size) {

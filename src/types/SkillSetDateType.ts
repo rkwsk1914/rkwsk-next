@@ -1,4 +1,6 @@
 export type SkillSetItemDataType = {
+  label?: string
+  icon?: React.ReactNode
   skillName: React.ReactNode
   value: 0 | 1 | 2 | 3 | 4 | 5
   acquisitionDate?: string

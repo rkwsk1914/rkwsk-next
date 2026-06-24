@@ -60,7 +60,7 @@ export const ProFileImage: React.FC<Props> = memo(({
             image={image} />
         </div>
         <span className={backTextClassName}>{myName}</span>
-        <small className={styles.subText}>Front End Engineer</small>
+        <small className={styles.subText}>Web Engineer</small>
       </div>
       {children && <div className={styles.content}>{children}</div>}
     </>
