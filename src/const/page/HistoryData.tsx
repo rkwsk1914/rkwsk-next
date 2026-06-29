@@ -56,28 +56,20 @@ const HISTORY_DATA: DataType =[
     ]
   },
   {
-    year: 2021,
-    monthlyDate: [
-      {
-        month: 9,
-        content: <>
-          フリーランスとして活動を開始。<br /><br />
-          資産運用サービスのフロントエンド開発支援に参画。React / Next.js / Gatsby を用いた画面開発、
-          Jest を利用したテスト環境整備、既存コードの保守改善を担当。<br /><br />
-          Shopify によるワインECサイト制作にも参画し、仕様調査、Theme Kit による開発環境構築、
-          Liquid / SCSS / JavaScript による画面実装を担当。
-        </>
-      }
-    ]
-  },
-  {
     year: 2022,
     monthlyDate: [
       {
+        month: 8,
+        content: <>
+          副業でフリーランス活動を開始。
+        </>
+      },
+      {
         month: 9,
         content: <>
-          株式会社モードツーを退職。<br />
-          以降、フリーランスのWebエンジニアとして活動。
+          株式会社モードツー 退社。<br /><br />
+          資産運用サービス フロントエンド開発支援（2022年9月〜2022年12月）。<br /><br />
+          ワインECサイト「Vinarte」制作（2022年9月〜2023年1月）。
         </>
       },
     ]
