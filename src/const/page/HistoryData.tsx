@@ -156,7 +156,7 @@ const HISTORY_DATA: DataType =[
       {
         month: 8,
         content: <>
-          大規模イベント向け駐車場予約・管理システムの開発に参画（2026年8月〜9月）。<br />
+          大規模イベント向け駐車場予約・管理システムの開発に参画（2026年8月〜現在）。<br />
           ロール・権限管理、車両検査枠管理、予約管理・共通画面の基本設計・詳細設計と、IT工程の試験設計を担当。<br />
           Claude による設計書レビューの観点・ルールを CLAUDE.md / AGENTS.md に明文化し、
           人によるレビュー前に潜在的な不具合や命名上の問題を確認する運用を整備。
@@ -170,11 +170,12 @@ const HISTORY_DATA: DataType =[
     monthlyDate: [
       {
         content: <>
+          大規模イベント向け駐車場予約・管理システムの開発にWebエンジニアとして参画中。<br />
           フリーランスのWebエンジニアとして、要件整理・設計・実装・テスト・運用改善まで一貫して対応。<br />
           React / Next.js / TypeScript を主軸に、Vue 3 / NestJS / GraphQL によるフルスタック開発、
           認証・認可設計、テスト自動化、AIを活用した開発・品質改善に取り組んでいます。<br />
           AWS Certified Solutions Architect - Associate（SAA-C03）の取得に向けて学習中。<br />
-          経歴情報：2026年9月24日時点。
+          経歴情報：2026年10月3日時点。
         </>
       }
     ]
