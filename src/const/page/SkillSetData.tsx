@@ -50,6 +50,10 @@ export const BACK_END_SET_DATA: SkillSetDataCategoryType = [
 ]
 
 export const USABLE_TOOL_DATA: SkillSetDataCategoryType = [
+  { label: "Claude", skillName: <>Claude</>, value: 3, category: "work-experience" },
+  { label: "Codex", skillName: <>Codex</>, value: 3, category: "work-experience" },
+  { label: "ChatGPT", skillName: <>ChatGPT</>, value: 3, category: "work-experience" },
+  { label: "Gemini", skillName: <>Gemini</>, value: 3, category: "work-experience" },
   { label: "Visual Studio Code", skillName: <>Visual Studio Code</>, value: 5, acquisitionDate: "2020-09-01", category: "work-experience" },
   { label: "Figma", icon: ICON_DATA.figma, skillName: <>Figma {ICON_DATA.figma}</>, value: 5, acquisitionDate: "2021-09-01", category: "work-experience" },
   { label: "Adobe XD", skillName: <>Adobe XD</>, value: 5, acquisitionDate: "2020-09-01", category: "work-experience" },
@@ -66,10 +70,11 @@ export const USABLE_TOOL_DATA: SkillSetDataCategoryType = [
 ]
 
 export const WORKING_SKILL_SET_DATA: SkillSetDataCategoryType = [
-  { skillName: <></>, value: 5, acquisitionDate: "", category: "work-experience" },
-  { skillName: <></>, value: 5, acquisitionDate: "", category: "work-experience" },
-  { skillName: <></>, value: 5, acquisitionDate: "", category: "work-experience" },
-  { skillName: <></>, value: 5, acquisitionDate: "", category: "work-experience" },
+  { label: "基本設計・詳細設計", skillName: <>基本設計・詳細設計</>, value: 3, category: "work-experience" },
+  { label: "Design Doc", skillName: <>Design Doc</>, value: 3, category: "work-experience" },
+  { label: "IAM / RBAC", skillName: <>IAM / RBAC</>, value: 3, category: "work-experience" },
+  { label: "試験設計・テスト自動化", skillName: <>試験設計・テスト自動化</>, value: 3, category: "work-experience" },
+  { label: "AIコード・設計レビュー", skillName: <>AIコード・設計レビュー</>, value: 3, category: "work-experience" },
 ]
 
 export const USABLE_OS_DATA: SkillSetDataCategoryType = [
@@ -84,5 +89,6 @@ export const SKILL_SET_DATA: SkillSetDateType = [
   { title: "DEVELOP SKILL", data:  DEVELOP_SKILL_SET_DATA },
   { title: "BACK END SKILL", data:  BACK_END_SET_DATA },
   { title: "USABLE TOOL", data: USABLE_TOOL_DATA },
+  { title: "WORKING SKILL", data: WORKING_SKILL_SET_DATA },
   { title: "USABLE OS", data: USABLE_OS_DATA },
 ]
