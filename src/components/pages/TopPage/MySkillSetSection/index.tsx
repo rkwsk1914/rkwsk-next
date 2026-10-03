@@ -50,6 +50,7 @@ const GROUP_BY_SOURCE_TITLE: Record<string, SkillGroup> = {
   'DEVELOP SKILL': 'back',
   'USABLE TOOL': 'tools',
   'USABLE OS': 'tools',
+  'WORKING SKILL': 'tools',
 }
 
 const CONTEXT_BY_LABEL: Record<string, string> = {
@@ -106,15 +107,25 @@ const CONTEXT_BY_LABEL: Record<string, string> = {
   Windows: 'OS',
   macOS: 'OS',
   WSL: 'Dev Environment',
+  Claude: 'Development / Review',
+  Codex: 'Implementation / Refactoring',
+  ChatGPT: 'AI-assisted Development',
+  Gemini: 'AI-assisted Development',
+  '基本設計・詳細設計': 'System Design',
+  'Design Doc': 'Architecture / Library Selection',
+  'IAM / RBAC': 'Authentication / Authorization',
+  '試験設計・テスト自動化': 'Quality Assurance',
+  'AIコード・設計レビュー': 'Review Standards',
 }
 
 const CORE_STACK_LABELS = ['TypeScript', 'React', 'Next.js', 'Vue 3', 'NestJS', 'GraphQL', 'GitHub']
 
 const LEARNING_ITEMS = [
-  { label: 'Supabase', value: 45 },
-  { label: 'MongoDB', value: 40 },
-  { label: 'Ruby on Rails', value: 35 },
-  { label: 'Laravel', value: 30 },
+  { label: 'AWS SAA-C03', context: '資格取得に向けて学習中' },
+  { label: 'Supabase', context: '個人開発・独学' },
+  { label: 'MongoDB', context: '個人開発・独学' },
+  { label: 'Ruby on Rails', context: '個人開発・独学' },
+  { label: 'Laravel', context: '個人開発・独学' },
 ]
 
 const normalizeLabel = (item: SkillSetItemDataType): string => String(item.label || '').trim()
@@ -306,8 +317,9 @@ export const MySkillSetSection: React.FC<Props> = ({
     <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text}>
       <div className={skillsShellClassName}>
         <p className={styles.sub_text}>
-          WEB制作で使用している技術・ツールをまとめています。<br />
-          実務経験や習熟度の目安としてご覧ください。
+          Webサービス・業務システム開発で使用している技術・ツールをまとめています。<br />
+          設計、認証・認可、テスト自動化、AI支援開発の経験を含め、習熟度は目安としてご覧ください。<br />
+          2026年9月24日時点。
         </p>
         <div className={styles.contentGrid}>
           <div className={styles.tableArea}>
@@ -438,10 +450,7 @@ export const MySkillSetSection: React.FC<Props> = ({
                 {LEARNING_ITEMS.map((item) => (
                   <div key={item.label} className={styles.learningItem}>
                     <span>{item.label}</span>
-                    <div>
-                      <span style={{ width: `${item.value}%` }}></span>
-                    </div>
-                    <small>{item.value}%</small>
+                    <small>{item.context}</small>
                   </div>
                 ))}
               </div>
