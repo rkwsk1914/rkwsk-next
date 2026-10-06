@@ -1,0 +1,47 @@
+$name-init: translate(-200%, -50%) skew(-40deg);
+$name-end: translate(0%, -50%) skew(0deg);
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes name-animation {
+  0% {
+    transform: $name-init;
+  }
+
+  50% {
+    transform: translate(20%, -50%) skew(-45deg);
+  }
+
+  100% {
+    transform: translate(0%, -50%) skew(0deg);
+  }
+}
+
+%extends-name-animation {
+  animation-delay: .5s;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: name-animation;
+  animation-timing-function: ease;
+  transform: $name-init;
+  will-change: filter;
+}
+
+%extends-fade-in-animation {
+  animation-delay: 1s;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: fade-in;
+  animation-timing-function: ease-in-out;
+  opacity: 0;
+}

@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+import { useLanguage } from '@/i18n/LanguageProvider'
+
+
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
 import { PlxComponent, ParallaxData } from '@/components/libraries/PlxComponent'
@@ -22,6 +25,7 @@ export const HistoryListMonthItem: React.FC<Props> = (
     endElementClassName
   }
 ): JSX.Element => {
+  const { language } = useLanguage()
   const boxClassName = useGetDarkModeStyleClass(styles.box, styles.dark)
 
   const [isFixParallax, setIsFixParallax] = useState(false)
@@ -53,7 +57,7 @@ export const HistoryListMonthItem: React.FC<Props> = (
       onPlxEnd={() => { setIsFixParallax(true) }}
       wrapClassName={boxClassName}
     >
-      {month && <span className={styles.month}>{month}月</span>}
+      {month && <span className={styles.month}>{language === 'ja' ? `${month}月` : new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' }).format(new Date(Date.UTC(2000, month - 1)))}</span>}
       <p className={styles.content}>{children}</p>
     </PlxComponent>
   )

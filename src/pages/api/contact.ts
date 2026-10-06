@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 
-import { SCHEMA } from '@/const/Schema'
+import { SCHEMA, getContactSchema } from '@/const/Schema'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type * as zod from 'zod'
@@ -61,7 +61,7 @@ export default async function handler(
     apiKey: process.env.RESEND_API_KEY ?? '',
   }
 
-  const parseResult = SCHEMA.safeParse(req.body)
+  const parseResult = getContactSchema(req.body?.language === 'en' ? 'en' : 'ja').safeParse(req.body)
 
   if (!parseResult.success) {
     return res.status(400).json({ message: 'Invalid request body' })

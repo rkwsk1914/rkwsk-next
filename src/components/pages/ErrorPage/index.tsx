@@ -1,5 +1,8 @@
 import * as React from 'react'
 
+import { useLanguage } from '@/i18n/LanguageProvider'
+
+
 import { ErrorPageData } from '@/const/ErrorPageData'
 
 import { Button } from '@/components/atoms/Button'
@@ -15,11 +18,12 @@ type Props = {
 export const ErrorPage: React.FC<Props> = ({
   errorId
 }): JSX.Element => {
+  const { t } = useLanguage()
   return (
     <MySite title={ErrorPageData[errorId].title} description={ErrorPageData[errorId].description}>
       <SectionContainer level={1} title={ErrorPageData[errorId].content} isFull>
         <div className={styles.button_wrap} >
-          <Button href='/' type='outline' >トップページに戻る</Button>
+          <Button href='/' type='outline' >{t("トップページに戻る")}</Button>
         </div>
       </SectionContainer>
     </MySite>

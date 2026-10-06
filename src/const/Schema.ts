@@ -55,6 +55,17 @@ const SCHEMA = zod.object({
   contact: TEXT_AREA_SCHEMA,
 })
 
+// English inquiries accept international names and phone numbers without requiring kana.
+const ENGLISH_SCHEMA = SCHEMA.extend({
+  firstName: zod.string().trim().min(1, requiredMessage).max(50, ERROR_MESSAGE[3]),
+  lastName: zod.string().trim().min(1, requiredMessage).max(50, ERROR_MESSAGE[3]),
+  firstKanaName: zod.string().max(50, ERROR_MESSAGE[3]),
+  lastKanaName: zod.string().max(50, ERROR_MESSAGE[3]),
+  tel: zod.string().min(1, requiredMessage).regex(/^\+?[0-9]{7,15}$/, '国番号を含め、7〜15桁の電話番号を入力してください。'),
+})
+
+export const getContactSchema = (language: 'ja' | 'en') => language === 'en' ? ENGLISH_SCHEMA : SCHEMA
+
 export {
   EMAIL_SCHEMA,
   NAME_SCHEMA,

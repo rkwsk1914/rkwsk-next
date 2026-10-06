@@ -4,6 +4,8 @@ import Alert from '@mui/material/Alert'
 import { AlertColor } from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 
+import { useLanguage } from '@/i18n/LanguageProvider'
+
 type Props = {
   children?: React.ReactNode
   onClose?: (event: React.SyntheticEvent) => void;
@@ -19,6 +21,7 @@ export const AlertElement: React.FC<Props> = (
     variant = 'filled'
   }
 ): JSX.Element => {
+  const { t } = useLanguage()
   const setTitle = type.charAt(0).toUpperCase() + type.slice(1)
 
   return (
@@ -26,8 +29,9 @@ export const AlertElement: React.FC<Props> = (
       severity={type}
       variant={variant}
       onClose={onClose}
+      closeText={t('close')}
     >
-      <AlertTitle>{setTitle}</AlertTitle>
+      <AlertTitle>{t(setTitle)}</AlertTitle>
       {children}
     </Alert>
   )

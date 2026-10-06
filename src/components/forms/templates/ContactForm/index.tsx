@@ -1,12 +1,15 @@
-import { useState } from 'react'
+
+import { useEffect, useRef, useState } from 'react'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
+import { useLanguage } from '@/i18n/LanguageProvider'
+
 import { useAPI } from '@/hooks/useAPI'
 import { useChrFormatChange } from '@/hooks/useChrFormatChange'
 
-import { SCHEMA } from '@/const/Schema'
+import { getContactSchema } from '@/const/Schema'
 import { TEXT_INPUT_DATA } from '@/const/TextInputData'
 
 import { Button } from '@/components/atoms/Button'
@@ -39,6 +42,8 @@ export const ContactForm: React.FC<Props> = ({
   onSubmit,
   isTestMode = false
 }): JSX.Element => {
+  const { language, t } = useLanguage()
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const [alertProps, setAlertsProps] = useState<AlertProps>({
     type: 'info',
@@ -54,7 +59,7 @@ export const ContactForm: React.FC<Props> = ({
     'contact',
   ]
   const { register, trigger, handleSubmit, setValue, reset, formState: { errors, isDirty, isValid } } = useForm<Inputs>({
-    resolver: zodResolver(SCHEMA),
+    resolver: zodResolver(getContactSchema(language)),
     defaultValues: isTestMode ? {
       firstName: "山田",
       lastName: "太郎",
@@ -63,8 +68,14 @@ export const ContactForm: React.FC<Props> = ({
       tel: "09058233302",
       email: "sample@sample.com",
       contact: "テスト、テスト、テスト、テスト、テスト、テスト、テスト。",
-    } : undefined
+    } : { firstName: '', lastName: '', firstKanaName: '', lastKanaName: '', tel: '', email: '', contact: '' }
   })
+
+  const previousLanguage = useRef(language)
+  useEffect(() => {
+    if (previousLanguage.current !== language && isDirty) void trigger()
+    previousLanguage.current = language
+  }, [language, isDirty, trigger])
 
   const {doPostContact, doAPIDisplaySimulation} = useAPI()
 
@@ -89,14 +100,21 @@ export const ContactForm: React.FC<Props> = ({
       return
     }
 
-    const res = await doPostContact(data)
-    setAlertsProps({
-      type: res.isError ? 'error' : 'success',
-      children: res.message
-    })
-    setShowAlert(true)
-    onSubmit && onSubmit()
-    reset()
+    setIsSubmitting(true)
+    try {
+      const res = await doPostContact(data, language)
+      setAlertsProps({ type: res.isError ? 'error' : 'success', children: res.message })
+      setShowAlert(true)
+      if (!res.isError) {
+        onSubmit && onSubmit()
+        reset()
+      }
+    } catch {
+      setAlertsProps({ type: 'error', children: 'お問い合わせ内容の送信に失敗しました。' })
+      setShowAlert(true)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const setTextInputElementProps = (index: number): React.ComponentProps<typeof TextInputElement> => {
@@ -105,7 +123,7 @@ export const ContactForm: React.FC<Props> = ({
     }
 
     const FixName = (event: React.FocusEvent<HTMLInputElement>) => {
-      const fixValue = removeFullWidthSymbol(removeFullWidthNumber(event.target.value))
+      const fixValue = language === 'en' ? event.target.value.trim() : removeFullWidthSymbol(removeFullWidthNumber(event.target.value))
       setValue(formInputTextNameList[index], fixValue)
       trigger(formInputTextNameList[index])
     }
@@ -124,7 +142,7 @@ export const ContactForm: React.FC<Props> = ({
     }
 
     const FixTelInput = (event: React.FocusEvent<HTMLInputElement>) => {
-      const fixValue = removeOtherHalfNumber(fixHalfWidth(event.target.value))
+      const fixValue = language === 'en' ? fixHalfWidth(event.target.value).replace(/[\s()-]/g, '') : removeOtherHalfNumber(fixHalfWidth(event.target.value))
       setValue(formInputTextNameList[index], fixValue)
       trigger(formInputTextNameList[index])
     }
@@ -148,9 +166,11 @@ export const ContactForm: React.FC<Props> = ({
 
     return {
       variant: 'outlined',
-      helperText: errors[formInputTextNameList[index]]?.message,
+      helperText: t(errors[formInputTextNameList[index]]?.message || ''),
       error: errors[formInputTextNameList[index]] ? true : false,
       ...TEXT_INPUT_DATA[formInputTextNameList[index]],
+      label: t(String(TEXT_INPUT_DATA[formInputTextNameList[index]].label || '')),
+      placeholder: formInputTextNameList[index] === 'tel' && language === 'en' ? '+14155552671' : t(TEXT_INPUT_DATA[formInputTextNameList[index]].placeholder || ''),
       ...register(formInputTextNameList[index]),
       onBlur: setOnBlur(index)
     }
@@ -162,16 +182,18 @@ export const ContactForm: React.FC<Props> = ({
         isOpen={showAlert}
         onClose={() => {setShowAlert(false)}}
         variant='standard'
-        {...alertProps} />
+        {...alertProps}>
+        {typeof alertProps.children === 'string' ? t(alertProps.children) : alertProps.children}
+      </PageTopShowAlert>
       <div className={styles.formArea}>
         <div className={styles.nameArea}>
           <TextInputElement {...setTextInputElementProps(0)} />
           <TextInputElement {...setTextInputElementProps(1)} />
         </div>
-        <div className={styles.nameArea}>
+        {language === 'ja' && <div className={styles.nameArea}>
           <TextInputElement {...setTextInputElementProps(2)} />
           <TextInputElement {...setTextInputElementProps(3)} />
-        </div>
+        </div>}
         <TextInputElement {...setTextInputElementProps(4)} />
         <TextInputElement {...setTextInputElementProps(5)} />
         <TextInputElement {...setTextInputElementProps(6)} multiline rows={4}/>
@@ -179,10 +201,10 @@ export const ContactForm: React.FC<Props> = ({
         <div className={styles.submitArea}>
 
           <Button
-            disabled={isTestMode ? false : (isDirty && isValid) ? false : true}
+            disabled={isSubmitting || (!isTestMode && !(isDirty && isValid))}
             type='prime'
             submit
-          >送信</Button>
+          >{t(isSubmitting ? '送信中…' : '送信')}</Button>
         </div>
       </div>
     </form>

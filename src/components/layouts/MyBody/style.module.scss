@@ -21,3 +21,8 @@
 
   position: fixed;
 }
+
+.header li {
+  min-width: max-content;
+  padding-inline: 8px;
+}

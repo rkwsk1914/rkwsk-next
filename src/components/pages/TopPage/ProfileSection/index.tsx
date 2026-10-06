@@ -11,9 +11,9 @@ import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
 
 
 import { ModalComponent } from '@/components/molecules/ModalComponent'
-import { ProFileImage } from '@/components/molecules/ProFileImage'
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 
+import { ProfileHero } from './ProfileHero'
 import styles from './style.module.scss'
 
 type Props = {}
@@ -40,11 +40,14 @@ export const ProfileSection: React.FC<Props> = ({}): JSX.Element => {
     const areaClassName = useGetDarkModeStyleClass(styles.link_btn_area, styles.dark)
     return (
       <div className={areaClassName}>
-        <Link href={EXTERNAL_LINKS.myGitHub} className={styles.link_btn}>
-          {ICON_DATA.gitHub}
+        <Link href={EXTERNAL_LINKS.myGitHub} className={styles.link_btn} aria-label="GitHub" title="GitHub">
+          <span className={styles.github_icon}>{ICON_DATA.gitHub}</span>
         </Link>
-        <Link href={EXTERNAL_LINKS.instagram} className={styles.link_btn}>
-          {ICON_DATA.instagram}
+        <Link href={EXTERNAL_LINKS.instagram} className={styles.link_btn} aria-label="Instagram" title="Instagram">
+          <Image src="/instagram.svg" alt="" width={42} height={48} className={styles.instagram_icon} />
+        </Link>
+        <Link href={EXTERNAL_LINKS.zenn} className={styles.link_btn} aria-label="Zenn" title="Zenn">
+          <Image src="/zenn.svg" alt="" width={48} height={48} className={styles.zenn_icon} />
         </Link>
       </div>
     )
@@ -52,9 +55,9 @@ export const ProfileSection: React.FC<Props> = ({}): JSX.Element => {
 
   return (
     <SectionContainer id={GLOBAL_NAV_DATA.profile.id}>
-      <ProFileImage image={profileImage}>
+      <ProfileHero image={profileImage}>
         <ProfileContentArea />
-      </ProFileImage>
+      </ProfileHero>
       <ModalComponent isOpen={open} onClose={handleClose}>
         sample
       </ModalComponent>
