@@ -1,7 +1,10 @@
+
 import React from 'react'
 
 import LightModeIcon from '@mui/icons-material/LightMode'
 import ModeNightIcon from '@mui/icons-material/ModeNight'
+
+import { useLanguage } from '@/i18n/LanguageProvider'
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
@@ -20,6 +23,7 @@ export const ThemeButton: React.FC<Props> = (
   }
 ): JSX.Element => {
 
+  const { t } = useLanguage()
   const className = useGetDarkModeStyleClass(styles.button, styles.dark)
   return (
     <button className={className} onClick={callBack}>
@@ -29,9 +33,9 @@ export const ThemeButton: React.FC<Props> = (
         <ModeNightIcon />
       )}
       {(isDark) ? (
-        <span>to Light</span>
+        <span>{t('to Light')}</span>
       ) : (
-        <span>to Night</span>
+        <span>{t('to Night')}</span>
       )}
     </button>
   )

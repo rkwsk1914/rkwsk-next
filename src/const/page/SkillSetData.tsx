@@ -24,7 +24,7 @@ export const FRONT_END_SKILL_SET_DATA: SkillSetDataCategoryType = [
   { label: "SCSS", icon: ICON_DATA.sass, skillName: <>SCSS {ICON_DATA.sass}</>, value: 5, acquisitionDate: "2020-09-01", category: "work-experience" },
   { label: "JavaScript", icon: ICON_DATA.javascript, skillName: <>JavaScript {ICON_DATA.javascript}</>, value: 5, acquisitionDate: "2020-09-01", category: "work-experience" },
   { label: "jQuery", skillName: <>jQuery</>, value: 4, acquisitionDate: "2020-09-01", category: "work-experience" },
-  { label: "Shopify", icon: ICON_DATA.shopify, skillName: <>Shopify {ICON_DATA.shopify}</>, value: 4, acquisitionDate: "2021-09-01", category: "work-experience" },
+  { label: "Shopify", icon: ICON_DATA.shopify, skillName: <>Shopify {ICON_DATA.shopify}</>, value: 4, acquisitionDate: "2022-08-01", category: "work-experience" },
   { label: "WordPress", icon: ICON_DATA.wordpress, skillName: <>WordPress {ICON_DATA.wordpress}</>, value: 2, acquisitionDate: "2019-09-01", category: "self-studying" },
 ]
 

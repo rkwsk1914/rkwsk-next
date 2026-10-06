@@ -34,13 +34,13 @@ export const useAPI = () => {
     }
   }
 
-  const doPostContact = async (data: PostContactDataType): Promise<responseStateType> => {
+  const doPostContact = async (data: PostContactDataType, language: 'ja' | 'en' = 'ja'): Promise<responseStateType> => {
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ ...data, language }),
     })
 
     console.log(response.status)

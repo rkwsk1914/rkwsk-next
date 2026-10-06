@@ -1,7 +1,10 @@
+
 import React from 'react'
 
 import CloseIcon from '@mui/icons-material/Close'
 import MenuIcon from '@mui/icons-material/Menu'
+
+import { useLanguage } from '@/i18n/LanguageProvider'
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
@@ -20,18 +23,19 @@ export const MenuButton: React.FC<Props> = (
   }
 ): JSX.Element => {
 
+  const { t } = useLanguage()
   const className = useGetDarkModeStyleClass(styles.button, styles.dark)
   return (
     <button className={className} onClick={callBack}>
       {(isOpen) ? (
         <>
           <CloseIcon />
-          <span>close</span>
+          <span>{t('close')}</span>
         </>
       ) : (
         <>
           <MenuIcon />
-          <span>menu</span>
+          <span>{t('menu')}</span>
         </>
       )}
     </button>

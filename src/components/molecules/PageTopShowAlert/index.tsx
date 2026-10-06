@@ -24,7 +24,7 @@ export const PageTopShowAlert: React.FC<Props> = (
     [styles.close]: !isOpen
   })
   return (
-    <div className={wrapClassName}>
+    <div className={wrapClassName} hidden={!isOpen}>
       <AlertElement
         type={type}
         variant={variant}

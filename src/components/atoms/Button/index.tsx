@@ -90,7 +90,7 @@ export const Button: React.FC<Props> = (
 
   if (submit) return (
     <div className={submitWrapClassName}>
-      <input className={buttonClassName} type="submit" value={children} />
+      <input className={buttonClassName} type="submit" value={children} disabled={disabled} />
     </div>
   )
 

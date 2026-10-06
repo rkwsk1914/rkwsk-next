@@ -48,7 +48,7 @@
 .large_screen_menu_list {
   display: none;
 
-  @screen small {
+  @screen medium {
     display: block;
     max-width: 100%;
     min-width: 50%;

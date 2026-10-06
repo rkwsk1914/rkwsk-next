@@ -34,7 +34,7 @@ const Content: React.FC<ContentProps> = (
   const router = useRouter()
 
   const getGlobalNavDataArray = (): MenuDataType[] => {
-    const data = (router.pathname === '/') ? GLOBAL_TOP_NAV_DATA : GLOBAL_NAV_DATA
+    const data = router.pathname === '/' ? GLOBAL_TOP_NAV_DATA : GLOBAL_NAV_DATA
     const keys = Object.keys(data)
 
     return keys.map(key => data[key])

@@ -1,0 +1,126 @@
+.intro {
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+.links {
+  --link-color: #1b49a1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 20px;
+
+  &.dark {
+    --link-color: #69d0e7;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    max-width: 100%;
+    min-height: 44px;
+    padding-block: 8px;
+    border-bottom: 1px solid currentcolor;
+    color: var(--link-color);
+    font-size: 14px;
+    line-height: 1.7;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid currentcolor;
+      outline-offset: 4px;
+    }
+  }
+}
+
+.selected {
+  --work-accent: #1b49a1;
+  --work-border: #d4dae4;
+  --work-panel: #f3f6fa;
+
+  margin-bottom: 64px;
+  scroll-margin-top: 120px;
+
+  &.dark {
+    --work-accent: #69d0e7;
+    --work-border: #293950;
+    --work-panel: #0b172b;
+  }
+
+  h3 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+
+  @media (width < 1000px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 28px;
+  border: 1px solid var(--work-border);
+  border-radius: 12px;
+  background: var(--work-panel);
+  overflow-wrap: anywhere;
+
+  h4 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.6;
+    text-wrap: balance;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .area {
+    color: var(--work-accent);
+    font-weight: 600;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 44px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--work-border);
+    color: var(--work-accent);
+    font-size: 16px;
+    line-height: 1.8;
+    text-wrap: balance;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid currentcolor;
+      outline-offset: 4px;
+    }
+  }
+}

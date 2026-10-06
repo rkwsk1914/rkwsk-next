@@ -2,10 +2,17 @@
   align-items: center;
   display: flex;
   justify-content: flex-start;
+  gap: 24px;
 }
 
 .link_btn {
-  @apply text-32;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: clamp(32px, 4vw, 48px);
+  width: 48px;
+  height: 48px;
 
   $transition-duration: .5s;
   $transition-timing-function: liner;
@@ -14,21 +21,13 @@
   transition-property: color;
   transition-timing-function: $transition-timing-function;
 
-  @screen small {
-    @apply text-spUI;
-  }
+
 
   &:hover {
     @apply text-lightWaring;
   }
 
-  &:not(:first-child) {
-    @apply ml-16;
 
-    @screen small {
-      @apply ml-16;
-    }
-  }
 }
 
 .dark {
@@ -37,4 +36,25 @@
       @apply text-darkWaring;
     }
   }
+}
+
+.zenn_icon {
+  width: 1em;
+  height: 1em;
+}
+
+.github_icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: #fff;
+  color: #181717;
+}
+
+.instagram_icon {
+  width: .875em;
+  height: 1em;
 }

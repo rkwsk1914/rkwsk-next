@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 import clsx from 'clsx'
 
+import { useLanguage } from '@/i18n/LanguageProvider'
+
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
 import { PlxComponent, ParallaxData } from '@/components/libraries/PlxComponent'
@@ -38,6 +40,7 @@ export const HistoryListYearItem: React.FC<Props> = (
     monthlyDate
   }
 ): JSX.Element => {
+  const { language } = useLanguage()
   const liClassName = useGetDarkModeStyleClass(styles.li, styles.dark)
 
   const [isFixParallax, setIsFixParallax] = useState(false)
@@ -95,7 +98,7 @@ export const HistoryListYearItem: React.FC<Props> = (
         onPlxEnd={() => { setIsFixParallax(true) }}
         wrapClassName={styles.year}
       >
-        <span>{year}</span>
+        <span>{year === 'now' || year === '現在' ? (language === 'ja' ? '現在' : 'now') : year}</span>
       </PlxComponent>
       <div className={styles.content}>
         {monthlyDate.map((data, index) => (

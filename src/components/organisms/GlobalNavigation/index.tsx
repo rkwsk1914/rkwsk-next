@@ -1,9 +1,11 @@
+
 import { useState } from 'react'
 
 import clsx from 'clsx'
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
+import { LanguageSwitch } from '@/components/atoms/LanguageSwitch'
 import { MenuButton } from '@/components/atoms/MenuButton'
 import { ThemeButton } from '@/components/atoms/ThemeButton'
 import { MenuList } from '@/components/molecules/MenuList'
@@ -43,8 +45,9 @@ const OpenMenuContent: React.FC<OpenMenuContentProps> = ({
   })
 
   return (
-    <div className={contentClassName}>
+    <div className={contentClassName} inert={!isOpen} aria-hidden={!isOpen}>
       <div className={styles.btn_area}>
+        <LanguageSwitch />
         {callBackChangeTheme && (
           <div className={styles.menu_btn}>
             <ThemeButton isDark={isDark} callBack={callBackChangeTheme}/>
@@ -78,6 +81,7 @@ export const GlobalNavigation: React.FC<Props> = (
       <div className={styles.large_screen_menu_list}>
         <MenuList data={menu} type='horizontality' />
       </div>
+      <LanguageSwitch />
       <OpenMenuContent
         menu={menu}
         isOpen={isOpen}

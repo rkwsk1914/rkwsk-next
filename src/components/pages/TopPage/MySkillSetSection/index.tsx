@@ -1,13 +1,19 @@
+
 import * as React from 'react'
 import { useMemo, useState } from 'react'
+
+import { useLanguage } from '@/i18n/LanguageProvider'
 
 import { useGetDarkModeStyleClass } from '@/hooks/useGetDarkModeStyleClass'
 
 import { GLOBAL_NAV_DATA } from '@/const/page/GlobalNavData'
+import { SKILL_CONTEXTS } from '@/const/page/SkillContexts'
 
 import { SectionContainer } from '@/components/molecules/SectionContainer'
 
+import { formatSkillStart } from './formatSkillStart'
 import styles from './style.module.scss'
+
 
 import { SkillSetDateType, SkillSetItemDataType } from '@/types/SkillSetDateType'
 
@@ -15,34 +21,25 @@ type Props = {
   data: SkillSetDateType
 }
 
-type SkillGroup = 'front' | 'back' | 'tools' | 'design'
+type SkillGroup = 'engineering' | 'front' | 'back' | 'tools' | 'design'
 
 type SkillRow = SkillSetItemDataType & {
   id: string
   displayName: string
   group: SkillGroup
   context: string
-  confidence: 'High' | 'Medium'
 }
 
 type SkillFilter = 'all' | SkillGroup
 
 const FILTERS: Array<{ label: string, value: SkillFilter }> = [
   { label: 'All Skills', value: 'all' },
+  { label: 'Engineering', value: 'engineering' },
   { label: 'Front End', value: 'front' },
   { label: 'Back End', value: 'back' },
   { label: 'Tools', value: 'tools' },
   { label: 'Design / UX', value: 'design' },
 ]
-
-const LEVEL_LABELS: Record<SkillSetItemDataType['value'], string> = {
-  0: 'Learning',
-  1: 'Beginner',
-  2: 'Basic',
-  3: 'Intermediate',
-  4: 'Advanced',
-  5: 'Advanced',
-}
 
 const GROUP_BY_SOURCE_TITLE: Record<string, SkillGroup> = {
   'FRONT END SKILL': 'front',
@@ -50,72 +47,7 @@ const GROUP_BY_SOURCE_TITLE: Record<string, SkillGroup> = {
   'DEVELOP SKILL': 'back',
   'USABLE TOOL': 'tools',
   'USABLE OS': 'tools',
-  'WORKING SKILL': 'tools',
-}
-
-const CONTEXT_BY_LABEL: Record<string, string> = {
-  React: 'Main Framework',
-  TypeScript: 'Daily',
-  'Next.js': 'Production',
-  'Vue 3': 'Full Stack UI',
-  HTML5: 'Daily',
-  CSS3: 'Daily',
-  Sass: 'Styling',
-  SCSS: 'Styling',
-  JavaScript: 'Daily',
-  jQuery: 'Legacy UI',
-  Shopify: 'EC Frontend',
-  WordPress: 'CMS',
-  GraphQL: 'API Schema',
-  'Apollo Client': 'API Client',
-  'React Hook Form': 'Form',
-  'React Router': 'Routing',
-  Storybook: 'UI Testing',
-  Jest: 'Unit Testing',
-  Playwright: 'E2E Testing',
-  'Chakra UI': 'UI Library',
-  MUI: 'UI Library',
-  'Radix UI': 'UI Primitive',
-  Vuetify: 'UI Library',
-  'Node.js': 'API / Backend',
-  NestJS: 'Backend',
-  TypeORM: 'ORM',
-  PostgreSQL: 'Database',
-  'Amazon DynamoDB': 'Database',
-  Docker: 'Dev Environment',
-  AWS: 'Hosting / Infra',
-  'AWS Amplify': 'Hosting / Infra',
-  GCP: 'Cloud Platform',
-  Linux: 'Dev Environment',
-  'Ruby on Rails': 'Backend',
-  Laravel: 'Backend',
-  'Python 3': 'Scripting / Tools',
-  'Google Apps Script': 'Automation',
-  'Visual Studio Code': 'Editor',
-  Figma: 'Design Handoff',
-  'Adobe XD': 'UI Design',
-  Illustrator: 'Asset Editing',
-  webpack: 'Build Tool',
-  gulp: 'Build Tool',
-  Backlog: 'Project Tool',
-  Asana: 'Project Tool',
-  Jira: 'Project Tool',
-  Git: 'Version Control',
-  GitHub: 'Version Control',
-  'Adobe Photoshop': 'Asset Editing',
-  'Google Spreadsheet': 'Operations',
-  Windows: 'OS',
-  macOS: 'OS',
-  WSL: 'Dev Environment',
-  Claude: 'Development / Review',
-  Codex: 'Implementation / Refactoring',
-  ChatGPT: 'AI-assisted Development',
-  Gemini: 'AI-assisted Development',
-  '基本設計・詳細設計': 'System Design',
-  'Design Doc': 'Architecture / Library Selection',
-  'IAM / RBAC': 'Authentication / Authorization',
-  '試験設計・テスト自動化': 'Quality Assurance',
-  'AIコード・設計レビュー': 'Review Standards',
+  'WORKING SKILL': 'engineering',
 }
 
 const CORE_STACK_LABELS = ['TypeScript', 'React', 'Next.js', 'Vue 3', 'NestJS', 'GraphQL', 'GitHub']
@@ -129,30 +61,6 @@ const LEARNING_ITEMS = [
 ]
 
 const normalizeLabel = (item: SkillSetItemDataType): string => String(item.label || '').trim()
-
-const calculateYearsOfExperience = (acquisitionDate?: string): number | null => {
-  if (!acquisitionDate) return null
-
-  const datePattern = /^\d{4}-\d{2}-\d{2}$/
-  if (!datePattern.test(acquisitionDate)) return null
-
-  const today = new Date()
-  const startDay = new Date(acquisitionDate)
-  const monthDiff = today.getMonth() - startDay.getMonth()
-
-  if (monthDiff < 0) return today.getFullYear() - 1 - startDay.getFullYear()
-  return today.getFullYear() - startDay.getFullYear()
-}
-
-const getYearsLabel = (item: SkillSetItemDataType): string => {
-  const years = calculateYearsOfExperience(item.acquisitionDate)
-  if (years === null) return 'Recently'
-  if (years <= 0) return 'Under 1 yr'
-
-  return `${years}+ yrs`
-}
-
-const getConfidence = (value: SkillSetItemDataType['value']): SkillRow['confidence'] => value >= 4 ? 'High' : 'Medium'
 
 const getLogoText = (label: string): string => {
   const logoText: Record<string, string> = {
@@ -245,15 +153,14 @@ const buildRows = (data: SkillSetDateType): SkillRow[] => {
       const displayName = normalizeLabel(item) || String(item.skillName)
       const mappedGroup = displayName === 'Figma' || displayName === 'Adobe XD' || displayName === 'Adobe Photoshop' || displayName === 'Illustrator'
         ? 'design'
-        : sourceGroup
+        : ['Claude', 'Codex', 'ChatGPT', 'Gemini'].includes(displayName) ? 'engineering' : sourceGroup
 
       return {
         ...item,
         id: displayName,
         displayName,
         group: mappedGroup,
-        context: CONTEXT_BY_LABEL[displayName] || (item.category === 'work-experience' ? 'Production' : 'Learning'),
-        confidence: getConfidence(item.value),
+        context: SKILL_CONTEXTS[displayName] || (item.category === 'work-experience' ? 'Production' : 'Learning'),
       }
     })
   })
@@ -277,11 +184,11 @@ const buildRows = (data: SkillSetDateType): SkillRow[] => {
 export const MySkillSetSection: React.FC<Props> = ({
   data
 }): JSX.Element => {
+  const { language, t } = useLanguage()
   const skillsShellClassName = useGetDarkModeStyleClass(styles.skillsShell, styles.dark)
   const [activeFilter, setActiveFilter] = useState<SkillFilter>('all')
-  const [openFilters, setOpenFilters] = useState<SkillGroup[]>(['front'])
+  const [openFilters, setOpenFilters] = useState<SkillGroup[]>(['engineering'])
   const rows = useMemo(() => buildRows(data), [data])
-  const visibleRows = activeFilter === 'all' ? rows : rows.filter((item) => item.group === activeFilter)
   const accordionFilters = activeFilter === 'all'
     ? FILTERS.filter((filter) => filter.value !== 'all')
     : FILTERS.filter((filter) => filter.value === activeFilter)
@@ -291,25 +198,14 @@ export const MySkillSetSection: React.FC<Props> = ({
 
   const renderLogo = (item: SkillRow): React.ReactNode => (
     <span className={`${styles.skillLogo} ${getLogoColorClass(item.displayName)}`} aria-hidden="true">
-      {item.icon || <span className={styles.logoFallback}>{getLogoText(item.displayName)}</span>}
+      {item.icon || <span className={styles.logoFallback}>{getLogoText(t(item.displayName))}</span>}
     </span>
   )
 
-  const renderSegments = (item: SkillRow): React.ReactNode => (
-    <div className={styles.experienceMeter}>
-      <div className={styles.segments} aria-label={`${LEVEL_LABELS[item.value]} experience`}>
-        {Array.from({ length: 6 }).map((_, index) => (
-          <span key={index} className={index < item.value ? styles.filled : ''}></span>
-        ))}
-      </div>
-      <span>{LEVEL_LABELS[item.value]}</span>
-    </div>
-  )
-
-  const renderConfidence = (item: SkillRow): React.ReactNode => (
-    <div className={styles.confidence}>
-      <span className={item.confidence === 'High' ? styles.highDot : styles.mediumDot}></span>
-      {item.confidence}
+  const renderStart = (item: SkillRow) => (
+    <div className={styles.skillStart}>
+      <span>{formatSkillStart(item.acquisitionDate, language, t)}</span>
+      <small>{t(item.category === 'work-experience' ? '実務経験' : item.category === 'self-studying' ? '個人開発・学習' : '区分未記載')}</small>
     </div>
   )
 
@@ -317,13 +213,14 @@ export const MySkillSetSection: React.FC<Props> = ({
     <SectionContainer id={GLOBAL_NAV_DATA.skills.id} title={GLOBAL_NAV_DATA.skills.text}>
       <div className={skillsShellClassName}>
         <p className={styles.sub_text}>
-          Webサービス・業務システム開発で使用している技術・ツールをまとめています。<br />
-          設計、認証・認可、テスト自動化、AI支援開発の経験を含め、習熟度は目安としてご覧ください。<br />
-          2026年9月24日時点。
+          {t("Webサービス・業務システム開発で使用している技術・ツールをまとめています。")}<br />
+          {t("実務経験と個人開発・学習を区別し、具体的な担当・用途を記載しています。")}<br />
+          {t("使用開始は、その技術に初めて取り組んだ年月です。継続した実務年数や累計の使用期間ではありません。")}<br />
+          {t("2026年10月6日時点。")}
         </p>
         <div className={styles.contentGrid}>
           <div className={styles.tableArea}>
-            <nav className={styles.filterTabs} aria-label="Skill categories">
+            <nav className={styles.filterTabs} aria-label={t("Skill categories")}>
               {FILTERS.map((filter) => (
                 <button
                   key={filter.value}
@@ -332,52 +229,19 @@ export const MySkillSetSection: React.FC<Props> = ({
                   aria-pressed={activeFilter === filter.value}
                   onClick={() => {
                     setActiveFilter(filter.value)
-                    setOpenFilters(filter.value === 'all' ? ['front'] : [filter.value])
+                    setOpenFilters(filter.value === 'all' ? ['engineering'] : [filter.value])
                   }}
                 >
-                  {filter.label}
+                  {filter.value === 'all' ? t(filter.label) : filter.label}
                 </button>
               ))}
             </nav>
             <div className={styles.tableCard}>
-              {activeFilter !== 'all' && (
-                <table className={styles.skillTable}>
-                  <thead>
-                    <tr>
-                      <th>Skill</th>
-                      <th>Experience</th>
-                      <th>Years / Context</th>
-                      <th>Confidence</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {visibleRows.map((item) => (
-                      <tr key={`${item.group}-${item.displayName}`}>
-                        <th>
-                          <span className={styles.skillCell}>
-                            {renderLogo(item)}
-                            <span>{item.displayName}</span>
-                          </span>
-                        </th>
-                        <td>{renderSegments(item)}</td>
-                        <td>
-                          <div className={styles.yearsContext}>
-                            <span>{getYearsLabel(item)}</span>
-                            <small>{item.context}</small>
-                          </div>
-                        </td>
-                        <td>{renderConfidence(item)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
-              <div className={`${styles.mobileAccordion} ${activeFilter === 'all' ? styles.desktopAccordion : ''}`}>
-                <div className={styles.accordionTableHeader}>
-                  <span>Skill</span>
-                  <span>Experience</span>
-                  <span>Years / Context</span>
-                  <span>Confidence</span>
+              <div className={styles.skillGroups}>
+                <div className={styles.accordionTableHeader} aria-hidden="true">
+                  <span>{t('Skill')}</span>
+                  <span>{t('担当・用途')}</span>
+                  <span>{t('使用開始・区分')}</span>
                 </div>
                 {accordionFilters.map((filter) => {
                   const filterValue = filter.value as SkillGroup
@@ -398,9 +262,9 @@ export const MySkillSetSection: React.FC<Props> = ({
                           ))
                         }}
                       >
-                        <span>{filter.label}</span>
+                        <span>{filter.value === 'all' ? t(filter.label) : filter.label}</span>
                         <span className={styles.accordionMeta}>
-                          {groupRows.length} Skills
+                          {groupRows.length}{language === 'ja' ? '項目' : ' Skills'}
                           <span>{isOpen ? '⌃' : '⌄'}</span>
                         </span>
                       </button>
@@ -410,16 +274,10 @@ export const MySkillSetSection: React.FC<Props> = ({
                             <article key={`${item.group}-${item.displayName}`} className={styles.mobileSkillRow}>
                               <div className={styles.mobileSkillName}>
                                 {renderLogo(item)}
-                                <strong>{item.displayName}</strong>
+                                <strong>{t(item.displayName)}</strong>
                               </div>
-                              <div className={styles.mobileSkillExperience}>
-                                {renderSegments(item)}
-                              </div>
-                              <div className={styles.yearsContext}>
-                                <span>{getYearsLabel(item)}</span>
-                                <small>{item.context}</small>
-                              </div>
-                              <div className={styles.mobileConfidence}>{renderConfidence(item)}</div>
+                              <p className={styles.skillScope}>{t(item.context)}</p>
+                              {renderStart(item)}
                             </article>
                           ))}
                         </div>
@@ -431,15 +289,15 @@ export const MySkillSetSection: React.FC<Props> = ({
             </div>
           </div>
           <aside className={styles.sidePanel}>
-            <section className={`${styles.infoCard} ${styles.coreCard}`}>
+            <section className={styles.infoCard}>
               <span className={styles.bookmark}></span>
               <h3>Core Stack</h3>
               <div className={styles.coreList}>
                 {coreStack.map((item) => (
                   <div key={item.displayName} className={styles.coreItem}>
                     {renderLogo(item)}
-                    <strong>{item.displayName}</strong>
-                    <span>{item.context}</span>
+                    <strong>{t(item.displayName)}</strong>
+                    <span>{t(item.context)}</span>
                   </div>
                 ))}
               </div>
@@ -450,7 +308,7 @@ export const MySkillSetSection: React.FC<Props> = ({
                 {LEARNING_ITEMS.map((item) => (
                   <div key={item.label} className={styles.learningItem}>
                     <span>{item.label}</span>
-                    <small>{item.context}</small>
+                    <small>{t(item.context)}</small>
                   </div>
                 ))}
               </div>
