@@ -34,7 +34,7 @@
   "駐車場予約・管理システムでは、Claudeによる設計書レビューの観点をCLAUDE.md・AGENTS.mdに明文化しました。人のレビュー前にAIで確認する運用を整え、人が動作確認に注力できるようにしました。": "On the parking reservation project, I documented criteria for Claude-assisted design reviews in CLAUDE.md and AGENTS.md. Introducing AI checks before human review allowed people to focus on verifying behavior.",
   "デジタルツインの案件では、既存機能との互換性を考慮しながら、ページを行き来する構成を見直しました。複数機能を同一画面で操作できる構成へ変更し、コンポーネントや状態管理の方針をDesign Docに整理しました。": "On the digital twin project, I reconsidered the page-based structure while accounting for compatibility with existing features. I brought multiple features into one workspace and documented component and state management decisions in a Design Doc.",
   "Vinarteは、2022年8月に初めて実務でShopifyを扱った案件です。仕様の調査や開発環境の構築から始め、Liquid・SCSS・JavaScriptによる独自デザインと機能の実装まで担当しました。": "Vinarte was my first professional Shopify project, starting in August 2022. Beginning with specification research and development environment setup, I went on to implement custom designs and features with Liquid, SCSS, and JavaScript.",
-  "2026年8月～現在": "August 2026–present",
+  "2026年10月～現在": "October 2026–present",
   "代表案件を見る": "Explore selected projects",
   "課題と背景": "Context",
   "担当したこと": "My role",
