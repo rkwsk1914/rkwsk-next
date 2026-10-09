@@ -9,7 +9,7 @@ export type Project = {
 
 // Project content transcribed verbatim from the skill sheet dated 2026-09-24.
 // Only document layout (table cells, headings, and line breaks) is adapted for the web.
-// Parking reservation participation is ongoing, confirmed by the user on 2026-10-06.
+// Parking reservation participation is ongoing; start month corrected to October 2026 by the user on 2026-10-09.
 // Vinarte's start month is corrected to August 2022 at the user's request.
 // Source: https://docs.google.com/document/d/19QrgtQiJKiHKL1X2cozvjQbonkwYdPdbTdZfwnO71u8/edit
 // Projects are ordered from newest to oldest for detail-page navigation.
@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     "slug": "parking-reservation",
     "title": "大規模イベント向け駐車場予約・管理システム",
     "shortTitle": "駐車場予約・管理システム",
-    "period": "2026年8月～現在",
+    "period": "2026年10月～現在",
     "sections": [
       {
         "title": "プロジェクト内容",
@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     "historyEntries": [
       {
         "year": 2026,
-        "month": 8
+        "month": 10
       },
       {
         "year": "now"

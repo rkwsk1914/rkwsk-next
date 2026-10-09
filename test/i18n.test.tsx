@@ -81,8 +81,8 @@ describe('Translation coverage', () => {
 describe('Confirmed dates and experience labels', () => {
   test('shows ongoing participation and the confirmed Shopify work start', () => {
     const parking = PROJECTS.find(project => project.slug === 'parking-reservation')!
-    expect(parking.period).toBe('2026年8月～現在')
-    expect(en(parking.period)).toBe('August 2026–present')
+    expect(parking.period).toBe('2026年10月～現在')
+    expect(en(parking.period)).toBe('October 2026–present')
     const shopify = SKILL_SET_DATA.flatMap(group => group.data).find(item => item.label === 'Shopify')!
     expect(shopify.acquisitionDate).toBe('2022-08-01')
     expect(formatSkillStart(shopify.acquisitionDate, 'ja', text => translate('ja', text))).toBe('2022年8月')
